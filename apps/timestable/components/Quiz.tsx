@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 type Question = { r: number; c: number };
 export default function Quiz({
@@ -25,6 +25,14 @@ export default function Quiz({
   }, [questions]);
 
   const question = questions[index];
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  function handleFocus() {
+    // Delay to allow mobile keyboard to open, then scroll input into view
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  }
 
   function check(e?: React.FormEvent) {
     e?.preventDefault();
@@ -53,6 +61,8 @@ export default function Quiz({
             <span className="font-medium">{question.c}</span>?
           </div>
           <input
+            ref={inputRef}
+            onFocus={handleFocus}
             className="w-36 rounded border border-zinc-300 px-3 py-2 text-lg dark:bg-zinc-900 dark:text-zinc-50"
             inputMode="numeric"
             value={answer}
