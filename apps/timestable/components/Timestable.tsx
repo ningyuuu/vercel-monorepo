@@ -1,9 +1,17 @@
 import React from "react";
 
-export default function Timestable(): React.ReactElement {
-  const size = 9;
+export default function Timestable({
+  completed,
+  size = 9,
+}: {
+  completed: string[];
+  size?: number;
+}): React.ReactElement {
   const rows = Array.from({ length: size }, (_, i) => i + 1);
   const cols = Array.from({ length: size }, (_, i) => i + 1);
+
+  const isCompleteStyle = "bg-green-200 dark:bg-green-700";
+  const defaultStyle = "bg-white dark:bg-zinc-900";
 
   return (
     <div className="w-full max-w-4xl px-6">
@@ -11,10 +19,15 @@ export default function Timestable(): React.ReactElement {
         {rows.map((r) =>
           cols.map((c) => {
             const val = r * c;
+            const key = `${r}x${c}`;
+            const isCompleted = completed?.includes(key);
+
             return (
               <div
-                key={`${r}x${c}`}
-                className="flex items-center justify-center h-14 bg-white text-2xl font-medium text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50"
+                key={key}
+                className={`flex items-center justify-center h-16 text-2xl font-medium text-zinc-900 dark:text-zinc-50 ${
+                  isCompleted ? isCompleteStyle : defaultStyle
+                }`}
               >
                 {val}
               </div>
