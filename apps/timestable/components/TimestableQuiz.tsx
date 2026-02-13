@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Timestable from "./Timestable";
 import Quiz from "./Quiz";
+import Timer from "./Timer";
 
 type Question = { r: number; c: number };
 
@@ -26,10 +27,13 @@ function generateQuestions(count = 20): Question[] {
 
 export default function TimestablePlayground() {
   const [completed, setCompleted] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<Question[] | null>(null);
 
-  const [questions, setQuestions] = React.useState<Question[] | null>(null);
+  // signals to control the Timer component
+  const [startSignal, setStartSignal] = useState(0);
+  const [stopSignal, setStopSignal] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setQuestions(generateQuestions(20));
   }, []);
 
@@ -38,14 +42,36 @@ export default function TimestablePlayground() {
     setCompleted((prev) => (prev.includes(key) ? prev : [...prev, key]));
   }
 
+  function handleStartTimer() {
+    setStartSignal((s) => s + 1);
+  }
+
+  function handleFinishTimer() {
+    setStopSignal((s) => s + 1);
+  }
+
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       <div>
         <Timestable completed={completed} />
       </div>
       <div>
+        <div className="w-full px-6 mb-4">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+              Quiz
+            </h2>
+            <Timer startSignal={startSignal} stopSignal={stopSignal} />
+          </div>
+        </div>
+
         {questions ? (
-          <Quiz questions={questions} onComplete={handleComplete} />
+          <Quiz
+            questions={questions}
+            onComplete={handleComplete}
+            onStart={handleStartTimer}
+            onFinish={handleFinishTimer}
+          />
         ) : (
           <div className="w-full px-6">Loading quiz…</div>
         )}

@@ -5,17 +5,23 @@ type Question = { r: number; c: number };
 export default function Quiz({
   questions,
   onComplete,
+  onStart,
+  onFinish,
 }: {
   questions: Question[];
   onComplete?: (q: Question) => void;
+  onStart?: () => void;
+  onFinish?: () => void;
 }) {
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState("");
+  const [started, setStarted] = useState(false);
 
   // reset when questions change
   useEffect(() => {
     setIndex(0);
     setAnswer("");
+    setStarted(false);
   }, [questions]);
 
   const question = questions[index];
@@ -23,19 +29,23 @@ export default function Quiz({
   function check(e?: React.FormEvent) {
     e?.preventDefault();
     if (!question) return;
+    if (!started) {
+      setStarted(true);
+      onStart?.();
+    }
     const expected = question.r * question.c;
     if (parseInt(answer, 10) === expected) {
       onComplete?.(question);
       setAnswer("");
-      setIndex((i) => i + 1);
+      setIndex(index + 1);
+      if (index + 1 >= questions.length) {
+        onFinish?.();
+      }
     }
   }
 
   return (
     <div className="w-full px-6">
-      <h2 className="mb-4 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-        Quiz
-      </h2>
       {question ? (
         <form onSubmit={check} className="flex flex-col gap-3">
           <div className="text-lg text-zinc-800 dark:text-zinc-200">
