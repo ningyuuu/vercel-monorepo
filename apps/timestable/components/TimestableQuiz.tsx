@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Timestable from "./Timestable";
 import Quiz from "./Quiz";
 import Timer from "./Timer";
+import Progress from "./Progress";
 
 type Question = { r: number; c: number };
 
@@ -63,6 +64,7 @@ export default function TimestablePlayground() {
             </h2>
             <Timer startSignal={startSignal} stopSignal={stopSignal} />
           </div>
+          <Progress total={questions?.length} filled={completed.length} />
         </div>
 
         {questions ? (
