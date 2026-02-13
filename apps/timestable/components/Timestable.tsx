@@ -25,7 +25,7 @@ export default function Timestable({
             return (
               <div
                 key={key}
-                className={`flex items-center justify-center h-16 text-2xl font-medium text-zinc-900 dark:text-zinc-50 ${
+                className={`flex items-center justify-center h-10 sm:h-16 text-base sm:text-2xl font-medium text-zinc-900 dark:text-zinc-50 ${
                   isCompleted ? isCompleteStyle : defaultStyle
                 }`}
               >
