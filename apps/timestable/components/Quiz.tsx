@@ -60,19 +60,22 @@ export default function Quiz({
             What is <span className="font-medium">{question.r}</span> ×{" "}
             <span className="font-medium">{question.c}</span>?
           </div>
-          <input
-            ref={inputRef}
-            onFocus={handleFocus}
-            className="w-36 rounded border border-zinc-300 px-3 py-2 text-lg dark:bg-zinc-900 dark:text-zinc-50"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            enterKeyHint="send"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-          />
           <div className="flex gap-2">
+            <input
+              ref={inputRef}
+              onFocus={handleFocus}
+              className="w-36 rounded border border-zinc-300 px-3 py-2 text-lg dark:bg-zinc-900 dark:text-zinc-50"
+              inputMode="numeric"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
             <button
-              type="submit"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                check();
+                inputRef.current?.focus();
+              }}
               className="rounded bg-foreground px-4 py-2 text-white dark:bg-zinc-900"
             >
               Submit
