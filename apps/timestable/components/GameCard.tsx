@@ -25,7 +25,7 @@ export function GameCard({
   accentColor,
 }: GameCardProps) {
   return (
-    <Card className="group relative overflow-hidden border-2 transition-all duration-300 hover:shadow-lg hover:border-primary/30">
+    <Card className="group relative overflow-hidden rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:border-primary/30">
       <div
         className={`absolute inset-0 opacity-[0.03] transition-opacity duration-300 group-hover:opacity-[0.06] ${
           accentColor === "primary" ? "bg-primary" : "bg-accent"
