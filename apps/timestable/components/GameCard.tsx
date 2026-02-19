@@ -52,7 +52,7 @@ export function GameCard({
           </div>
         </div>
       </CardHeader>
-      <CardContent className="relative pt-0">
+      <CardContent className="relative pt-4">
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap gap-2.5">
             {modes.map((mode) => (
@@ -63,7 +63,7 @@ export function GameCard({
               >
                 <Button
                   variant="outline"
-                  className={`h-auto w-full flex-col items-start gap-1.5 px-5 py-4 text-left transition-all duration-200 hover:shadow-md ${
+                  className={`h-auto w-full flex-col items-start gap-1.5 px-5 py-4 text-left transition-all duration-200 hover:shadow-md bg-muted/50 border-muted-foreground/20 ${
                     accentColor === "primary"
                       ? "hover:border-primary/50 hover:bg-primary/5"
                       : "hover:border-accent/50 hover:bg-accent/5"
