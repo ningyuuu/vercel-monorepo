@@ -1,4 +1,3 @@
-import Image from "next/image";
 import TimestableQuiz from "../components/TimestableQuiz";
 
 export default function Home() {
