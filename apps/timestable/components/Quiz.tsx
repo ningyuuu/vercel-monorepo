@@ -65,6 +65,8 @@ export default function Quiz({
             onFocus={handleFocus}
             className="w-36 rounded border border-zinc-300 px-3 py-2 text-lg dark:bg-zinc-900 dark:text-zinc-50"
             inputMode="numeric"
+            pattern="[0-9]*"
+            enterKeyHint="send"
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
           />
