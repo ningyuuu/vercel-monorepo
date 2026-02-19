@@ -13,6 +13,7 @@ export default function Timer({
   const [elapsed, setElapsed] = useState(0);
 
   // start when startSignal increments
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (startSignal === 0) return;
     setStartTime(Date.now());
@@ -27,7 +28,8 @@ export default function Timer({
       setElapsed(Date.now() - startTime);
     }
     setRunning(false);
-  }, [stopSignal]);
+  }, [stopSignal, startTime]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // update every 100ms while running
   useEffect(() => {

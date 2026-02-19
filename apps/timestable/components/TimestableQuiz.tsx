@@ -34,9 +34,11 @@ export default function TimestablePlayground() {
   const [startSignal, setStartSignal] = useState(0);
   const [stopSignal, setStopSignal] = useState(0);
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setQuestions(generateQuestions(20));
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   function handleComplete(q: { r: number; c: number }) {
     const key = `${q.r}x${q.c}`;

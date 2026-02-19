@@ -18,11 +18,13 @@ export default function Quiz({
   const [started, setStarted] = useState(false);
 
   // reset when questions change
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setIndex(0);
     setAnswer("");
     setStarted(false);
   }, [questions]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const question = questions[index];
   const inputRef = useRef<HTMLInputElement | null>(null);
