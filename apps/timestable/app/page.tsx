@@ -1,10 +1,5 @@
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@repo/ui/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@repo/ui/card";
 
 export default function Home() {
   return (
