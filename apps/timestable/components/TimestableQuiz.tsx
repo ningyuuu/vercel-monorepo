@@ -7,10 +7,19 @@ import Progress from "./Progress";
 
 type Question = { r: number; c: number };
 
-function generateQuestions(count = 20): Question[] {
+type Range = {
+  min: number;
+  max: number;
+};
+
+function generateQuestions(
+  count = 20,
+  firstDigitRange: Range = { min: 2, max: 9 },
+  secondDigitRange: Range = { min: 2, max: 9 },
+): Question[] {
   const all: Question[] = [];
-  for (let r = 2; r <= 9; r++) {
-    for (let c = 2; c <= 9; c++) {
+  for (let r = firstDigitRange.min; r <= firstDigitRange.max; r++) {
+    for (let c = secondDigitRange.min; c <= secondDigitRange.max; c++) {
       all.push({ r, c });
     }
   }
@@ -26,7 +35,13 @@ function generateQuestions(count = 20): Question[] {
   return all.slice(0, Math.min(count, all.length));
 }
 
-export default function TimestablePlayground() {
+export default function TimestablePlayground({
+  firstDigitRange = { min: 2, max: 9 },
+  secondDigitRange = { min: 2, max: 9 },
+}: {
+  firstDigitRange?: Range;
+  secondDigitRange?: Range;
+}) {
   const [completed, setCompleted] = useState<string[]>([]);
   const [questions, setQuestions] = useState<Question[] | null>(null);
 
@@ -36,8 +51,8 @@ export default function TimestablePlayground() {
 
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    setQuestions(generateQuestions(20));
-  }, []);
+    setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
+  }, [firstDigitRange, secondDigitRange]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   function handleComplete(q: { r: number; c: number }) {

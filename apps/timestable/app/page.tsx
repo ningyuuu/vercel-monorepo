@@ -8,11 +8,11 @@ export default function Home() {
       href: "/easy",
       description: "Numbers 1-9",
     },
-    // {
-    //   label: "Medium",
-    //   href: "/medium",
-    //   description: "Numbers 1-12",
-    // },
+    {
+      label: "Medium",
+      href: "/medium",
+      description: "single digit x 11 - 19",
+    },
     // {
     //   label: "Hard",
     //   href: "/hard",
