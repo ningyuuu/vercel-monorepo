@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Timestable from "./Timestable";
+import HelperPanel from "./HelperPanel";
 import Quiz from "./Quiz";
 import Timer from "./Timer";
 import Progress from "./Progress";
@@ -49,11 +49,14 @@ export default function TimestablePlayground({
   const [startSignal, setStartSignal] = useState(0);
   const [stopSignal, setStopSignal] = useState(0);
 
-  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
-  }, [firstDigitRange, secondDigitRange]);
-  /* eslint-enable react-hooks/set-state-in-effect */
+  }, [
+    firstDigitRange.min,
+    firstDigitRange.max,
+    secondDigitRange.min,
+    secondDigitRange.max,
+  ]);
 
   function handleComplete(q: { r: number; c: number }) {
     const key = `${q.r}x${q.c}`;
@@ -70,9 +73,7 @@ export default function TimestablePlayground({
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <div>
-        <Timestable completed={completed} />
-      </div>
+      <HelperPanel completed={completed} />
       <div>
         <div className="w-full px-6 mb-4">
           <div className="flex items-baseline justify-between">
