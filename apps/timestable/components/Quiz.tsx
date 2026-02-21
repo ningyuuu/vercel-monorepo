@@ -55,7 +55,7 @@ export default function Quiz({
   }
 
   return (
-    <div className="w-full px-6">
+    <div className="w-full px-3 sm:px-6">
       {question ? (
         <form onSubmit={check} className="flex flex-col gap-3">
           <div className="text-lg text-zinc-800 dark:text-zinc-200">

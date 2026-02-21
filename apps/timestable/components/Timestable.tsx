@@ -14,7 +14,7 @@ export default function Timestable({
   const defaultStyle = "bg-white dark:bg-zinc-900";
 
   return (
-    <div className="w-full max-w-4xl px-6">
+    <div className="w-full max-w-4xl px-3 sm:px-6">
       <div className="grid grid-cols-9 gap-1 rounded-lg bg-zinc-200 p-1 dark:bg-zinc-800">
         {rows.map((r) =>
           cols.map((c) => {

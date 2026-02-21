@@ -75,7 +75,7 @@ export default function TimestablePlayground({
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       <HelperPanel completed={completed} />
       <div>
-        <div className="w-full px-6 mb-4">
+        <div className="mb-4 w-full px-3 sm:px-6">
           <div className="flex items-baseline justify-between">
             <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
               Quiz
@@ -93,7 +93,7 @@ export default function TimestablePlayground({
             onFinish={handleFinishTimer}
           />
         ) : (
-          <div className="w-full px-6">Loading quiz…</div>
+          <div className="w-full px-3 sm:px-6">Loading quiz…</div>
         )}
       </div>
     </div>
