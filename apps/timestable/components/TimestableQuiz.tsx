@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import HelperPanel from "./HelperPanel";
 import Quiz from "./Quiz";
 import Timer from "./Timer";
@@ -49,10 +50,17 @@ export default function TimestablePlayground({
   // signals to control the Timer component
   const [startSignal, setStartSignal] = useState(0);
   const [stopSignal, setStopSignal] = useState(0);
+  const [resetSignal, setResetSignal] = useState(0);
+
+  function resetQuiz() {
+    setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
+    setCompleted([]);
+    setCurrentQuestion(null);
+    setResetSignal((s) => s + 1);
+  }
 
   useEffect(() => {
-    setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
-    setCurrentQuestion(null);
+    resetQuiz();
   }, [
     firstDigitRange.min,
     firstDigitRange.max,
@@ -74,30 +82,45 @@ export default function TimestablePlayground({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <HelperPanel completed={completed} currentQuestion={currentQuestion} />
-      <div>
-        <div className="mb-4 w-full px-3 sm:px-6">
-          <div className="flex items-baseline justify-between">
-            <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-              Quiz
-            </h2>
-            <Timer startSignal={startSignal} stopSignal={stopSignal} />
+    <div>
+      <div className="mb-4 px-3 sm:px-6">
+        <Link
+          href="/"
+          className="inline-flex h-9 items-center rounded-md border border-input px-3 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+        >
+          Home
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <HelperPanel completed={completed} currentQuestion={currentQuestion} />
+        <div>
+          <div className="mb-4 w-full px-3 sm:px-6">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+                Quiz
+              </h2>
+              <Timer
+                startSignal={startSignal}
+                stopSignal={stopSignal}
+                resetSignal={resetSignal}
+              />
+            </div>
+            <Progress total={questions?.length} filled={completed.length} />
           </div>
-          <Progress total={questions?.length} filled={completed.length} />
-        </div>
 
-        {questions ? (
-          <Quiz
-            questions={questions}
-            onComplete={handleComplete}
-            onStart={handleStartTimer}
-            onFinish={handleFinishTimer}
-            onQuestionChange={setCurrentQuestion}
-          />
-        ) : (
-          <div className="w-full px-3 sm:px-6">Loading quiz…</div>
-        )}
+          {questions ? (
+            <Quiz
+              questions={questions}
+              onComplete={handleComplete}
+              onStart={handleStartTimer}
+              onFinish={handleFinishTimer}
+              onRetry={resetQuiz}
+              onQuestionChange={setCurrentQuestion}
+            />
+          ) : (
+            <div className="w-full px-3 sm:px-6">Loading quiz…</div>
+          )}
+        </div>
       </div>
     </div>
   );

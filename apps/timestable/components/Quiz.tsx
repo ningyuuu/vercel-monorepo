@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 type Question = { r: number; c: number };
@@ -7,12 +8,14 @@ export default function Quiz({
   onComplete,
   onStart,
   onFinish,
+  onRetry,
   onQuestionChange,
 }: {
   questions: Question[];
   onComplete?: (q: Question) => void;
   onStart?: () => void;
   onFinish?: () => void;
+  onRetry?: () => void;
   onQuestionChange?: (q: Question | null) => void;
 }) {
   const [index, setIndex] = useState(0);
@@ -91,8 +94,25 @@ export default function Quiz({
           </div>
         </form>
       ) : (
-        <div className="text-zinc-700 dark:text-zinc-300">
-          All questions completed — nice work!
+        <div className="flex flex-col gap-4">
+          <div className="text-zinc-700 dark:text-zinc-300">
+            All questions completed — nice work!
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href="/"
+              className="inline-flex h-9 items-center rounded-md border border-input px-3 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              Return home
+            </Link>
+            <button
+              type="button"
+              onClick={onRetry}
+              className="inline-flex h-9 items-center rounded-md bg-foreground px-3 text-sm font-medium text-white transition-colors hover:opacity-90 dark:bg-zinc-900"
+            >
+              Try again
+            </button>
+          </div>
         </div>
       )}
     </div>

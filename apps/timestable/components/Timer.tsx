@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 export default function Timer({
   startSignal,
   stopSignal,
+  resetSignal,
 }: {
   startSignal: number;
   stopSignal: number;
+  resetSignal?: number;
 }) {
   const [running, setRunning] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -29,6 +31,14 @@ export default function Timer({
     }
     setRunning(false);
   }, [stopSignal, startTime]);
+
+  // reset when resetSignal increments
+  useEffect(() => {
+    if (!resetSignal) return;
+    setRunning(false);
+    setStartTime(null);
+    setElapsed(0);
+  }, [resetSignal]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   // update every 100ms while running
