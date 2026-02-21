@@ -1,4 +1,5 @@
 @import "@repo/ui/styles.css";
+@source "../../../packages/ui/src";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

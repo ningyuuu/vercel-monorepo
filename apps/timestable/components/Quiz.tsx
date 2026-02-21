@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
+import { Button } from "@repo/ui/button";
+import { Input } from "@repo/ui/input";
 
 type Question = { r: number; c: number };
 export default function Quiz({
@@ -68,29 +70,28 @@ export default function Quiz({
       {question ? (
         <form onSubmit={check} className="flex flex-col gap-3">
           <div className="text-lg text-zinc-800 dark:text-zinc-200">
-            What is <span className="font-medium">{question.r}</span> ×{" "}
-            <span className="font-medium">{question.c}</span>?
+            <span className="font-medium">{question.r}</span> ×{" "}
+            <span className="font-medium">{question.c}</span> = ?
           </div>
           <div className="flex gap-2">
-            <input
+            <Input
               ref={inputRef}
               onFocus={handleFocus}
-              className="w-36 rounded border border-zinc-300 px-3 py-2 text-lg dark:bg-zinc-900 dark:text-zinc-50"
+              className="w-36 text-lg"
               inputMode="numeric"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
             />
-            <button
+            <Button
               type="button"
               onClick={(e) => {
                 e.preventDefault();
                 check();
                 inputRef.current?.focus();
               }}
-              className="rounded bg-foreground px-4 py-2 text-white dark:bg-zinc-900"
             >
               Submit
-            </button>
+            </Button>
           </div>
         </form>
       ) : (
