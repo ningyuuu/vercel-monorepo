@@ -16,7 +16,7 @@ export default function VisualMultiplication({
   currentQuestion: Question | null;
 }): React.ReactElement {
   const [revealedByIndex, setRevealedByIndex] = React.useState<
-    Record<number, boolean>
+    Record<string, boolean>
   >({});
   const questionKey = currentQuestion
     ? `${currentQuestion.r}x${currentQuestion.c}`
@@ -34,13 +34,14 @@ export default function VisualMultiplication({
     );
   }
 
-  const parts = splitIntoTensAndOnes(currentQuestion.r);
-  const total = parts.reduce((sum, part) => sum + part, 0);
-  const side = currentQuestion.c;
-  const rectHeight = Math.max(72, Math.min(180, side * 12));
+  const rowParts = splitIntoTensAndOnes(currentQuestion.r);
+  const colParts = splitIntoTensAndOnes(currentQuestion.c);
+  const totalWidth = rowParts.reduce((sum, part) => sum + part, 0);
+  const totalHeight = colParts.reduce((sum, part) => sum + part, 0);
+  const rectHeight = Math.max(96, Math.min(240, totalHeight * 12));
 
-  function handleReveal(index: number) {
-    setRevealedByIndex((prev) => ({ ...prev, [index]: true }));
+  function handleReveal(key: string) {
+    setRevealedByIndex((prev) => ({ ...prev, [key]: true }));
   }
 
   return (
@@ -54,35 +55,61 @@ export default function VisualMultiplication({
         <div className="mb-2 text-xs text-zinc-500 dark:text-zinc-400">
           Area model
         </div>
-        <div className="flex items-stretch gap-1">
-          {parts.map((part, index) => (
-            <button
-              key={`${part}-${index}`}
-              type="button"
-              onClick={() => handleReveal(index)}
-              className="relative rounded-md border border-zinc-400 bg-zinc-100 text-left dark:border-zinc-500 dark:bg-zinc-800"
-              aria-label={`Reveal ${part} times ${side}`}
-              style={{
-                width: `${(part / total) * 100}%`,
-                height: `${rectHeight}px`,
-              }}
-            >
-              <div className="absolute left-1 top-1 text-xs font-medium text-zinc-700 dark:text-zinc-200">
-                {part}
+        <div className="flex gap-2">
+          <div
+            className="mt-6 flex w-6 flex-col gap-1"
+            style={{ height: `${rectHeight}px` }}
+          >
+            {colParts.map((colPart, index) => (
+              <div
+                key={`left-${colPart}-${index}`}
+                className="flex items-center justify-center text-xs font-medium text-zinc-700 dark:text-zinc-200"
+                style={{ height: `${(colPart / totalHeight) * 100}%` }}
+              >
+                {colPart}
               </div>
-              <div className="absolute bottom-1 left-1 text-xs text-zinc-700 dark:text-zinc-200">
-                {side}
-              </div>
-              <div className="absolute inset-x-0 bottom-1 text-center text-xs font-medium text-zinc-800 dark:text-zinc-100">
-                {part} x {side}
-              </div>
-              {revealedByIndex[index] ? (
-                <div className="absolute inset-x-0 top-1 text-center text-xs font-semibold text-zinc-900 dark:text-zinc-50">
-                  = {part * side}
+            ))}
+          </div>
+
+          <div className="flex-1">
+            <div className="mb-1 flex gap-1">
+              {rowParts.map((rowPart, index) => (
+                <div
+                  key={`top-${rowPart}-${index}`}
+                  className="text-center text-xs font-medium text-zinc-700 dark:text-zinc-200"
+                  style={{ width: `${(rowPart / totalWidth) * 100}%` }}
+                >
+                  {rowPart}
                 </div>
-              ) : null}
-            </button>
-          ))}
+              ))}
+            </div>
+
+            <div className="flex gap-1" style={{ height: `${rectHeight}px` }}>
+              {rowParts.map((rowPart, rowIndex) => (
+                <div
+                  key={`col-${rowPart}-${rowIndex}`}
+                  className="flex flex-col gap-1"
+                  style={{ width: `${(rowPart / totalWidth) * 100}%` }}
+                >
+                  {colParts.map((colPart, colIndex) => {
+                    const key = `${rowIndex}-${colIndex}`;
+                    return (
+                      <button
+                        key={`${rowPart}-${colPart}-${rowIndex}-${colIndex}`}
+                        type="button"
+                        onClick={() => handleReveal(key)}
+                        className="rounded-md border border-zinc-400 bg-zinc-100 text-center text-sm font-semibold text-zinc-900 dark:border-zinc-500 dark:bg-zinc-800 dark:text-zinc-50"
+                        aria-label={`Reveal ${rowPart} times ${colPart}`}
+                        style={{ height: `${(colPart / totalHeight) * 100}%` }}
+                      >
+                        {revealedByIndex[key] ? rowPart * colPart : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

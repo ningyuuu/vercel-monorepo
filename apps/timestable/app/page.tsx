@@ -6,18 +6,18 @@ export default function Home() {
     {
       label: "Easy",
       href: "/easy",
-      description: "Numbers 1-9",
+      description: "1-9 x 1-9",
     },
     {
       label: "Medium",
       href: "/medium",
-      description: "single digit x 11 - 19",
+      description: "1-9 x 11-19",
     },
-    // {
-    //   label: "Hard",
-    //   href: "/hard",
-    //   description: "Numbers 1-20",
-    // },
+    {
+      label: "Hard",
+      href: "/hard",
+      description: "11-19 x 11-19",
+    },
   ];
 
   return (
