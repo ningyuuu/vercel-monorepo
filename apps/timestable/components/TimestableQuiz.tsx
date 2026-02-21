@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { Button } from "@repo/ui/button";
 import HelperPanel from "./HelperPanel";
 import Quiz from "./Quiz";
 import Timer from "./Timer";
@@ -84,12 +85,9 @@ export default function TimestablePlayground({
   return (
     <div>
       <div className="mb-4 px-3 sm:px-6">
-        <Link
-          href="/"
-          className="inline-flex h-9 items-center rounded-md border border-input px-3 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-        >
-          Home
-        </Link>
+        <Button size="sm" asChild>
+          <Link href="/">Home</Link>
+        </Button>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <HelperPanel completed={completed} currentQuestion={currentQuestion} />
