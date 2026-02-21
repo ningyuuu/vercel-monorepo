@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     "./styles.css": "./src/styles/globals.css",
+    "./lib/utils": "./src/lib/utils.ts",
     "./*": "./src/components/ui/*.tsx"
   },
   "scripts": {
