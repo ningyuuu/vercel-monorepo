@@ -7,11 +7,13 @@ export default function Quiz({
   onComplete,
   onStart,
   onFinish,
+  onQuestionChange,
 }: {
   questions: Question[];
   onComplete?: (q: Question) => void;
   onStart?: () => void;
   onFinish?: () => void;
+  onQuestionChange?: (q: Question | null) => void;
 }) {
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -28,6 +30,10 @@ export default function Quiz({
 
   const question = questions[index];
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    onQuestionChange?.(question ?? null);
+  }, [question, onQuestionChange]);
 
   function handleFocus() {
     // Delay to allow mobile keyboard to open, then scroll input into view

@@ -44,6 +44,7 @@ export default function TimestablePlayground({
 }) {
   const [completed, setCompleted] = useState<string[]>([]);
   const [questions, setQuestions] = useState<Question[] | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
 
   // signals to control the Timer component
   const [startSignal, setStartSignal] = useState(0);
@@ -51,6 +52,7 @@ export default function TimestablePlayground({
 
   useEffect(() => {
     setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
+    setCurrentQuestion(null);
   }, [
     firstDigitRange.min,
     firstDigitRange.max,
@@ -73,7 +75,7 @@ export default function TimestablePlayground({
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <HelperPanel completed={completed} />
+      <HelperPanel completed={completed} currentQuestion={currentQuestion} />
       <div>
         <div className="mb-4 w-full px-3 sm:px-6">
           <div className="flex items-baseline justify-between">
@@ -91,6 +93,7 @@ export default function TimestablePlayground({
             onComplete={handleComplete}
             onStart={handleStartTimer}
             onFinish={handleFinishTimer}
+            onQuestionChange={setCurrentQuestion}
           />
         ) : (
           <div className="w-full px-3 sm:px-6">Loading quiz…</div>
