@@ -1,4 +1,5 @@
 export type Operation = "+" | "-" | "*" | "/";
+type ExprNode = { value: number; expr: string };
 
 export const TARGET = 24;
 
@@ -21,48 +22,59 @@ export function applyOperation(a: number, b: number, op: Operation) {
   return a / b;
 }
 
-function getDivisionIfValid(value1: number, value2: number): number[] {
-  const values: number[] = [];
-  const result1 = applyOperation(value1, value2, "/");
-  if (result1 !== null) {
-    values.push(result1);
-  }
-  const result2 = applyOperation(value2, value1, "/");
-  if (result2 !== null) {
-    const alreadyIncluded = values.some((value) => value === result2);
-    if (!alreadyIncluded) {
-      values.push(result2);
-    }
-  }
-  return values;
+export function canMake24(nums: number[]): boolean {
+  return find24Expression(nums) !== null;
 }
 
-export function canMake24(nums: number[]): boolean {
-  if (nums.length === 1) {
-    return nums[0] === TARGET;
+function buildExpressionCandidates(a: ExprNode, b: ExprNode): ExprNode[] {
+  const candidates: ExprNode[] = [
+    { value: a.value + b.value, expr: `(${a.expr}+${b.expr})` },
+    { value: a.value - b.value, expr: `(${a.expr}-${b.expr})` },
+    { value: b.value - a.value, expr: `(${b.expr}-${a.expr})` },
+    { value: a.value * b.value, expr: `(${a.expr}*${b.expr})` },
+  ];
+
+  const divideAB = applyOperation(a.value, b.value, "/");
+  if (divideAB !== null) {
+    candidates.push({ value: divideAB, expr: `(${a.expr}/${b.expr})` });
   }
 
-  for (let i = 0; i < nums.length; i += 1) {
-    for (let j = i + 1; j < nums.length; j += 1) {
-      const a = nums[i];
-      const b = nums[j];
-      const rest = nums.filter((_, idx) => idx !== i && idx !== j);
+  const divideBA = applyOperation(b.value, a.value, "/");
+  if (divideBA !== null) {
+    candidates.push({ value: divideBA, expr: `(${b.expr}/${a.expr})` });
+  }
 
-      const candidates: number[] = [
-        a + b,
-        a - b,
-        b - a,
-        a * b,
-        ...getDivisionIfValid(a, b),
-      ];
+  return candidates;
+}
 
-      for (const next of candidates) {
-        if (canMake24([...rest, next])) return true;
+function findExpression(nodes: ExprNode[]): string | null {
+  if (nodes.length === 1) {
+    return nodes[0]?.value === TARGET ? nodes[0].expr : null;
+  }
+
+  for (let i = 0; i < nodes.length; i += 1) {
+    for (let j = i + 1; j < nodes.length; j += 1) {
+      const left = nodes[i]!;
+      const right = nodes[j]!;
+      const rest = nodes.filter((_, idx) => idx !== i && idx !== j);
+
+      for (const candidate of buildExpressionCandidates(left, right)) {
+        const solution = findExpression([...rest, candidate]);
+        if (solution) return solution;
       }
     }
   }
 
-  return false;
+  return null;
+}
+
+export function find24Expression(nums: number[]): string | null {
+  const nodes: ExprNode[] = nums.map((value) => ({
+    value,
+    expr: String(value),
+  }));
+
+  return findExpression(nodes);
 }
 
 function randomInt(min: number, max: number) {

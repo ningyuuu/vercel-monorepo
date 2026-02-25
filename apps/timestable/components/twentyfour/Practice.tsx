@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@repo/ui/button";
-import { generateSolvableDeals } from "@/lib/twentyFour";
+import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
 import Board from "@/components/twentyfour/Board";
 import SessionStats from "@/components/twentyfour/SessionStats";
 
@@ -28,7 +28,6 @@ export default function Practice({
     ...normalizedDeals[0]!,
   ]);
   const [boardVersion, setBoardVersion] = useState(0);
-  const [message, setMessage] = useState("");
 
   const [startSignal, setStartSignal] = useState(0);
   const [stopSignal, setStopSignal] = useState(0);
@@ -43,7 +42,6 @@ export default function Practice({
 
     setCards([...currentDeal]);
     setBoardVersion((version) => version + 1);
-    setMessage("");
   }
 
   function restartSession() {
@@ -53,7 +51,6 @@ export default function Practice({
     setDealIndex(0);
     setCards([...nextDeals[0]!]);
     setBoardVersion((version) => version + 1);
-    setMessage("");
     setResetSignal((signal) => signal + 1);
   }
 
@@ -77,7 +74,20 @@ export default function Practice({
     setDealIndex(nextIndex);
     setCards([...nextDeal]);
     setBoardVersion((version) => version + 1);
-    setMessage("");
+  }
+
+  function getRevealAnswer() {
+    if (gameOver) return "Game is over.";
+    const currentDeal = deals[dealIndex];
+    if (!currentDeal) return "No answer found.";
+
+    const expression = find24Expression(currentDeal);
+    if (!expression) {
+      return "No answer found.";
+    }
+
+    const pretty = expression.replaceAll("*", " × ").replaceAll("/", " ÷ ");
+    return `${pretty} = 24`;
   }
 
   return (
@@ -85,9 +95,6 @@ export default function Practice({
       <h1 className="text-3xl font-semibold tracking-tight">
         Twenty Four - Practice
       </h1>
-      <p className="text-center text-sm text-muted-foreground">
-        {gameOver ? "Game over." : "Click: first card, operation, second card."}
-      </p>
 
       <SessionStats
         dealIndex={gameOver ? TOTAL_DEALS - 1 : dealIndex}
@@ -103,21 +110,16 @@ export default function Practice({
         cards={cards}
         disabled={gameOver}
         onCardsChange={setCards}
-        onOperationMessage={setMessage}
         onFirstSelection={startTimerIfNeeded}
         onDealSolved={advanceDeal}
+        getRevealAnswer={getRevealAnswer}
         onReset={resetDeal}
       />
-
-      <div className="text-center text-sm text-muted-foreground">
-        {gameOver && (
-          <p className="mt-1 font-medium text-foreground">
-            All {TOTAL_DEALS} deals completed. Choose Restart or Home.
-          </p>
-        )}
-
-        {message ? <p className="mt-1 text-destructive">{message}</p> : null}
-      </div>
+      {gameOver && (
+        <p className="text-center text-sm font-medium text-foreground">
+          All {TOTAL_DEALS} deals completed. Choose Restart or Home.
+        </p>
+      )}
 
       {gameOver ? (
         <div className="flex flex-wrap justify-center gap-3">

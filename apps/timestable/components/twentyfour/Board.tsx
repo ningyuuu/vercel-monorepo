@@ -25,17 +25,17 @@ export default function Board({
   cards,
   disabled,
   onCardsChange,
-  onOperationMessage,
   onFirstSelection,
   onDealSolved,
+  getRevealAnswer,
   onReset,
 }: {
   cards: Array<number | null>;
   disabled: boolean;
   onCardsChange: (nextCards: Array<number | null>) => void;
-  onOperationMessage: (message: string) => void;
   onFirstSelection: () => void; // to set Timer
   onDealSolved: () => void;
+  getRevealAnswer: () => string;
   onReset: () => void;
 }) {
   const [selectedFirstIndex, setSelectedFirstIndex] = useState<number | null>(
@@ -45,6 +45,7 @@ export default function Board({
     null,
   );
   const [isDelaying, setIsDelaying] = useState(false);
+  const [message, setMessage] = useState("");
 
   const delayTimeoutRef = useRef<number | null>(null);
   const boardDisabled = disabled || isDelaying;
@@ -60,7 +61,7 @@ export default function Board({
   function handleOperationClick(op: Operation) {
     if (selectedFirstIndex === null || boardDisabled) return;
     setSelectedOperation(op);
-    onOperationMessage("");
+    setMessage("");
   }
 
   function handleCardClick(index: number) {
@@ -72,20 +73,20 @@ export default function Board({
     if (selectedFirstIndex === null) {
       onFirstSelection();
       setSelectedFirstIndex(index);
-      onOperationMessage("");
+      setMessage("");
       return;
     }
 
     if (selectedFirstIndex === index) {
       setSelectedFirstIndex(null);
       setSelectedOperation(null);
-      onOperationMessage("");
+      setMessage("");
       return;
     }
 
     if (selectedOperation === null) {
       setSelectedFirstIndex(index);
-      onOperationMessage("");
+      setMessage("");
       return;
     }
 
@@ -94,7 +95,7 @@ export default function Board({
 
     const result = applyOperation(firstValue, clickedValue, selectedOperation);
     if (result === null) {
-      onOperationMessage(INVALID_MOVE_MESSAGE);
+      setMessage(INVALID_MOVE_MESSAGE);
       return;
     }
 
@@ -105,7 +106,7 @@ export default function Board({
     onCardsChange(nextCards);
     setSelectedFirstIndex(index);
     setSelectedOperation(null);
-    onOperationMessage("");
+    setMessage("");
 
     const remaining = nextCards.filter(
       (value): value is number => value !== null,
@@ -117,6 +118,11 @@ export default function Board({
         onDealSolved();
       }, DEAL_DELAY_MS);
     }
+  }
+
+  function handleRevealAnswer() {
+    if (boardDisabled) return;
+    setMessage(getRevealAnswer());
   }
 
   return (
@@ -158,9 +164,20 @@ export default function Board({
         ))}
       </div>
 
-      <Button type="button" onClick={onReset} disabled={boardDisabled}>
-        Reset
-      </Button>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Button type="button" onClick={onReset} disabled={boardDisabled}>
+          Reset
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={handleRevealAnswer}
+          disabled={boardDisabled}
+        >
+          Reveal answer
+        </Button>
+      </div>
+      {message ? <p className="mt-1 text-destructive">{message}</p> : null}
     </>
   );
 }
