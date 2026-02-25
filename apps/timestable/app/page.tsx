@@ -48,7 +48,7 @@ export default function Home() {
           description="Use arithmetic operations to make 24."
           icon={SquareEqual}
           modes={twentyFourModes}
-          accentColor="accent"
+          accentColor="primary"
         />
       </main>
     </div>
