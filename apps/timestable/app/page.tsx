@@ -18,6 +18,11 @@ export default function Home() {
       href: "/hard",
       description: "11-19 x 11-19",
     },
+    {
+      label: "Extreme",
+      href: "/extreme",
+      description: "11-99 x 11-99",
+    },
   ];
 
   return (
