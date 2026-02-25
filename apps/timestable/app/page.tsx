@@ -1,26 +1,26 @@
 import { Calculator } from "lucide-react";
-import { GameCard } from "../components/GameCard";
+import { GameCard } from "@/components/GameCard";
 
 export default function Home() {
   const multiplicationModes = [
     {
       label: "Easy",
-      href: "/easy",
+      href: "/multiplication/easy",
       description: "1-9 x 1-9",
     },
     {
       label: "Medium",
-      href: "/medium",
+      href: "/multiplication/medium",
       description: "1-9 x 11-19",
     },
     {
       label: "Hard",
-      href: "/hard",
+      href: "/multiplication/hard",
       description: "11-19 x 11-19",
     },
     {
       label: "Extreme",
-      href: "/extreme",
+      href: "/multiplication/extreme",
       description: "11-99 x 11-99",
     },
   ];
