@@ -1,4 +1,4 @@
-import { Calculator } from "lucide-react";
+import { Calculator, SquareEqual } from "lucide-react";
 import { GameCard } from "@/components/GameCard";
 
 export default function Home() {
@@ -25,15 +25,30 @@ export default function Home() {
     },
   ];
 
+  const twentyFourModes = [
+    {
+      label: "Practice",
+      href: "/twentyfour/practice",
+      description: "Build 24 from four numbers.",
+    },
+  ];
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background font-sans">
-      <main className="w-full max-w-4xl py-20 px-6 bg-transparent">
+      <main className="w-full max-w-4xl py-20 px-6 bg-transparent space-y-6">
         <GameCard
           title="Multiplication"
           description="Test your multiplication speed and accuracy across difficulty levels."
           icon={Calculator}
           modes={multiplicationModes}
           accentColor="primary"
+        />
+        <GameCard
+          title="Twenty Four"
+          description="Use arithmetic operations to make 24."
+          icon={SquareEqual}
+          modes={twentyFourModes}
+          accentColor="accent"
         />
       </main>
     </div>
