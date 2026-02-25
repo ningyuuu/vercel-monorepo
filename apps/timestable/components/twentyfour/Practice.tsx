@@ -1,0 +1,134 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import { Button } from "@repo/ui/button";
+import { generateSolvableDeals } from "@/lib/twentyFour";
+import Board from "@/components/twentyfour/Board";
+import SessionStats from "@/components/twentyfour/SessionStats";
+
+const TOTAL_DEALS = 10;
+
+export default function Practice({
+  initialDeals,
+}: {
+  initialDeals: number[][];
+}) {
+  const normalizedDeals = useMemo(
+    () =>
+      initialDeals.length === TOTAL_DEALS
+        ? initialDeals
+        : generateSolvableDeals(TOTAL_DEALS),
+    [initialDeals],
+  );
+
+  const [deals, setDeals] = useState<number[][]>(normalizedDeals);
+  const [dealIndex, setDealIndex] = useState(0);
+  const [cards, setCards] = useState<Array<number | null>>([
+    ...normalizedDeals[0]!,
+  ]);
+  const [boardVersion, setBoardVersion] = useState(0);
+  const [message, setMessage] = useState("");
+
+  const [startSignal, setStartSignal] = useState(0);
+  const [stopSignal, setStopSignal] = useState(0);
+  const [resetSignal, setResetSignal] = useState(0);
+
+  const gameOver = dealIndex >= TOTAL_DEALS;
+  const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
+  function resetDeal() {
+    if (gameOver) return;
+    const currentDeal = deals[dealIndex];
+    if (!currentDeal) return;
+
+    setCards([...currentDeal]);
+    setBoardVersion((version) => version + 1);
+    setMessage("");
+  }
+
+  function restartSession() {
+    const nextDeals = generateSolvableDeals(TOTAL_DEALS);
+
+    setDeals(nextDeals);
+    setDealIndex(0);
+    setCards([...nextDeals[0]!]);
+    setBoardVersion((version) => version + 1);
+    setMessage("");
+    setResetSignal((signal) => signal + 1);
+  }
+
+  function startTimerIfNeeded() {
+    if (startSignal !== resetSignal) return;
+    setStartSignal((signal) => signal + 1);
+  }
+
+  function advanceDeal() {
+    const nextIndex = dealIndex + 1;
+
+    if (nextIndex >= TOTAL_DEALS) {
+      setDealIndex(TOTAL_DEALS);
+      setStopSignal((signal) => signal + 1);
+      return;
+    }
+
+    const nextDeal = deals[nextIndex];
+    if (!nextDeal) return;
+
+    setDealIndex(nextIndex);
+    setCards([...nextDeal]);
+    setBoardVersion((version) => version + 1);
+    setMessage("");
+  }
+
+  return (
+    <div className="flex w-full flex-col items-center gap-6">
+      <h1 className="text-3xl font-semibold tracking-tight">
+        Twenty Four - Practice
+      </h1>
+      <p className="text-center text-sm text-muted-foreground">
+        {gameOver ? "Game over." : "Click: first card, operation, second card."}
+      </p>
+
+      <SessionStats
+        dealIndex={gameOver ? TOTAL_DEALS - 1 : dealIndex}
+        totalDeals={TOTAL_DEALS}
+        completedDeals={completedDeals}
+        startSignal={startSignal}
+        stopSignal={stopSignal}
+        resetSignal={resetSignal}
+      />
+
+      <Board
+        key={boardVersion}
+        cards={cards}
+        disabled={gameOver}
+        onCardsChange={setCards}
+        onOperationMessage={setMessage}
+        onFirstSelection={startTimerIfNeeded}
+        onDealSolved={advanceDeal}
+        onReset={resetDeal}
+      />
+
+      <div className="text-center text-sm text-muted-foreground">
+        {gameOver && (
+          <p className="mt-1 font-medium text-foreground">
+            All {TOTAL_DEALS} deals completed. Choose Restart or Home.
+          </p>
+        )}
+
+        {message ? <p className="mt-1 text-destructive">{message}</p> : null}
+      </div>
+
+      {gameOver ? (
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button type="button" onClick={restartSession}>
+            Restart
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/">Home</Link>
+          </Button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
