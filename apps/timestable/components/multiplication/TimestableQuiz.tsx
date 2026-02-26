@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import HelperPanel from "./HelperPanel";
@@ -44,8 +44,28 @@ export default function TimestablePlayground({
   firstDigitRange?: Range;
   secondDigitRange?: Range;
 }) {
+  const rangeKey = `${firstDigitRange.min}-${firstDigitRange.max}-${secondDigitRange.min}-${secondDigitRange.max}`;
+
+  return (
+    <TimestablePlaygroundSession
+      key={rangeKey}
+      firstDigitRange={firstDigitRange}
+      secondDigitRange={secondDigitRange}
+    />
+  );
+}
+
+function TimestablePlaygroundSession({
+  firstDigitRange,
+  secondDigitRange,
+}: {
+  firstDigitRange: Range;
+  secondDigitRange: Range;
+}) {
   const [completed, setCompleted] = useState<string[]>([]);
-  const [questions, setQuestions] = useState<Question[] | null>(null);
+  const [questions, setQuestions] = useState<Question[]>(() =>
+    generateQuestions(20, firstDigitRange, secondDigitRange),
+  );
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
 
   // signals to control the Timer component
@@ -59,15 +79,6 @@ export default function TimestablePlayground({
     setCurrentQuestion(null);
     setResetSignal((s) => s + 1);
   }
-
-  useEffect(() => {
-    resetQuiz();
-  }, [
-    firstDigitRange.min,
-    firstDigitRange.max,
-    secondDigitRange.min,
-    secondDigitRange.max,
-  ]);
 
   function handleComplete(q: { r: number; c: number }) {
     const key = `${q.r}x${q.c}`;
@@ -106,18 +117,14 @@ export default function TimestablePlayground({
             <Progress total={questions?.length} filled={completed.length} />
           </div>
 
-          {questions ? (
-            <Quiz
-              questions={questions}
-              onComplete={handleComplete}
-              onStart={handleStartTimer}
-              onFinish={handleFinishTimer}
-              onRetry={resetQuiz}
-              onQuestionChange={setCurrentQuestion}
-            />
-          ) : (
-            <div className="w-full px-3 sm:px-6">Loading quiz…</div>
-          )}
+          <Quiz
+            questions={questions}
+            onComplete={handleComplete}
+            onStart={handleStartTimer}
+            onFinish={handleFinishTimer}
+            onRetry={resetQuiz}
+            onQuestionChange={setCurrentQuestion}
+          />
         </div>
       </div>
     </div>
