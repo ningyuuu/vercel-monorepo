@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import HelperPanel from "./HelperPanel";
 import Quiz from "./Quiz";
-import Timer from "./Timer";
-import Progress from "./Progress";
+import Timer from "../Timer";
+import Progress from "../Progress";
 
 type Question = { r: number; c: number };
 

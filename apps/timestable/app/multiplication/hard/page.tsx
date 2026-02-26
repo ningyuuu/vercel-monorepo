@@ -1,4 +1,4 @@
-import TimestableQuiz from "@/components/TimestableQuiz";
+import TimestableQuiz from "@/components/multiplication/TimestableQuiz";
 
 export default function Hard() {
   return (
