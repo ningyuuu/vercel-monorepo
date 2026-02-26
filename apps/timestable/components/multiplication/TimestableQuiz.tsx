@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import HelperPanel from "./HelperPanel";
 import Quiz from "./Quiz";
-import Timer from "../Timer";
+import Timer, { useTimer } from "../Timer";
 import Progress from "../Progress";
 
 type Question = { r: number; c: number };
@@ -67,17 +67,13 @@ function TimestablePlaygroundSession({
     generateQuestions(20, firstDigitRange, secondDigitRange),
   );
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-
-  // signals to control the Timer component
-  const [startSignal, setStartSignal] = useState(0);
-  const [stopSignal, setStopSignal] = useState(0);
-  const [resetSignal, setResetSignal] = useState(0);
+  const timerState = useTimer();
 
   function resetQuiz() {
     setQuestions(generateQuestions(20, firstDigitRange, secondDigitRange));
     setCompleted([]);
     setCurrentQuestion(null);
-    setResetSignal((s) => s + 1);
+    timerState.reset();
   }
 
   function handleComplete(q: { r: number; c: number }) {
@@ -86,11 +82,11 @@ function TimestablePlaygroundSession({
   }
 
   function handleStartTimer() {
-    setStartSignal((s) => s + 1);
+    timerState.start();
   }
 
   function handleFinishTimer() {
-    setStopSignal((s) => s + 1);
+    timerState.stop();
   }
 
   return (
@@ -108,11 +104,7 @@ function TimestablePlaygroundSession({
               <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
                 Quiz
               </h2>
-              <Timer
-                startSignal={startSignal}
-                stopSignal={stopSignal}
-                resetSignal={resetSignal}
-              />
+              <Timer timerState={timerState} />
             </div>
             <Progress total={questions?.length} filled={completed.length} />
           </div>

@@ -1,22 +1,18 @@
 "use client";
 
-import Timer from "@/components/Timer";
+import Timer, { type TimerState } from "@/components/Timer";
 import Progress from "@/components/Progress";
 
 export default function SessionStats({
   dealIndex,
   totalDeals,
   completedDeals,
-  startSignal,
-  stopSignal,
-  resetSignal,
+  timerState,
 }: {
   dealIndex: number;
   totalDeals: number;
   completedDeals: number;
-  startSignal: number;
-  stopSignal: number;
-  resetSignal: number;
+  timerState: TimerState;
 }) {
   return (
     <div className="w-full max-w-md">
@@ -24,11 +20,7 @@ export default function SessionStats({
         <span>
           Deal {Math.min(dealIndex + 1, totalDeals)} / {totalDeals}
         </span>
-        <Timer
-          startSignal={startSignal}
-          stopSignal={stopSignal}
-          resetSignal={resetSignal}
-        />
+        <Timer timerState={timerState} />
       </div>
       <Progress total={totalDeals} filled={completedDeals} />
     </div>

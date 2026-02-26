@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@repo/ui/button";
 import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
+import { useTimer } from "@/components/Timer";
 import Board from "@/components/twentyfour/Board";
 import SessionStats from "@/components/twentyfour/SessionStats";
 
@@ -28,10 +29,8 @@ export default function Practice({
     ...normalizedDeals[0]!,
   ]);
   const [boardVersion, setBoardVersion] = useState(0);
-
-  const [startSignal, setStartSignal] = useState(0);
-  const [stopSignal, setStopSignal] = useState(0);
-  const [resetSignal, setResetSignal] = useState(0);
+  const [hasStartedSession, setHasStartedSession] = useState(false);
+  const timerState = useTimer();
 
   const gameOver = dealIndex >= TOTAL_DEALS;
   const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
@@ -51,12 +50,14 @@ export default function Practice({
     setDealIndex(0);
     setCards([...nextDeals[0]!]);
     setBoardVersion((version) => version + 1);
-    setResetSignal((signal) => signal + 1);
+    setHasStartedSession(false);
+    timerState.reset();
   }
 
   function startTimerIfNeeded() {
-    if (startSignal !== resetSignal) return;
-    setStartSignal((signal) => signal + 1);
+    if (hasStartedSession) return;
+    setHasStartedSession(true);
+    timerState.start();
   }
 
   function advanceDeal() {
@@ -64,7 +65,7 @@ export default function Practice({
 
     if (nextIndex >= TOTAL_DEALS) {
       setDealIndex(TOTAL_DEALS);
-      setStopSignal((signal) => signal + 1);
+      timerState.stop();
       return;
     }
 
@@ -100,9 +101,7 @@ export default function Practice({
         dealIndex={gameOver ? TOTAL_DEALS - 1 : dealIndex}
         totalDeals={TOTAL_DEALS}
         completedDeals={completedDeals}
-        startSignal={startSignal}
-        stopSignal={stopSignal}
-        resetSignal={resetSignal}
+        timerState={timerState}
       />
 
       <Board
