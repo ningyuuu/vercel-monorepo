@@ -1,4 +1,4 @@
-import Practice from "@/components/twentyfour/Practice";
+import Practice from "@/app/twentyfour/practice/Practice";
 import { generateSolvableDeals } from "@/lib/twentyFour";
 
 export default function TwentyFourPracticePage() {
