@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@repo/ui/button";
 import {
   applyOperation,
@@ -8,6 +8,7 @@ import {
   isTwentyFour,
   type Operation,
 } from "@/lib/twentyFour";
+import { isTypingTarget } from "@/lib/utils";
 
 const OPERATIONS: Operation[] = ["+", "-", "*", "/"];
 const OPERATION_LABELS: Record<Operation, string> = {
@@ -20,6 +21,28 @@ const OPERATION_LABELS: Record<Operation, string> = {
 const DEAL_DELAY_MS = 500;
 const INVALID_MOVE_MESSAGE =
   "Invalid move. Division must result in a whole number.";
+
+const CARD_SHORTCUTS: { [k: string]: number } = {
+  q: 0,
+  w: 1,
+  a: 2,
+  s: 3,
+};
+
+const OPERATION_SHORTCUT_LABELS: Record<Operation, string> = {
+  "+": "=",
+  "-": "-",
+  "*": "8",
+  "/": "/",
+};
+
+const CARD_SHORTCUT_LABELS = ["Q", "W", "A", "S"] as const;
+const CARD_SHORTCUT_POSITIONS = [
+  "left-2 top-2",
+  "right-2 top-2",
+  "left-2 bottom-2",
+  "right-2 bottom-2",
+] as const;
 
 export default function Board({
   cards,
@@ -58,67 +81,119 @@ export default function Board({
     };
   }, []);
 
-  function handleOperationClick(op: Operation) {
-    if (selectedFirstIndex === null || boardDisabled) return;
-    setSelectedOperation(op);
-    setMessage("");
-  }
-
-  function handleCardClick(index: number) {
-    if (boardDisabled) return;
-
-    const clickedValue = cards[index];
-    if (clickedValue === null) return;
-
-    if (selectedFirstIndex === null) {
-      onFirstSelection();
-      setSelectedFirstIndex(index);
+  const handleOperationClick = useCallback(
+    (op: Operation) => {
+      if (selectedFirstIndex === null || boardDisabled) return;
+      setSelectedOperation(op);
       setMessage("");
-      return;
-    }
+    },
+    [selectedFirstIndex, boardDisabled],
+  );
 
-    if (selectedFirstIndex === index) {
-      setSelectedFirstIndex(null);
+  const handleCardClick = useCallback(
+    (index: number) => {
+      if (boardDisabled) return;
+
+      const clickedValue = cards[index];
+      if (clickedValue === null) return;
+
+      if (selectedFirstIndex === null) {
+        onFirstSelection();
+        setSelectedFirstIndex(index);
+        setMessage("");
+        return;
+      }
+
+      if (selectedFirstIndex === index) {
+        setSelectedFirstIndex(null);
+        setSelectedOperation(null);
+        setMessage("");
+        return;
+      }
+
+      if (selectedOperation === null) {
+        setSelectedFirstIndex(index);
+        setMessage("");
+        return;
+      }
+
+      const firstValue = cards[selectedFirstIndex];
+      if (firstValue === null) return;
+
+      const result = applyOperation(
+        firstValue,
+        clickedValue,
+        selectedOperation,
+      );
+      if (result === null) {
+        setMessage(INVALID_MOVE_MESSAGE);
+        return;
+      }
+
+      const nextCards = [...cards];
+      nextCards[selectedFirstIndex] = null;
+      nextCards[index] = result;
+
+      onCardsChange(nextCards);
+      setSelectedFirstIndex(index);
       setSelectedOperation(null);
       setMessage("");
-      return;
+
+      const remaining = nextCards.filter(
+        (value): value is number => value !== null,
+      );
+      if (remaining.length === 1 && isTwentyFour(remaining[0])) {
+        setIsDelaying(true);
+        delayTimeoutRef.current = window.setTimeout(() => {
+          setIsDelaying(false);
+          onDealSolved();
+        }, DEAL_DELAY_MS);
+      }
+    },
+    [
+      boardDisabled,
+      cards,
+      selectedFirstIndex,
+      selectedOperation,
+      onFirstSelection,
+      onCardsChange,
+      onDealSolved,
+    ],
+  );
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (isTypingTarget(event.target)) return;
+
+      if (event.key === "Backspace") {
+        if (boardDisabled) return;
+        event.preventDefault();
+        onReset();
+        return;
+      }
+
+      const index = CARD_SHORTCUTS[event.key.toLowerCase()];
+      if (index !== undefined) {
+        event.preventDefault();
+        handleCardClick(index);
+        return;
+      }
+
+      const operation = OPERATIONS.find(
+        (op) => OPERATION_SHORTCUT_LABELS[op] === event.key,
+      );
+      if (operation === undefined) return;
+
+      event.preventDefault();
+      handleOperationClick(operation);
     }
 
-    if (selectedOperation === null) {
-      setSelectedFirstIndex(index);
-      setMessage("");
-      return;
-    }
+    window.addEventListener("keydown", handleKeyDown);
 
-    const firstValue = cards[selectedFirstIndex];
-    if (firstValue === null) return;
-
-    const result = applyOperation(firstValue, clickedValue, selectedOperation);
-    if (result === null) {
-      setMessage(INVALID_MOVE_MESSAGE);
-      return;
-    }
-
-    const nextCards = [...cards];
-    nextCards[selectedFirstIndex] = null;
-    nextCards[index] = result;
-
-    onCardsChange(nextCards);
-    setSelectedFirstIndex(index);
-    setSelectedOperation(null);
-    setMessage("");
-
-    const remaining = nextCards.filter(
-      (value): value is number => value !== null,
-    );
-    if (remaining.length === 1 && isTwentyFour(remaining[0])) {
-      setIsDelaying(true);
-      delayTimeoutRef.current = window.setTimeout(() => {
-        setIsDelaying(false);
-        onDealSolved();
-      }, DEAL_DELAY_MS);
-    }
-  }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [boardDisabled, handleCardClick, handleOperationClick, onReset]);
 
   function handleRevealAnswer() {
     if (boardDisabled) return;
@@ -134,7 +209,7 @@ export default function Board({
             type="button"
             disabled={value === null || boardDisabled}
             onClick={() => handleCardClick(index)}
-            className={`aspect-square rounded-xl border text-3xl font-semibold transition ${
+            className={`relative aspect-square rounded-xl border text-3xl font-semibold transition ${
               value === null
                 ? "cursor-default border-dashed border-muted-foreground/20 bg-muted/30 text-transparent"
                 : boardDisabled
@@ -144,6 +219,11 @@ export default function Board({
                     : "border-border bg-card hover:border-primary/40 hover:bg-primary/5"
             }`}
           >
+            <span
+              className={`pointer-events-none absolute text-xs font-medium text-muted-foreground/80 ${CARD_SHORTCUT_POSITIONS[index]}`}
+            >
+              {CARD_SHORTCUT_LABELS[index]}
+            </span>
             {value === null ? " " : formatCardValue(value)}
           </button>
         ))}
@@ -157,6 +237,7 @@ export default function Board({
             variant={selectedOperation === op ? "default" : "outline"}
             onClick={() => handleOperationClick(op)}
             disabled={boardDisabled}
+            title={`shortcut: ${OPERATION_SHORTCUT_LABELS[op]}`}
             className="min-w-14 text-xl"
           >
             {OPERATION_LABELS[op]}
@@ -165,7 +246,12 @@ export default function Board({
       </div>
 
       <div className="flex flex-wrap justify-center gap-3">
-        <Button type="button" onClick={onReset} disabled={boardDisabled}>
+        <Button
+          type="button"
+          onClick={onReset}
+          disabled={boardDisabled}
+          title="shortcut: Backspace"
+        >
           Reset
         </Button>
         <Button

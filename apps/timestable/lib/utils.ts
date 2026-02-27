@@ -1,1 +1,13 @@
 export { cn } from "@repo/ui/lib/utils";
+
+export function isTypingTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false;
+
+  const tag = target.tagName;
+  return (
+    target.isContentEditable ||
+    tag === "INPUT" ||
+    tag === "TEXTAREA" ||
+    tag === "SELECT"
+  );
+}
