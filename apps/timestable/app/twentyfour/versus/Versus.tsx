@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@repo/ui/button";
 import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
-import Progress from "@/components/Progress";
+import MultiColorProgressBar from "@/components/MultiColorProgressBar";
 import BoardControls from "@/components/twentyfour/BoardControls";
 import VersusBoard from "@/components/twentyfour/VersusBoard";
 
@@ -27,9 +27,17 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
   ]);
   const [revealedAnswer, setRevealedAnswer] = useState("");
   const [activePlayer, setActivePlayer] = useState<ActivePlayer | null>(null);
+  const [dealWinners, setDealWinners] = useState<Array<ActivePlayer | null>>(
+    [],
+  );
 
   const gameOver = dealIndex >= TOTAL_DEALS;
-  const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
+  const player1Points = dealWinners.filter((winner) => winner === 1).length;
+  const player2Points = dealWinners.filter((winner) => winner === 2).length;
+  const winnerMessage =
+    player1Points === player2Points
+      ? "It's a tie!"
+      : `Player ${player1Points > player2Points ? 1 : 2} wins!`;
 
   function resetDealOnly() {
     if (gameOver) return;
@@ -53,6 +61,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     setCards([...nextDeals[0]!]);
     setRevealedAnswer("");
     setActivePlayer(null);
+    setDealWinners([]);
   }
 
   function advanceDeal() {
@@ -103,6 +112,18 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     setActivePlayer(nextPlayer);
   }
 
+  function handleDealSolved() {
+    if (gameOver) return;
+
+    setDealWinners((prev) => {
+      const next = [...prev];
+      next[dealIndex] = activePlayer;
+      return next;
+    });
+
+    advanceDeal();
+  }
+
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <h1 className="text-3xl font-semibold tracking-tight">
@@ -113,7 +134,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
         <div className="mb-2 text-sm text-zinc-700 dark:text-zinc-300">
           Deal {Math.min(dealIndex + 1, TOTAL_DEALS)} / {TOTAL_DEALS}
         </div>
-        <Progress total={TOTAL_DEALS} filled={completedDeals} />
+        <MultiColorProgressBar total={TOTAL_DEALS} segments={dealWinners} />
       </div>
 
       <VersusBoard
@@ -121,7 +142,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
         disabled={gameOver}
         onCardsChange={handleCardsChange}
         onFirstSelection={() => {}}
-        onDealSolved={advanceDeal}
+        onDealSolved={handleDealSolved}
         activePlayer={activePlayer}
         onSelectPlayer={handleSelectPlayer}
         onResetAll={resetDealAndPlayers}
@@ -136,7 +157,8 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
 
       {gameOver && (
         <p className="text-center text-sm font-medium text-foreground">
-          All {TOTAL_DEALS} deals completed. Choose Restart or Home.
+          Game over. Player 1: {player1Points} points, Player 2: {player2Points}{" "}
+          points. {winnerMessage}
         </p>
       )}
 
