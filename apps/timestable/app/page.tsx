@@ -29,7 +29,12 @@ export default function Home() {
     {
       label: "Practice",
       href: "/twentyfour/practice",
-      description: "Build 24 from four numbers.",
+      description: "Practice alone with hints.",
+    },
+    {
+      label: "Versus",
+      href: "/twentyfour/versus",
+      description: "A 2 player game.",
     },
   ];
 
@@ -45,7 +50,7 @@ export default function Home() {
         />
         <GameCard
           title="Twenty Four"
-          description="Use arithmetic operations to make 24."
+          description="build 24 from four numbers."
           icon={SquareEqual}
           modes={twentyFourModes}
           accentColor="primary"

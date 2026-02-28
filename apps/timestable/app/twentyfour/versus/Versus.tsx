@@ -4,18 +4,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@repo/ui/button";
 import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
-import { useTimer } from "@/components/Timer";
-import Board from "@/components/twentyfour/Board";
+import Progress from "@/components/Progress";
 import BoardControls from "@/components/twentyfour/BoardControls";
-import SessionStats from "@/components/twentyfour/SessionStats";
+import VersusBoard from "@/components/twentyfour/VersusBoard";
 
 const TOTAL_DEALS = 10;
 
-export default function Practice({
-  initialDeals,
-}: {
-  initialDeals: number[][];
-}) {
+export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
   const normalizedDeals = useMemo(
     () =>
       initialDeals.length === TOTAL_DEALS
@@ -30,20 +25,23 @@ export default function Practice({
     ...normalizedDeals[0]!,
   ]);
   const [revealedAnswer, setRevealedAnswer] = useState("");
-  const [boardVersion, setBoardVersion] = useState(0);
-  const [hasStartedSession, setHasStartedSession] = useState(false);
-  const timerState = useTimer();
+  const [playerStateResetKey, setPlayerStateResetKey] = useState(0);
 
   const gameOver = dealIndex >= TOTAL_DEALS;
   const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
-  function resetDeal() {
+
+  function resetDealOnly() {
     if (gameOver) return;
     const currentDeal = deals[dealIndex];
     if (!currentDeal) return;
 
     setCards([...currentDeal]);
     setRevealedAnswer("");
-    setBoardVersion((version) => version + 1);
+  }
+
+  function resetDealAndPlayers() {
+    resetDealOnly();
+    setPlayerStateResetKey((value) => value + 1);
   }
 
   function restartSession() {
@@ -53,15 +51,7 @@ export default function Practice({
     setDealIndex(0);
     setCards([...nextDeals[0]!]);
     setRevealedAnswer("");
-    setBoardVersion((version) => version + 1);
-    setHasStartedSession(false);
-    timerState.reset();
-  }
-
-  function startTimerIfNeeded() {
-    if (hasStartedSession) return;
-    setHasStartedSession(true);
-    timerState.start();
+    setPlayerStateResetKey((value) => value + 1);
   }
 
   function advanceDeal() {
@@ -69,7 +59,6 @@ export default function Practice({
 
     if (nextIndex >= TOTAL_DEALS) {
       setDealIndex(TOTAL_DEALS);
-      timerState.stop();
       return;
     }
 
@@ -79,16 +68,7 @@ export default function Practice({
     setDealIndex(nextIndex);
     setCards([...nextDeal]);
     setRevealedAnswer("");
-    setBoardVersion((version) => version + 1);
-  }
-
-  function handleCardsChange(nextCards: Array<number | null>) {
-    setCards(nextCards);
-    setRevealedAnswer("");
-  }
-
-  function handleRevealAnswer() {
-    setRevealedAnswer(getRevealAnswer());
+    setPlayerStateResetKey((value) => value + 1);
   }
 
   function getRevealAnswer() {
@@ -105,32 +85,42 @@ export default function Practice({
     return `${pretty} = 24`;
   }
 
+  function handleCardsChange(nextCards: Array<number | null>) {
+    setCards(nextCards);
+    setRevealedAnswer("");
+  }
+
+  function handleRevealAnswer() {
+    setRevealedAnswer(getRevealAnswer());
+  }
+
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <h1 className="text-3xl font-semibold tracking-tight">
-        Twenty Four - Practice
+        Twenty Four - Versus
       </h1>
 
-      <SessionStats
-        dealIndex={gameOver ? TOTAL_DEALS - 1 : dealIndex}
-        totalDeals={TOTAL_DEALS}
-        completedDeals={completedDeals}
-        timerState={timerState}
-      />
+      <div className="w-full max-w-md">
+        <div className="mb-2 text-sm text-zinc-700 dark:text-zinc-300">
+          Deal {Math.min(dealIndex + 1, TOTAL_DEALS)} / {TOTAL_DEALS}
+        </div>
+        <Progress total={TOTAL_DEALS} filled={completedDeals} />
+      </div>
 
-      <Board
-        key={boardVersion}
+      <VersusBoard
         cards={cards}
         disabled={gameOver}
         onCardsChange={handleCardsChange}
-        onFirstSelection={startTimerIfNeeded}
+        onFirstSelection={() => {}}
         onDealSolved={advanceDeal}
-        onReset={resetDeal}
+        onBoardReset={resetDealOnly}
+        onResetAll={resetDealAndPlayers}
+        playerStateResetKey={playerStateResetKey}
       />
 
       <BoardControls
         disabled={gameOver}
-        onReset={resetDeal}
+        onReset={resetDealAndPlayers}
         onRevealAnswer={handleRevealAnswer}
         revealMessage={revealedAnswer}
       />

@@ -50,7 +50,6 @@ export default function Board({
   onCardsChange,
   onFirstSelection,
   onDealSolved,
-  getRevealAnswer,
   onReset,
 }: {
   cards: Array<number | null>;
@@ -58,7 +57,6 @@ export default function Board({
   onCardsChange: (nextCards: Array<number | null>) => void;
   onFirstSelection: () => void; // to set Timer
   onDealSolved: () => void;
-  getRevealAnswer: () => string;
   onReset: () => void;
 }) {
   const [selectedFirstIndex, setSelectedFirstIndex] = useState<number | null>(
@@ -195,11 +193,6 @@ export default function Board({
     };
   }, [boardDisabled, handleCardClick, handleOperationClick, onReset]);
 
-  function handleRevealAnswer() {
-    if (boardDisabled) return;
-    setMessage(getRevealAnswer());
-  }
-
   return (
     <>
       <div className="grid w-full max-w-md grid-cols-2 gap-4">
@@ -243,25 +236,6 @@ export default function Board({
             {OPERATION_LABELS[op]}
           </Button>
         ))}
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-3">
-        <Button
-          type="button"
-          onClick={onReset}
-          disabled={boardDisabled}
-          title="shortcut: Backspace"
-        >
-          Reset
-        </Button>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={handleRevealAnswer}
-          disabled={boardDisabled}
-        >
-          Reveal answer
-        </Button>
       </div>
       {message ? <p className="mt-1 text-destructive">{message}</p> : null}
     </>
