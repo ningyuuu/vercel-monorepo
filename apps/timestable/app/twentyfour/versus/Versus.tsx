@@ -8,6 +8,7 @@ import Progress from "@/components/Progress";
 import BoardControls from "@/components/twentyfour/BoardControls";
 import VersusBoard from "@/components/twentyfour/VersusBoard";
 
+type ActivePlayer = 1 | 2;
 const TOTAL_DEALS = 10;
 
 export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
@@ -25,7 +26,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     ...normalizedDeals[0]!,
   ]);
   const [revealedAnswer, setRevealedAnswer] = useState("");
-  const [playerStateResetKey, setPlayerStateResetKey] = useState(0);
+  const [activePlayer, setActivePlayer] = useState<ActivePlayer | null>(null);
 
   const gameOver = dealIndex >= TOTAL_DEALS;
   const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
@@ -41,7 +42,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
 
   function resetDealAndPlayers() {
     resetDealOnly();
-    setPlayerStateResetKey((value) => value + 1);
+    setActivePlayer(null);
   }
 
   function restartSession() {
@@ -51,7 +52,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     setDealIndex(0);
     setCards([...nextDeals[0]!]);
     setRevealedAnswer("");
-    setPlayerStateResetKey((value) => value + 1);
+    setActivePlayer(null);
   }
 
   function advanceDeal() {
@@ -68,7 +69,7 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     setDealIndex(nextIndex);
     setCards([...nextDeal]);
     setRevealedAnswer("");
-    setPlayerStateResetKey((value) => value + 1);
+    setActivePlayer(null);
   }
 
   function getRevealAnswer() {
@@ -94,6 +95,14 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
     setRevealedAnswer(getRevealAnswer());
   }
 
+  function handleSelectPlayer(nextPlayer: ActivePlayer) {
+    if (gameOver || nextPlayer === activePlayer) return;
+    if (activePlayer !== null) {
+      resetDealOnly();
+    }
+    setActivePlayer(nextPlayer);
+  }
+
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <h1 className="text-3xl font-semibold tracking-tight">
@@ -113,9 +122,9 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
         onCardsChange={handleCardsChange}
         onFirstSelection={() => {}}
         onDealSolved={advanceDeal}
-        onBoardReset={resetDealOnly}
+        activePlayer={activePlayer}
+        onSelectPlayer={handleSelectPlayer}
         onResetAll={resetDealAndPlayers}
-        playerStateResetKey={playerStateResetKey}
       />
 
       <BoardControls
