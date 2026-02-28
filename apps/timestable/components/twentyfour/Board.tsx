@@ -213,7 +213,7 @@ export default function Board({
             }`}
           >
             <span
-              className={`pointer-events-none absolute text-xs font-medium text-muted-foreground/80 ${CARD_SHORTCUT_POSITIONS[index]}`}
+              className={`pointer-events-none absolute hidden text-xs font-medium text-muted-foreground/80 sm:block ${CARD_SHORTCUT_POSITIONS[index]}`}
             >
               {CARD_SHORTCUT_LABELS[index]}
             </span>
@@ -222,7 +222,7 @@ export default function Board({
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="grid w-full grid-cols-4 gap-2 sm:gap-3">
         {OPERATIONS.map((op) => (
           <Button
             key={op}
@@ -231,7 +231,7 @@ export default function Board({
             onClick={() => handleOperationClick(op)}
             disabled={boardDisabled}
             title={`shortcut: ${OPERATION_SHORTCUT_LABELS[op]}`}
-            className="min-w-14 text-xl"
+            className="w-full min-w-0 text-xl"
           >
             {OPERATION_LABELS[op]}
           </Button>

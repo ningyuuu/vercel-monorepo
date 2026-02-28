@@ -57,13 +57,16 @@ export default function VersusBoard({
 
   return (
     <div className="flex w-full justify-center">
-      <div ref={boardContainerRef} className="relative w-full max-w-md">
+      <div
+        ref={boardContainerRef}
+        className="relative w-[calc(100%-6.5rem)] max-w-md sm:w-full"
+      >
         <Button
           type="button"
           variant="outline"
           onClick={() => selectPlayer(1)}
           disabled={disabled}
-          className={`absolute left-0 top-0 w-14 -translate-x-[calc(100%+0.75rem)] px-0 ${
+          className={`absolute left-0 top-0 w-10 -translate-x-[calc(100%+0.75rem)] px-0 sm:w-14 ${
             activePlayer === 1
               ? "border-emerald-600 bg-emerald-600 text-white hover:bg-emerald-600 dark:border-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-500"
               : "border-white/70 bg-black text-white hover:bg-black dark:border-white/70 dark:bg-black dark:text-white dark:hover:bg-black"
@@ -93,7 +96,7 @@ export default function VersusBoard({
           variant="outline"
           onClick={() => selectPlayer(2)}
           disabled={disabled}
-          className={`absolute right-0 top-0 w-14 translate-x-[calc(100%+0.75rem)] px-0 ${
+          className={`absolute right-0 top-0 w-10 translate-x-[calc(100%+0.75rem)] px-0 sm:w-14 ${
             activePlayer === 2
               ? "border-rose-600 bg-rose-600 text-white hover:bg-rose-600 dark:border-rose-500 dark:bg-rose-500 dark:hover:bg-rose-500"
               : "border-white/70 bg-black text-white hover:bg-black dark:border-white/70 dark:bg-black dark:text-white dark:hover:bg-black"
