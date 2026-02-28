@@ -1,6 +1,8 @@
 import Versus from "@/app/twentyfour/versus/Versus";
 import { generateSolvableDeals } from "@/lib/twentyFour";
 
+export const dynamic = "force-dynamic";
+
 export default function TwentyFourVersusPage() {
   const initialDeals = generateSolvableDeals(10);
 

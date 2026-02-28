@@ -1,6 +1,8 @@
 import Practice from "@/app/twentyfour/practice/Practice";
 import { generateSolvableDeals } from "@/lib/twentyFour";
 
+export const dynamic = "force-dynamic";
+
 export default function TwentyFourPracticePage() {
   const initialDeals = generateSolvableDeals(10);
 
