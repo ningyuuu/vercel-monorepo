@@ -64,7 +64,9 @@ export default function VersusBoard({
           onClick={() => selectPlayer(1)}
           disabled={disabled}
           className="absolute left-0 top-0 w-14 -translate-x-[calc(100%+0.75rem)] px-0"
-          style={cardsGridHeight ? { height: `${cardsGridHeight}px` } : undefined}
+          style={
+            cardsGridHeight ? { height: `${cardsGridHeight}px` } : undefined
+          }
         >
           <span className="leading-none text-center whitespace-pre-line">
             {"P\nl\na\ny\ne\nr\n\n1"}
@@ -88,7 +90,9 @@ export default function VersusBoard({
           onClick={() => selectPlayer(2)}
           disabled={disabled}
           className="absolute right-0 top-0 w-14 translate-x-[calc(100%+0.75rem)] px-0"
-          style={cardsGridHeight ? { height: `${cardsGridHeight}px` } : undefined}
+          style={
+            cardsGridHeight ? { height: `${cardsGridHeight}px` } : undefined
+          }
         >
           <span className="leading-none text-center whitespace-pre-line">
             {"P\nl\na\ny\ne\nr\n\n2"}
