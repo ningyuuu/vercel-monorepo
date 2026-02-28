@@ -50,7 +50,7 @@ export default function Home() {
         />
         <GameCard
           title="Twenty Four"
-          description="build 24 from four numbers."
+          description="Build 24 from four numbers."
           icon={SquareEqual}
           modes={twentyFourModes}
           accentColor="primary"
