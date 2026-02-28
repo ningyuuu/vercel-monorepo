@@ -130,6 +130,10 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
         Twenty Four - Versus
       </h1>
 
+      <Button asChild variant="outline">
+        <Link href="/">Home</Link>
+      </Button>
+
       <div className="w-full max-w-md">
         <div className="mb-2 text-sm text-zinc-700 dark:text-zinc-300">
           Deal {Math.min(dealIndex + 1, TOTAL_DEALS)} / {TOTAL_DEALS}
@@ -166,9 +170,6 @@ export default function Versus({ initialDeals }: { initialDeals: number[][] }) {
         <div className="flex flex-wrap justify-center gap-3">
           <Button type="button" onClick={restartSession}>
             Restart
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/">Home</Link>
           </Button>
         </div>
       ) : null}

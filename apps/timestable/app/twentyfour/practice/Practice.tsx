@@ -111,6 +111,10 @@ export default function Practice({
         Twenty Four - Practice
       </h1>
 
+      <Button asChild variant="outline">
+        <Link href="/">Home</Link>
+      </Button>
+
       <SessionStats
         dealIndex={gameOver ? TOTAL_DEALS - 1 : dealIndex}
         totalDeals={TOTAL_DEALS}
@@ -145,9 +149,6 @@ export default function Practice({
         <div className="flex flex-wrap justify-center gap-3">
           <Button type="button" onClick={restartSession}>
             Restart
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/">Home</Link>
           </Button>
         </div>
       ) : null}
