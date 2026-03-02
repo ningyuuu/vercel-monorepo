@@ -8,6 +8,7 @@ export default function Home() {
     {
       title: "Quick Maffs",
       image: "/maffs.png",
+      url: "https://maffs.ningyu.dev",
       description:
         "Series of games to build arithmetic ability. Built with Next.js.",
     },
@@ -81,28 +82,35 @@ export default function Home() {
           <CardContent>
             <div className="flex flex-wrap gap-4">
               {placeholderProjects.map((project) => (
-                <Card
+                <a
                   key={project.title}
-                  className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)]"
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)]"
                 >
-                  <CardHeader>
-                    <CardTitle className="text-base">{project.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mb-3 overflow-hidden rounded-md bg-muted">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={640}
-                        height={360}
-                        className="h-auto w-full object-cover"
-                      />
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {project.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <Card className="h-full">
+                    <CardHeader>
+                      <CardTitle className="text-base">
+                        {project.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="mb-3 overflow-hidden rounded-md bg-muted">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={640}
+                          height={360}
+                          className="h-auto w-full object-cover"
+                        />
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {project.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </a>
               ))}
             </div>
           </CardContent>
