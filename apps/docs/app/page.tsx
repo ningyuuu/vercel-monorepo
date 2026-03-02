@@ -24,13 +24,13 @@ export default function Home() {
 
         <Card>
           <CardHeader className="items-center text-center">
-            <div className="mb-3 h-[150px] w-[150px] overflow-hidden rounded-full bg-muted">
+            <div className="mx-auto mb-3 h-[150px] w-[150px] overflow-hidden rounded-full bg-muted">
               <Image
-                src="/profile-placeholder.svg"
+                src="/profile.png"
                 alt="Profile"
                 width={150}
                 height={150}
-                className="h-full w-full object-cover"
+                className="h-full w-full scale-125 object-cover object-center -translate-x-1 -translate-y-1"
               />
             </div>
             <CardTitle className="text-3xl">Ning Yu</CardTitle>
