@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@repo/ui/button";
-import { formatCardValue, type DealAction, type Operation } from "@/lib/twentyFour";
+import {
+  formatCardValue,
+  type DealAction,
+  type Operation,
+} from "@/lib/twentyFour";
 
 const OPERATIONS: Operation[] = ["+", "-", "*", "/"];
 const OPERATION_LABELS: Record<Operation, string> = {
@@ -35,7 +39,9 @@ export default function ReplayBoard({
 }: ReplayBoardProps) {
   const [cards, setCards] = useState<Array<number | null>>(initialCards);
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
-  const [activeOperation, setActiveOperation] = useState<Operation | null>(null);
+  const [activeOperation, setActiveOperation] = useState<Operation | null>(
+    null,
+  );
   const timeoutsRef = useRef<number[]>([]);
 
   useEffect(() => {
@@ -63,24 +69,33 @@ export default function ReplayBoard({
       );
 
       timeoutsRef.current.push(
-        window.setTimeout(() => {
-          setActiveCardIndex(action.secondIndex);
-        }, baseDelay + REPLAY_STEP_MS * 2),
+        window.setTimeout(
+          () => {
+            setActiveCardIndex(action.secondIndex);
+          },
+          baseDelay + REPLAY_STEP_MS * 2,
+        ),
       );
 
       timeoutsRef.current.push(
-        window.setTimeout(() => {
-          workingCards[action.firstIndex] = null;
-          workingCards[action.secondIndex] = action.result;
-          setCards([...workingCards]);
-        }, baseDelay + REPLAY_STEP_MS * 3),
+        window.setTimeout(
+          () => {
+            workingCards[action.firstIndex] = null;
+            workingCards[action.secondIndex] = action.result;
+            setCards([...workingCards]);
+          },
+          baseDelay + REPLAY_STEP_MS * 3,
+        ),
       );
     });
 
-    const doneTimeout = window.setTimeout(() => {
-      setActiveCardIndex(null);
-      setActiveOperation(null);
-    }, actions.length * REPLAY_STEP_MS * 4);
+    const doneTimeout = window.setTimeout(
+      () => {
+        setActiveCardIndex(null);
+        setActiveOperation(null);
+      },
+      actions.length * REPLAY_STEP_MS * 4,
+    );
 
     timeoutsRef.current.push(doneTimeout);
 
