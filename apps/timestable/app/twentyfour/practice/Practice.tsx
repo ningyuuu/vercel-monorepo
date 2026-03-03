@@ -7,6 +7,7 @@ import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
 import type { DealAction } from "@/lib/twentyFour";
 import { useTimer } from "@/components/Timer";
 import Board from "@/components/twentyfour/Board";
+import ReplayBoard from "@/components/twentyfour/ReplayBoard";
 import BoardControls from "@/components/twentyfour/BoardControls";
 import SessionStats from "@/components/twentyfour/SessionStats";
 const TOTAL_DEALS = 10;
@@ -35,11 +36,26 @@ export default function Practice({
   const [revealedAnswer, setRevealedAnswer] = useState("");
   const [boardVersion, setBoardVersion] = useState(0);
   const [hasStartedSession, setHasStartedSession] = useState(false);
-  const [, setActionsByDeal] = useState<DealAction[][]>(initialActionsState);
+  const [actionsByDeal, setActionsByDeal] =
+    useState<DealAction[][]>(initialActionsState);
+  const [replayDealIndex, setReplayDealIndex] = useState<number | null>(null);
+  const [replayRunId, setReplayRunId] = useState(0);
   const timerState = useTimer();
 
   const gameOver = dealIndex >= TOTAL_DEALS;
   const completedDeals = gameOver ? TOTAL_DEALS : dealIndex;
+  const replayState = useMemo(
+    () =>
+      gameOver && replayDealIndex !== null
+        ? {
+            runId: replayRunId,
+            initialCards: deals[replayDealIndex] ?? [],
+            actions: actionsByDeal[replayDealIndex] ?? [],
+          }
+        : null,
+    [gameOver, replayDealIndex, replayRunId, deals, actionsByDeal],
+  );
+
   function resetDeal() {
     if (gameOver) return;
     const currentDeal = deals[dealIndex];
@@ -58,6 +74,8 @@ export default function Practice({
     setCards([...nextDeals[0]!]);
     setRevealedAnswer("");
     setActionsByDeal(initialActionsState());
+    setReplayDealIndex(null);
+    setReplayRunId(0);
     setBoardVersion((version) => version + 1);
     setHasStartedSession(false);
     timerState.reset();
@@ -70,18 +88,10 @@ export default function Practice({
   }
 
   function advanceDeal(actions: DealAction[]) {
-    const currentDeal = deals[dealIndex];
-
     setActionsByDeal((prev) => {
       const next = [...prev];
       next[dealIndex] = actions;
       return next;
-    });
-
-    console.log("[24 Practice] Deal solved", {
-      dealIndex: dealIndex,
-      cards: currentDeal,
-      actions,
     });
 
     const nextIndex = dealIndex + 1;
@@ -141,15 +151,24 @@ export default function Practice({
         timerState={timerState}
       />
 
-      <Board
-        key={boardVersion}
-        cards={cards}
-        disabled={gameOver}
-        onCardsChange={handleCardsChange}
-        onFirstSelection={startTimerIfNeeded}
-        onDealSolved={advanceDeal}
-        onReset={resetDeal}
-      />
+      {replayState ? (
+        <ReplayBoard
+          key={`${replayState.runId}-${replayDealIndex}`}
+          initialCards={replayState.initialCards}
+          actions={replayState.actions}
+          runId={replayState.runId}
+        />
+      ) : (
+        <Board
+          key={boardVersion}
+          cards={cards}
+          disabled={gameOver}
+          onCardsChange={handleCardsChange}
+          onFirstSelection={startTimerIfNeeded}
+          onDealSolved={advanceDeal}
+          onReset={resetDeal}
+        />
+      )}
 
       <BoardControls
         disabled={gameOver}
@@ -160,12 +179,28 @@ export default function Practice({
 
       {gameOver && (
         <p className="text-center text-sm font-medium text-foreground">
-          All {TOTAL_DEALS} deals completed. Choose Restart or Home.
+          Game over. Click a deal to review
         </p>
       )}
 
       {gameOver ? (
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex w-full max-w-md flex-col gap-3">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            {Array.from({ length: TOTAL_DEALS }, (_, index) => (
+              <Button
+                key={index}
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  setReplayDealIndex(index);
+                  setReplayRunId((prev) => prev + 1);
+                }}
+              >
+                Deal {index + 1}
+              </Button>
+            ))}
+          </div>
+
           <Button type="button" onClick={restartSession}>
             Restart
           </Button>
