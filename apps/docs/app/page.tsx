@@ -37,8 +37,8 @@ export default function Home() {
               I am interested in solving complex problems and creating value
               through sustainable, pleasant digital products. I appreciate
               thoughtful design and minimalist, non-invasive interactions. In
-              short, applications should do their job, and get out of the
-              way.&nbsp;
+              short, apps should be self-explanatory, do their job well, and get
+              out of the way.&nbsp;
               <span className="font-semibold">
                 I am currently seeking freelance development projects.
               </span>
