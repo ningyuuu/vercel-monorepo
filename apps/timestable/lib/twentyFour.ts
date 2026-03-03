@@ -1,6 +1,15 @@
 export type Operation = "+" | "-" | "*" | "/";
 type ExprNode = { value: number; expr: string };
 
+export type DealAction = {
+  firstIndex: number;
+  secondIndex: number;
+  left: number;
+  right: number;
+  operation: Operation;
+  result: number;
+};
+
 export const TARGET = 24;
 
 export function applyOperation(a: number, b: number, op: Operation) {

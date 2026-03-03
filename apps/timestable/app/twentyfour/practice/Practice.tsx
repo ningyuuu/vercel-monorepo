@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@repo/ui/button";
 import { find24Expression, generateSolvableDeals } from "@/lib/twentyFour";
+import type { DealAction } from "@/lib/twentyFour";
 import { useTimer } from "@/components/Timer";
 import Board from "@/components/twentyfour/Board";
 import BoardControls from "@/components/twentyfour/BoardControls";
 import SessionStats from "@/components/twentyfour/SessionStats";
-
 const TOTAL_DEALS = 10;
 
 export default function Practice({
@@ -24,6 +24,9 @@ export default function Practice({
     [initialDeals],
   );
 
+  const initialActionsState = () =>
+    Array.from({ length: TOTAL_DEALS }, () => []);
+
   const [deals, setDeals] = useState<number[][]>(normalizedDeals);
   const [dealIndex, setDealIndex] = useState(0);
   const [cards, setCards] = useState<Array<number | null>>([
@@ -32,6 +35,7 @@ export default function Practice({
   const [revealedAnswer, setRevealedAnswer] = useState("");
   const [boardVersion, setBoardVersion] = useState(0);
   const [hasStartedSession, setHasStartedSession] = useState(false);
+  const [, setActionsByDeal] = useState<DealAction[][]>(initialActionsState);
   const timerState = useTimer();
 
   const gameOver = dealIndex >= TOTAL_DEALS;
@@ -53,6 +57,7 @@ export default function Practice({
     setDealIndex(0);
     setCards([...nextDeals[0]!]);
     setRevealedAnswer("");
+    setActionsByDeal(initialActionsState());
     setBoardVersion((version) => version + 1);
     setHasStartedSession(false);
     timerState.reset();
@@ -64,7 +69,21 @@ export default function Practice({
     timerState.start();
   }
 
-  function advanceDeal() {
+  function advanceDeal(actions: DealAction[]) {
+    const currentDeal = deals[dealIndex];
+
+    setActionsByDeal((prev) => {
+      const next = [...prev];
+      next[dealIndex] = actions;
+      return next;
+    });
+
+    console.log("[24 Practice] Deal solved", {
+      dealIndex: dealIndex,
+      cards: currentDeal,
+      actions,
+    });
+
     const nextIndex = dealIndex + 1;
 
     if (nextIndex >= TOTAL_DEALS) {

@@ -9,6 +9,7 @@ import {
   type Operation,
 } from "@/lib/twentyFour";
 import { isTypingTarget } from "@/lib/utils";
+import type { DealAction } from "@/lib/twentyFour";
 
 const OPERATIONS: Operation[] = ["+", "-", "*", "/"];
 const OPERATION_LABELS: Record<Operation, string> = {
@@ -56,7 +57,7 @@ export default function Board({
   disabled: boolean;
   onCardsChange: (nextCards: Array<number | null>) => void;
   onFirstSelection: () => void; // to set Timer
-  onDealSolved: () => void;
+  onDealSolved: (actions: DealAction[]) => void;
   onReset: () => void;
 }) {
   const [selectedFirstIndex, setSelectedFirstIndex] = useState<number | null>(
@@ -65,6 +66,7 @@ export default function Board({
   const [selectedOperation, setSelectedOperation] = useState<Operation | null>(
     null,
   );
+  const [actions, setActions] = useState<DealAction[]>([]);
   const [isDelaying, setIsDelaying] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -128,6 +130,17 @@ export default function Board({
         return;
       }
 
+      const action: DealAction = {
+        firstIndex: selectedFirstIndex,
+        secondIndex: index,
+        left: firstValue,
+        right: clickedValue,
+        operation: selectedOperation,
+        result,
+      };
+      const nextActions = [...actions, action];
+      setActions(nextActions);
+
       const nextCards = [...cards];
       nextCards[selectedFirstIndex] = null;
       nextCards[index] = result;
@@ -144,11 +157,12 @@ export default function Board({
         setIsDelaying(true);
         delayTimeoutRef.current = window.setTimeout(() => {
           setIsDelaying(false);
-          onDealSolved();
+          onDealSolved(nextActions);
         }, DEAL_DELAY_MS);
       }
     },
     [
+      actions,
       boardDisabled,
       cards,
       selectedFirstIndex,
