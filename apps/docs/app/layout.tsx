@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ThemeToggle from "../components/ThemeToggle";
+import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +23,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const savedTheme = window.localStorage.getItem('theme');
+              const theme =
+                savedTheme === 'light' || savedTheme === 'dark'
+                  ? savedTheme
+                  : window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+              document.documentElement.classList.toggle('dark', theme === 'dark');
+            `,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeToggle />
         {children}
