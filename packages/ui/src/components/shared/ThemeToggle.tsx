@@ -2,9 +2,14 @@
 
 import { useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
+import { cn } from "lib/utils";
 import { Button } from "../ui/button";
 
 type Theme = "light" | "dark";
+
+type ThemeToggleProps = {
+  className?: string;
+};
 
 function getPreferredTheme(): Theme {
   const saved = window.localStorage.getItem("theme");
@@ -22,7 +27,7 @@ function applyTheme(theme: Theme) {
   window.localStorage.setItem("theme", theme);
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: ThemeToggleProps) {
   useEffect(() => {
     applyTheme(getPreferredTheme());
   }, []);
@@ -41,7 +46,7 @@ export function ThemeToggle() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="fixed right-4 top-4 z-50"
+      className={cn("fixed right-4 top-4 z-50", className)}
       aria-label="Toggle light and dark mode"
     >
       <Sun className="hidden size-4 dark:block" />
