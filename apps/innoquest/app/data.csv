@@ -1,0 +1,2023 @@
+﻿Code,Cost,Full Name,Contents
+ANE01,$34.00,ANAEMIA PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Reticulocyte Count"
+ANE02,$60.00,ANAEMIA PROFILE 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Reticulocyte Count
+Iron
+Total Iron Binding Capacity (TIBC)
+Transferrin
+% Iron Saturation
+Ferritin"
+ANE04,$55.00,ANAEMIA PROFILE 04,"Iron
+Total Iron Binding Capacity (TIBC)
+Transferrin
+% Iron Saturation
+Ferritin"
+ANE05,$45.00,ANAEMIA PROFILE 05,"Folic Acid
+Vitamin B12"
+ANE06,$67.00,ANAEMIA PROFILE 06,"Ferritin
+Folic Acid
+Vitamin B12"
+ANE07,$88.00,ANAEMIA PROFILE 07,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Iron
+Total Iron Binding Capacity (TIBC)
+Transferrin
+% Iron Saturation
+Ferritin
+Folic Acid
+Vitamin B12"
+ANE13,$95.00,ANAEMIA PROFILE 13,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Reticulocyte Count
+Iron
+Total Iron Binding Capacity (TIBC)
+Transferrin
+% Iron Saturation
+Ferritin
+Folic Acid
+Vitamin B12"
+ANE14,$115.00,ANAEMIA PROFILE 14,"Reticulocyte Count
+Iron
+Total Iron Binding Capacity (TIBC)
+Transferrin
+% Iron Saturation
+Ferritin
+Hb Electrophoresis
+Folic Acid
+Vitamin B12"
+TH02,$65.00,THALASSEMIA SCREEN 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Ferritin
+Hb Electrophoresis"
+TH04,$105.00,THALASSEMIA SCREEN 04,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Iron
+Total Iron Binding Capacity (TIBC)
+% Iron Saturation
+Transferrin
+Ferritin
+Hb Electrophoresis"
+TH05,$97.00,THALASSEMIA SCREEN 05,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Ferritin
+Folic Acid
+Vitamin B12
+Hb Electrophoresis"
+ECZEMA,$507.00,Eczema Panel (11),"Blomia Tropicalis D201
+Cat Dander E1
+Chicken F83
+Cow's Milk F2
+Dog Dander E5
+D. Farinae D2
+D. Pteronyssinus D1
+Egg White F1
+Peanut F13
+Soya Bean F14
+Wheat F4"
+ASTHMA,$441.00,Asthma Panel (11),"Chicken F83
+Cow's Milk F2
+Egg White F1
+Peanut F13
+Soya Bean F14
+Wheat F4"
+GASTRO,$331.00,Gastro Panel (6),"Chicken F83
+Cow's Milk F2
+Egg White F1
+Peanut F13
+Soya Bean F14
+Wheat F4"
+ANIMAL1,$340.00,Animal Dander EX1,"Cat Dander E1
+Dog Dander E5
+Guinea Pig Epithelium E6
+Rat Epithelium, Serum & Urine Proteins E87
+Mouse Epithelium, Serum & Urine Proteins E88"
+INHALE1,$595.00,Inhalant Panel 1 - Dust/Mites/Epidermals/Pollen (15),"Alternaria Alternata M6
+Aspergillus Fumigatus M3
+Bahia Grass G17
+Bermuda Grass G2
+Blomia Tropicalis D201
+Cat Dander E1
+Cockroach, German I6
+Common Ragweed W1
+Curvularia Lunata M16
+D. Farinae D2
+D. Pteronyssinus D1
+Dog Dander E5
+Dust - Greer H1
+Johnson Grass G10
+Timothy Grass G6"
+INHALE2,$266.00,Inhalant Panel 2 - Molds & Yeasts (5),"Alternaria Alternata M6
+Aspergillus Fumigatus M3
+Candida Albicans M5
+Cladosporium Herbarum M2
+Penicillium Notatum M1"
+NUTS,$430.00,Food 3 - Nuts (8),"Almond F20
+Brazil Nut F18
+Hazel Nut F17
+Macadamia Nut F345
+Peanut F13
+Pine Nut F253
+Pistachio F203
+Walnut F256"
+SEAFOOD1,$382.00,Food Panel (8),"Anchovies (Ikan Bilis) F313
+Clam F207
+Crab F23
+Fish (Cod) F3
+Salmon F41
+Shrimp F24
+Squid F258
+Tuna F40"
+SEAFOOD2,$397.00,Food Panel - Shellfish (8),"Blue Mussel F37
+Clam F207
+Crab F23
+Lobster F80
+Oyster F290
+Scallop F338
+Shrimp F24
+Squid F258"
+PAEDS,$606.00,Paediatric/Common Allergy Panel (15),"Anchovies (Ikan Bilis) F313
+Chicken F83
+Cocoa F93
+Corn F8
+Cow's Milk F2
+Egg White F1
+Fish (Cod) F3
+Gluten F79
+Peanut F13
+Rice F9
+Sesame Seed F10
+Shrimp F24
+Soya Bean F14
+Wheat F4
+Yeast F45"
+ANT04,$42.00,ANTENATAL PROFILE 04,"Haemoglobin
+MCV, MCH, MCHC
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT05,$54.00,ANTENATAL PROFILE 05,"Haemoglobin
+MCV, MCH, MCHC
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT06,$23.00,ANTENATAL PROFILE 06,"Haemoglobin
+MCV, MCH, MCHC
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT08,$19.00,ANTENATAL PROFILE 08,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT09,$33.00,ANTENATAL PROFILE 09,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT10,$33.00,ANTENATAL PROFILE 10,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Glucose
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+ANT03,$45.00,ANTENATAL PROFILE 03,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+ANT11,$62.00,ANTENATAL PROFILE 11,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Glucose
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+ANT01,$92.00,ANTENATAL PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Hb Electrophoresis
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Glucose
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT02,$64.00,ANTENATAL PROFILE 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Glucose
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT12,$105.00,ANTENATAL PROFILE 12,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Hb Electrophoresis
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Glucose
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ANT07,$234.00,ANTENATAL PROFILE 07,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Glucose
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Toxoplasma IgG
+Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG Antibody
+Herpes Simplex Virus Type II IgG Antibody
+Urine FEME"
+ANT13,$223.00,ANTENATAL PROFILE 13,"Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Toxoplasma IgG Antibody
+CMV IgG Antibody
+Herpes Simplex Virus Type I IgG Antibody
+Herpes Simplex Virus Type II IgG Antibody
+Varicella Zoster IgG Antibody"
+FTMTR,$170.00,FIRST TRIMESTER TESTING (< 14 WEEKS GESTATION - WITHOUT RISK CALCULATION),"Free Beta HCG
+PAPP-A"
+FTMT,$213.00,FIRST TRIMESTER TESTING (< 14 WEEKS GESTATION - WITH RISK CALCULATION),"Free Beta HCG
+PAPP-A
+Risk Report"
+PRECLAM,$213.00,PRE-ECLAMPSIA PROFILE (> 10 WEEKS GESTATION - WITH RISK CALCULATION),"Placenta Growth Factor (PLGF)
+PAPP-A
+Risk Report"
+TS01,$138.00,TORCH STUDIES,"Toxoplasma IgG Antibody
+Rubella IgG Antibody
+CMV IgG Antibody
+Herpes Simplex Virus Type I IgG Antibody
+Herpes Simplex Virus Type II IgG Antibody"
+MMRV,$310.00,"MEASLES, MUMPS, RUBELLA AND VARICELLA","Measles IgG Antibody
+Mumps IgG Antibody
+Rubella IgG Antibody
+Varicella Zoster IgG Antibody"
+MCPC,$170.00,MISCARRIAGE PROFILE,"Beta HCG
+Anti-Nuclear Antibody
+Anti-ds DNA
+Lupus Anticoagulant
+Thyroid Stimulating Hormone (TSH)
+Free T3
+Free T4
+Urine FEME"
+ART01,$62.00,ARTHRITIS PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Uric Acid
+C Reactive Protein"
+ART04,$62.00,ARTHRITIS PROFILE 04,"ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+C Reactive Protein
+Anti-Streptolysin O Titre (ASOT)"
+ART06,$166.00,ARTHRITIS PROFILE 06,"ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+C Reactive Protein
+Anti-Streptolysin O Titre (ASOT)
+Anti-CCP"
+ART02,$79.00,ARTHRITIS PROFILE 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Uric Acid
+C Reactive Protein
+Anti-Streptolysin O Titre (ASOT)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+ART03,$89.00,ARTHRITIS PROFILE 03,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Uric Acid
+C Reactive Protein
+Anti-Streptolysin O Titre (ASOT)
+Anti-ds DNA"
+ART05,$221.00,ARTHRITIS PROFILE 05,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Uric Acid
+C Reactive Protein
+Anti-Streptolysin O Titre (ASOT)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Anti-ds DNA
+Anti-CCP"
+BMP1,$41.00,BONE METABOLISM PROFILE 1,"Calcium
+Phosphate
+Alkaline Phosphatase
+Alkaline Phosphatase, Heat Stable"
+BNSVD3,$150.00,BONE STUDY,"Calcium
+Phosphate
+Alkaline Phosphatase
+Total Vitamin D (Immunoassay)"
+OSP1N,$166.00,OSTEOPOROSIS PROFILE,"Calcium
+Phosphate
+Alkaline Phosphatase
+Intact Parathyroid Hormone (iPTH)
+Total Vitamin D (Immunoassay)"
+AI01,$68.00,AUTO-IMMUNE PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Uric Acid
+Anti-ds DNA"
+SLEP,$143.00,SLE PROFILE,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Anti-ds DNA
+Urea
+Creatinine
+C3 Complement
+C4 Complement
+Albumin
+Urine FEME"
+COEL,$652.00,COELIAC DISEASE PROFILE,"Anti-Deaminated Gliadin Peptide IgA
+Anti-Deaminated Gliadin Peptide IgG
+Anti-Tissue Transglutaminase IgA
+Anti-Tissue Transglutaminase IgG"
+IQLP1,$117.00,LUPUS PROFILE 1,"Rheumatoid Factor (RF)
+Anti-Nuclear Factor (ANF)
+Anti-ds DNA
+C3 Complement
+C4 Complement"
+IQLP2,$56.00,LUPUS PROFILE 2,"ESR
+Anti-Nuclear Factor (ANF)
+Anti-ds DNA"
+CA02,$150.00,Cancer Screen (Male),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA19.9
+Prostate Specific Antigen (PSA)
+Beta HCG"
+CA03,$104.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA125
+Beta HCG"
+CA09,$150.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA19.9
+CA125
+Beta HCG"
+CA01,$179.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA19.9
+CA125
+Beta HCG
+CA15.3"
+CA01R,$287.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA19.9
+CA125
+Beta HCG
+CA15.3
+HE4
+ROMA Index"
+TMP7,$128.00,Tumour Marker (Female),"Carcinoembryonic Antigen (CEA)
+CA19.9
+CA125
+CA15.3"
+TMP13,$234.00,Tumour Marker (Female),"Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA19.9
+CA125
+CA15.3
+Squamous Cell Carcinoma Antigen (SCC Ag)"
+ROMA,$150.00,Risk of Ovarian Malignancy Algorithm,"HE4
+CA125
+ROMA Index"
+LP01,$21.00,Lipids Profile A,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides"
+LP01G,$24.00,Lipids Profile A + Glucose,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Glucose (Fasting)"
+NFLIP,$50.00,Lipids Profile Non Fasting,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Glucose (Random)
+HbA1c"
+LP016,$65.00,Lipids Profile A + Glucose + HBA1C,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Glucose (Fasting)
+HbA1c
+Urea
+Creatinine
+Uric Acid
+ALT/SGPT
+AST/SGOT
+eGFR"
+LP7,$38.00,Lipids Profile A + Glucose,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Glucose (Fasting)
+Urea
+Creatinine
+ALT/SGPT
+AST/SGOT
+eGFR"
+LP02,$33.00,Lipids Profile A + ALT/SGPT + AST/SGOT,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+GGT
+Uric Acid
+ALT/SGPT
+AST/SGOT"
+CR08,$169.00,Cardiac Risk Assessment Profile,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Apolipoprotein A1
+Apolipoprotein B
+Apolipoprotein B/A1 Ratio
+Troponin T, high sensitive"
+LPP1,$73.00,Lipids Panel 1,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Urea
+Creatinine
+Urine Microalbumin/Creatinine Ratio
+eGFR"
+LPP2,$216.00,Lipids Panel 2,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+NT-proBNP
+Lipoprotein (a)"
+LPP4,$382.00,Lipids Panel 4,"Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Apolipoprotein A1
+Apolipoprotein B
+Apolipoprotein B/A1 Ratio
+Troponin T, high sensitive
+NT-proBNP
+Lipoprotein (a)"
+LPP5,$144.00,Lipids Panel 5,"Troponin T, high sensitive
+Creatine Kinase (CK)
+CK-MB"
+CP2,$122.00,Cardiac Profile 2,"Troponin I, high sensitive
+eGFR
+CK-MB"
+DFS1,$64.00,Dengue Fever Profile 1,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Dengue IgG & IgM Antibodies"
+DFS2,$66.00,Dengue Fever Profile 2,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Dengue IgG & IgM Antibodies"
+DFS3,$76.00,Dengue Fever Profile 3,"Dengue IgG & IgM Antibodies
+Dengue NS1 Antigen"
+DFS4,$82.00,Dengue Fever Profile 4,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Dengue IgG & IgM Antibodies
+Dengue NS1 Antigen"
+IQFP01,$35.00,Febrile Profile 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Malaria Parasite
+Urine FEME"
+IQFP03,$56.00,Febrile Profile 03,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Malaria Parasite
+Monospot Test
+Urine FEME"
+IQFP06,$77.00,Febrile Profile 06,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Malaria Parasite
+Monospot Test
+ALT/SGPT
+Urine FEME"
+IQFP02,$117.00,Febrile Profile 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Malaria Parasite
+Monospot Test
+Dengue Antibody IgG & IgM
+ALT/SGPT
+Urine FEME"
+FC02,$17.00,FULL BLOOD COUNT 02,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film"
+FC01,$21.00,FULL BLOOD COUNT 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR"
+CG02,$39.00,COAGULATION PROFILE 02,"Prothrombin Time (PT)
+APTT (PTT)"
+CG01,$50.00,COAGULATION PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Prothrombin Time (PT)
+APTT (PTT)"
+POP1,$56.00,COAGULATION PROFILE 1,"Prothrombin Time (PT)
+APTT (PTT)
+Thrombin Clotting Time (TCT)"
+POP1N,$46.00,COAGULATION PROFILE 1N,"Prothrombin Time, INR (PT, INR)
+APTT (PTT)
+Platelet Count"
+POP2,$68.00,COAGULATION PROFILE 2,"Prothrombin Time (PT)
+APTT (PTT)
+Thrombin Clotting Time (TCT)
+Platelet Count"
+POP3N,$66.00,COAGULATION PROFILE 3N,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Prothrombin Time (PT)
+APTT (PTT)
+Thrombin Clotting Time (TCT)"
+PO1,$99.00,PRE-OP PROFILE 1,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Prothrombin Time (PT)
+APTT (PTT)
+ESR
+Sodium
+Potassium
+Chloride
+Urea
+Urine FEME"
+PO2,$98.00,PRE-OP PROFILE 2,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+Prothrombin Time (PT)
+APTT (PTT)
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+Urine FEME"
+IQDP1,$33.00,Diabetic Profile 1,"Glucose (Fasting)
+HbA1c"
+IQDP6,$52.00,Diabetic Profile 6,"Glucose (Fasting)
+HbA1c
+AST/SGOT
+ALT/SGPT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid"
+IQDP2,$88.00,Diabetic Profile 2,"Glucose (Fasting)
+HbA1c
+AST/SGOT
+ALT/SGPT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Urine FEME
+Urine Microalbumin/Creatinine Ratio"
+IQDP5,$90.00,Diabetic Profile 5,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Glucose (Fasting)
+HbA1c
+AST/SGOT
+ALT/SGPT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Urine FEME
+Urine Microalbumin/Creatinine Ratio"
+IQDP10,$98.00,Diabetic Profile 10,"Glucose (Fasting)
+HbA1c
+AST/SGOT
+ALT/SGPT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Urine FEME
+Urine Microalbumin/Creatinine Ratio
+High Sensitive C-Reactive Protein (hs-CRP)
+Creatine Kinase (CK)"
+IQDP14,$128.00,Diabetic Profile 14,"Glucose (Fasting)
+HbA1c
+AST/SGOT
+ALT/SGPT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Urine FEME
+Urine Microalbumin/Creatinine Ratio
+High Sensitive C-Reactive Protein (hs-CRP)
+Creatine Kinase (CK)
+Insulin"
+HY02,$49.00,Hypertension Profile 02,"Glucose (Fasting)
+Uric Acid
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+Urine FEME"
+HY03,$58.00,Hypertension Profile 03,"Glucose (Fasting)
+HbA1c
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Sodium
+Potassium
+Chloride
+Creatinine
+Urine FEME"
+HY01,$53.00,Hypertension Profile 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Glucose (Fasting)
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+Urine FEME"
+HY04,$70.00,Hypertension Profile 04,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Glucose (Fasting)
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Uric Acid
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+Urine FEME
+Urine Microalbumin/Creatinine Ratio"
+DUX02,$111.00,Drug Screen 02,"Phencyclidine
+Cocaine
+Amphetamines
+Cannabinol
+Opiates"
+DUX01,$133.00,Drug Screen 01,"Phencyclidine
+Cocaine
+Amphetamines
+Cannabinol
+Opiates
+Blood Alcohol"
+DUX03,$159.00,Drug Screen 03,"Phencyclidine
+Cocaine
+Amphetamines
+Cannabinol
+Opiates
+Barbiturates
+Benzodiazepines"
+DS10,$191.00,Drug Screen 10,"Phencyclidine
+Cocaine
+Amphetamines
+Cannabinol
+Opiates
+Barbiturates
+Benzodiazepines
+Methamphetamines
+Methadone
+Tricyclic Antidepressants (TCA)"
+GFU,$50.00,GENERAL FOLLOW-UP,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Bicarbonate
+Uric Acid
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT"
+IQHS1,$59.00,HEALTH SCREENING 1,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Calcium
+Uric Acid
+AST/SGOT
+ALT/SGPT
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Urine FEME"
+IQHS2,$61.00,HEALTH SCREENING 2,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Bicarbonate
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Uric Acid
+Phosphate
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides"
+IQHS4,$66.00,HEALTH SCREENING 4,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Uric Acid
+Urine Microalbumin/Creatinine Ratio
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+IQHS8,$103.00,HEALTH SCREENING 8,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Uric Acid
+Urine Microalbumin/Creatinine Ratio
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+IQHS12,$132.00,HEALTH SCREENING 12,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Phosphate
+Uric Acid
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Urine FEME"
+IQHS18,$197.00,HEALTH SCREENING 18,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Bicarbonate
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Phosphate
+Uric Acid
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+High Sensitive C Reactive Protein (hs-CRP)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+EBV EA-IgA
+Urine FEME
+Stool Occult Blood (Immunological)"
+IQHS22,$244.00,HEALTH SCREENING 22,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Phosphate
+Uric Acid
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+EBV EA-IgA
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME
+Stool Occult Blood (Immunological)"
+IQHS24,$259.00,HEALTH SCREENING 24,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Phosphate
+Uric Acid
+Rheumatoid Factor
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME
+Stool Occult Blood (Immunological)
+Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, or Glycated Haemoglobin)"
+IQHS25,$273.00,HEALTH SCREENING 25,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Urine Microalbumin/Creatinine Ratio
+Calcium
+Phosphate
+Uric Acid
+Rheumatoid Factor
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA 19.9
+CA 125 (female)
+PSA (male)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME"
+IQHS27,$303.00,HEALTH SCREENING 27,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Bicarbonate
+Urine Microalbumin/Creatinine Ratio
+Glycated Haemoglobin (HbA1c)
+Calcium
+Phosphate
+Uric Acid
+Rheumatoid Factor
+Anti-CCP
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+High Sensitive C Reactive Protein (hs-CRP)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME
+Stool Occult Blood (Immunological)
+Select ONE Additional Test"
+IQHS29,$466.00,HEALTH SCREENING 29,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Urine Microalbumin/Creatinine Ratio
+Glycated Haemoglobin (HbA1c)
+Calcium
+Phosphate
+Uric Acid
+Rheumatoid Factor
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+High Sensitive C Reactive Protein (hs-CRP)
+Apolipoprotein A1
+Apolipoprotein B
+Apolipoprotein B/A1 Ratio
+Lipoprotein (a)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Hepatitis C Antibody (HCV)
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+CA125 (female)
+PSA (male)
+CA19.9
+Beta HCG
+EBV EA-IgA
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME
+Stool Occult Blood (Immunological)"
+IQHS30,$577.00,HEALTH SCREENING 30,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ESR
+ABO Blood Group
+Glucose (Fasting)
+Urea
+Creatinine
+eGFR
+Sodium
+Potassium
+Chloride
+Bicarbonate
+Urine Microalbumin/Creatinine Ratio
+Glycated Haemoglobin (HbA1c)
+Calcium
+Phosphate
+Uric Acid
+Rheumatoid Factor
+Anti-CCP
+Vitamin D, Total
+Total Protein
+Total Bilirubin
+Albumin
+Globulin
+A/G Ratio
+AST/SGOT
+ALT/SGPT
+Alkaline Phosphatase
+GGT
+Cholesterol, Total
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Free T4
+Thyroid Stimulating Hormone (TSH)
+High Sensitive C Reactive Protein (hs-CRP)
+Apolipoprotein A1
+Apolipoprotein B
+Apolipoprotein B/A1 Ratio
+Lipoprotein (a)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Hepatitis C Antibody (HCV)
+Alpha Fetoprotein (AFP)
+Carcinoembryonic Antigen (CEA)
+EBV EA-IgA
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine FEME
+Stool Occult Blood (Immunological)
+Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, Testosterone Total, or Ferritin)"
+HP04,$70.00,"Hepatitis B, C & HIV Profile 04","Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Anti-HCV Antibody
+HIV Ag/Ab Screen"
+HP05,$84.00,"Hepatitis A, B & C Profile 05","Hepatitis A Total Antibody (HAV Total)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Anti-HCV Antibody"
+HP06,$86.00,Hepatitis B Profile 06,"Alpha Fetoprotein (AFP)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis Be Antigen (HBeAg)
+Hepatitis Be Antibody (HBeAb)
+AL T/SGPT
+AST/SGOT"
+HP07,$91.00,Hepatitis B Profile 07,"Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis Be Antigen (HBeAg)
+Hepatitis Be Antibody (HBeAb)
+Hepatitis Bc Antibody"
+HP08,$62.00,Hepatitis B Profile 08,"Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Total Protein
+Albumin
+Total Bilirubin
+Bilirubin, Direct
+Bilirubin, Indirect
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT"
+CHBP,$331.00,Chronic Hepatitis B Profile,"Hepatitis Be Antigen (HBeAg)
+Hepatitis Be Antibody (HBeAb)
+Hepatitis Bs Antigen (Quantitative)
+HBV DNA (Quantitative)
+AL T/SGPT"
+LVA,$40.00,Liver Profile,"Total Protein
+Total Bilirubin
+Bilirubin, Direct (if Total Bilirubin is elevated)
+Bilirubin, Indirect (if Total Bilirubin is elevated)
+Albumin
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT"
+IQLV01,$38.00,Liver Profile 01,"Total Bilirubin
+Bilirubin, Direct (if Total Bilirubin is elevated)
+Bilirubin, Indirect (if Total Bilirubin is elevated)
+Albumin
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT
+LDH"
+IQLV02,$41.00,Liver Profile 02,"Total Protein
+Total Bilirubin
+Bilirubin, Direct (if Total Bilirubin is elevated)
+Bilirubin, Indirect (if Total Bilirubin is elevated)
+Albumin
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT
+LDH"
+IQLV04,$96.00,Liver Profile 04,"Total Protein
+Total Bilirubin
+Bilirubin, Direct (if Total Bilirubin is elevated)
+Bilirubin, Indirect (if Total Bilirubin is elevated)
+Albumin
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT
+LDH
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Hepatitis A Total Antibody
+Alpha Fetoprotein (AFP)"
+IQLV05,$53.00,Liver Profile 05,"Total Protein
+Total Bilirubin
+Bilirubin, Direct (if Total Bilirubin is elevated)
+Bilirubin, Indirect (if Total Bilirubin is elevated)
+Albumin
+Globulin
+A/G Ratio
+AL T/SGPT
+AST/SGOT
+Alkaline Phosphatase
+GGT
+Alpha Fetoprotein (AFP)"
+IQAM03,$66.00,AMENORRHOEA PROFILE 03,"Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM01,$105.00,AMENORRHOEA PROFILE 01,"Testosterone
+Estradiol (E2)
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM09,$88.00,HORMONAL STUDY 09,"Testosterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM07,$98.00,HORMONAL STUDY 07,"Estradiol (E2)
+Progesterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)"
+IQAM06,$117.00,HORMONAL STUDY 06,"Estradiol (E2)
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM08,$110.00,HORMONAL STUDY 08,"Estradiol (E2)
+Progesterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM04,$132.00,AMENORRHOEA PROFILE 04,"Testosterone
+Estradiol (E2)
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Thyroid Stimulating Hormone (TSH)"
+IQAM10,$132.00,HORMONAL STUDY 10,"Estradiol (E2)
+Free T4 (FT4)
+Thyroid Stimulating Hormone (TSH)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQAM02,$165.00,AMENORRHOEA PROFILE 02,"Testosterone
+Estradiol (E2)
+Progesterone
+Free T4 (FT4)
+Free T3 (FT3)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Thyroid Stimulating Hormone (TSH)"
+IQAM05,$196.00,AMENORRHOEA PROFILE 05,"Testosterone
+Estradiol (E2)
+Progesterone
+Free T4 (FT4)
+Cortisol
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Dehydroepiandrosterone Sulfate (DHEAS)"
+IQFS06,$88.00,FERTILITY SCREEN 06 (MALE),"Testosterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQFS07,$111.00,FERTILITY SCREEN 07 (MALE),"Testosterone
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQFS04,$128.00,FERTILITY SCREEN 04 (FEMALE),"Estradiol (E2)
+Progesterone
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+IQFS01,$99.00,FERTILITY SCREEN 01 (FEMALE),"Estradiol (E2)
+Progesterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Beta HCG"
+IQFS01A,$216.00,FERTILITY SCREEN 01A (FEMALE),"Estradiol (E2)
+Progesterone
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Beta HCG
+Anti-Mullerian Hormone"
+IQFS05,$191.00,FERTILITY SCREEN 05 (FEMALE),"Testosterone
+Estradiol (E2)
+Free T4 (FT4)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Thyroid Stimulating Hormone (TSH)
+Dehydroepiandrosterone Sulfate (DHEAS)"
+IQFS03,$276.00,FERTILITY SCREEN 03,"Testosterone
+Estradiol (E2)
+Progesterone
+Free T4 (FT4)
+Free T3 (FT3)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin
+Thyroid Stimulating Hormone (TSH)
+Anti-Mullerian Hormone"
+ME01,$65.00,MENOPAUSAL PROFILE 01,"Estradiol (E2)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)"
+MCP1,$82.00,MENSTRUAL CYCLE PROFILE 1,"Estradiol (E2)
+Progesterone
+Follicle Stimulating Hormone (FSH)
+Prolactin"
+MCP2,$88.00,MENSTRUAL CYCLE PROFILE 2,"Estradiol (E2)
+Follicle Stimulating Hormone (FSH)
+Luteinising Hormone (LH)
+Prolactin"
+ASS01,$128.00,ANTI-AGEING SCREENING 01 (FEMALE),"Estradiol (E2)
+Dehydroepiandrosterone Sulfate (DHEAS)
+Insulin like Growth Factor (IGF1)"
+ASS02,$177.00,ANTI-AGEING SCREENING 02 (MALE),"Dehydroepiandrosterone Sulfate (DHEAS)
+Insulin like Growth Factor (IGF1)
+Sex Hormone Binding Globulin (SHBG)
+Free Androgen Index (FAI)"
+PM01,$99.00,PREMARITAL PROFILE 01,"Haemoglobin
+Total White Cell Count
+Differential Count
+Packed Cell Volume
+Platelet Count
+Total Red Cell Count
+MCV, MCHC, MCH
+Peripheral Blood Film
+ABO Blood Group
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Hepatitis Bs Antigen (HBsAg)
+Hepatitis Bs Antibody (HBsAb)
+Rubella IgG Antibody
+Hb Electrophoresis"
+EL01,$22.00,Electrolytes Profile 01,"Sodium
+Potassium
+Chloride
+Bicarbonate"
+U/E,$26.00,Urea & Electrolytes,"Sodium
+Potassium
+Chloride
+Urea
+Bicarbonate"
+IQRF04,$30.00,Renal Profile 04,"Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Bicarbonate"
+IQRF03,$30.00,Renal Profile 03,"Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Uric Acid"
+IQRF05,$35.00,Renal Profile 05,"Glucose
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Bicarbonate"
+IQRF01,$34.00,Renal Profile 01,"Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Bicarbonate
+Urine FEME"
+IQRF10,$60.00,Renal Profile 10,"Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Bicarbonate
+Urine FEME
+Urine Microalbumin / Creatinine Ratio"
+IQRF06,$45.00,Renal Profile 06,"Glucose
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Calcium
+Phosphate
+Bicarbonate
+Uric Acid"
+IQRF12,$82.00,Renal Profile 12,"Glucose
+Sodium
+Potassium
+Chloride
+Urea
+Creatinine
+eGFR
+Bicarbonate
+Uric Acid
+Total Cholesterol
+Cholesterol HDL
+Cholesterol LDL (Direct)
+Cholesterol/HDL Ratio
+Triglycerides
+Urine FEME
+Urine Microalbumin/Creatinine Ratio"
+IQST01,$182.00,STD Profile 01,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG"
+IQST07,$57.00,STD Profile 07,"Direct Smear for GC
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG"
+IQST08,$65.00,STD Profile 08,"Direct Smear for GC
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST10,$386.00,STD Profile 10,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+VP3 (Candida albicans/Candida others, Gardnerella vaginalis, Trichomonas vaginalis)"
+IQST04,$188.00,STD Profile 04,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST09,$72.00,STD Profile 09,"Direct Smear for GC
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST03,$198.00,STD Profile 03,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+HIV Ag/Ab Screen
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST05,$201.00,STD Profile 05,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+Urine FEME
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST02,$203.00,STD Profile 02,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+HIV Ag/Ab Screen
+Urine FEME
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST06,$309.00,STD Profile 06,"Chlamydia & Gonorrhoea PCR
+Herpes Simplex Virus Type I IgG
+Herpes Simplex Virus Type II IgG
+Herpes Simplex Virus I & II PCR
+HIV Ag/Ab Screen
+Urine FEME
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)"
+IQST12,$400.00,STD Profile 12,"Herpes Simplex Virus I & II PCR
+Haemophilus Ducreyi
+Cytomegalovirus
+Treponema Pallidum
+Lymphogranuloma Venereum
+Varicella-Zoster Virus"
+IQST11,$432.00,STD Profile 11,"Chlamydia trachomatis
+Mycoplasma Genitalium
+Mycoplasma Hominis
+Neisseria Gonorrhoea
+Trichomonas Vaginalis
+Ureaplasma Parvum
+Ureaplasma Urealyticum"
+QTP2,$43.00,THYROID PROFILE 2,"Free T4 (FT4)
+Thyroid Stimulating Hormone (TSH)"
+QTP3,$58.00,THYROID PROFILE 3,"Free T4 (FT4)
+Free T3 (FT3)
+Thyroid Stimulating Hormone (TSH)"
+QTP4,$100.00,THYROID PROFILE 4,"Free T4 (FT4)
+Free T3 (FT3)
+Thyroid Stimulating Hormone (TSH)
+Thyroglobulin Antibody
+Thyroid Peroxidase Antibody (Anti-TPO)"
+QTP6,$170.00,THYROID PROFILE 6,"Free T4 (FT4)
+Free T3 (FT3)
+Thyroid Stimulating Hormone (TSH)
+Thyroglobulin Antibody
+Thyroid Peroxidase Antibody (Anti-TPO)
+Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
+QTP9,$198.00,THYROID PROFILE 9,"Free T4 (FT4)
+Free T3 (FT3)
+Thyroid Stimulating Hormone (TSH)
+Thyroglobulin
+Thyroglobulin Antibody
+Thyroid Peroxidase Antibody (Anti-TPO)
+Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
+FT4,$36.00,Free T4 (FT4),Free T4 (FT4)
+FT3,$45.00,Free T3 (FT3),Free T3 (FT3)
+TSH,$34.00,Thyroid Stimulating Hormone (TSH),Thyroid Stimulating Hormone (TSH)
+TYG,$124.00,Thyroglobulin,Thyroglobulin
+THA,$36.00,Thyroglobulin Antibody,Thyroglobulin Antibody
+TPO,$50.00,Thyroid Peroxidase Antibody (Anti-TPO),Thyroid Peroxidase Antibody (Anti-TPO)
+TRA,$98.00,Thyroid Stimulating Hormone Receptor Antibody (TRAB),Thyroid Stimulating Hormone Receptor Antibody (TRAB)
+T3,$48.00,Total Triiodothyronine,Total Triiodothyronine
+HIV/HIW,$17.00,HIV Screen,HIV Ag/Ab Screen
+IQWP1,$17.00,Work Permit 1,"VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Urine Pregnancy"
+IQWP11,$12.00,Work Permit 11,"VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+Beta-HCG Total (Serum Pregnancy Test)"
+IQWP9,$21.00,Work Permit 9,"ABO Blood Group
+HIV Ag/Ab Screen"
+IQWP2,$21.00,Work Permit 2,"VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen"
+IQWP3,$27.00,Work Permit 3,"VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen
+Urine Pregnancy"
+IQWP4,$26.00,Work Permit 4,"Hepatitis Bs Antigen (HBsAg)
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen"
+IQWP10,$24.00,Work Permit 10,"VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen
+Beta-HCG Total (Serum Pregnancy Test)"
+IQWP8,$34.00,Work Permit 8,"Hepatitis Bs Antigen (HBsAg)
+Malaria Parasite
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen"
+IQWP5,$30.00,Work Permit 5,"Malaria Parasite
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen
+Beta-HCG Total (Serum Pregnancy Test)"
+IQWP7,$32.00,Work Permit 7,"Malaria Parasite
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen
+Urine Pregnancy"
+IQWP6,$29.00,Work Permit 6,"Malaria Parasite
+VD (Syphilis TP Ab)
+RPR & TPLA (if Syphilis is reactive)
+HIV Ag/Ab Screen"
