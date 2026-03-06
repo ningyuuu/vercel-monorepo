@@ -27,14 +27,32 @@ export function TestFilterPopover({
 
   const filteredTestOptions = useMemo(() => {
     const normalized = testFilterQuery.trim().toLowerCase();
+    const selectedSet = new Set(selectedTests);
+
+    const sortBySelectionAndName = (left: string, right: string) => {
+      const leftSelected = selectedSet.has(left) ? 0 : 1;
+      const rightSelected = selectedSet.has(right) ? 0 : 1;
+
+      if (leftSelected !== rightSelected) {
+        return leftSelected - rightSelected;
+      }
+
+      return left.localeCompare(right);
+    };
 
     if (!normalized) {
-      return testOptions;
+      return [...testOptions].sort(sortBySelectionAndName);
     }
 
     return [...testOptions]
       .filter((item) => item.toLowerCase().includes(normalized))
       .sort((left, right) => {
+        const selectionSort = sortBySelectionAndName(left, right);
+
+        if (selectionSort !== 0) {
+          return selectionSort;
+        }
+
         const leftStarts = left.toLowerCase().startsWith(normalized) ? 0 : 1;
         const rightStarts = right.toLowerCase().startsWith(normalized) ? 0 : 1;
 
@@ -44,7 +62,7 @@ export function TestFilterPopover({
 
         return left.localeCompare(right);
       });
-  }, [testFilterQuery, testOptions]);
+  }, [selectedTests, testFilterQuery, testOptions]);
 
   const activeIndex =
     filteredTestOptions.length === 0
