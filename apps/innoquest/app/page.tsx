@@ -15,7 +15,10 @@ export default async function Home() {
           title="Innoquest - 2026 Test Profiles"
           actions={
             <>
-              <Badge variant="secondary" className="hidden shrink-0 sm:inline-flex">
+              <Badge
+                variant="secondary"
+                className="hidden shrink-0 sm:inline-flex"
+              >
                 {tableData.length} profiles
               </Badge>
               <ThemeToggle className="static right-auto top-auto z-auto" />
