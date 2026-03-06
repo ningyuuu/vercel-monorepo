@@ -84,10 +84,10 @@ export function TestFilterPopover({
         <Button
           type="button"
           variant="outline"
-          className="h-auto min-h-9 w-full items-start justify-between py-2"
+          className="h-auto min-h-8 w-full items-start justify-between py-2 whitespace-normal"
         >
           {selectedTests.length > 0 ? (
-            <span className="flex min-w-0 flex-1 flex-wrap gap-1 text-left">
+            <span className="flex min-w-0 flex-1 flex-wrap gap-1 whitespace-normal text-left">
               {selectedTests.map((item) => (
                 <Badge key={item} variant="secondary">
                   {item}
@@ -135,6 +135,7 @@ export function TestFilterPopover({
                     checked={checked}
                     onCheckedChange={() => toggleTest(item)}
                     aria-label={`Select ${item}`}
+                    className="data-[state=checked]:text-white dark:data-[state=checked]:text-white [&_[data-slot=checkbox-indicator]>svg]:stroke-[3]"
                   />
                   <span className="flex-1">{item}</span>
                 </label>

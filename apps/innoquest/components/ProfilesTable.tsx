@@ -59,21 +59,21 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   return (
     <div className="space-y-3">
       <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <div className="w-1/2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="w-full sm:w-1/2">
             <TestFilterPopover
               testOptions={testOptions}
               selectedTests={selectedTests}
               onSelectedTestsChange={setSelectedTests}
             />
           </div>
-          <div className="w-1/2">
+          <div className="w-full sm:w-1/2">
             <Input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Fuzzy search by code, name, contents, or cost..."
               aria-label="Fuzzy search profiles"
-              className="w-full"
+              className="w-full !text-sm md:!text-sm"
             />
           </div>
         </div>
@@ -91,43 +91,43 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
         </Button>
       </div>
 
-      <Table className="w-full table-fixed">
-        <caption className="text-muted-foreground mt-4 text-sm">
-          {filteredData.length} of {data.length} records
-        </caption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="md:w-[100px]">Code</TableHead>
-            <TableHead className="whitespace-normal md:w-[200px]">
-              Full Name
-            </TableHead>
-            <TableHead className="md:w-[110px]">Cost</TableHead>
-            <TableHead className="hidden whitespace-normal md:table-cell">
-              Test Contents
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {filteredData.map((project, index) => (
-            <TableRow key={`${project.code}-${index}`}>
-              <TableCell className="font-medium">{project.code}</TableCell>
-              <TableCell className="whitespace-normal break-words">
-                {project.full_name}
-              </TableCell>
-              <TableCell>{project.cost}</TableCell>
-              <TableCell className="hidden whitespace-normal break-words md:table-cell">
-                <div className="flex flex-wrap gap-1">
-                  {project.test_items.map((item) => (
-                    <Badge key={item} variant="secondary">
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </TableCell>
+      <div className="w-full overflow-x-auto">
+        <Table className="min-w-[720px]">
+          <caption className="text-muted-foreground mt-4 text-sm">
+            {filteredData.length} of {data.length} records
+          </caption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Code</TableHead>
+              <TableHead className="w-[200px] whitespace-normal">
+                Full Name
+              </TableHead>
+              <TableHead className="w-[110px]">Cost</TableHead>
+              <TableHead className="whitespace-normal">Test Contents</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {filteredData.map((project, index) => (
+              <TableRow key={`${project.code}-${index}`}>
+                <TableCell className="font-medium">{project.code}</TableCell>
+                <TableCell className="whitespace-normal break-words">
+                  {project.full_name}
+                </TableCell>
+                <TableCell>{project.cost}</TableCell>
+                <TableCell className="whitespace-normal break-words">
+                  <div className="flex flex-wrap gap-1">
+                    {project.test_items.map((item) => (
+                      <Badge key={item} variant="secondary">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
