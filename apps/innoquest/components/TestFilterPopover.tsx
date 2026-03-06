@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronsUpDown } from "lucide-react";
 import { Badge } from "@repo/ui/badge";
 import { Button } from "@repo/ui/button";
 import { Checkbox } from "@repo/ui/checkbox";
 import { Input } from "@repo/ui/input";
+import { cn } from "@repo/ui/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "@repo/ui/popover";
 
 type TestFilterPopoverProps = {
@@ -21,6 +22,8 @@ export function TestFilterPopover({
 }: TestFilterPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [testFilterQuery, setTestFilterQuery] = useState("");
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+  const optionRefs = useRef<Array<HTMLLabelElement | null>>([]);
 
   const filteredTestOptions = useMemo(() => {
     const normalized = testFilterQuery.trim().toLowerCase();
@@ -43,6 +46,21 @@ export function TestFilterPopover({
       });
   }, [testFilterQuery, testOptions]);
 
+  const activeIndex =
+    filteredTestOptions.length === 0
+      ? -1
+      : Math.min(Math.max(highlightedIndex, 0), filteredTestOptions.length - 1);
+
+  useEffect(() => {
+    if (activeIndex < 0) {
+      return;
+    }
+
+    optionRefs.current[activeIndex]?.scrollIntoView({
+      block: "nearest",
+    });
+  }, [activeIndex]);
+
   const toggleTest = (item: string) => {
     onSelectedTestsChange((current) =>
       current.includes(item)
@@ -62,12 +80,14 @@ export function TestFilterPopover({
       return;
     }
 
-    const exactMatch = filteredTestOptions.find(
-      (item) => item.toLowerCase() === testFilterQuery.trim().toLowerCase(),
-    );
+    const selectedItem =
+      activeIndex >= 0
+        ? filteredTestOptions[activeIndex]
+        : filteredTestOptions[0];
 
-    selectTest(exactMatch ?? filteredTestOptions[0]);
+    selectTest(selectedItem);
     setTestFilterQuery("");
+    setHighlightedIndex(0);
   };
 
   return (
@@ -77,6 +97,7 @@ export function TestFilterPopover({
         setIsOpen(open);
         if (!open) {
           setTestFilterQuery("");
+          setHighlightedIndex(0);
         }
       }}
     >
@@ -107,8 +128,37 @@ export function TestFilterPopover({
         <div className="border-b p-2">
           <Input
             value={testFilterQuery}
-            onChange={(event) => setTestFilterQuery(event.target.value)}
+            onChange={(event) => {
+              setTestFilterQuery(event.target.value);
+              setHighlightedIndex(0);
+            }}
             onKeyDown={(event) => {
+              if (event.key === "ArrowDown") {
+                event.preventDefault();
+
+                if (filteredTestOptions.length === 0) {
+                  return;
+                }
+
+                setHighlightedIndex((current) =>
+                  current >= filteredTestOptions.length - 1 ? 0 : current + 1,
+                );
+                return;
+              }
+
+              if (event.key === "ArrowUp") {
+                event.preventDefault();
+
+                if (filteredTestOptions.length === 0) {
+                  return;
+                }
+
+                setHighlightedIndex((current) =>
+                  current <= 0 ? filteredTestOptions.length - 1 : current - 1,
+                );
+                return;
+              }
+
               if (event.key === "Enter") {
                 event.preventDefault();
                 selectTestFromInput();
@@ -123,12 +173,20 @@ export function TestFilterPopover({
             {filteredTestOptions.map((item, index) => {
               const checked = selectedTests.includes(item);
               const inputId = `test-option-${index}`;
+              const isHighlighted = index === activeIndex;
 
               return (
                 <label
                   key={item}
                   htmlFor={inputId}
-                  className="hover:bg-muted flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm"
+                  ref={(element) => {
+                    optionRefs.current[index] = element;
+                  }}
+                  onMouseEnter={() => setHighlightedIndex(index)}
+                  className={cn(
+                    "hover:bg-muted flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm",
+                    isHighlighted && "bg-muted",
+                  )}
                 >
                   <Checkbox
                     id={inputId}
