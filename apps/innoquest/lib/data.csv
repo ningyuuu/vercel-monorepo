@@ -1580,7 +1580,7 @@ Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Hepatitis Be Antigen (HBeAg)
 Hepatitis Be Antibody (HBeAb)
-AL T/SGPT
+ALT/SGPT
 AST/SGOT"
 HP07,$91.00,Hepatitis B Profile 07,"Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
@@ -1596,7 +1596,7 @@ Bilirubin, Direct
 Bilirubin, Indirect
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT"
@@ -1604,7 +1604,7 @@ CHBP,$331.00,Chronic Hepatitis B Profile,"Hepatitis Be Antigen (HBeAg)
 Hepatitis Be Antibody (HBeAb)
 Hepatitis Bs Antigen (Quantitative)
 HBV DNA (Quantitative)
-AL T/SGPT"
+ALT/SGPT"
 LVA,$40.00,Liver Profile,"Total Protein
 Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
@@ -1622,7 +1622,7 @@ Bilirubin, Indirect (if Total Bilirubin is elevated)
 Albumin
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
@@ -1634,7 +1634,7 @@ Bilirubin, Indirect (if Total Bilirubin is elevated)
 Albumin
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
@@ -1646,7 +1646,7 @@ Bilirubin, Indirect (if Total Bilirubin is elevated)
 Albumin
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
@@ -1662,7 +1662,7 @@ Bilirubin, Indirect (if Total Bilirubin is elevated)
 Albumin
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT

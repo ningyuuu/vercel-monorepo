@@ -1,67 +1,62 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { parse } from "csv-parse/sync";
 
 export type TableRowData = {
   code: string;
   full_name: string;
   cost: string;
   test_contents: string;
+  test_items: string[];
 };
 
+function normalizeTestItem(value: string) {
+  const compact = value
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\s*\/\s*/g, "/")
+    .replace(/\s*,\s*/g, ", ")
+    .trim();
+
+  return compact;
+}
+
+function getItemDedupKey(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function parseTestItems(rawContents: string) {
+  const items = rawContents
+    .split(/\r?\n/)
+    .map((value) => normalizeTestItem(value))
+    .filter(Boolean);
+
+  const deduped: string[] = [];
+  const seen = new Set<string>();
+
+  for (const item of items) {
+    const key = getItemDedupKey(item);
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    deduped.push(item);
+  }
+
+  return deduped;
+}
+
 function parseCsv(content: string) {
-  const rows: string[][] = [];
-  let currentField = "";
-  let currentRow: string[] = [];
-  let inQuotes = false;
-
-  for (let index = 0; index < content.length; index++) {
-    const char = content[index];
-    const nextChar = content[index + 1];
-
-    if (char === '"') {
-      if (inQuotes && nextChar === '"') {
-        currentField += '"';
-        index++;
-      } else {
-        inQuotes = !inQuotes;
-      }
-      continue;
-    }
-
-    if (char === "," && !inQuotes) {
-      currentRow.push(currentField);
-      currentField = "";
-      continue;
-    }
-
-    if ((char === "\n" || char === "\r") && !inQuotes) {
-      if (char === "\r" && nextChar === "\n") {
-        index++;
-      }
-
-      currentRow.push(currentField);
-      currentField = "";
-
-      if (currentRow.some((field) => field.length > 0)) {
-        rows.push(currentRow);
-      }
-      currentRow = [];
-      continue;
-    }
-
-    currentField += char;
-  }
-
-  if (currentField.length > 0 || currentRow.length > 0) {
-    currentRow.push(currentField);
-    rows.push(currentRow);
-  }
-
-  return rows;
+  return parse(content, {
+    bom: true,
+    relax_column_count: true,
+    skip_empty_lines: true,
+  }) as string[][];
 }
 
 export async function getTableData(): Promise<TableRowData[]> {
-  const filePath = path.join(process.cwd(), "app", "data.csv");
+  const filePath = path.join(process.cwd(), "lib", "data.csv");
   const csv = await readFile(filePath, "utf-8");
   const rows = parseCsv(csv);
 
@@ -94,12 +89,15 @@ export async function getTableData(): Promise<TableRowData[]> {
 
   return records
     .filter((record) => record.some((field) => field.trim().length > 0))
-    .map((record) => ({
-      code: (record[codeIndex] ?? "").trim(),
-      full_name: (record[fullNameIndex] ?? "").trim(),
-      cost: (record[costIndex] ?? "").trim(),
-      test_contents: (record[contentsIndex] ?? "")
-        .replaceAll("\n", ", ")
-        .trim(),
-    }));
+    .map((record) => {
+      const testItems = parseTestItems(record[contentsIndex] ?? "");
+
+      return {
+        code: (record[codeIndex] ?? "").trim(),
+        full_name: (record[fullNameIndex] ?? "").trim(),
+        cost: (record[costIndex] ?? "").trim(),
+        test_contents: testItems.join(", "),
+        test_items: testItems,
+      };
+    });
 }

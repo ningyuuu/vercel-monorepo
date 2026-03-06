@@ -1,5 +1,6 @@
 import { getTableData } from "@/lib/catalog";
 import { ProfilesTable } from "@/components/ProfilesTable";
+import testItems from "@/lib/test-items.json";
 
 export default async function Home() {
   const tableData = await getTableData();
@@ -10,7 +11,7 @@ export default async function Home() {
         <h1 className="text-3xl font-semibold tracking-tight">
           Innoquest Test Profiles
         </h1>
-        <ProfilesTable data={tableData} />
+        <ProfilesTable data={tableData} testOptions={testItems} />
       </main>
     </div>
   );
