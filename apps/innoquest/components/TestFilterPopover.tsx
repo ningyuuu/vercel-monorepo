@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ChevronsUpDown } from "lucide-react";
+import { Badge } from "@repo/ui/badge";
 import { Button } from "@repo/ui/button";
 import { Checkbox } from "@repo/ui/checkbox";
 import { Input } from "@repo/ui/input";
@@ -83,12 +84,20 @@ export function TestFilterPopover({
         <Button
           type="button"
           variant="outline"
-          className="w-full justify-between"
+          className="h-auto min-h-9 w-full items-start justify-between py-2"
         >
-          {selectedTests.length > 0
-            ? `${selectedTests.length} tests selected`
-            : "Filter by tests"}
-          <ChevronsUpDown className="text-muted-foreground size-4" />
+          {selectedTests.length > 0 ? (
+            <span className="flex min-w-0 flex-1 flex-wrap gap-1 text-left">
+              {selectedTests.map((item) => (
+                <Badge key={item} variant="secondary">
+                  {item}
+                </Badge>
+              ))}
+            </span>
+          ) : (
+            "Filter by tests"
+          )}
+          <ChevronsUpDown className="text-muted-foreground mt-0.5 size-4 shrink-0" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
