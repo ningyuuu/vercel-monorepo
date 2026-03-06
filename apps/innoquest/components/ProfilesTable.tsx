@@ -49,9 +49,11 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
 
     const selectedSet = new Set(selectedTests);
 
-    return searchResults.filter((record) =>
-      record.test_items.some((item) => selectedSet.has(item)),
-    );
+    return searchResults.filter((record) => {
+      const recordItems = new Set(record.test_items);
+
+      return [...selectedSet].every((item) => recordItems.has(item));
+    });
   }, [data, fuse, query, selectedTests]);
 
   const hasActiveFilters = query.length > 0 || selectedTests.length > 0;
