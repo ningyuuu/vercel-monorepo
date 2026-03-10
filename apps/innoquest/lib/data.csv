@@ -1,4 +1,4 @@
-﻿Code,Cost,Full Name,Contents
+Code,Cost,Full Name,Contents
 ANE01,$34.00,ANAEMIA PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -196,7 +196,7 @@ Soya Bean F14
 Wheat F4
 Yeast F45"
 ANT04,$42.00,ANTENATAL PROFILE 04,"Haemoglobin
-MCV, MCH, MCHC
+MCV, MCHC, MCH
 ABO Blood Group
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
@@ -204,7 +204,7 @@ Rubella IgG Antibody
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)"
 ANT05,$54.00,ANTENATAL PROFILE 05,"Haemoglobin
-MCV, MCH, MCHC
+MCV, MCHC, MCH
 ABO Blood Group
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
@@ -213,7 +213,7 @@ HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)"
 ANT06,$23.00,ANTENATAL PROFILE 06,"Haemoglobin
-MCV, MCH, MCHC
+MCV, MCHC, MCH
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)"
@@ -397,17 +397,17 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
 C Reactive Protein"
 ART04,$62.00,ARTHRITIS PROFILE 04,"ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 C Reactive Protein
 Anti-Streptolysin O Titre (ASOT)"
 ART06,$166.00,ARTHRITIS PROFILE 06,"ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 C Reactive Protein
 Anti-Streptolysin O Titre (ASOT)
@@ -421,7 +421,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
 C Reactive Protein
@@ -437,7 +437,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
 C Reactive Protein
@@ -452,7 +452,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
 C Reactive Protein
@@ -483,7 +483,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
 Anti-ds DNA"
@@ -496,7 +496,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Rheumatoid Factor (RF)
+Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Anti-ds DNA
 Urea
@@ -509,7 +509,7 @@ COEL,$652.00,COELIAC DISEASE PROFILE,"Anti-Deaminated Gliadin Peptide IgA
 Anti-Deaminated Gliadin Peptide IgG
 Anti-Tissue Transglutaminase IgA
 Anti-Tissue Transglutaminase IgG"
-IQLP1,$117.00,LUPUS PROFILE 1,"Rheumatoid Factor (RF)
+IQLP1,$117.00,LUPUS PROFILE 1,"Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Anti-ds DNA
 C3 Complement
@@ -891,7 +891,7 @@ Creatinine
 eGFR
 Urine FEME
 Urine Microalbumin/Creatinine Ratio
-High Sensitive C-Reactive Protein (hs-CRP)
+High Sensitive C Reactive Protein (hs-CRP)
 Creatine Kinase (CK)"
 IQDP14,$128.00,Diabetic Profile 14,"Glucose (Fasting)
 HbA1c
@@ -911,7 +911,7 @@ Creatinine
 eGFR
 Urine FEME
 Urine Microalbumin/Creatinine Ratio
-High Sensitive C-Reactive Protein (hs-CRP)
+High Sensitive C Reactive Protein (hs-CRP)
 Creatine Kinase (CK)
 Insulin"
 HY02,$49.00,Hypertension Profile 02,"Glucose (Fasting)
@@ -1390,7 +1390,7 @@ Hepatitis Bs Antibody (HBsAb)
 Hepatitis A Total Antibody
 Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
-CA 19.9
+CA19.9
 CA 125 (female)
 PSA (male)
 VD (Syphilis TP Ab)
@@ -1499,7 +1499,7 @@ Hepatitis A Total Antibody
 Hepatitis C Antibody (HCV)
 Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
-CA125 (female)
+CA 125 (female)
 PSA (male)
 CA19.9
 Beta HCG
@@ -1571,7 +1571,7 @@ HP04,$70.00,"Hepatitis B, C & HIV Profile 04","Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Anti-HCV Antibody
 HIV Ag/Ab Screen"
-HP05,$84.00,"Hepatitis A, B & C Profile 05","Hepatitis A Total Antibody (HAV Total)
+HP05,$84.00,"Hepatitis A, B & C Profile 05","Hepatitis A Total Antibody
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Anti-HCV Antibody"
@@ -1612,7 +1612,7 @@ Bilirubin, Indirect (if Total Bilirubin is elevated)
 Albumin
 Globulin
 A/G Ratio
-AL T/SGPT
+ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT"
@@ -1672,7 +1672,7 @@ Luteinising Hormone (LH)
 Prolactin"
 IQAM01,$105.00,AMENORRHOEA PROFILE 01,"Testosterone
 Estradiol (E2)
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin"
@@ -1685,7 +1685,7 @@ Progesterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)"
 IQAM06,$117.00,HORMONAL STUDY 06,"Estradiol (E2)
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin"
@@ -1696,13 +1696,13 @@ Luteinising Hormone (LH)
 Prolactin"
 IQAM04,$132.00,AMENORRHOEA PROFILE 04,"Testosterone
 Estradiol (E2)
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
 Thyroid Stimulating Hormone (TSH)"
 IQAM10,$132.00,HORMONAL STUDY 10,"Estradiol (E2)
-Free T4 (FT4)
+Free T4
 Thyroid Stimulating Hormone (TSH)
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
@@ -1710,8 +1710,8 @@ Prolactin"
 IQAM02,$165.00,AMENORRHOEA PROFILE 02,"Testosterone
 Estradiol (E2)
 Progesterone
-Free T4 (FT4)
-Free T3 (FT3)
+Free T4
+Free T3
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
@@ -1719,7 +1719,7 @@ Thyroid Stimulating Hormone (TSH)"
 IQAM05,$196.00,AMENORRHOEA PROFILE 05,"Testosterone
 Estradiol (E2)
 Progesterone
-Free T4 (FT4)
+Free T4
 Cortisol
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
@@ -1730,13 +1730,13 @@ Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin"
 IQFS07,$111.00,FERTILITY SCREEN 07 (MALE),"Testosterone
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin"
 IQFS04,$128.00,FERTILITY SCREEN 04 (FEMALE),"Estradiol (E2)
 Progesterone
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin"
@@ -1755,7 +1755,7 @@ Beta HCG
 Anti-Mullerian Hormone"
 IQFS05,$191.00,FERTILITY SCREEN 05 (FEMALE),"Testosterone
 Estradiol (E2)
-Free T4 (FT4)
+Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
@@ -1764,8 +1764,8 @@ Dehydroepiandrosterone Sulfate (DHEAS)"
 IQFS03,$276.00,FERTILITY SCREEN 03,"Testosterone
 Estradiol (E2)
 Progesterone
-Free T4 (FT4)
-Free T3 (FT3)
+Free T4
+Free T3
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
@@ -1851,7 +1851,7 @@ Creatinine
 eGFR
 Bicarbonate
 Urine FEME
-Urine Microalbumin / Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio"
 IQRF06,$45.00,Renal Profile 06,"Glucose
 Sodium
 Potassium
@@ -1873,8 +1873,8 @@ eGFR
 Bicarbonate
 Uric Acid
 Total Cholesterol
-Cholesterol HDL
-Cholesterol LDL (Direct)
+Cholesterol, HDL
+Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
 Urine FEME
@@ -1947,31 +1947,31 @@ Neisseria Gonorrhoea
 Trichomonas Vaginalis
 Ureaplasma Parvum
 Ureaplasma Urealyticum"
-QTP2,$43.00,THYROID PROFILE 2,"Free T4 (FT4)
+QTP2,$43.00,THYROID PROFILE 2,"Free T4
 Thyroid Stimulating Hormone (TSH)"
-QTP3,$58.00,THYROID PROFILE 3,"Free T4 (FT4)
-Free T3 (FT3)
+QTP3,$58.00,THYROID PROFILE 3,"Free T4
+Free T3
 Thyroid Stimulating Hormone (TSH)"
-QTP4,$100.00,THYROID PROFILE 4,"Free T4 (FT4)
-Free T3 (FT3)
+QTP4,$100.00,THYROID PROFILE 4,"Free T4
+Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin Antibody
 Thyroid Peroxidase Antibody (Anti-TPO)"
-QTP6,$170.00,THYROID PROFILE 6,"Free T4 (FT4)
-Free T3 (FT3)
+QTP6,$170.00,THYROID PROFILE 6,"Free T4
+Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin Antibody
 Thyroid Peroxidase Antibody (Anti-TPO)
 Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
-QTP9,$198.00,THYROID PROFILE 9,"Free T4 (FT4)
-Free T3 (FT3)
+QTP9,$198.00,THYROID PROFILE 9,"Free T4
+Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin
 Thyroglobulin Antibody
 Thyroid Peroxidase Antibody (Anti-TPO)
 Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
-FT4,$36.00,Free T4 (FT4),Free T4 (FT4)
-FT3,$45.00,Free T3 (FT3),Free T3 (FT3)
+FT4,$36.00,Free T4 (FT4),Free T4
+FT3,$45.00,Free T3 (FT3),Free T3
 TSH,$34.00,Thyroid Stimulating Hormone (TSH),Thyroid Stimulating Hormone (TSH)
 TYG,$124.00,Thyroglobulin,Thyroglobulin
 THA,$36.00,Thyroglobulin Antibody,Thyroglobulin Antibody
