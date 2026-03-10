@@ -8,6 +8,7 @@ export type TableRowData = {
   cost: string;
   test_contents: string;
   test_items: string[];
+  type: "Profile" | "Allergy" | "Single";
 };
 
 function normalizeTestItem(value: string) {
@@ -77,12 +78,14 @@ export async function getTableData(): Promise<TableRowData[]> {
   const costIndex = normalizedHeader.indexOf("cost");
   const fullNameIndex = normalizedHeader.indexOf("full name");
   const contentsIndex = normalizedHeader.indexOf("contents");
+  const typeIndex = normalizedHeader.indexOf("type");
 
   if (
     codeIndex === -1 ||
     costIndex === -1 ||
     fullNameIndex === -1 ||
-    contentsIndex === -1
+    contentsIndex === -1 ||
+    typeIndex === -1
   ) {
     return [];
   }
@@ -98,6 +101,7 @@ export async function getTableData(): Promise<TableRowData[]> {
         cost: (record[costIndex] ?? "").trim(),
         test_contents: testItems.join(", "),
         test_items: testItems,
+        type: (record[typeIndex] ?? "").trim() as TableRowData["type"],
       };
     });
 }

@@ -26,6 +26,12 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   const [query, setQuery] = useState("");
   const [selectedTests, setSelectedTests] = useState<string[]>([]);
 
+  const activeSelectedTests = useMemo(() => {
+    const availableTests = new Set(testOptions);
+
+    return selectedTests.filter((item) => availableTests.has(item));
+  }, [selectedTests, testOptions]);
+
   const fuse = useMemo(
     () =>
       new Fuse(data, {
@@ -43,20 +49,20 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
       ? fuse.search(normalized).map((result) => result.item)
       : data;
 
-    if (selectedTests.length === 0) {
+    if (activeSelectedTests.length === 0) {
       return searchResults;
     }
 
-    const selectedSet = new Set(selectedTests);
+    const selectedSet = new Set(activeSelectedTests);
 
     return searchResults.filter((record) => {
       const recordItems = new Set(record.test_items);
 
       return [...selectedSet].every((item) => recordItems.has(item));
     });
-  }, [data, fuse, query, selectedTests]);
+  }, [activeSelectedTests, data, fuse, query]);
 
-  const hasActiveFilters = query.length > 0 || selectedTests.length > 0;
+  const hasActiveFilters = query.length > 0 || activeSelectedTests.length > 0;
 
   return (
     <div className="space-y-3">
@@ -65,7 +71,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
           <div className="w-full sm:w-1/2">
             <TestFilterPopover
               testOptions={testOptions}
-              selectedTests={selectedTests}
+              selectedTests={activeSelectedTests}
               onSelectedTestsChange={setSelectedTests}
             />
           </div>

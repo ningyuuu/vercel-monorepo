@@ -1,4 +1,4 @@
-﻿Code,Cost,Full Name,Contents
+Code,Cost,Full Name,Contents,Type
 ANE01,$34.00,ANAEMIA PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -7,7 +7,7 @@ Platelet Count
 Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
-Reticulocyte Count"
+Reticulocyte Count",Profile
 ANE02,$60.00,ANAEMIA PROFILE 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -21,17 +21,17 @@ Iron
 Total Iron Binding Capacity (TIBC)
 Transferrin
 % Iron Saturation
-Ferritin"
+Ferritin",Profile
 ANE04,$55.00,ANAEMIA PROFILE 04,"Iron
 Total Iron Binding Capacity (TIBC)
 Transferrin
 % Iron Saturation
-Ferritin"
+Ferritin",Profile
 ANE05,$45.00,ANAEMIA PROFILE 05,"Folic Acid
-Vitamin B12"
+Vitamin B12",Profile
 ANE06,$67.00,ANAEMIA PROFILE 06,"Ferritin
 Folic Acid
-Vitamin B12"
+Vitamin B12",Profile
 ANE07,$88.00,ANAEMIA PROFILE 07,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -46,7 +46,7 @@ Transferrin
 % Iron Saturation
 Ferritin
 Folic Acid
-Vitamin B12"
+Vitamin B12",Profile
 ANE13,$95.00,ANAEMIA PROFILE 13,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -62,7 +62,7 @@ Transferrin
 % Iron Saturation
 Ferritin
 Folic Acid
-Vitamin B12"
+Vitamin B12",Profile
 ANE14,$115.00,ANAEMIA PROFILE 14,"Reticulocyte Count
 Iron
 Total Iron Binding Capacity (TIBC)
@@ -71,7 +71,7 @@ Transferrin
 Ferritin
 Hb Electrophoresis
 Folic Acid
-Vitamin B12"
+Vitamin B12",Profile
 TH02,$65.00,THALASSEMIA SCREEN 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -81,7 +81,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 Ferritin
-Hb Electrophoresis"
+Hb Electrophoresis",Profile
 TH04,$105.00,THALASSEMIA SCREEN 04,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -95,7 +95,7 @@ Total Iron Binding Capacity (TIBC)
 % Iron Saturation
 Transferrin
 Ferritin
-Hb Electrophoresis"
+Hb Electrophoresis",Profile
 TH05,$97.00,THALASSEMIA SCREEN 05,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -107,7 +107,7 @@ Peripheral Blood Film
 Ferritin
 Folic Acid
 Vitamin B12
-Hb Electrophoresis"
+Hb Electrophoresis",Profile
 ECZEMA,$507.00,Eczema Panel (11),"Blomia Tropicalis D201
 Cat Dander E1
 Chicken F83
@@ -118,24 +118,24 @@ D. Pteronyssinus D1
 Egg White F1
 Peanut F13
 Soya Bean F14
-Wheat F4"
+Wheat F4",Profile
 ASTHMA,$441.00,Asthma Panel (11),"Chicken F83
 Cow's Milk F2
 Egg White F1
 Peanut F13
 Soya Bean F14
-Wheat F4"
+Wheat F4",Profile
 GASTRO,$331.00,Gastro Panel (6),"Chicken F83
 Cow's Milk F2
 Egg White F1
 Peanut F13
 Soya Bean F14
-Wheat F4"
+Wheat F4",Profile
 ANIMAL1,$340.00,Animal Dander EX1,"Cat Dander E1
 Dog Dander E5
 Guinea Pig Epithelium E6
 Rat Epithelium, Serum & Urine Proteins E87
-Mouse Epithelium, Serum & Urine Proteins E88"
+Mouse Epithelium, Serum & Urine Proteins E88",Profile
 INHALE1,$595.00,Inhalant Panel 1 - Dust/Mites/Epidermals/Pollen (15),"Alternaria Alternata M6
 Aspergillus Fumigatus M3
 Bahia Grass G17
@@ -150,12 +150,12 @@ D. Pteronyssinus D1
 Dog Dander E5
 Dust - Greer H1
 Johnson Grass G10
-Timothy Grass G6"
+Timothy Grass G6",Profile
 INHALE2,$266.00,Inhalant Panel 2 - Molds & Yeasts (5),"Alternaria Alternata M6
 Aspergillus Fumigatus M3
 Candida Albicans M5
 Cladosporium Herbarum M2
-Penicillium Notatum M1"
+Penicillium Notatum M1",Profile
 NUTS,$430.00,Food 3 - Nuts (8),"Almond F20
 Brazil Nut F18
 Hazel Nut F17
@@ -163,7 +163,7 @@ Macadamia Nut F345
 Peanut F13
 Pine Nut F253
 Pistachio F203
-Walnut F256"
+Walnut F256",Profile
 SEAFOOD1,$382.00,Food Panel (8),"Anchovies (Ikan Bilis) F313
 Clam F207
 Crab F23
@@ -171,7 +171,7 @@ Fish (Cod) F3
 Salmon F41
 Shrimp F24
 Squid F258
-Tuna F40"
+Tuna F40",Profile
 SEAFOOD2,$397.00,Food Panel - Shellfish (8),"Blue Mussel F37
 Clam F207
 Crab F23
@@ -179,7 +179,7 @@ Lobster F80
 Oyster F290
 Scallop F338
 Shrimp F24
-Squid F258"
+Squid F258",Profile
 PAEDS,$606.00,Paediatric/Common Allergy Panel (15),"Anchovies (Ikan Bilis) F313
 Chicken F83
 Cocoa F93
@@ -194,7 +194,7 @@ Sesame Seed F10
 Shrimp F24
 Soya Bean F14
 Wheat F4
-Yeast F45"
+Yeast F45",Profile
 ANT04,$42.00,ANTENATAL PROFILE 04,"Haemoglobin
 MCV, MCHC, MCH
 ABO Blood Group
@@ -202,7 +202,7 @@ Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Rubella IgG Antibody
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT05,$54.00,ANTENATAL PROFILE 05,"Haemoglobin
 MCV, MCHC, MCH
 ABO Blood Group
@@ -211,12 +211,12 @@ Hepatitis Bs Antibody (HBsAb)
 Rubella IgG Antibody
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT06,$23.00,ANTENATAL PROFILE 06,"Haemoglobin
 MCV, MCHC, MCH
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT08,$19.00,ANTENATAL PROFILE 08,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -227,7 +227,7 @@ MCV, MCHC, MCH
 Peripheral Blood Film
 ABO Blood Group
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT09,$33.00,ANTENATAL PROFILE 09,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -240,7 +240,7 @@ ABO Blood Group
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT10,$33.00,ANTENATAL PROFILE 10,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -253,7 +253,7 @@ ABO Blood Group
 Glucose
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 ANT03,$45.00,ANTENATAL PROFILE 03,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -267,7 +267,7 @@ Hepatitis Bs Antibody (HBsAb)
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 ANT11,$62.00,ANTENATAL PROFILE 11,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -283,7 +283,7 @@ Rubella IgG Antibody
 Glucose
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 ANT01,$92.00,ANTENATAL PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -300,7 +300,7 @@ Rubella IgG Antibody
 Glucose
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT02,$64.00,ANTENATAL PROFILE 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -316,7 +316,7 @@ Rubella IgG Antibody
 Glucose
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT12,$105.00,ANTENATAL PROFILE 12,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -332,7 +332,7 @@ Hepatitis Bs Antibody (HBsAb)
 Rubella IgG Antibody
 Glucose
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ANT07,$234.00,ANTENATAL PROFILE 07,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -352,7 +352,7 @@ Toxoplasma IgG
 Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG Antibody
 Herpes Simplex Virus Type II IgG Antibody
-Urine FEME"
+Urine FEME",Profile
 ANT13,$223.00,ANTENATAL PROFILE 13,"Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Rubella IgG Antibody
@@ -362,24 +362,24 @@ Toxoplasma IgG Antibody
 CMV IgG Antibody
 Herpes Simplex Virus Type I IgG Antibody
 Herpes Simplex Virus Type II IgG Antibody
-Varicella Zoster IgG Antibody"
+Varicella Zoster IgG Antibody",Profile
 FTMTR,$170.00,FIRST TRIMESTER TESTING (< 14 WEEKS GESTATION - WITHOUT RISK CALCULATION),"Free Beta HCG
-PAPP-A"
+PAPP-A",Profile
 FTMT,$213.00,FIRST TRIMESTER TESTING (< 14 WEEKS GESTATION - WITH RISK CALCULATION),"Free Beta HCG
 PAPP-A
-Risk Report"
+Risk Report",Profile
 PRECLAM,$213.00,PRE-ECLAMPSIA PROFILE (> 10 WEEKS GESTATION - WITH RISK CALCULATION),"Placenta Growth Factor (PLGF)
 PAPP-A
-Risk Report"
+Risk Report",Profile
 TS01,$138.00,TORCH STUDIES,"Toxoplasma IgG Antibody
 Rubella IgG Antibody
 CMV IgG Antibody
 Herpes Simplex Virus Type I IgG Antibody
-Herpes Simplex Virus Type II IgG Antibody"
+Herpes Simplex Virus Type II IgG Antibody",Profile
 MMRV,$310.00,"MEASLES, MUMPS, RUBELLA AND VARICELLA","Measles IgG Antibody
 Mumps IgG Antibody
 Rubella IgG Antibody
-Varicella Zoster IgG Antibody"
+Varicella Zoster IgG Antibody",Profile
 MCPC,$170.00,MISCARRIAGE PROFILE,"Beta HCG
 Anti-Nuclear Antibody
 Anti-ds DNA
@@ -387,7 +387,7 @@ Lupus Anticoagulant
 Thyroid Stimulating Hormone (TSH)
 Free T3
 Free T4
-Urine FEME"
+Urine FEME",Profile
 ART01,$62.00,ARTHRITIS PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -400,18 +400,18 @@ ESR
 Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
-C Reactive Protein"
+C Reactive Protein",Profile
 ART04,$62.00,ARTHRITIS PROFILE 04,"ESR
 Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 C Reactive Protein
-Anti-Streptolysin O Titre (ASOT)"
+Anti-Streptolysin O Titre (ASOT)",Profile
 ART06,$166.00,ARTHRITIS PROFILE 06,"ESR
 Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 C Reactive Protein
 Anti-Streptolysin O Titre (ASOT)
-Anti-CCP"
+Anti-CCP",Profile
 ART02,$79.00,ARTHRITIS PROFILE 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -427,7 +427,7 @@ Uric Acid
 C Reactive Protein
 Anti-Streptolysin O Titre (ASOT)
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 ART03,$89.00,ARTHRITIS PROFILE 03,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -442,7 +442,7 @@ Anti-Nuclear Factor (ANF)
 Uric Acid
 C Reactive Protein
 Anti-Streptolysin O Titre (ASOT)
-Anti-ds DNA"
+Anti-ds DNA",Profile
 ART05,$221.00,ARTHRITIS PROFILE 05,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -460,20 +460,20 @@ Anti-Streptolysin O Titre (ASOT)
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Anti-ds DNA
-Anti-CCP"
+Anti-CCP",Profile
 BMP1,$41.00,BONE METABOLISM PROFILE 1,"Calcium
 Phosphate
 Alkaline Phosphatase
-Alkaline Phosphatase, Heat Stable"
+Alkaline Phosphatase, Heat Stable",Profile
 BNSVD3,$150.00,BONE STUDY,"Calcium
 Phosphate
 Alkaline Phosphatase
-Total Vitamin D (Immunoassay)"
+Total Vitamin D (Immunoassay)",Profile
 OSP1N,$166.00,OSTEOPOROSIS PROFILE,"Calcium
 Phosphate
 Alkaline Phosphatase
 Intact Parathyroid Hormone (iPTH)
-Total Vitamin D (Immunoassay)"
+Total Vitamin D (Immunoassay)",Profile
 AI01,$68.00,AUTO-IMMUNE PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -486,7 +486,7 @@ ESR
 Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Uric Acid
-Anti-ds DNA"
+Anti-ds DNA",Profile
 SLEP,$143.00,SLE PROFILE,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -504,39 +504,39 @@ Creatinine
 C3 Complement
 C4 Complement
 Albumin
-Urine FEME"
+Urine FEME",Profile
 COEL,$652.00,COELIAC DISEASE PROFILE,"Anti-Deaminated Gliadin Peptide IgA
 Anti-Deaminated Gliadin Peptide IgG
 Anti-Tissue Transglutaminase IgA
-Anti-Tissue Transglutaminase IgG"
+Anti-Tissue Transglutaminase IgG",Profile
 IQLP1,$117.00,LUPUS PROFILE 1,"Rheumatoid Factor
 Anti-Nuclear Factor (ANF)
 Anti-ds DNA
 C3 Complement
-C4 Complement"
+C4 Complement",Profile
 IQLP2,$56.00,LUPUS PROFILE 2,"ESR
 Anti-Nuclear Factor (ANF)
-Anti-ds DNA"
+Anti-ds DNA",Profile
 CA02,$150.00,Cancer Screen (Male),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA19.9
 Prostate Specific Antigen (PSA)
-Beta HCG"
+Beta HCG",Profile
 CA03,$104.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA125
-Beta HCG"
+Beta HCG",Profile
 CA09,$150.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA19.9
 CA125
-Beta HCG"
+Beta HCG",Profile
 CA01,$179.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA19.9
 CA125
 Beta HCG
-CA15.3"
+CA15.3",Profile
 CA01R,$287.00,Cancer Screen (Female),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA19.9
@@ -544,38 +544,38 @@ CA125
 Beta HCG
 CA15.3
 HE4
-ROMA Index"
+ROMA Index",Profile
 TMP7,$128.00,Tumour Marker (Female),"Carcinoembryonic Antigen (CEA)
 CA19.9
 CA125
-CA15.3"
+CA15.3",Profile
 TMP13,$234.00,Tumour Marker (Female),"Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 CA19.9
 CA125
 CA15.3
-Squamous Cell Carcinoma Antigen (SCC Ag)"
+Squamous Cell Carcinoma Antigen (SCC Ag)",Profile
 ROMA,$150.00,Risk of Ovarian Malignancy Algorithm,"HE4
 CA125
-ROMA Index"
+ROMA Index",Profile
 LP01,$21.00,Lipids Profile A,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
-Triglycerides"
+Triglycerides",Profile
 LP01G,$24.00,Lipids Profile A + Glucose,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
-Glucose (Fasting)"
+Glucose (Fasting)",Profile
 NFLIP,$50.00,Lipids Profile Non Fasting,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
 Glucose (Random)
-HbA1c"
+HbA1c",Profile
 LP016,$65.00,Lipids Profile A + Glucose + HBA1C,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -588,7 +588,7 @@ Creatinine
 Uric Acid
 ALT/SGPT
 AST/SGOT
-eGFR"
+eGFR",Profile
 LP7,$38.00,Lipids Profile A + Glucose,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -599,7 +599,7 @@ Urea
 Creatinine
 ALT/SGPT
 AST/SGOT
-eGFR"
+eGFR",Profile
 LP02,$33.00,Lipids Profile A + ALT/SGPT + AST/SGOT,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -608,7 +608,7 @@ Triglycerides
 GGT
 Uric Acid
 ALT/SGPT
-AST/SGOT"
+AST/SGOT",Profile
 CR08,$169.00,Cardiac Risk Assessment Profile,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -617,7 +617,7 @@ Triglycerides
 Apolipoprotein A1
 Apolipoprotein B
 Apolipoprotein B/A1 Ratio
-Troponin T, high sensitive"
+Troponin T, high sensitive",Profile
 LPP1,$73.00,Lipids Panel 1,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -626,14 +626,14 @@ Triglycerides
 Urea
 Creatinine
 Urine Microalbumin/Creatinine Ratio
-eGFR"
+eGFR",Profile
 LPP2,$216.00,Lipids Panel 2,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
 NT-proBNP
-Lipoprotein (a)"
+Lipoprotein (a)",Profile
 LPP4,$382.00,Lipids Panel 4,"Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
@@ -644,13 +644,13 @@ Apolipoprotein B
 Apolipoprotein B/A1 Ratio
 Troponin T, high sensitive
 NT-proBNP
-Lipoprotein (a)"
+Lipoprotein (a)",Profile
 LPP5,$144.00,Lipids Panel 5,"Troponin T, high sensitive
 Creatine Kinase (CK)
-CK-MB"
+CK-MB",Profile
 CP2,$122.00,Cardiac Profile 2,"Troponin I, high sensitive
 eGFR
-CK-MB"
+CK-MB",Profile
 DFS1,$64.00,Dengue Fever Profile 1,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -659,7 +659,7 @@ Platelet Count
 Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
-Dengue IgG & IgM Antibodies"
+Dengue IgG & IgM Antibodies",Profile
 DFS2,$66.00,Dengue Fever Profile 2,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -669,9 +669,9 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
-Dengue IgG & IgM Antibodies"
+Dengue IgG & IgM Antibodies",Profile
 DFS3,$76.00,Dengue Fever Profile 3,"Dengue IgG & IgM Antibodies
-Dengue NS1 Antigen"
+Dengue NS1 Antigen",Profile
 DFS4,$82.00,Dengue Fever Profile 4,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -681,7 +681,7 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 Dengue IgG & IgM Antibodies
-Dengue NS1 Antigen"
+Dengue NS1 Antigen",Profile
 IQFP01,$35.00,Febrile Profile 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -692,7 +692,7 @@ MCV, MCHC, MCH
 Peripheral Blood Film
 ESR
 Malaria Parasite
-Urine FEME"
+Urine FEME",Profile
 IQFP03,$56.00,Febrile Profile 03,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -704,7 +704,7 @@ Peripheral Blood Film
 ESR
 Malaria Parasite
 Monospot Test
-Urine FEME"
+Urine FEME",Profile
 IQFP06,$77.00,Febrile Profile 06,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -717,7 +717,7 @@ ESR
 Malaria Parasite
 Monospot Test
 ALT/SGPT
-Urine FEME"
+Urine FEME",Profile
 IQFP02,$117.00,Febrile Profile 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -731,7 +731,7 @@ Malaria Parasite
 Monospot Test
 Dengue Antibody IgG & IgM
 ALT/SGPT
-Urine FEME"
+Urine FEME",Profile
 FC02,$17.00,FULL BLOOD COUNT 02,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -739,7 +739,7 @@ Packed Cell Volume
 Platelet Count
 Total Red Cell Count
 MCV, MCHC, MCH
-Peripheral Blood Film"
+Peripheral Blood Film",Profile
 FC01,$21.00,FULL BLOOD COUNT 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -748,9 +748,9 @@ Platelet Count
 Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
-ESR"
+ESR",Profile
 CG02,$39.00,COAGULATION PROFILE 02,"Prothrombin Time (PT)
-APTT (PTT)"
+APTT (PTT)",Profile
 CG01,$50.00,COAGULATION PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -760,17 +760,17 @@ Total Red Cell Count
 MCV, MCHC, MCH
 Peripheral Blood Film
 Prothrombin Time (PT)
-APTT (PTT)"
+APTT (PTT)",Profile
 POP1,$56.00,COAGULATION PROFILE 1,"Prothrombin Time (PT)
 APTT (PTT)
-Thrombin Clotting Time (TCT)"
+Thrombin Clotting Time (TCT)",Profile
 POP1N,$46.00,COAGULATION PROFILE 1N,"Prothrombin Time, INR (PT, INR)
 APTT (PTT)
-Platelet Count"
+Platelet Count",Profile
 POP2,$68.00,COAGULATION PROFILE 2,"Prothrombin Time (PT)
 APTT (PTT)
 Thrombin Clotting Time (TCT)
-Platelet Count"
+Platelet Count",Profile
 POP3N,$66.00,COAGULATION PROFILE 3N,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -781,7 +781,7 @@ MCV, MCHC, MCH
 Peripheral Blood Film
 Prothrombin Time (PT)
 APTT (PTT)
-Thrombin Clotting Time (TCT)"
+Thrombin Clotting Time (TCT)",Profile
 PO1,$99.00,PRE-OP PROFILE 1,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -798,7 +798,7 @@ Sodium
 Potassium
 Chloride
 Urea
-Urine FEME"
+Urine FEME",Profile
 PO2,$98.00,PRE-OP PROFILE 2,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -815,9 +815,9 @@ Potassium
 Chloride
 Urea
 Creatinine
-Urine FEME"
+Urine FEME",Profile
 IQDP1,$33.00,Diabetic Profile 1,"Glucose (Fasting)
-HbA1c"
+HbA1c",Profile
 IQDP6,$52.00,Diabetic Profile 6,"Glucose (Fasting)
 HbA1c
 AST/SGOT
@@ -827,7 +827,7 @@ Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
-Uric Acid"
+Uric Acid",Profile
 IQDP2,$88.00,Diabetic Profile 2,"Glucose (Fasting)
 HbA1c
 AST/SGOT
@@ -845,7 +845,7 @@ Urea
 Creatinine
 eGFR
 Urine FEME
-Urine Microalbumin/Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio",Profile
 IQDP5,$90.00,Diabetic Profile 5,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -872,7 +872,7 @@ Urea
 Creatinine
 eGFR
 Urine FEME
-Urine Microalbumin/Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio",Profile
 IQDP10,$98.00,Diabetic Profile 10,"Glucose (Fasting)
 HbA1c
 AST/SGOT
@@ -892,7 +892,7 @@ eGFR
 Urine FEME
 Urine Microalbumin/Creatinine Ratio
 High Sensitive C Reactive Protein (hs-CRP)
-Creatine Kinase (CK)"
+Creatine Kinase (CK)",Profile
 IQDP14,$128.00,Diabetic Profile 14,"Glucose (Fasting)
 HbA1c
 AST/SGOT
@@ -913,7 +913,7 @@ Urine FEME
 Urine Microalbumin/Creatinine Ratio
 High Sensitive C Reactive Protein (hs-CRP)
 Creatine Kinase (CK)
-Insulin"
+Insulin",Profile
 HY02,$49.00,Hypertension Profile 02,"Glucose (Fasting)
 Uric Acid
 Cholesterol, Total
@@ -926,7 +926,7 @@ Potassium
 Chloride
 Urea
 Creatinine
-Urine FEME"
+Urine FEME",Profile
 HY03,$58.00,Hypertension Profile 03,"Glucose (Fasting)
 HbA1c
 Cholesterol, Total
@@ -938,7 +938,7 @@ Sodium
 Potassium
 Chloride
 Creatinine
-Urine FEME"
+Urine FEME",Profile
 HY01,$53.00,Hypertension Profile 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -959,7 +959,7 @@ Potassium
 Chloride
 Urea
 Creatinine
-Urine FEME"
+Urine FEME",Profile
 HY04,$70.00,Hypertension Profile 04,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -981,25 +981,25 @@ Chloride
 Urea
 Creatinine
 Urine FEME
-Urine Microalbumin/Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio",Profile
 DUX02,$111.00,Drug Screen 02,"Phencyclidine
 Cocaine
 Amphetamines
 Cannabinol
-Opiates"
+Opiates",Profile
 DUX01,$133.00,Drug Screen 01,"Phencyclidine
 Cocaine
 Amphetamines
 Cannabinol
 Opiates
-Blood Alcohol"
+Blood Alcohol",Profile
 DUX03,$159.00,Drug Screen 03,"Phencyclidine
 Cocaine
 Amphetamines
 Cannabinol
 Opiates
 Barbiturates
-Benzodiazepines"
+Benzodiazepines",Profile
 DS10,$191.00,Drug Screen 10,"Phencyclidine
 Cocaine
 Amphetamines
@@ -1009,7 +1009,7 @@ Barbiturates
 Benzodiazepines
 Methamphetamines
 Methadone
-Tricyclic Antidepressants (TCA)"
+Tricyclic Antidepressants (TCA)",Profile
 GFU,$50.00,GENERAL FOLLOW-UP,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1035,7 +1035,7 @@ A/G Ratio
 AST/SGOT
 ALT/SGPT
 Alkaline Phosphatase
-GGT"
+GGT",Profile
 IQHS1,$59.00,HEALTH SCREENING 1,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1058,7 +1058,7 @@ Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
-Urine FEME"
+Urine FEME",Profile
 IQHS2,$61.00,HEALTH SCREENING 2,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1091,7 +1091,7 @@ Cholesterol, Total
 Cholesterol, HDL
 Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
-Triglycerides"
+Triglycerides",Profile
 IQHS4,$66.00,HEALTH SCREENING 4,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1123,7 +1123,7 @@ Cholesterol/HDL Ratio
 Triglycerides
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 IQHS8,$103.00,HEALTH SCREENING 8,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1160,7 +1160,7 @@ Free T4
 Thyroid Stimulating Hormone (TSH)
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 IQHS12,$132.00,HEALTH SCREENING 12,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1200,7 +1200,7 @@ Free T4
 Thyroid Stimulating Hormone (TSH)
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
-Urine FEME"
+Urine FEME",Profile
 IQHS18,$197.00,HEALTH SCREENING 18,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1248,7 +1248,7 @@ Alpha Fetoprotein (AFP)
 Carcinoembryonic Antigen (CEA)
 EBV EA-IgA
 Urine FEME
-Stool Occult Blood (Immunological)"
+Stool Occult Blood (Immunological)",Profile
 IQHS22,$244.00,HEALTH SCREENING 22,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1296,7 +1296,7 @@ EBV EA-IgA
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Urine FEME
-Stool Occult Blood (Immunological)"
+Stool Occult Blood (Immunological)",Profile
 IQHS24,$259.00,HEALTH SCREENING 24,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1345,7 +1345,7 @@ VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Urine FEME
 Stool Occult Blood (Immunological)
-Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, or Glycated Haemoglobin)"
+Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, or Glycated Haemoglobin)",Profile
 IQHS25,$273.00,HEALTH SCREENING 25,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1395,7 +1395,7 @@ CA 125 (female)
 PSA (male)
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine FEME"
+Urine FEME",Profile
 IQHS27,$303.00,HEALTH SCREENING 27,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1448,7 +1448,7 @@ VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Urine FEME
 Stool Occult Blood (Immunological)
-Select ONE Additional Test"
+Select ONE Additional Test",Profile
 IQHS29,$466.00,HEALTH SCREENING 29,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1507,7 +1507,7 @@ EBV EA-IgA
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Urine FEME
-Stool Occult Blood (Immunological)"
+Stool Occult Blood (Immunological)",Profile
 IQHS30,$577.00,HEALTH SCREENING 30,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1566,27 +1566,27 @@ VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 Urine FEME
 Stool Occult Blood (Immunological)
-Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, Testosterone Total, or Ferritin)"
+Select ONE Additional Test (CA125, PSA, CA19.9, CA15.3, Beta HCG, Testosterone Total, or Ferritin)",Profile
 HP04,$70.00,"Hepatitis B, C & HIV Profile 04","Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Anti-HCV Antibody
-HIV Ag/Ab Screen"
+HIV Ag/Ab Screen",Profile
 HP05,$84.00,"Hepatitis A, B & C Profile 05","Hepatitis A Total Antibody
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
-Anti-HCV Antibody"
+Anti-HCV Antibody",Profile
 HP06,$86.00,Hepatitis B Profile 06,"Alpha Fetoprotein (AFP)
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Hepatitis Be Antigen (HBeAg)
 Hepatitis Be Antibody (HBeAb)
 ALT/SGPT
-AST/SGOT"
+AST/SGOT",Profile
 HP07,$91.00,Hepatitis B Profile 07,"Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Hepatitis Be Antigen (HBeAg)
 Hepatitis Be Antibody (HBeAb)
-Hepatitis Bc Antibody"
+Hepatitis Bc Antibody",Profile
 HP08,$62.00,Hepatitis B Profile 08,"Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Total Protein
@@ -1599,12 +1599,12 @@ A/G Ratio
 ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
-GGT"
+GGT",Profile
 CHBP,$331.00,Chronic Hepatitis B Profile,"Hepatitis Be Antigen (HBeAg)
 Hepatitis Be Antibody (HBeAb)
 Hepatitis Bs Antigen (Quantitative)
 HBV DNA (Quantitative)
-ALT/SGPT"
+ALT/SGPT",Profile
 LVA,$40.00,Liver Profile,"Total Protein
 Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
@@ -1615,7 +1615,7 @@ A/G Ratio
 ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
-GGT"
+GGT",Profile
 IQLV01,$38.00,Liver Profile 01,"Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
 Bilirubin, Indirect (if Total Bilirubin is elevated)
@@ -1626,7 +1626,7 @@ ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
-LDH"
+LDH",Profile
 IQLV02,$41.00,Liver Profile 02,"Total Protein
 Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
@@ -1638,7 +1638,7 @@ ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
-LDH"
+LDH",Profile
 IQLV04,$96.00,Liver Profile 04,"Total Protein
 Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
@@ -1654,7 +1654,7 @@ LDH
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Hepatitis A Total Antibody
-Alpha Fetoprotein (AFP)"
+Alpha Fetoprotein (AFP)",Profile
 IQLV05,$53.00,Liver Profile 05,"Total Protein
 Total Bilirubin
 Bilirubin, Direct (if Total Bilirubin is elevated)
@@ -1666,47 +1666,47 @@ ALT/SGPT
 AST/SGOT
 Alkaline Phosphatase
 GGT
-Alpha Fetoprotein (AFP)"
+Alpha Fetoprotein (AFP)",Profile
 IQAM03,$66.00,AMENORRHOEA PROFILE 03,"Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM01,$105.00,AMENORRHOEA PROFILE 01,"Testosterone
 Estradiol (E2)
 Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM09,$88.00,HORMONAL STUDY 09,"Testosterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM07,$98.00,HORMONAL STUDY 07,"Estradiol (E2)
 Progesterone
 Follicle Stimulating Hormone (FSH)
-Luteinising Hormone (LH)"
+Luteinising Hormone (LH)",Profile
 IQAM06,$117.00,HORMONAL STUDY 06,"Estradiol (E2)
 Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM08,$110.00,HORMONAL STUDY 08,"Estradiol (E2)
 Progesterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM04,$132.00,AMENORRHOEA PROFILE 04,"Testosterone
 Estradiol (E2)
 Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
-Thyroid Stimulating Hormone (TSH)"
+Thyroid Stimulating Hormone (TSH)",Profile
 IQAM10,$132.00,HORMONAL STUDY 10,"Estradiol (E2)
 Free T4
 Thyroid Stimulating Hormone (TSH)
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQAM02,$165.00,AMENORRHOEA PROFILE 02,"Testosterone
 Estradiol (E2)
 Progesterone
@@ -1715,7 +1715,7 @@ Free T3
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
-Thyroid Stimulating Hormone (TSH)"
+Thyroid Stimulating Hormone (TSH)",Profile
 IQAM05,$196.00,AMENORRHOEA PROFILE 05,"Testosterone
 Estradiol (E2)
 Progesterone
@@ -1724,35 +1724,35 @@ Cortisol
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
-Dehydroepiandrosterone Sulfate (DHEAS)"
+Dehydroepiandrosterone Sulfate (DHEAS)",Profile
 IQFS06,$88.00,FERTILITY SCREEN 06 (MALE),"Testosterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQFS07,$111.00,FERTILITY SCREEN 07 (MALE),"Testosterone
 Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQFS04,$128.00,FERTILITY SCREEN 04 (FEMALE),"Estradiol (E2)
 Progesterone
 Free T4
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 IQFS01,$99.00,FERTILITY SCREEN 01 (FEMALE),"Estradiol (E2)
 Progesterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
-Beta HCG"
+Beta HCG",Profile
 IQFS01A,$216.00,FERTILITY SCREEN 01A (FEMALE),"Estradiol (E2)
 Progesterone
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
 Beta HCG
-Anti-Mullerian Hormone"
+Anti-Mullerian Hormone",Profile
 IQFS05,$191.00,FERTILITY SCREEN 05 (FEMALE),"Testosterone
 Estradiol (E2)
 Free T4
@@ -1760,7 +1760,7 @@ Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
 Thyroid Stimulating Hormone (TSH)
-Dehydroepiandrosterone Sulfate (DHEAS)"
+Dehydroepiandrosterone Sulfate (DHEAS)",Profile
 IQFS03,$276.00,FERTILITY SCREEN 03,"Testosterone
 Estradiol (E2)
 Progesterone
@@ -1770,25 +1770,25 @@ Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
 Prolactin
 Thyroid Stimulating Hormone (TSH)
-Anti-Mullerian Hormone"
+Anti-Mullerian Hormone",Profile
 ME01,$65.00,MENOPAUSAL PROFILE 01,"Estradiol (E2)
 Follicle Stimulating Hormone (FSH)
-Luteinising Hormone (LH)"
+Luteinising Hormone (LH)",Profile
 MCP1,$82.00,MENSTRUAL CYCLE PROFILE 1,"Estradiol (E2)
 Progesterone
 Follicle Stimulating Hormone (FSH)
-Prolactin"
+Prolactin",Profile
 MCP2,$88.00,MENSTRUAL CYCLE PROFILE 2,"Estradiol (E2)
 Follicle Stimulating Hormone (FSH)
 Luteinising Hormone (LH)
-Prolactin"
+Prolactin",Profile
 ASS01,$128.00,ANTI-AGEING SCREENING 01 (FEMALE),"Estradiol (E2)
 Dehydroepiandrosterone Sulfate (DHEAS)
-Insulin like Growth Factor (IGF1)"
+Insulin like Growth Factor (IGF1)",Profile
 ASS02,$177.00,ANTI-AGEING SCREENING 02 (MALE),"Dehydroepiandrosterone Sulfate (DHEAS)
 Insulin like Growth Factor (IGF1)
 Sex Hormone Binding Globulin (SHBG)
-Free Androgen Index (FAI)"
+Free Androgen Index (FAI)",Profile
 PM01,$99.00,PREMARITAL PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -1803,30 +1803,30 @@ RPR & TPLA (if Syphilis is reactive)
 Hepatitis Bs Antigen (HBsAg)
 Hepatitis Bs Antibody (HBsAb)
 Rubella IgG Antibody
-Hb Electrophoresis"
+Hb Electrophoresis",Profile
 EL01,$22.00,Electrolytes Profile 01,"Sodium
 Potassium
 Chloride
-Bicarbonate"
+Bicarbonate",Profile
 U/E,$26.00,Urea & Electrolytes,"Sodium
 Potassium
 Chloride
 Urea
-Bicarbonate"
+Bicarbonate",Profile
 IQRF04,$30.00,Renal Profile 04,"Sodium
 Potassium
 Chloride
 Urea
 Creatinine
 eGFR
-Bicarbonate"
+Bicarbonate",Profile
 IQRF03,$30.00,Renal Profile 03,"Sodium
 Potassium
 Chloride
 Urea
 Creatinine
 eGFR
-Uric Acid"
+Uric Acid",Profile
 IQRF05,$35.00,Renal Profile 05,"Glucose
 Sodium
 Potassium
@@ -1834,7 +1834,7 @@ Chloride
 Urea
 Creatinine
 eGFR
-Bicarbonate"
+Bicarbonate",Profile
 IQRF01,$34.00,Renal Profile 01,"Sodium
 Potassium
 Chloride
@@ -1842,7 +1842,7 @@ Urea
 Creatinine
 eGFR
 Bicarbonate
-Urine FEME"
+Urine FEME",Profile
 IQRF10,$60.00,Renal Profile 10,"Sodium
 Potassium
 Chloride
@@ -1851,7 +1851,7 @@ Creatinine
 eGFR
 Bicarbonate
 Urine FEME
-Urine Microalbumin/Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio",Profile
 IQRF06,$45.00,Renal Profile 06,"Glucose
 Sodium
 Potassium
@@ -1862,7 +1862,7 @@ eGFR
 Calcium
 Phosphate
 Bicarbonate
-Uric Acid"
+Uric Acid",Profile
 IQRF12,$82.00,Renal Profile 12,"Glucose
 Sodium
 Potassium
@@ -1878,54 +1878,54 @@ Cholesterol, LDL (Direct)
 Cholesterol/HDL Ratio
 Triglycerides
 Urine FEME
-Urine Microalbumin/Creatinine Ratio"
+Urine Microalbumin/Creatinine Ratio",Profile
 IQST01,$182.00,STD Profile 01,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
-Herpes Simplex Virus Type II IgG"
+Herpes Simplex Virus Type II IgG",Profile
 IQST07,$57.00,STD Profile 07,"Direct Smear for GC
 Herpes Simplex Virus Type I IgG
-Herpes Simplex Virus Type II IgG"
+Herpes Simplex Virus Type II IgG",Profile
 IQST08,$65.00,STD Profile 08,"Direct Smear for GC
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST10,$386.00,STD Profile 10,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-VP3 (Candida albicans/Candida others, Gardnerella vaginalis, Trichomonas vaginalis)"
+VP3 (Candida albicans/Candida others, Gardnerella vaginalis, Trichomonas vaginalis)",Profile
 IQST04,$188.00,STD Profile 04,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST09,$72.00,STD Profile 09,"Direct Smear for GC
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST03,$198.00,STD Profile 03,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 HIV Ag/Ab Screen
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST05,$201.00,STD Profile 05,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 Urine FEME
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST02,$203.00,STD Profile 02,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
 HIV Ag/Ab Screen
 Urine FEME
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST06,$309.00,STD Profile 06,"Chlamydia & Gonorrhoea PCR
 Herpes Simplex Virus Type I IgG
 Herpes Simplex Virus Type II IgG
@@ -1933,210 +1933,574 @@ Herpes Simplex Virus I & II PCR
 HIV Ag/Ab Screen
 Urine FEME
 VD (Syphilis TP Ab)
-RPR & TPLA (if Syphilis is reactive)"
+RPR & TPLA (if Syphilis is reactive)",Profile
 IQST12,$400.00,STD Profile 12,"Herpes Simplex Virus I & II PCR
 Haemophilus Ducreyi
 Cytomegalovirus
 Treponema Pallidum
 Lymphogranuloma Venereum
-Varicella-Zoster Virus"
+Varicella-Zoster Virus",Profile
 IQST11,$432.00,STD Profile 11,"Chlamydia trachomatis
 Mycoplasma Genitalium
 Mycoplasma Hominis
 Neisseria Gonorrhoea
 Trichomonas Vaginalis
 Ureaplasma Parvum
-Ureaplasma Urealyticum"
+Ureaplasma Urealyticum",Profile
 QTP2,$43.00,THYROID PROFILE 2,"Free T4
-Thyroid Stimulating Hormone (TSH)"
+Thyroid Stimulating Hormone (TSH)",Profile
 QTP3,$58.00,THYROID PROFILE 3,"Free T4
 Free T3
-Thyroid Stimulating Hormone (TSH)"
+Thyroid Stimulating Hormone (TSH)",Profile
 QTP4,$100.00,THYROID PROFILE 4,"Free T4
 Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin Antibody
-Thyroid Peroxidase Antibody (Anti-TPO)"
+Thyroid Peroxidase Antibody (Anti-TPO)",Profile
 QTP6,$170.00,THYROID PROFILE 6,"Free T4
 Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin Antibody
 Thyroid Peroxidase Antibody (Anti-TPO)
-Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
+Thyroid Stimulating Hormone Receptor Antibody (TRAB)",Profile
 QTP9,$198.00,THYROID PROFILE 9,"Free T4
 Free T3
 Thyroid Stimulating Hormone (TSH)
 Thyroglobulin
 Thyroglobulin Antibody
 Thyroid Peroxidase Antibody (Anti-TPO)
-Thyroid Stimulating Hormone Receptor Antibody (TRAB)"
-FT4,$36.00,Free T4 (FT4),Free T4
-FT3,$45.00,Free T3 (FT3),Free T3
-TSH,$34.00,Thyroid Stimulating Hormone (TSH),Thyroid Stimulating Hormone (TSH)
-TYG,$124.00,Thyroglobulin,Thyroglobulin
-THA,$36.00,Thyroglobulin Antibody,Thyroglobulin Antibody
-TPO,$50.00,Thyroid Peroxidase Antibody (Anti-TPO),Thyroid Peroxidase Antibody (Anti-TPO)
-TRA,$98.00,Thyroid Stimulating Hormone Receptor Antibody (TRAB),Thyroid Stimulating Hormone Receptor Antibody (TRAB)
-T3,$48.00,Total Triiodothyronine,Total Triiodothyronine
-HIV/HIW,$17.00,HIV Screen,HIV Ag/Ab Screen
+Thyroid Stimulating Hormone Receptor Antibody (TRAB)",Profile
+FT4,$36.00,Free T4 (FT4),Free T4,Profile
+FT3,$45.00,Free T3 (FT3),Free T3,Profile
+TSH,$34.00,Thyroid Stimulating Hormone (TSH),Thyroid Stimulating Hormone (TSH),Profile
+TYG,$124.00,Thyroglobulin,Thyroglobulin,Profile
+THA,$36.00,Thyroglobulin Antibody,Thyroglobulin Antibody,Profile
+TPO,$50.00,Thyroid Peroxidase Antibody (Anti-TPO),Thyroid Peroxidase Antibody (Anti-TPO),Profile
+TRA,$98.00,Thyroid Stimulating Hormone Receptor Antibody (TRAB),Thyroid Stimulating Hormone Receptor Antibody (TRAB),Profile
+T3,$48.00,Total Triiodothyronine,Total Triiodothyronine,Profile
+HIV/HIW,$17.00,HIV Screen,HIV Ag/Ab Screen,Profile
 IQWP1,$17.00,Work Permit 1,"VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Urine Pregnancy"
+Urine Pregnancy",Profile
 IQWP11,$12.00,Work Permit 11,"VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-Beta-HCG Total (Serum Pregnancy Test)"
+Beta-HCG Total (Serum Pregnancy Test)",Profile
 IQWP9,$21.00,Work Permit 9,"ABO Blood Group
-HIV Ag/Ab Screen"
+HIV Ag/Ab Screen",Profile
 IQWP2,$21.00,Work Permit 2,"VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-HIV Ag/Ab Screen"
+HIV Ag/Ab Screen",Profile
 IQWP3,$27.00,Work Permit 3,"VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 HIV Ag/Ab Screen
-Urine Pregnancy"
+Urine Pregnancy",Profile
 IQWP4,$26.00,Work Permit 4,"Hepatitis Bs Antigen (HBsAg)
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-HIV Ag/Ab Screen"
+HIV Ag/Ab Screen",Profile
 IQWP10,$24.00,Work Permit 10,"VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 HIV Ag/Ab Screen
-Beta-HCG Total (Serum Pregnancy Test)"
+Beta-HCG Total (Serum Pregnancy Test)",Profile
 IQWP8,$34.00,Work Permit 8,"Hepatitis Bs Antigen (HBsAg)
 Malaria Parasite
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-HIV Ag/Ab Screen"
+HIV Ag/Ab Screen",Profile
 IQWP5,$30.00,Work Permit 5,"Malaria Parasite
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 HIV Ag/Ab Screen
-Beta-HCG Total (Serum Pregnancy Test)"
+Beta-HCG Total (Serum Pregnancy Test)",Profile
 IQWP7,$32.00,Work Permit 7,"Malaria Parasite
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 HIV Ag/Ab Screen
-Urine Pregnancy"
+Urine Pregnancy",Profile
 IQWP6,$29.00,Work Permit 6,"Malaria Parasite
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
-HIV Ag/Ab Screen"
-PHT,$98.00,Phadiatop,Phadiatop
-A01,$56.00,Total IGE,Total IGE
-A71,$67.00,Barley F6,Barley F6
-A36,$67.00,Buckwheat F11,Buckwheat F11
-A22,$93.00,Gluten F79,Gluten F79
-A73,$67.00,Oat F7,Oat F7
-A75,$67.00,Rice F9,Rice F9
-A27,$67.00,Wheat F4,Wheat F4
-B07,$82.00,Amoxicilloyl C6,Amoxicilloyl C6
-B08,$82.00,Ampicilloyl C5,Ampicilloyl C5
-B09,$82.00,Penicilloyl G C1,Penicilloyl G C1
-B10,$82.00,Penicilloyl V C2,Penicilloyl V C2
-A52,$67.00,Egg F245,Egg F245
-A03,$93.00,Egg White HF1,Egg White HF1
-A53,$67.00,Egg Yolk F75,Egg Yolk F75
-A04,$67.00,Cat Dander E1,Cat Dander E1
-A05,$67.00,Dog Dander E5,Dog Dander E5
-B13,$61.00,Guinea Pig Epithelium E6,Guinea Pig Epithelium E6
-B15,$87.00,Hamster Epithelium E84,Hamster Epithelium E84
-B36,$93.00,"Mouse Epithelium, Serum and Urine Proteins E88","Mouse Epithelium, Serum and Urine Proteins E88"
-B14,$93.00,Rabbit Epithelium E82,Rabbit Epithelium E82
-B35,$88.00,"Rat Epithelium, Serum and Urine Proteins E87","Rat Epithelium, Serum and Urine Proteins E87"
-A28,$93.00,Anchovies (Ikan Bilis) F313,Anchovies (Ikan Bilis) F313
-A31,$67.00,Fish (Cod) F3,Fish (Cod) F3
-A32,$67.00,Salmon F41,Salmon F41
-A35,$67.00,Tuna F40,Tuna F40
-A57,$61.00,Apple F49,Apple F49
-A58,$67.00,Banana F92,Banana F92
-A59,$87.00,Grape F259,Grape F259
-A60,$67.00,Kiwi F84,Kiwi F84
-A39,$67.00,Mango F91,Mango F91
-A61,$61.00,Melon F87,Melon F87
-A62,$66.00,Orange F33,Orange F33
-A63,$61.00,Papaya F293,Papaya F293
-A64,$61.00,Peach F95,Peach F95
-A38,$67.00,Strawberry F44,Strawberry F44
-A67,$61.00,Water Melon F329,Water Melon F329
-A18,$67.00,Blomia Tropicalis D201,Blomia Tropicalis D201
-A19,$67.00,Dermatophagoides Farinae D2,Dermatophagoides Farinae D2
-A20,$67.00,Dermatophagoides Pteronyssinus D1,Dermatophagoides Pteronyssinus D1
-A02,$93.00,Greer labs House Dust HAH1,Greer labs House Dust HAH1
-B23,$93.00,Hollister-Stier Labs House Dust H2,Hollister-Stier Labs House Dust H2
-B26,$93.00,"Cockroach, American I206","Cockroach, American I206"
-A10,$67.00,"Cockroach, German I6","Cockroach, German I6"
-A54,$67.00,Beef F27,Beef F27
-A07,$67.00,Chicken F83,Chicken F83
-A55,$67.00,Mutton F88,Mutton F88
-A56,$67.00,Pork F26,Pork F26
-A16,$67.00,Cow's Milk F2,Cow's Milk F2
-A17,$67.00,Cacao (Cocoa) F93,Cacao (Cocoa) F93
-B17,$93.00,Coffee F221,Coffee F221
-A68,$67.00,Malt F90,Malt F90
-A69,$67.00,Mushroom F212,Mushroom F212
-B18,$93.00,Tea F222,Tea F222
-A70,$67.00,Yeast F45,Yeast F45
-A11,$67.00,Alternaria Alternata M6,Alternaria Alternata M6
-A12,$67.00,Aspergillus Fumigatus M3,Aspergillus Fumigatus M3
-A13,$67.00,Candida Albicans M5,Candida Albicans M5
-A14,$67.00,Cladosporium Herbarum M2,Cladosporium Herbarum M2
-B01,$61.00,Curvularia Lunata M16,Curvularia Lunata M16
-A15,$67.00,Penicillium Notatum HM1,Penicillium Notatum HM1
-B37,$88.00,Cotton Seed K83,Cotton Seed K83
-B38,$88.00,Ficus K81,Ficus K81
-B39,$88.00,Formaldehyde / Formalin,Formaldehyde / Formalin
-B40,$88.00,Isocyanate HDI (Hexamethylene Diisocyanate) K77,Isocyanate HDI (Hexamethylene Diisocyanate) K77
-B41,$88.00,Isocyanate MDI (Diphenylmethane Diisocyanate) K76,Isocyanate MDI (Diphenylmethane Diisocyanate) K76
-B42,$88.00,Isocyanate TDI (Toluene Diisocyanate) K75,Isocyanate TDI (Toluene Diisocyanate) K75
-B43,$88.00,Ispaghula K72,Ispaghula K72
-B06,$88.00,Latex (Hevea Brasiliensis) K82,Latex (Hevea Brasiliensis) K82
-B44,$88.00,Phthalic Anhydride K79,Phthalic Anhydride K79
-B45,$88.00,Sunflower Seed K84,Sunflower Seed K84
-B31,$61.00,Acacia T19,Acacia T19
-A08,$67.00,Bahia Grass G17,Bahia Grass G17
-A09,$67.00,Bermuda Grass G2,Bermuda Grass G2
-B02,$66.00,Common Ragweed W1,Common Ragweed W1
-B30,$61.00,Japanese Cedar T17,Japanese Cedar T17
-B03,$66.00,Johnson Grass G10,Johnson Grass G10
-B32,$61.00,Melaleuca T21,Melaleuca T21
-B33,$61.00,Mugwort W6,Mugwort W6
-B04,$62.00,Timothy Grass G6,Timothy Grass G6
-B29,$61.00,White Pine T16,White Pine T16
-A72,$66.00,Coconut F36,Coconut F36
-A21,$67.00,Corn F8,Corn F8
-A74,$61.00,Pea F12,Pea F12
-A24,$67.00,Peanut F13,Peanut F13
-A25,$67.00,Sesame Seed F10,Sesame Seed F10
-A26,$67.00,Soya Bean F14,Soya Bean F14
-A42,$67.00,Blue Mussel F37,Blue Mussel F37
-A29,$67.00,Clam F207,Clam F207
-A30,$67.00,Crab F23,Crab F23
-A43,$93.00,Lobster F80,Lobster F80
-A44,$93.00,Oyster F290,Oyster F290
-A45,$93.00,Scallop F338,Scallop F338
-A33,$67.00,Shrimp F24,Shrimp F24
-A34,$67.00,Squid F258,Squid F258
-B21,$67.00,Black Pepper F280,Black Pepper F280
-B20,$67.00,Chili Pepper F279,Chili Pepper F279
-B19,$66.00,Ginger F270,Ginger F270
-B22,$87.00,Mustard F89,Mustard F89
-A37,$67.00,Almond F20,Almond F20
-A46,$67.00,Brazil Nut F18,Brazil Nut F18
-A47,$93.00,Cashew Nut F202,Cashew Nut F202
-A23,$67.00,Hazel Nut F17,Hazel Nut F17
-A48,$93.00,Macadamia Nut F345,Macadamia Nut F345
-A49,$66.00,Pine Nut F253,Pine Nut F253
-A50,$93.00,Pistachio F203,Pistachio F203
-A51,$67.00,Walnut F256,Walnut F256
-A78,$66.00,Carrot F31,Carrot F31
-A80,$66.00,Celery F85,Celery F85
-A82,$66.00,Garlic F47,Garlic F47
-A84,$66.00,Onion F48,Onion F48
-A85,$67.00,Potato F35,Potato F35
-A88,$67.00,Tomato F25,Tomato F25
-B27,$87.00,Common Wasp (Vespula spp.) I3,Common Wasp (Vespula spp.) I3
-B28,$87.00,Fire Ant I70,Fire Ant I70
-B24,$87.00,Honey Bee (Apis mellifera) I1,Honey Bee (Apis mellifera) I1
-B46,$82.00,Paper Wasp I4,Paper Wasp I4
-B25,$87.00,White-faced Hornet (D.maculata) I2,White-faced Hornet (D.maculata) I2
-B47,$82.00,Yellow Hornet I5,Yellow Hornet I5
+HIV Ag/Ab Screen",Profile
+PHT,$98.00,Phadiatop,Phadiatop,Single Allergy
+A01,$56.00,Total IGE,Total IGE,Single Allergy
+A71,$67.00,Barley F6,Barley F6,Single Allergy
+A36,$67.00,Buckwheat F11,Buckwheat F11,Single Allergy
+A22,$93.00,Gluten F79,Gluten F79,Single Allergy
+A73,$67.00,Oat F7,Oat F7,Single Allergy
+A75,$67.00,Rice F9,Rice F9,Single Allergy
+A27,$67.00,Wheat F4,Wheat F4,Single Allergy
+B07,$82.00,Amoxicilloyl C6,Amoxicilloyl C6,Single Allergy
+B08,$82.00,Ampicilloyl C5,Ampicilloyl C5,Single Allergy
+B09,$82.00,Penicilloyl G C1,Penicilloyl G C1,Single Allergy
+B10,$82.00,Penicilloyl V C2,Penicilloyl V C2,Single Allergy
+A52,$67.00,Egg F245,Egg F245,Single Allergy
+A03,$93.00,Egg White HF1,Egg White HF1,Single Allergy
+A53,$67.00,Egg Yolk F75,Egg Yolk F75,Single Allergy
+A04,$67.00,Cat Dander E1,Cat Dander E1,Single Allergy
+A05,$67.00,Dog Dander E5,Dog Dander E5,Single Allergy
+B13,$61.00,Guinea Pig Epithelium E6,Guinea Pig Epithelium E6,Single Allergy
+B15,$87.00,Hamster Epithelium E84,Hamster Epithelium E84,Single Allergy
+B36,$93.00,"Mouse Epithelium, Serum and Urine Proteins E88","Mouse Epithelium, Serum and Urine Proteins E88",Single Allergy
+B14,$93.00,Rabbit Epithelium E82,Rabbit Epithelium E82,Single Allergy
+B35,$88.00,"Rat Epithelium, Serum and Urine Proteins E87","Rat Epithelium, Serum and Urine Proteins E87",Single Allergy
+A28,$93.00,Anchovies (Ikan Bilis) F313,Anchovies (Ikan Bilis) F313,Single Allergy
+A31,$67.00,Fish (Cod) F3,Fish (Cod) F3,Single Allergy
+A32,$67.00,Salmon F41,Salmon F41,Single Allergy
+A35,$67.00,Tuna F40,Tuna F40,Single Allergy
+A57,$61.00,Apple F49,Apple F49,Single Allergy
+A58,$67.00,Banana F92,Banana F92,Single Allergy
+A59,$87.00,Grape F259,Grape F259,Single Allergy
+A60,$67.00,Kiwi F84,Kiwi F84,Single Allergy
+A39,$67.00,Mango F91,Mango F91,Single Allergy
+A61,$61.00,Melon F87,Melon F87,Single Allergy
+A62,$66.00,Orange F33,Orange F33,Single Allergy
+A63,$61.00,Papaya F293,Papaya F293,Single Allergy
+A64,$61.00,Peach F95,Peach F95,Single Allergy
+A38,$67.00,Strawberry F44,Strawberry F44,Single Allergy
+A67,$61.00,Water Melon F329,Water Melon F329,Single Allergy
+A18,$67.00,Blomia Tropicalis D201,Blomia Tropicalis D201,Single Allergy
+A19,$67.00,Dermatophagoides Farinae D2,Dermatophagoides Farinae D2,Single Allergy
+A20,$67.00,Dermatophagoides Pteronyssinus D1,Dermatophagoides Pteronyssinus D1,Single Allergy
+A02,$93.00,Greer labs House Dust HAH1,Greer labs House Dust HAH1,Single Allergy
+B23,$93.00,Hollister-Stier Labs House Dust H2,Hollister-Stier Labs House Dust H2,Single Allergy
+B26,$93.00,"Cockroach, American I206","Cockroach, American I206",Single Allergy
+A10,$67.00,"Cockroach, German I6","Cockroach, German I6",Single Allergy
+A54,$67.00,Beef F27,Beef F27,Single Allergy
+A07,$67.00,Chicken F83,Chicken F83,Single Allergy
+A55,$67.00,Mutton F88,Mutton F88,Single Allergy
+A56,$67.00,Pork F26,Pork F26,Single Allergy
+A16,$67.00,Cow's Milk F2,Cow's Milk F2,Single Allergy
+A17,$67.00,Cacao (Cocoa) F93,Cacao (Cocoa) F93,Single Allergy
+B17,$93.00,Coffee F221,Coffee F221,Single Allergy
+A68,$67.00,Malt F90,Malt F90,Single Allergy
+A69,$67.00,Mushroom F212,Mushroom F212,Single Allergy
+B18,$93.00,Tea F222,Tea F222,Single Allergy
+A70,$67.00,Yeast F45,Yeast F45,Single Allergy
+A11,$67.00,Alternaria Alternata M6,Alternaria Alternata M6,Single Allergy
+A12,$67.00,Aspergillus Fumigatus M3,Aspergillus Fumigatus M3,Single Allergy
+A13,$67.00,Candida Albicans M5,Candida Albicans M5,Single Allergy
+A14,$67.00,Cladosporium Herbarum M2,Cladosporium Herbarum M2,Single Allergy
+B01,$61.00,Curvularia Lunata M16,Curvularia Lunata M16,Single Allergy
+A15,$67.00,Penicillium Notatum HM1,Penicillium Notatum HM1,Single Allergy
+B37,$88.00,Cotton Seed K83,Cotton Seed K83,Single Allergy
+B38,$88.00,Ficus K81,Ficus K81,Single Allergy
+B39,$88.00,Formaldehyde / Formalin,Formaldehyde / Formalin,Single Allergy
+B40,$88.00,Isocyanate HDI (Hexamethylene Diisocyanate) K77,Isocyanate HDI (Hexamethylene Diisocyanate) K77,Single Allergy
+B41,$88.00,Isocyanate MDI (Diphenylmethane Diisocyanate) K76,Isocyanate MDI (Diphenylmethane Diisocyanate) K76,Single Allergy
+B42,$88.00,Isocyanate TDI (Toluene Diisocyanate) K75,Isocyanate TDI (Toluene Diisocyanate) K75,Single Allergy
+B43,$88.00,Ispaghula K72,Ispaghula K72,Single Allergy
+B06,$88.00,Latex (Hevea Brasiliensis) K82,Latex (Hevea Brasiliensis) K82,Single Allergy
+B44,$88.00,Phthalic Anhydride K79,Phthalic Anhydride K79,Single Allergy
+B45,$88.00,Sunflower Seed K84,Sunflower Seed K84,Single Allergy
+B31,$61.00,Acacia T19,Acacia T19,Single Allergy
+A08,$67.00,Bahia Grass G17,Bahia Grass G17,Single Allergy
+A09,$67.00,Bermuda Grass G2,Bermuda Grass G2,Single Allergy
+B02,$66.00,Common Ragweed W1,Common Ragweed W1,Single Allergy
+B30,$61.00,Japanese Cedar T17,Japanese Cedar T17,Single Allergy
+B03,$66.00,Johnson Grass G10,Johnson Grass G10,Single Allergy
+B32,$61.00,Melaleuca T21,Melaleuca T21,Single Allergy
+B33,$61.00,Mugwort W6,Mugwort W6,Single Allergy
+B04,$62.00,Timothy Grass G6,Timothy Grass G6,Single Allergy
+B29,$61.00,White Pine T16,White Pine T16,Single Allergy
+A72,$66.00,Coconut F36,Coconut F36,Single Allergy
+A21,$67.00,Corn F8,Corn F8,Single Allergy
+A74,$61.00,Pea F12,Pea F12,Single Allergy
+A24,$67.00,Peanut F13,Peanut F13,Single Allergy
+A25,$67.00,Sesame Seed F10,Sesame Seed F10,Single Allergy
+A26,$67.00,Soya Bean F14,Soya Bean F14,Single Allergy
+A42,$67.00,Blue Mussel F37,Blue Mussel F37,Single Allergy
+A29,$67.00,Clam F207,Clam F207,Single Allergy
+A30,$67.00,Crab F23,Crab F23,Single Allergy
+A43,$93.00,Lobster F80,Lobster F80,Single Allergy
+A44,$93.00,Oyster F290,Oyster F290,Single Allergy
+A45,$93.00,Scallop F338,Scallop F338,Single Allergy
+A33,$67.00,Shrimp F24,Shrimp F24,Single Allergy
+A34,$67.00,Squid F258,Squid F258,Single Allergy
+B21,$67.00,Black Pepper F280,Black Pepper F280,Single Allergy
+B20,$67.00,Chili Pepper F279,Chili Pepper F279,Single Allergy
+B19,$66.00,Ginger F270,Ginger F270,Single Allergy
+B22,$87.00,Mustard F89,Mustard F89,Single Allergy
+A37,$67.00,Almond F20,Almond F20,Single Allergy
+A46,$67.00,Brazil Nut F18,Brazil Nut F18,Single Allergy
+A47,$93.00,Cashew Nut F202,Cashew Nut F202,Single Allergy
+A23,$67.00,Hazel Nut F17,Hazel Nut F17,Single Allergy
+A48,$93.00,Macadamia Nut F345,Macadamia Nut F345,Single Allergy
+A49,$66.00,Pine Nut F253,Pine Nut F253,Single Allergy
+A50,$93.00,Pistachio F203,Pistachio F203,Single Allergy
+A51,$67.00,Walnut F256,Walnut F256,Single Allergy
+A78,$66.00,Carrot F31,Carrot F31,Single Allergy
+A80,$66.00,Celery F85,Celery F85,Single Allergy
+A82,$66.00,Garlic F47,Garlic F47,Single Allergy
+A84,$66.00,Onion F48,Onion F48,Single Allergy
+A85,$67.00,Potato F35,Potato F35,Single Allergy
+A88,$67.00,Tomato F25,Tomato F25,Single Allergy
+B27,$87.00,Common Wasp (Vespula spp.) I3,Common Wasp (Vespula spp.) I3,Single Allergy
+B28,$87.00,Fire Ant I70,Fire Ant I70,Single Allergy
+B24,$87.00,Honey Bee (Apis mellifera) I1,Honey Bee (Apis mellifera) I1,Single Allergy
+B46,$82.00,Paper Wasp I4,Paper Wasp I4,Single Allergy
+B25,$87.00,White-faced Hornet (D.maculata) I2,White-faced Hornet (D.maculata) I2,Single Allergy
+B47,$82.00,Yellow Hornet I5,Yellow Hornet I5,Single Allergy
+ALT,$9.00,Alanine Aminotransferase (ALT/SGPT),Alanine Aminotransferase (ALT/SGPT),Single Test
+ALB,$9.00,Albumin,Albumin,Single Test
+UAB,$21.00,Albumin (24-hr Urine),Albumin (24-hr Urine),Single Test
+BLB,$55.00,Alcohol (Ethanol),Alcohol (Ethanol),Single Test
+UAL,$48.00,Alcohol (Urine),Alcohol (Urine),Single Test
+ALP,$9.00,Alkaline Phosphatase,Alkaline Phosphatase,Single Test
+ALH,$26.00,Alkaline Phosphatase Isoenzyme (Fractionation) Heat Stable,Alkaline Phosphatase Isoenzyme (Fractionation) Heat Stable,Single Test
+AFP,$34.00,Alpha Fetoprotein (AFP),Alpha Fetoprotein (AFP),Single Test
+AFM,$30.00,Alpha Fetoprotein (Maternal),Alpha Fetoprotein (Maternal),Single Test
+AL,$104.00,Aluminium (Serum),Aluminium (Serum),Single Test
+ALU,$98.00,Aluminium Urine,Aluminium Urine,Single Test
+AMY,$14.00,Amylase,Amylase,Single Test
+H226,$280.00,Anal Smear,Anal Smear,Single Test
+AMH,$112.00,Anti Mullerian Hormone,Anti Mullerian Hormone,Single Test
+ANF,$50.00,Anti Nuclear Factor (ANF) (Immunofluorescence with Titre),Anti Nuclear Factor (ANF) (Immunofluorescence with Titre),Single Test
+ASO,$54.00,Anti Streptolysin O Titre (ASOT),Anti Streptolysin O Titre (ASOT),Single Test
+CCP,$96.00,Anti-Cyclic Citrullinated Peptide (Anti-CCP),Anti-Cyclic Citrullinated Peptide (Anti-CCP),Single Test
+AGP,$126.00,Anti-Deaminated Gliadin Peptide IgA,Anti-Deaminated Gliadin Peptide IgA,Single Test
+AGS,$126.00,Anti-Deaminated Gliadin Peptide IgG,Anti-Deaminated Gliadin Peptide IgG,Single Test
+DNA,$46.00,Anti-ds DNA,Anti-ds DNA,Single Test
+ATA,$160.00,Anti-Tissue Transglutaminase IgA,Anti-Tissue Transglutaminase IgA,Single Test
+ATG,$240.00,Anti-Tissue Transglutaminase IgG,Anti-Tissue Transglutaminase IgG,Single Test
+AA1,$35.00,Apolipoprotein A1,Apolipoprotein A1,Single Test
+APB,$35.00,Apolipoprotein B,Apolipoprotein B,Single Test
+PTT,$31.00,APTT,APTT,Single Test
+ASB,$104.00,Arsenic,Arsenic,Single Test
+AST,$9.00,Aspartate Aminotransferase (AST/SGOT),Aspartate Aminotransferase (AST/SGOT),Single Test
+BHG,$35.00,Beta HCG (Quantitative-Maternity),Beta HCG (Quantitative-Maternity),Single Test
+BHM,$35.00,Beta HCG Subunit (Cancer Marker),Beta HCG Subunit (Cancer Marker),Single Test
+BMG,$160.00,Beta-2-Microglobulin,Beta-2-Microglobulin,Single Test
+BIC,$11.00,Bicarbonate,Bicarbonate,Single Test
+NBI,$25.00,Bilirubin (Neonatal),Bilirubin (Neonatal),Single Test
+BIL,$9.00,"Bilirubin, Total","Bilirubin, Total",Single Test
+BOT,$145.00,Bioavailable Testosterone,Bioavailable Testosterone,Single Test
+ABC,$79.00,"Blood Culture, Aerobic","Blood Culture, Aerobic",Single Test
+NBC,$79.00,"Blood Culture, Anaerobic","Blood Culture, Anaerobic",Single Test
+ABO,$11.00,Blood Group,Blood Group,Single Test
+NGBB,$300.00,Brush Cytology,Brush Cytology,Single Test
+NRP,$33.00,C Reactive Protein,C Reactive Protein,Single Test
+C25,$55.00,CA125,CA125,Single Test
+153,$55.00,CA15.3,CA15.3,Single Test
+199,$55.00,CA19.9,CA19.9,Single Test
+CD,$104.00,Cadmium,Cadmium,Single Test
+CA,$9.00,Calcium,Calcium,Single Test
+UCA,$24.00,Calcium (24-hr Urine),Calcium (24-hr Urine),Single Test
+CEA,$35.00,Carcinoembryonic Antigen (CEA),Carcinoembryonic Antigen (CEA),Single Test
+CGP,$160.00,Chlamydia & Gonorrhoea PCR,Chlamydia & Gonorrhoea PCR,Single Test
+CPR,$158.00,Chlamydia PCR,Chlamydia PCR,Single Test
+CTT,$80.00,Chlamydia Trachomatis,Chlamydia Trachomatis,Single Test
+CHL,$9.00,Chloride,Chloride,Single Test
+UCH,$20.00,Chloride (24-hr Urine),Chloride (24-hr Urine),Single Test
+RCU,$18.00,"Chloride, Random Urine","Chloride, Random Urine",Single Test
+HDL,$11.00,"Cholesterol, HDL","Cholesterol, HDL",Single Test
+LDL,$19.00,"Cholesterol, LDL (Calculated)","Cholesterol, LDL (Calculated)",Single Test
+DDL,$20.00,"Cholesterol, LDL (Direct)","Cholesterol, LDL (Direct)",Single Test
+CHO,$9.00,"Cholesterol, Total","Cholesterol, Total",Single Test
+CSE,$104.00,Chromium (Serum),Chromium (Serum),Single Test
+CRU,$104.00,Chromium Urine,Chromium Urine,Single Test
+CBL,$104.00,Chromium Whole Blood,Chromium Whole Blood,Single Test
+CIP,$250.00,CINTEC Plus,CINTEC Plus,Single Test
+CKM,$36.00,Ck-MB,Ck-MB,Single Test
+CBE,$168.00,Cobalt (Serum),Cobalt (Serum),Single Test
+CBR,$70.00,Cobalt Urine,Cobalt Urine,Single Test
+C3,$36.00,Complement C3,Complement C3,Single Test
+C4,$36.00,Complement C4,Complement C4,Single Test
+DCT,$41.00,Coomb's Test (Direct),Coomb's Test (Direct),Single Test
+CU,$80.00,Copper (Serum),Copper (Serum),Single Test
+ALC,$25.00,Corrected Calcium (Albumin),Corrected Calcium (Albumin),Single Test
+COR,$40.00,Cortisol (Blood),Cortisol (Blood),Single Test
+CRE,$9.00,Creatine,Creatine,Single Test
+CRL,$32.00,Creatine Clearance Test (Serum & Urine),Creatine Clearance Test (Serum & Urine),Single Test
+CK,$11.00,Creatine Kinase (CK),Creatine Kinase (CK),Single Test
+UCR,$24.00,Creatinine (24-hr Urine),Creatinine (24-hr Urine),Single Test
+RUC,$24.00,"Creatinine, Random Urine","Creatinine, Random Urine",Single Test
+CS,$60.00,Culture & Sensitivity,Culture & Sensitivity,Single Test
+MRS,$63.00,"Culture & Sensitivity, Methicillin Resistant Staphylococcus Aureus (MRSA)","Culture & Sensitivity, Methicillin Resistant Staphylococcus Aureus (MRSA)",Single Test
+SFC,$60.00,"Culture & Sensitivity, Stool","Culture & Sensitivity, Stool",Single Test
+UCU,$60.00,"Culture & Sensitivity, Urine","Culture & Sensitivity, Urine",Single Test
+SFV,$73.00,"Culture for Salmonella, Shigella, Campylobacter, Vibrio","Culture for Salmonella, Shigella, Campylobacter, Vibrio",Single Test
+CAC,$79.00,Culture Yeast,Culture Yeast,Single Test
+FCS,$96.00,"Culture, Fungus (no identification)","Culture, Fungus (no identification)",Single Test
+GBS,$63.00,"Culture, Group B Streptococci","Culture, Group B Streptococci",Single Test
+GCC,$84.00,"Culture, N. Gonorrhoeae","Culture, N. Gonorrhoeae",Single Test
+NSUGCS,$118.00,"Culture, NSU organisms: GC and other bacterial pathogens – Swab only","Culture, NSU organisms: GC and other bacterial pathogens – Swab only",Single Test
+NSUGCU,$114.00,"Culture, NSU organisms: GC and other bacterial pathogens – Urine only","Culture, NSU organisms: GC and other bacterial pathogens – Urine only",Single Test
+MYC,$74.00,"Culture, Urogenital Mycoplasma and Ureaplasma","Culture, Urogenital Mycoplasma and Ureaplasma",Single Test
+CYF,$130.00,CYFRA-21-1 (CYF),CYFRA-21-1 (CYF),Single Test
+H217,$280.00,Cytology - Non-gynaecological Fluid,Cytology - Non-gynaecological Fluid,Single Test
+H220,$280.00,Cytology - Sputum,Cytology - Sputum,Single Test
+H218,$280.00,Cytology - Urine,Cytology - Urine,Single Test
+CTV,$160.00,Cytomegalovirus,Cytomegalovirus,Single Test
+MVG,$82.00,Cytomegalovirus IgG Antibody (CMV IgG),Cytomegalovirus IgG Antibody (CMV IgG),Single Test
+MVM,$82.00,Cytomegalovirus IgM Antibody (CMV IgM),Cytomegalovirus IgM Antibody (CMV IgM),Single Test
+DDI,$110.00,D-Dimer (Quantitative),D-Dimer (Quantitative),Single Test
+DHE,$63.00,Dehyroepiandrosterone Sulfate (DHEAS),Dehyroepiandrosterone Sulfate (DHEAS),Single Test
+DNG,$116.00,Dengue Antigen (NS1 Antigen),Dengue Antigen (NS1 Antigen),Single Test
+DGE,$55.00,Dengue IgG & IgM Ab,Dengue IgG & IgM Ab,Single Test
+CBI,$12.00,"Direct Bilirubin, Conjugated","Direct Bilirubin, Conjugated",Single Test
+DS,$24.00,"Direct Smear for GC, Monilia & Trichomonas (Wet Mount & Gram Stain)","Direct Smear for GC, Monilia & Trichomonas (Wet Mount & Gram Stain)",Single Test
+AFB,$19.00,"Direct Smear, Acid Fast Bacilli","Direct Smear, Acid Fast Bacilli",Single Test
+AMO,$25.00,"Direct Smear, Amoeba","Direct Smear, Amoeba",Single Test
+GS,$20.00,"Direct Smear, Bacteria (Gram Stain)","Direct Smear, Bacteria (Gram Stain)",Single Test
+FUN,$25.00,"Direct Smear, Fungus","Direct Smear, Fungus",Single Test
+VP3,$156.00,DNA Probe/Multiplex Real Time PCR for Vaginitis (VP3),DNA Probe/Multiplex Real Time PCR for Vaginitis (VP3),Single Test
+DSH,$1050.00,Dual In-Situ Hybridization (DISH),Dual In-Situ Hybridization (DISH),Single Test
+EGR,$15.00,eGFR (Estimated Glomerular Filtration Rate),eGFR (Estimated Glomerular Filtration Rate),Single Test
+EBV,$54.00,Epstein Barr Virus - EA-IgA,Epstein Barr Virus - EA-IgA,Single Test
+ESR,$11.00,Erythrocyte Sedimentation Rate,Erythrocyte Sedimentation Rate,Single Test
+E2,$35.00,Estradiol (E2),Estradiol (E2),Single Test
+CAL,$279.00,Faecal Calprotectin,Faecal Calprotectin,Single Test
+FER,$40.00,Ferritin,Ferritin,Single Test
+FRS,$16.00,FIB-4,FIB-4,Single Test
+FIB,$48.00,Fibrinogen,Fibrinogen,Single Test
+H224,$300.00,Fine Needle Aspiration Cytology (FNAC) (1 to 6 Slides),Fine Needle Aspiration Cytology (FNAC) (1 to 6 Slides),Single Test
+H224B,$700.00,Fine Needle Aspiration Cytology (FNAC) (12 Slides or more),Fine Needle Aspiration Cytology (FNAC) (12 Slides or more),Single Test
+H224A,$550.00,Fine Needle Aspiration Cytology (FNAC) (7 to 12 Slides),Fine Needle Aspiration Cytology (FNAC) (7 to 12 Slides),Single Test
+FVF,$70.00,"Fluid FEME (Appearance, Cell, Specific Gravity)","Fluid FEME (Appearance, Cell, Specific Gravity)",Single Test
+HFN1,$300.00,FNAC Activation One-time Fee,FNAC Activation One-time Fee,Single Test
+HFN6,$200.00,FNAC No Show/Cancellation,FNAC No Show/Cancellation,Single Test
+HFN3,$100.00,FNAC Onsite Slides (1-2 slides),FNAC Onsite Slides (1-2 slides),Single Test
+HFN4,$200.00,FNAC Onsite Slides (3-6 slides),FNAC Onsite Slides (3-6 slides),Single Test
+HFN5,$300.00,FNAC Onsite Slides (7-12 slides),FNAC Onsite Slides (7-12 slides),Single Test
+HFN2,$400.00,FNAC Staffing Hour (per hour of operation),FNAC Staffing Hour (per hour of operation),Single Test
+HFN7,$300.00,FNAC Unbooked/Same Day Booking,FNAC Unbooked/Same Day Booking,Single Test
+FOL,$34.00,"Folic Acid, Serum","Folic Acid, Serum",Single Test
+FSH,$35.00,Follicle Stimulating Hormone (FSH),Follicle Stimulating Hormone (FSH),Single Test
+FAI,$135.00,Free Androgen Index,Free Androgen Index,Single Test
+FPS,$106.00,Free PSA%,Free PSA%,Single Test
+FT3,$45.00,Free T3 (FT3),Free T3 (FT3),Single Test
+FT4,$36.00,Free T4 (FT4),Free T4 (FT4),Single Test
+HFS5,$600.00,Frozen Section Activation One-time Fee,Frozen Section Activation One-time Fee,Single Test
+HFS7,$700.00,Frozen Section Block of 30mins (including any waiting time),Frozen Section Block of 30mins (including any waiting time),Single Test
+HFS8,$2200.00,Frozen Section Complexity Charge,Frozen Section Complexity Charge,Single Test
+HFS6,$2200.00,Frozen Section Staffing Hour (per hour of operation),Frozen Section Staffing Hour (per hour of operation),Single Test
+SG6,$20.00,G6PD Screening,G6PD Screening,Single Test
+GGT,$9.00,Gamma Glutamyltransferase (GGT),Gamma Glutamyltransferase (GGT),Single Test
+GMP,$724.00,Gastro Intestinal Multiplex PCR,Gastro Intestinal Multiplex PCR,Single Test
+GLO,$17.00,Globulin,Globulin,Single Test
+2HP,$12.00,Glucose (2hr Post-prandial),Glucose (2hr Post-prandial),Single Test
+GLU,$9.00,Glucose (Fasting),Glucose (Fasting),Single Test
+GLR,$9.00,Glucose Random,Glucose Random,Single Test
+GTT,$29.00,Glucose Tolerance Test,Glucose Tolerance Test,Single Test
+HBA,$27.00,Glycated Haemoglobin (HbA1c),Glycated Haemoglobin (HbA1c),Single Test
+GPR,$158.00,Gonorrhoea PCR,Gonorrhoea PCR,Single Test
+HB,$15.00,Haemoglobin,Haemoglobin,Single Test
+HBH,$23.00,Haemoglobin (Hb) – H Inclusion Bodies,Haemoglobin (Hb) – H Inclusion Bodies,Single Test
+HEL,$50.00,Haemoglobin Electrophoresis,Haemoglobin Electrophoresis,Single Test
+HDU,$168.00,Haemophilus Ducreyi,Haemophilus Ducreyi,Single Test
+HAP,$70.00,Haptoglobin,Haptoglobin,Single Test
+HBT,$242.00,HBV DNA (Quantitative),HBV DNA (Quantitative),Single Test
+HCQ,$520.00,HCV RNA PCR,HCV RNA PCR,Single Test
+HPY,$45.00,Helicobacter pylori - IgG,Helicobacter pylori - IgG,Single Test
+HAM,$45.00,Hepatitis A IgM Antibody (HAV IgM),Hepatitis A IgM Antibody (HAV IgM),Single Test
+HAV,$36.00,Hepatitis A Total Antibody (HAV Total),Hepatitis A Total Antibody (HAV Total),Single Test
+HCM,$45.00,Hepatitis B Core IgM Antibody,Hepatitis B Core IgM Antibody,Single Test
+HCG,$44.00,Hepatitis B Core Total Antibody,Hepatitis B Core Total Antibody,Single Test
+HEA,$45.00,Hepatitis Be Antibody (HBeAb),Hepatitis Be Antibody (HBeAb),Single Test
+HEG,$44.00,Hepatitis Be Antigen (HBeAg),Hepatitis Be Antigen (HBeAg),Single Test
+HAB,$15.00,Hepatitis Bs Antibody (HBsAb),Hepatitis Bs Antibody (HBsAb),Single Test
+HAG,$15.00,Hepatitis Bs Antigen (HBsAg),Hepatitis Bs Antigen (HBsAg),Single Test
+HSQ,$121.00,Hepatitis Bs Antigen (Quantitative),Hepatitis Bs Antigen (Quantitative),Single Test
+HCV,$45.00,Hepatitis C Antibody (HCV),Hepatitis C Antibody (HCV),Single Test
+HS1,$44.00,Herpes Simplex Type 1 IgG,Herpes Simplex Type 1 IgG,Single Test
+HS2,$44.00,Herpes Simplex Type 2 IgG,Herpes Simplex Type 2 IgG,Single Test
+HSVPCR,$213.00,Herpes Simplex Virus I & II (PCR),Herpes Simplex Virus I & II (PCR),Single Test
+CRP,$33.00,High Sensitive C Reactive Protein (hs-CRP),High Sensitive C Reactive Protein (hs-CRP),Single Test
+TNI,$92.00,High Sensitive Troponin-I,High Sensitive Troponin-I,Single Test
+TRP,$106.00,High Sensitive Troponin-T,High Sensitive Troponin-T,Single Test
+HSBX,$300.00,Histology Specialised Biopsies (1-6 pieces in 1 Container),Histology Specialised Biopsies (1-6 pieces in 1 Container),Single Test
+HSBX3,$700.00,Histology Specialised Biopsies (13-18 pieces from 1 Container OR 1-6 pieces from 3 Containers),Histology Specialised Biopsies (13-18 pieces from 1 Container OR 1-6 pieces from 3 Containers),Single Test
+HSBX4,$900.00,Histology Specialised Biopsies (19-24 pieces from 1 Container OR 1-6 pieces from 4 Containers),Histology Specialised Biopsies (19-24 pieces from 1 Container OR 1-6 pieces from 4 Containers),Single Test
+HSBX2,$500.00,Histology Specialised Biopsies (7-12 pieces from 1 Container OR 1-6 pieces from 2 Containers),Histology Specialised Biopsies (7-12 pieces from 1 Container OR 1-6 pieces from 2 Containers),Single Test
+H201,$288.00,Histology Specimen (3cm or smaller),Histology Specimen (3cm or smaller),Single Test
+H203,$374.00,Histology Specimen (3cm to 6cm),Histology Specimen (3cm to 6cm),Single Test
+H204,$680.00,Histology Specimen (6cm or bigger),Histology Specimen (6cm or bigger),Single Test
+H205,$900.00,"Histology Specimen (6cm or bigger, Complex)","Histology Specimen (6cm or bigger, Complex)",Single Test
+H10,$50.00,"Histology Urgent Charges (per site, per side)","Histology Urgent Charges (per site, per side)",Single Test
+HIV,$17.00,HIV Ag/Ab Screen,HIV Ag/Ab Screen,Single Test
+HIR,$74.00,HOMA-IR (Fasting),HOMA-IR (Fasting),Single Test
+HOC,$72.00,Homocysteine,Homocysteine,Single Test
+HPM,$100.00,HPV DNA Test (Male),HPV DNA Test (Male),Single Test
+HPV,$203.00,HPV DNA with Genotype 16 & 18,HPV DNA with Genotype 16 & 18,Single Test
+HPVTHI,$243.00,HPV DNA with Genotype 16 & 18 and ThinPrep,HPV DNA with Genotype 16 & 18 and ThinPrep,Single Test
+HPV45,$203.00,"HPV DNA with Genotype 16, 18 & 45","HPV DNA with Genotype 16, 18 & 45",Single Test
+HPV45THI,$243.00,"HPV DNA with Genotype 16, 18 & 45 and ThinPrep","HPV DNA with Genotype 16, 18 & 45 and ThinPrep",Single Test
+HTL,$70.00,HTLV I & II Antibodies,HTLV I & II Antibodies,Single Test
+HE4,$113.00,Human Epididymis Protein 4,Human Epididymis Protein 4,Single Test
+HVF,$35.00,HVS FEME,HVS FEME,Single Test
+IGA,$78.00,Immunoglobulin A,Immunoglobulin A,Single Test
+IGG,$78.00,Immunoglobulin G,Immunoglobulin G,Single Test
+IGM,$78.00,Immunoglobulin M,Immunoglobulin M,Single Test
+IHC1,$200.00,Immunohistochemistry Stain (1 stain),Immunohistochemistry Stain (1 stain),Single Test
+IHC2,$350.00,Immunohistochemistry Stain (2 stains),Immunohistochemistry Stain (2 stains),Single Test
+IHC3,$450.00,Immunohistochemistry Stain (3 stains),Immunohistochemistry Stain (3 stains),Single Test
+IHC4,$550.00,Immunohistochemistry Stain (4 stains),Immunohistochemistry Stain (4 stains),Single Test
+IHCA,$200.00,Immunohistochemistry Stain (each additional stain),Immunohistochemistry Stain (each additional stain),Single Test
+UBI,$15.00,"Indirect Bilirubin, Unconjugated","Indirect Bilirubin, Unconjugated",Single Test
+PT,$29.00,INR (International Normalised Ratio),INR (International Normalised Ratio),Single Test
+INS,$61.00,Insulin (Fasting),Insulin (Fasting),Single Test
+IGF,$88.00,Insulin-like Growth Factor 1 (IGF-1),Insulin-like Growth Factor 1 (IGF-1),Single Test
+FE,$11.00,Iron,Iron,Single Test
+TIB,$25.00,"Iron Binding Capacity (TIBC), including Transferrin","Iron Binding Capacity (TIBC), including Transferrin",Single Test
+ECR,$32.00,Joint Effusion for Crystals,Joint Effusion for Crystals,Single Test
+FLD,$61.00,"Joint Fluid FEME (appearance, cell count, protein, crystal)","Joint Fluid FEME (appearance, cell count, protein, crystal)",Single Test
+LDH,$9.00,"LDH, Lactate Dehydrogenase","LDH, Lactate Dehydrogenase",Single Test
+PB,$69.00,Lead,Lead,Single Test
+H206,$500.00,LEEP Cone Biopsies or Cervix Biopsy (>1 cm),LEEP Cone Biopsies or Cervix Biopsy (>1 cm),Single Test
+LPL,$55.00,Lipoprotein (a),Lipoprotein (a),Single Test
+LIVERFAS,$260.00,Liverfast,Liverfast,Single Test
+LIVERSTA,$130.00,Liverstat,Liverstat,Single Test
+LUP,$55.00,Lupus Anticoagulant,Lupus Anticoagulant,Single Test
+LH,$36.00,Luteinising Hormone (LH),Luteinising Hormone (LH),Single Test
+GUL,$160.00,Lymphogranuloma Venereum,Lymphogranuloma Venereum,Single Test
+UMA,$22.00,Magnesium (24-hr Urine),Magnesium (24-hr Urine),Single Test
+MGU,$27.00,"Magnesium, Random Urine","Magnesium, Random Urine",Single Test
+MGM,$15.00,"Magnesium, Serum","Magnesium, Serum",Single Test
+MP,$15.00,Malaria Parasite,Malaria Parasite,Single Test
+MNS,$135.00,Manganese (Serum),Manganese (Serum),Single Test
+MN,$135.00,Manganese Whole Blood,Manganese Whole Blood,Single Test
+MCH,$9.00,MCH,MCH,Single Test
+MCV,$9.00,MCV,MCV,Single Test
+MEG,$98.00,Measles IgG Antibody,Measles IgG Antibody,Single Test
+HG,$135.00,Mercury,Mercury,Single Test
+MEE,$120.00,Methadone,Methadone,Single Test
+UML,$25.00,Microalbumin Excretion (AER),Microalbumin Excretion (AER),Single Test
+UMI,$30.00,Microalbumin/Creatinine Ratio (ACR),Microalbumin/Creatinine Ratio (ACR),Single Test
+MIF,$15.00,Microfilaria Parasites,Microfilaria Parasites,Single Test
+MCE,$25.00,"Microscopy, Clue Cells","Microscopy, Clue Cells",Single Test
+M-1,$150.00,MOHS Frozen Section - Hourly Technician services (per hour),MOHS Frozen Section - Hourly Technician services (per hour),Single Test
+M-3,$250.00,MOHS Frozen Section - Laboratory Facility,MOHS Frozen Section - Laboratory Facility,Single Test
+M-2,$100.00,MOHS Frozen Section - Material Cost,MOHS Frozen Section - Material Cost,Single Test
+M-4,$100.00,MOHS Frozen Section - No Show/Cancellation,MOHS Frozen Section - No Show/Cancellation,Single Test
+IM,$37.00,Monospot (Infectious Mononucleosis),Monospot (Infectious Mononucleosis),Single Test
+VP6,$273.00,Multiplex Real Time PCR for Vaginitis (VP6),Multiplex Real Time PCR for Vaginitis (VP6),Single Test
+MUG,$145.00,Mumps IgG Antibody,Mumps IgG Antibody,Single Test
+MPA,$41.00,Mycoplasma Antibody,Mycoplasma Antibody,Single Test
+MPG,$80.00,Mycoplasma Genitalium,Mycoplasma Genitalium,Single Test
+MPM,$120.00,Mycoplasma Genitalium with Mutants,Mycoplasma Genitalium with Mutants,Single Test
+MPH,$80.00,Mycoplasma Hominis,Mycoplasma Hominis,Single Test
+MYM,$72.00,Mycoplasma IgM Antibody,Mycoplasma IgM Antibody,Single Test
+NIG,$80.00,Neisseria Gonorrhoeae,Neisseria Gonorrhoeae,Single Test
+NIE,$168.00,Nickel (Serum),Nickel (Serum),Single Test
+BNP,$140.00,NT-pro BNP,NT-pro BNP,Single Test
+CNR,$21.00,Nucleated RBC,Nucleated RBC,Single Test
+PCV,$15.00,Packed Cell Volume,Packed Cell Volume,Single Test
+PTH,$55.00,Parathyroid Hormone (iPTH),Parathyroid Hormone (iPTH),Single Test
+PHO,$9.00,Phosphate,Phosphate,Single Test
+UPH,$23.00,Phosphate (24-hr Urine),Phosphate (24-hr Urine),Single Test
+UPR,$20.00,"Phosphate, Random Urine","Phosphate, Random Urine",Single Test
+PLT,$15.00,Platelet Count,Platelet Count,Single Test
+K,$9.00,Potassium,Potassium,Single Test
+UK,$23.00,Potassium (24-hr Urine),Potassium (24-hr Urine),Single Test
+RUK,$18.00,"Potassium, Random Urine","Potassium, Random Urine",Single Test
+PCT,$174.00,Procalcitonin,Procalcitonin,Single Test
+PRG,$35.00,Progesterone,Progesterone,Single Test
+PRL,$35.00,Prolactin,Prolactin,Single Test
+PHI,$198.00,Prostate Health Index (PHI),Prostate Health Index (PHI),Single Test
+PSA,$55.00,Prostate Specific Antigen (PSA),Prostate Specific Antigen (PSA),Single Test
+TP,$9.00,"Protein, Total","Protein, Total",Single Test
+UTP,$24.00,"Protein, Total (24-hr Urine)","Protein, Total (24-hr Urine)",Single Test
+UPC,$35.00,Protein/Creatinine Ratio,Protein/Creatinine Ratio,Single Test
+RBC,$15.00,Red Blood Cells,Red Blood Cells,Single Test
+IND,$15.00,Red Cell Indices,Red Cell Indices,Single Test
+RMC,$780.00,Respiratory Multiplex PCR,Respiratory Multiplex PCR,Single Test
+RET,$18.00,Reticulocyte Count,Reticulocyte Count,Single Test
+RHB,$26.00,Reticulocyte Hemoglobin,Reticulocyte Hemoglobin,Single Test
+RA,$29.00,Rheumatoid Factor (RF),Rheumatoid Factor (RF),Single Test
+ROV,$70.00,Rotavirus Antigen Detection,Rotavirus Antigen Detection,Single Test
+RUG,$29.00,Rubella IgG Antibody,Rubella IgG Antibody,Single Test
+SE,$174.00,Selenium (Serum),Selenium (Serum),Single Test
+SLU,$153.00,Selenium Urine,Selenium Urine,Single Test
+SLN,$168.00,Selenium Whole Blood,Selenium Whole Blood,Single Test
+SEM,$126.00,Seminal Analysis,Seminal Analysis,Single Test
+CLI,$124.00,Serum Cholinesterase,Serum Cholinesterase,Single Test
+SHB,$97.00,Sex Hormone Binding Globulin (SHBG),Sex Hormone Binding Globulin (SHBG),Single Test
+SCD,$21.00,Sickling Screen,Sickling Screen,Single Test
+SCB,$45.00,Skin Scrape for Scabies,Skin Scrape for Scabies,Single Test
+,$9.00,Sodium,Sodium,Single Test
+UNA,$24.00,Sodium (24-hr Urine),Sodium (24-hr Urine),Single Test
+RUS,$18.00,"Sodium, Random Urine","Sodium, Random Urine",Single Test
+H80,$150.00,Special Stain (Each),Special Stain (Each),Single Test
+SC,$27.00,Sperm Count after Vasectomy,Sperm Count after Vasectomy,Single Test
+SCC,$123.00,Squamous Cell Carcinoma Antigen,Squamous Cell Carcinoma Antigen,Single Test
+FH,$47.00,Stool & Urine CS for 1 Day Only (Salmonella & Shigella),Stool & Urine CS for 1 Day Only (Salmonella & Shigella),Single Test
+FHXD,$113.00,Stool & Urine CS for 3 Days (Salmonella & Shigella),Stool & Urine CS for 3 Days (Salmonella & Shigella),Single Test
+FAE,$52.00,Stool FEME & Occult Blood (OCC),Stool FEME & Occult Blood (OCC),Single Test
+SFE,$45.00,"Stool FEME- Ova, Parasite (Concentrated)","Stool FEME- Ova, Parasite (Concentrated)",Single Test
+FHS,$44.00,Stool for 1 Day Only,Stool for 1 Day Only,Single Test
+SDXD,$85.00,Stool for 3 Days,Stool for 3 Days,Single Test
+BSA,$350.00,Stool for Helicobacter Antigen,Stool for Helicobacter Antigen,Single Test
+OCC,$11.00,Stool Occult Blood - Peroxidase,Stool Occult Blood - Peroxidase,Single Test
+FOB,$28.00,Stool Occult Blood – Immunological,Stool Occult Blood – Immunological,Single Test
+SD1,$44.00,Stool – Day 1,Stool – Day 1,Single Test
+SD2,$44.00,Stool – Day 2,Stool – Day 2,Single Test
+SD3,$44.00,Stool – Day 3,Stool – Day 3,Single Test
+TQP,$325.00,TB QuantiFERON® - Gold In-tube,TB QuantiFERON® - Gold In-tube,Single Test
+TES,$35.00,"Testosterone, Total","Testosterone, Total",Single Test
+TL,$168.00,Thallium,Thallium,Single Test
+TLU,$153.00,Thallium Urine,Thallium Urine,Single Test
+TPREP,$60.00,ThinPrep Test,ThinPrep Test,Single Test
+UTPREP,$30.00,ThinPrep Test: Urgent Surcharge,ThinPrep Test: Urgent Surcharge,Single Test
+UTHI,$30.00,ThinPrep Test: Urgent Surcharge (in addition to THI),ThinPrep Test: Urgent Surcharge (in addition to THI),Single Test
+TCT,$25.00,Thrombin Clotting Time,Thrombin Clotting Time,Single Test
+TYG,$124.00,Thyroglobulin,Thyroglobulin,Single Test
+THA,$36.00,Thyroglobulin Antibody,Thyroglobulin Antibody,Single Test
+TPO,$50.00,Thyroid Peroxidase Antibody (Anti-TPO),Thyroid Peroxidase Antibody (Anti-TPO),Single Test
+TSH,$34.00,Thyroid Stimulating Hormone (TSH),Thyroid Stimulating Hormone (TSH),Single Test
+TRA,$98.00,Thyroid Stimulating Hormone Receptor Antibody (TRAB),Thyroid Stimulating Hormone Receptor Antibody (TRAB),Single Test
+A01,$59.00,Total IGE,Total IGE,Single Test
+T3,$48.00,Total Triiodothyronine,Total Triiodothyronine,Single Test
+VIT,$125.00,Total Vitamin D (Immunoassay),Total Vitamin D (Immunoassay),Single Test
+VHP,$185.00,Total Vitamin D (With D2 & D3 Readings),Total Vitamin D (With D2 & D3 Readings),Single Test
+TOG,$47.00,Toxoplasma IgG Antibody,Toxoplasma IgG Antibody,Single Test
+TOP,$52.00,Toxoplasma IgM Antibody,Toxoplasma IgM Antibody,Single Test
+TPL,$30.00,TPLA,TPLA,Single Test
+TFN,$25.00,Transferrin,Transferrin,Single Test
+TEP,$168.00,Treponema Pallidum,Treponema Pallidum,Single Test
+TVG,$80.00,Trichomonas Vaginalis,Trichomonas Vaginalis,Single Test
+TRI,$9.00,Triglycerides,Triglycerides,Single Test
+H209,$300.00,TRUS Prostatic Biopsies (6-piece block),TRUS Prostatic Biopsies (6-piece block),Single Test
+TTM,$389.00,tt-muconic (biomarker for Benzene Exposure),tt-muconic (biomarker for Benzene Exposure),Single Test
+URE,$9.00,Urea,Urea,Single Test
+UUR,$24.00,Urea (24-hr Urine),Urea (24-hr Urine),Single Test
+UBT,$74.00,Urea Breath Test,Urea Breath Test,Single Test
+UBK,$140.00,Urea Breath Test Kit,Urea Breath Test Kit,Single Test
+UUE,$18.00,"Urea, Random Urine","Urea, Random Urine",Single Test
+UPV,$80.00,Ureaplasma Parvum,Ureaplasma Parvum,Single Test
+UUT,$80.00,Ureaplasma Urealyticum,Ureaplasma Urealyticum,Single Test
+UA,$9.00,Uric Acid,Uric Acid,Single Test
+UUA,$24.00,Uric Acid (24-hr Urine),Uric Acid (24-hr Urine),Single Test
+URI,$18.00,"Uric Acid, Random Urine","Uric Acid, Random Urine",Single Test
+ASU,$69.00,Urine Arsenic,Urine Arsenic,Single Test
+BAR,$53.00,Urine Barbiturates,Urine Barbiturates,Single Test
+BEN,$57.00,Urine Benzodiazepines,Urine Benzodiazepines,Single Test
+UBE,$160.00,Urine Beta-2-Microglobulin,Urine Beta-2-Microglobulin,Single Test
+CDU,$97.00,Urine Cadmium,Urine Cadmium,Single Test
+COE,$59.00,Urine Cocaine,Urine Cocaine,Single Test
+CUU,$81.00,Urine Copper,Urine Copper,Single Test
+CUR,$69.00,Urine Cotinine,Urine Cotinine,Single Test
+UDS,$9.00,Urine Dipstick,Urine Dipstick,Single Test
+UAN,$11.00,Urine FEME,Urine FEME,Single Test
+USC,$70.00,Urine FEME & Urine Culture,Urine FEME & Urine Culture,Single Test
+UGL,$11.00,Urine Glucose (Fasting),Urine Glucose (Fasting),Single Test
+UGQ,$10.00,Urine Glucose (Quantitative),Urine Glucose (Quantitative),Single Test
+UGR,$11.00,Urine Glucose (Random),Urine Glucose (Random),Single Test
+UBC,$12.00,Urine Labstix Examination,Urine Labstix Examination,Single Test
+PBR,$93.00,Urine Lead,Urine Lead,Single Test
+MNU,$69.00,Urine Manganese,Urine Manganese,Single Test
+HGU,$139.00,Urine Mercury,Urine Mercury,Single Test
+MAP,$93.00,Urine Methamphetamine,Urine Methamphetamine,Single Test
+CCR,$21.00,Urine Microalb/Cre MG/G,Urine Microalb/Cre MG/G,Single Test
+MCR,$32.00,Urine Microalb/Cre Ratio,Urine Microalb/Cre Ratio,Single Test
+OPA,$32.00,Urine Morphine,Urine Morphine,Single Test
+NI,$168.00,Urine Nickel,Urine Nickel,Single Test
+PHC,$34.00,Urine Phase Contrast,Urine Phase Contrast,Single Test
+UPR,$18.00,Urine Pregnancy,Urine Pregnancy,Single Test
+SG,$11.00,Urine Specific Gravity,Urine Specific Gravity,Single Test
+VRE,$54.00,Vancomycin Resistant Enterococci Screening,Vancomycin Resistant Enterococci Screening,Single Test
+VRZ,$168.00,Varicella Zoster Virus,Varicella Zoster Virus,Single Test
+VAR,$45.00,Varicella-Zoster IgG Antibody,Varicella-Zoster IgG Antibody,Single Test
+VD,$11.00,VD (Syphilis TP Ab),VD (Syphilis TP Ab),Single Test
+B12,$34.00,Vitamin B12,Vitamin B12,Single Test
+ZN,$75.00,Zinc (Serum),Zinc (Serum),Single Test
+ZIN,$70.00,"Zinc, Whole Blood","Zinc, Whole Blood",Single Test
