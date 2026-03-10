@@ -1,4 +1,4 @@
-Code,Cost,Full Name,Contents
+﻿Code,Cost,Full Name,Contents
 ANE01,$34.00,ANAEMIA PROFILE 01,"Haemoglobin
 Total White Cell Count
 Differential Count
@@ -2021,3 +2021,122 @@ IQWP6,$29.00,Work Permit 6,"Malaria Parasite
 VD (Syphilis TP Ab)
 RPR & TPLA (if Syphilis is reactive)
 HIV Ag/Ab Screen"
+PHT,$98.00,Phadiatop,Phadiatop
+A01,$56.00,Total IGE,Total IGE
+A71,$67.00,Barley F6,Barley F6
+A36,$67.00,Buckwheat F11,Buckwheat F11
+A22,$93.00,Gluten F79,Gluten F79
+A73,$67.00,Oat F7,Oat F7
+A75,$67.00,Rice F9,Rice F9
+A27,$67.00,Wheat F4,Wheat F4
+B07,$82.00,Amoxicilloyl C6,Amoxicilloyl C6
+B08,$82.00,Ampicilloyl C5,Ampicilloyl C5
+B09,$82.00,Penicilloyl G C1,Penicilloyl G C1
+B10,$82.00,Penicilloyl V C2,Penicilloyl V C2
+A52,$67.00,Egg F245,Egg F245
+A03,$93.00,Egg White HF1,Egg White HF1
+A53,$67.00,Egg Yolk F75,Egg Yolk F75
+A04,$67.00,Cat Dander E1,Cat Dander E1
+A05,$67.00,Dog Dander E5,Dog Dander E5
+B13,$61.00,Guinea Pig Epithelium E6,Guinea Pig Epithelium E6
+B15,$87.00,Hamster Epithelium E84,Hamster Epithelium E84
+B36,$93.00,"Mouse Epithelium, Serum and Urine Proteins E88","Mouse Epithelium, Serum and Urine Proteins E88"
+B14,$93.00,Rabbit Epithelium E82,Rabbit Epithelium E82
+B35,$88.00,"Rat Epithelium, Serum and Urine Proteins E87","Rat Epithelium, Serum and Urine Proteins E87"
+A28,$93.00,Anchovies (Ikan Bilis) F313,Anchovies (Ikan Bilis) F313
+A31,$67.00,Fish (Cod) F3,Fish (Cod) F3
+A32,$67.00,Salmon F41,Salmon F41
+A35,$67.00,Tuna F40,Tuna F40
+A57,$61.00,Apple F49,Apple F49
+A58,$67.00,Banana F92,Banana F92
+A59,$87.00,Grape F259,Grape F259
+A60,$67.00,Kiwi F84,Kiwi F84
+A39,$67.00,Mango F91,Mango F91
+A61,$61.00,Melon F87,Melon F87
+A62,$66.00,Orange F33,Orange F33
+A63,$61.00,Papaya F293,Papaya F293
+A64,$61.00,Peach F95,Peach F95
+A38,$67.00,Strawberry F44,Strawberry F44
+A67,$61.00,Water Melon F329,Water Melon F329
+A18,$67.00,Blomia Tropicalis D201,Blomia Tropicalis D201
+A19,$67.00,Dermatophagoides Farinae D2,Dermatophagoides Farinae D2
+A20,$67.00,Dermatophagoides Pteronyssinus D1,Dermatophagoides Pteronyssinus D1
+A02,$93.00,Greer labs House Dust HAH1,Greer labs House Dust HAH1
+B23,$93.00,Hollister-Stier Labs House Dust H2,Hollister-Stier Labs House Dust H2
+B26,$93.00,"Cockroach, American I206","Cockroach, American I206"
+A10,$67.00,"Cockroach, German I6","Cockroach, German I6"
+A54,$67.00,Beef F27,Beef F27
+A07,$67.00,Chicken F83,Chicken F83
+A55,$67.00,Mutton F88,Mutton F88
+A56,$67.00,Pork F26,Pork F26
+A16,$67.00,Cow's Milk F2,Cow's Milk F2
+A17,$67.00,Cacao (Cocoa) F93,Cacao (Cocoa) F93
+B17,$93.00,Coffee F221,Coffee F221
+A68,$67.00,Malt F90,Malt F90
+A69,$67.00,Mushroom F212,Mushroom F212
+B18,$93.00,Tea F222,Tea F222
+A70,$67.00,Yeast F45,Yeast F45
+A11,$67.00,Alternaria Alternata M6,Alternaria Alternata M6
+A12,$67.00,Aspergillus Fumigatus M3,Aspergillus Fumigatus M3
+A13,$67.00,Candida Albicans M5,Candida Albicans M5
+A14,$67.00,Cladosporium Herbarum M2,Cladosporium Herbarum M2
+B01,$61.00,Curvularia Lunata M16,Curvularia Lunata M16
+A15,$67.00,Penicillium Notatum HM1,Penicillium Notatum HM1
+B37,$88.00,Cotton Seed K83,Cotton Seed K83
+B38,$88.00,Ficus K81,Ficus K81
+B39,$88.00,Formaldehyde / Formalin,Formaldehyde / Formalin
+B40,$88.00,Isocyanate HDI (Hexamethylene Diisocyanate) K77,Isocyanate HDI (Hexamethylene Diisocyanate) K77
+B41,$88.00,Isocyanate MDI (Diphenylmethane Diisocyanate) K76,Isocyanate MDI (Diphenylmethane Diisocyanate) K76
+B42,$88.00,Isocyanate TDI (Toluene Diisocyanate) K75,Isocyanate TDI (Toluene Diisocyanate) K75
+B43,$88.00,Ispaghula K72,Ispaghula K72
+B06,$88.00,Latex (Hevea Brasiliensis) K82,Latex (Hevea Brasiliensis) K82
+B44,$88.00,Phthalic Anhydride K79,Phthalic Anhydride K79
+B45,$88.00,Sunflower Seed K84,Sunflower Seed K84
+B31,$61.00,Acacia T19,Acacia T19
+A08,$67.00,Bahia Grass G17,Bahia Grass G17
+A09,$67.00,Bermuda Grass G2,Bermuda Grass G2
+B02,$66.00,Common Ragweed W1,Common Ragweed W1
+B30,$61.00,Japanese Cedar T17,Japanese Cedar T17
+B03,$66.00,Johnson Grass G10,Johnson Grass G10
+B32,$61.00,Melaleuca T21,Melaleuca T21
+B33,$61.00,Mugwort W6,Mugwort W6
+B04,$62.00,Timothy Grass G6,Timothy Grass G6
+B29,$61.00,White Pine T16,White Pine T16
+A72,$66.00,Coconut F36,Coconut F36
+A21,$67.00,Corn F8,Corn F8
+A74,$61.00,Pea F12,Pea F12
+A24,$67.00,Peanut F13,Peanut F13
+A25,$67.00,Sesame Seed F10,Sesame Seed F10
+A26,$67.00,Soya Bean F14,Soya Bean F14
+A42,$67.00,Blue Mussel F37,Blue Mussel F37
+A29,$67.00,Clam F207,Clam F207
+A30,$67.00,Crab F23,Crab F23
+A43,$93.00,Lobster F80,Lobster F80
+A44,$93.00,Oyster F290,Oyster F290
+A45,$93.00,Scallop F338,Scallop F338
+A33,$67.00,Shrimp F24,Shrimp F24
+A34,$67.00,Squid F258,Squid F258
+B21,$67.00,Black Pepper F280,Black Pepper F280
+B20,$67.00,Chili Pepper F279,Chili Pepper F279
+B19,$66.00,Ginger F270,Ginger F270
+B22,$87.00,Mustard F89,Mustard F89
+A37,$67.00,Almond F20,Almond F20
+A46,$67.00,Brazil Nut F18,Brazil Nut F18
+A47,$93.00,Cashew Nut F202,Cashew Nut F202
+A23,$67.00,Hazel Nut F17,Hazel Nut F17
+A48,$93.00,Macadamia Nut F345,Macadamia Nut F345
+A49,$66.00,Pine Nut F253,Pine Nut F253
+A50,$93.00,Pistachio F203,Pistachio F203
+A51,$67.00,Walnut F256,Walnut F256
+A78,$66.00,Carrot F31,Carrot F31
+A80,$66.00,Celery F85,Celery F85
+A82,$66.00,Garlic F47,Garlic F47
+A84,$66.00,Onion F48,Onion F48
+A85,$67.00,Potato F35,Potato F35
+A88,$67.00,Tomato F25,Tomato F25
+B27,$87.00,Common Wasp (Vespula spp.) I3,Common Wasp (Vespula spp.) I3
+B28,$87.00,Fire Ant I70,Fire Ant I70
+B24,$87.00,Honey Bee (Apis mellifera) I1,Honey Bee (Apis mellifera) I1
+B46,$82.00,Paper Wasp I4,Paper Wasp I4
+B25,$87.00,White-faced Hornet (D.maculata) I2,White-faced Hornet (D.maculata) I2
+B47,$82.00,Yellow Hornet I5,Yellow Hornet I5
