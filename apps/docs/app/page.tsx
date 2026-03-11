@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@repo/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
-import { Briefcase, Code2 } from "lucide-react";
+import { Briefcase, Code2, Mail } from "lucide-react";
 
 export default function Home() {
   const placeholderProjects = [
@@ -11,6 +11,12 @@ export default function Home() {
       url: "https://maffs.ningyu.dev",
       description:
         "Series of games to build arithmetic ability. Built with Next.js.",
+    },
+    {
+      title: "Innoquest Explorer",
+      image: "/innoquest.png",
+      url: "https://innoquest.ningyu.dev",
+      description: "Explore Innoquest's lab tests with a better UI.",
     },
   ];
 
@@ -69,6 +75,16 @@ export default function Home() {
                 >
                   <Briefcase className="size-4" />
                   LinkedIn
+                </a>
+              </Button>
+              <Button variant="outline" className="gap-2" asChild>
+                <a
+                  href="mailto:ningyu321@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Mail className="size-4" />
+                  Email
                 </a>
               </Button>
             </div>
