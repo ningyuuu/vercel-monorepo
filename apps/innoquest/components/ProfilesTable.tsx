@@ -23,7 +23,7 @@ type ProfilesTableProps = {
   testOptions: string[];
 };
 
-type SortKey = "code" | "full_name" | "cost" | "test_contents";
+type SortKey = "code" | "full_name" | "cost" | "test_contents" | "remarks";
 type SortDirection = "asc" | "desc";
 
 function getCostValue(value: string) {
@@ -39,6 +39,7 @@ function getSortValue(record: TableRowData, sortKey: SortKey) {
     case "code":
     case "full_name":
     case "test_contents":
+    case "remarks":
       return record[sortKey];
   }
 }
@@ -58,7 +59,14 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   const fuse = useMemo(
     () =>
       new Fuse(data, {
-        keys: ["code", "full_name", "test_contents", "test_items", "cost"],
+        keys: [
+          "code",
+          "full_name",
+          "test_contents",
+          "test_items",
+          "cost",
+          "remarks",
+        ],
         threshold: 0.35,
         ignoreLocation: true,
         minMatchCharLength: 2,
@@ -203,6 +211,9 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
               <TableHead className="whitespace-normal">
                 {renderSortableHeader("Test Contents", "test_contents")}
               </TableHead>
+              <TableHead className="whitespace-normal">
+                {renderSortableHeader("Remarks", "remarks")}
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -221,6 +232,9 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
                       </Badge>
                     ))}
                   </div>
+                </TableCell>
+                <TableCell className="whitespace-normal break-words text-muted-foreground text-sm">
+                  {project.remarks}
                 </TableCell>
               </TableRow>
             ))}

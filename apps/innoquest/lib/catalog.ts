@@ -9,6 +9,7 @@ export type TableRowData = {
   test_contents: string;
   test_items: string[];
   type: "Profile" | "Allergy" | "Single";
+  remarks: string;
 };
 
 function normalizeTestItem(value: string) {
@@ -102,6 +103,7 @@ export async function getTableData(): Promise<TableRowData[]> {
         test_contents: testItems.join(", "),
         test_items: testItems,
         type: (record[typeIndex] ?? "").trim() as TableRowData["type"],
+        remarks: (record[normalizedHeader.indexOf("remarks")] ?? "").trim(),
       };
     });
 }
