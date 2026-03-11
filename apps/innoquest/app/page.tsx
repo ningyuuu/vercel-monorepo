@@ -8,7 +8,10 @@ import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 export default async function Home() {
   const tableData = await getTableData();
   const profileCount = tableData.filter((row) => row.type === "Profile").length;
-  const individualTestCount = [...new Set(testItems.single)].length;
+  const individualTestCount = new Set([
+    ...testItems.profiles,
+    ...testItems.single,
+  ]).size;
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-background font-sans">
