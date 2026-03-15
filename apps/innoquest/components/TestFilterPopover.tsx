@@ -123,7 +123,7 @@ export function TestFilterPopover({
         <Button
           type="button"
           variant="outline"
-          className="h-auto min-h-8 w-full items-start justify-between py-2 whitespace-normal"
+          className="h-auto min-h-8 w-full items-start justify-between py-2 whitespace-normal text-foreground"
         >
           {selectedTests.length > 0 ? (
             <span className="flex min-w-0 flex-1 flex-wrap gap-1 whitespace-normal text-left">
@@ -134,7 +134,9 @@ export function TestFilterPopover({
               ))}
             </span>
           ) : (
-            "Filter by tests"
+            <span className="text-muted-foreground font-normal">
+              Filter by tests
+            </span>
           )}
           <ChevronsUpDown className="text-muted-foreground mt-0.5 size-4 shrink-0" />
         </Button>

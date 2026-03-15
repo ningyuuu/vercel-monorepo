@@ -174,7 +174,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Fuzzy search by code, name, contents, or cost..."
               aria-label="Fuzzy search profiles"
-              className="w-full !text-sm md:!text-sm"
+              className="w-full !text-sm md:!text-sm h-auto min-h-8 py-2"
             />
           </div>
         </div>

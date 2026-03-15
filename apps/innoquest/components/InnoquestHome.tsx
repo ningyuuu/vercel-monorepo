@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { ProfilesTable } from "@/components/ProfilesTable";
+import { DataSourceBanner } from "@/components/DataSourceBanner";
 import type { TableRowData } from "@/lib/catalog";
 import { Checkbox } from "@repo/ui/checkbox";
 
@@ -38,6 +39,7 @@ export function InnoquestHome({ data, testOptions }: InnoquestHomeProps) {
 
   return (
     <div className="space-y-4">
+      <DataSourceBanner />
       <label
         htmlFor={checkboxId}
         className="flex w-fit items-start gap-3 rounded-lg border px-3 py-2 text-sm"
