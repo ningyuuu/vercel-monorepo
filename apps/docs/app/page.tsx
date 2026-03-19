@@ -79,7 +79,7 @@ export default function Home() {
               </Button>
               <Button variant="outline" className="gap-2" asChild>
                 <a
-                  href="mailto:ningyu321@gmail.com"
+                  href="mailto:hello@ningyu.dev"
                   target="_blank"
                   rel="noreferrer"
                 >

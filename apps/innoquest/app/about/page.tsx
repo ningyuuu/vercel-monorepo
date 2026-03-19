@@ -42,7 +42,7 @@ export default function About() {
                 Innoquest website&apos;s PDF
               </a>
               . For any queries or suggestions, please feel free to{" "}
-              <a className="underline" href="mailto:ningyu321@gmail.com">
+              <a className="underline" href="mailto:hello@ningyu.dev">
                 contact me through email
               </a>
               .
