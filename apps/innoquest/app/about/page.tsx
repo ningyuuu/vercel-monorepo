@@ -130,72 +130,271 @@ export default function About() {
                 </thead>
                 <tbody>
                   <tr className="border-b">
+                    <td className="p-2">Glucose</td>
+                    <td className="p-2">Glucose Tolerance Test</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      Urine Microalbumin / Creatinine Ratio
+                    </td>
+                    <td className="p-2">Urine Microalb/Cre Ratio</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Urine Microalbumin/Creatinine Ratio</td>
+                    <td className="p-2">Urine Microalb/Cre Ratio</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">APTT (PTT)</td>
+                    <td className="p-2">APTT</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Cocoa F93</td>
+                    <td className="p-2">Cacao (Cocoa) F93</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">C4 Complement</td>
+                    <td className="p-2">Complement C4</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">C3 Complement</td>
+                    <td className="p-2">Complement C3</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">ESR</td>
+                    <td className="p-2">Erythrocyte Sedimentation Rate</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">LDH</td>
+                    <td className="p-2">LDH, Lactate Dehydrogenase</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">eGFR</td>
+                    <td className="p-2">
+                      eGFR (Estimated Glomerular Filtration Rate)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">CMV IgG Antibody</td>
+                    <td className="p-2">
+                      Cytomegalovirus IgG Antibody (CMV IgG)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">EBV EA-IgA</td>
+                    <td className="p-2">Epstein Barr Virus - EA-IgA</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Hb Electrophoresis</td>
+                    <td className="p-2">Haemoglobin Electrophoresis</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">ABO Blood Group</td>
+                    <td className="p-2">Blood Group</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">HE4</td>
+                    <td className="p-2">Human Epididymis Protein 4</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Total Cholesterol</td>
+                    <td className="p-2">Cholesterol, Total</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Total Protein</td>
+                    <td className="p-2">Protein, Total</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Total Bilirubin</td>
+                    <td className="p-2">Bilirubin, Total</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Free Androgen Index (FAI)</td>
+                    <td className="p-2">Free Androgen Index</td>
+                  </tr>
+                  <tr className="border-b">
                     <td className="p-2">Free T3</td>
                     <td className="p-2">Free T3 (FT3)</td>
-                    {/* "Glucose": "Glucose Tolerance Test", "Urine Microalbumin
-                    / Creatinine Ratio": "Urine Microalb/Cre Ratio", "Urine
-                    Microalbumin/Creatinine Ratio": "Urine Microalb/Cre Ratio",
-                    "APTT (PTT)": "APTT", "Cocoa F93": "Cacao (Cocoa) F93", "C4
-                    Complement": "Complement C4", "C3 Complement": "Complement
-                    C3", # --- abbreviations / short forms --- "ESR":
-                    "Erythrocyte Sedimentation Rate", "LDH": "LDH, Lactate
-                    Dehydrogenase", "eGFR": "eGFR (Estimated Glomerular
-                    Filtration Rate)", "CMV IgG Antibody": "Cytomegalovirus IgG
-                    Antibody (CMV IgG)", "EBV EA-IgA": "Epstein Barr Virus -
-                    EA-IgA", "Hb Electrophoresis": "Haemoglobin
-                    Electrophoresis", "ABO Blood Group": "Blood Group", "HE4":
-                    "Human Epididymis Protein 4", # --- word order / punctuation
-                    differences --- "Total Cholesterol": "Cholesterol, Total",
-                    "Total Protein": "Protein, Total", "Total Bilirubin":
-                    "Bilirubin, Total", "Free Androgen Index (FAI)": "Free
-                    Androgen Index", "Free T3": "Free T3 (FT3)", "Free T4":
-                    "Free T4 (FT4)", "Intact Parathyroid Hormone (iPTH)":
-                    "Parathyroid Hormone (iPTH)", "Total Iron Binding Capacity
-                    (TIBC)": "Iron Binding Capacity (TIBC), including
-                    Transferrin", "Bilirubin, Direct": "Direct Bilirubin,
-                    Conjugated", "Bilirubin, Indirect": "Indirect Bilirubin,
-                    Unconjugated", "Thrombin Clotting Time (TCT)": "Thrombin
-                    Clotting Time", # --- suffix / specificity differences ---
-                    "Folic Acid": "Folic Acid, Serum", "Cortisol": "Cortisol
-                    (Blood)", "Insulin": "Insulin (Fasting)", "Insulin like
-                    Growth Factor (IGF1)": "Insulin-like Growth Factor 1
-                    (IGF-1)", "Monospot Test": "Monospot (Infectious
-                    Mononucleosis)", "Hepatitis A Total Antibody": "Hepatitis A
-                    Total Antibody (HAV Total)", "Hepatitis Bc Antibody":
-                    "Hepatitis B Core Total Antibody", "Dengue NS1 Antigen":
-                    "Dengue Antigen (NS1 Antigen)", "Dengue Antibody IgG & IgM":
-                    "Dengue IgG & IgM Ab", "Dengue IgG & IgM Antibodies":
-                    "Dengue IgG & IgM Ab", "Squamous Cell Carcinoma Antigen (SCC
-                    Ag)": "Squamous Cell Carcinoma Antigen", "Neisseria
-                    Gonorrhoea": "Neisseria Gonorrhoeae", # spelling variant
-                    "Penicillium Notatum M1": "Penicillium Notatum HM1", # M1 vs
-                    HM1 "Rheumatoid Factor": "Rheumatoid Factor (RF)",
-                    "Testosterone": "Testosterone, Total", "Anti-HCV Antibody":
-                    "Hepatitis C Antibody (HCV)", "Anti-Nuclear Factor (ANF)":
-                    "Anti Nuclear Factor (ANF) (Immunofluorescence with Titre)",
-                    "Anti-Nuclear Antibody": "Anti Nuclear Factor (ANF)
-                    (Immunofluorescence with Titre)", "Alkaline Phosphatase,
-                    Heat Stable": "Alkaline Phosphatase Isoenzyme
-                    (Fractionation) Heat Stable", "Dust - Greer H1": "Greer labs
-                    House Dust HAH1", "RPR & TPLA": "TPLA", "Vitamin D, Total":
-                    "Total Vitamin D (With D2 & D3 Readings)", # --- "Herpes
-                    Simplex Virus Type I/II IgG" → canonical without "Virus" and
-                    roman→arabic --- "Herpes Simplex Virus Type I IgG": "Herpes
-                    Simplex Type 1 IgG", "Herpes Simplex Virus Type I IgG
-                    Antibody": "Herpes Simplex Type 1 IgG", "Herpes Simplex
-                    Virus Type II IgG": "Herpes Simplex Type 2 IgG", "Herpes
-                    Simplex Virus Type II IgG Antibody": "Herpes Simplex Type 2
-                    IgG", # --- Troponin: word order flipped --- "Troponin I,
-                    high sensitive": "High Sensitive Troponin-I", "Troponin T,
-                    high sensitive": "High Sensitive Troponin-T", # --- dust
-                    mite abbreviations --- "D. Farinae D2": "Dermatophagoides
-                    Farinae D2", "D. Pteronyssinus D1": "Dermatophagoides
-                    Pteronyssinus D1", # --- DHEAS typo in single list ("Dehyro"
-                    vs "Dehydro") --- "Dehydroepiandrosterone Sulfate (DHEAS)":
-                    "Dehyroepiandrosterone Sulfate (DHEAS)", # --- VP3 long
-                    description → canonical --- "VP3 (Candida albicans/Candida
-                    others, Gardnerella vaginalis, Trichomonas vaginalis)": "DNA
-                    Probe/Multiplex Real Time PCR for Vaginitis (VP3)", */}
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Free T4</td>
+                    <td className="p-2">Free T4 (FT4)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Intact Parathyroid Hormone (iPTH)</td>
+                    <td className="p-2">Parathyroid Hormone (iPTH)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Total Iron Binding Capacity (TIBC)</td>
+                    <td className="p-2">
+                      Iron Binding Capacity (TIBC), including Transferrin
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Bilirubin, Direct</td>
+                    <td className="p-2">Direct Bilirubin, Conjugated</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Bilirubin, Indirect</td>
+                    <td className="p-2">Indirect Bilirubin, Unconjugated</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Thrombin Clotting Time (TCT)</td>
+                    <td className="p-2">Thrombin Clotting Time</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Folic Acid</td>
+                    <td className="p-2">Folic Acid, Serum</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Cortisol</td>
+                    <td className="p-2">Cortisol (Blood)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Insulin</td>
+                    <td className="p-2">Insulin (Fasting)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Insulin like Growth Factor (IGF1)</td>
+                    <td className="p-2">
+                      Insulin-like Growth Factor 1 (IGF-1)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Monospot Test</td>
+                    <td className="p-2">Monospot (Infectious Mononucleosis)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Hepatitis A Total Antibody</td>
+                    <td className="p-2">
+                      Hepatitis A Total Antibody (HAV Total)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Hepatitis Bc Antibody</td>
+                    <td className="p-2">Hepatitis B Core Total Antibody</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Dengue NS1 Antigen</td>
+                    <td className="p-2">Dengue Antigen (NS1 Antigen)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Dengue Antibody IgG & IgM</td>
+                    <td className="p-2">Dengue IgG & IgM Ab</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Dengue IgG & IgM Antibodies</td>
+                    <td className="p-2">Dengue IgG & IgM Ab</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      Squamous Cell Carcinoma Antigen (SCC Ag)
+                    </td>
+                    <td className="p-2">Squamous Cell Carcinoma Antigen</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Neisseria Gonorrhoea</td>
+                    <td className="p-2">Neisseria Gonorrhoeae</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Penicillium Notatum M1</td>
+                    <td className="p-2">Penicillium Notatum HM1</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Rheumatoid Factor</td>
+                    <td className="p-2">Rheumatoid Factor (RF)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Testosterone</td>
+                    <td className="p-2">Testosterone, Total</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Anti-HCV Antibody</td>
+                    <td className="p-2">Hepatitis C Antibody (HCV)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Anti-Nuclear Factor (ANF)</td>
+                    <td className="p-2">
+                      Anti Nuclear Factor (ANF) (Immunofluorescence with Titre)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Anti-Nuclear Antibody</td>
+                    <td className="p-2">
+                      Anti Nuclear Factor (ANF) (Immunofluorescence with Titre)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Alkaline Phosphatase, Heat Stable</td>
+                    <td className="p-2">
+                      Alkaline Phosphatase Isoenzyme (Fractionation) Heat Stable
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Dust - Greer H1</td>
+                    <td className="p-2">Greer labs House Dust HAH1</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">RPR & TPLA</td>
+                    <td className="p-2">TPLA</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Vitamin D, Total</td>
+                    <td className="p-2">
+                      Total Vitamin D (With D2 & D3 Readings)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Herpes Simplex Virus Type I IgG</td>
+                    <td className="p-2">Herpes Simplex Type 1 IgG</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      Herpes Simplex Virus Type I IgG Antibody
+                    </td>
+                    <td className="p-2">Herpes Simplex Type 1 IgG</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Herpes Simplex Virus Type II IgG</td>
+                    <td className="p-2">Herpes Simplex Type 2 IgG</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      Herpes Simplex Virus Type II IgG Antibody
+                    </td>
+                    <td className="p-2">Herpes Simplex Type 2 IgG</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Troponin I, high sensitive</td>
+                    <td className="p-2">High Sensitive Troponin-I</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">Troponin T, high sensitive</td>
+                    <td className="p-2">High Sensitive Troponin-T</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">D. Farinae D2</td>
+                    <td className="p-2">Dermatophagoides Farinae D2</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">D. Pteronyssinus D1</td>
+                    <td className="p-2">Dermatophagoides Pteronyssinus D1</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      Dehydroepiandrosterone Sulfate (DHEAS)
+                    </td>
+                    <td className="p-2">
+                      Dehyroepiandrosterone Sulfate (DHEAS)
+                    </td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="p-2">
+                      VP3 (Candida albicans/Candida others, Gardnerella
+                      vaginalis, Trichomonas vaginalis)
+                    </td>
+                    <td className="p-2">
+                      DNA Probe/Multiplex Real Time PCR for Vaginitis (VP3)
+                    </td>
                   </tr>
                 </tbody>
               </table>
