@@ -35,12 +35,12 @@ export function Navbar({
     >
       <div
         className={cn(
-          "mx-auto flex h-16 w-full max-w-4xl items-center justify-between gap-4 px-6",
+          "mx-auto flex h-16 w-full max-w-4xl items-center justify-between px-6 sm:h-auto sm:px-6 sm:py-4",
           containerClassName,
         )}
       >
-        <div className="flex items-center gap-6">
-          <p className="text-lg font-semibold tracking-tight sm:text-xl">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6">
+          <p className="m-0 text-lg font-semibold tracking-tight sm:text-xl">
             {title}
           </p>
           {links && links.length > 0 && (
@@ -62,9 +62,7 @@ export function Navbar({
             </div>
           )}
         </div>
-        {actions ? (
-          <div className="flex items-center gap-3">{actions}</div>
-        ) : null}
+        <div className="flex items-center gap-3">{actions}</div>
       </div>
     </nav>
   );
