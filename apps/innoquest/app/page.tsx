@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-background font-sans">
-      <main className="w-full max-w-4xl bg-transparent px-6 pb-8 pt-24 space-y-4 sm:pt-28">
+      <main className="w-full max-w-4xl bg-transparent px-6 pb-8 pt-20 space-y-4 sm:pt-24">
         <Navbar
           title="Innoquest - 2026 Test Profiles"
           actions={

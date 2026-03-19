@@ -1,5 +1,7 @@
+"use client";
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { cn } from "../../lib/utils";
 
@@ -23,6 +25,7 @@ export function Navbar({
   className,
   containerClassName,
 }: NavbarProps) {
+  const pathname = usePathname();
   return (
     <nav
       className={cn(
@@ -46,7 +49,12 @@ export function Navbar({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+                  className={cn(
+                    "text-sm transition-colors no-underline",
+                    link.href === pathname
+                      ? "text-foreground font-medium underline underline-offset-4"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
                 >
                   {link.label}
                 </Link>
