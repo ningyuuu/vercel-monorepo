@@ -2,7 +2,7 @@ import { getTableData } from "@/lib/catalog";
 import { InnoquestHome } from "@/components/InnoquestHome";
 import testItems from "@/lib/test-items.json";
 import { Badge } from "@repo/ui/badge";
-import { Navbar } from "@repo/ui/shared/Navbar";
+import { Navbar } from "@/components/Navbar";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 
 export default async function Home() {

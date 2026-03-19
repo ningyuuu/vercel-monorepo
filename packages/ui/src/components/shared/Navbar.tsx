@@ -1,9 +1,16 @@
 import * as React from "react";
+import Link from "next/link";
 
 import { cn } from "../../lib/utils";
 
-type NavbarProps = {
+type NavLink = {
+  label: string;
+  href: string;
+};
+
+export type NavbarProps = {
   title: string;
+  links?: NavLink[];
   actions?: React.ReactNode;
   className?: string;
   containerClassName?: string;
@@ -11,6 +18,7 @@ type NavbarProps = {
 
 export function Navbar({
   title,
+  links,
   actions,
   className,
   containerClassName,
@@ -28,10 +36,23 @@ export function Navbar({
           containerClassName,
         )}
       >
-        <div className="min-w-0">
-          <p className="truncate text-lg font-semibold tracking-tight sm:text-xl">
+        <div className="flex items-center gap-6">
+          <p className="text-lg font-semibold tracking-tight sm:text-xl">
             {title}
           </p>
+          {links && links.length > 0 && (
+            <div className="flex items-center gap-4">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
         {actions ? (
           <div className="flex items-center gap-3">{actions}</div>
