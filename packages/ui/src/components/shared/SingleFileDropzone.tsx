@@ -17,7 +17,7 @@ import {
 
 const DEFAULT_MAX_FILE_SIZE = 10 * 1024 * 1024;
 
-export type FileDropzoneProps = {
+export type SingleFileDropzoneProps = {
   accept?: string;
   maxFileSize?: number;
   idleLabel?: string;
@@ -82,7 +82,7 @@ function normalizeRejectMessage(
   return message;
 }
 
-export function FileDropzone({
+export function SingleFileDropzone({
   accept = "application/pdf,.pdf",
   maxFileSize = DEFAULT_MAX_FILE_SIZE,
   idleLabel = "Drop a file here",
@@ -93,18 +93,22 @@ export function FileDropzone({
   multipleFilesMessage = "Select a single file.",
   className,
   onFileSelect,
-}: FileDropzoneProps) {
+}: SingleFileDropzoneProps) {
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState<string | null>(null);
   const selectedFile = files[0] ?? null;
 
   const handleValueChange = (nextFiles: File[]) => {
-    const normalizedFiles = nextFiles.slice(-1);
-    const file = normalizedFiles[0] ?? null;
+    if (nextFiles.length > 1) {
+      setError(multipleFilesMessage);
+      return;
+    }
 
-    setFiles(normalizedFiles);
+    const replacementFile = nextFiles[0] ?? null;
+
+    setFiles(replacementFile ? [replacementFile] : []);
     setError(null);
-    onFileSelect?.(file);
+    onFileSelect?.(replacementFile);
   };
 
   const handleFileValidate = (file: File) => {
@@ -120,7 +124,6 @@ export function FileDropzone({
   };
 
   const handleFileReject = (_file: File, message: string) => {
-    setFiles([]);
     setError(
       normalizeRejectMessage(
         message,
@@ -129,7 +132,10 @@ export function FileDropzone({
         multipleFilesMessage,
       ),
     );
-    onFileSelect?.(null);
+
+    if (!selectedFile) {
+      onFileSelect?.(null);
+    }
   };
 
   return (
@@ -139,7 +145,6 @@ export function FileDropzone({
       onFileValidate={handleFileValidate}
       onFileReject={handleFileReject}
       accept={accept}
-      maxFiles={1}
       maxSize={maxFileSize}
       multiple={false}
       label={idleLabel}

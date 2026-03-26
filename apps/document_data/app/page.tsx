@@ -1,6 +1,6 @@
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 import { Navbar } from "@repo/ui/shared/Navbar";
-import { FileDropzone } from "@repo/ui/shared/FileDropzone";
+import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
 import {
   Card,
   CardContent,
@@ -25,7 +25,7 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <FileDropzone
+            <SingleFileDropzone
               idleLabel="Drop a PDF here"
               idleDescription="Or click to browse. Only one PDF under 10 MB is allowed."
               invalidTypeMessage="Only PDF files are allowed."
