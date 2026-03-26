@@ -1,6 +1,8 @@
-import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
+import { redirect } from "next/navigation";
+
 import { Navbar } from "@repo/ui/shared/Navbar";
 import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
+import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 import {
   Card,
   CardContent,
@@ -9,12 +11,25 @@ import {
   CardTitle,
 } from "@repo/ui/card";
 
-export default function Home() {
+import { AuthActions } from "@/app/components/AuthActions";
+import { auth } from "@/auth";
+
+export default async function Home() {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <Navbar
         title="Document Data Extractor"
-        actions={<ThemeToggle className="static right-auto top-auto z-auto" />}
+        actions={
+          <AuthActions>
+            <ThemeToggle className="static right-auto top-auto z-auto" />
+          </AuthActions>
+        }
       />
       <main className="flex min-h-screen items-center justify-center px-6 pb-8 pt-24 sm:pt-28">
         <Card className="w-full max-w-2xl">
