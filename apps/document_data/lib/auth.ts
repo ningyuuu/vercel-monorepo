@@ -54,7 +54,7 @@ export function getRedirectRouteForAccess(
       return ACCESS_DENIED_ROUTE;
     }
 
-    return null;
+    return;
   }
 
   if (pathname === ACCESS_DENIED_ROUTE) {
@@ -62,7 +62,7 @@ export function getRedirectRouteForAccess(
       return HOME_ROUTE;
     }
 
-    return null;
+    return;
   }
 
   if (accessState === "guest") {
@@ -73,7 +73,7 @@ export function getRedirectRouteForAccess(
     return ACCESS_DENIED_ROUTE;
   }
 
-  return null;
+  return;
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

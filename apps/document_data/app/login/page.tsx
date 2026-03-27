@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 import { Button } from "@repo/ui/button";
 import {
   Card,
@@ -11,7 +9,7 @@ import {
 import { Navbar } from "@repo/ui/shared/Navbar";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 
-import { auth } from "@/auth";
+import { LOGIN_ROUTE, requirePageAccess } from "@/lib/auth";
 import { signInWithGoogle } from "@/app/actions/auth";
 
 const isGoogleAuthConfigured = Boolean(
@@ -21,11 +19,7 @@ const isGoogleAuthConfigured = Boolean(
 );
 
 export default async function LoginPage() {
-  const session = await auth();
-
-  if (session?.user) {
-    redirect("/");
-  }
+  await requirePageAccess(LOGIN_ROUTE);
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -51,7 +45,8 @@ export default async function LoginPage() {
             {!isGoogleAuthConfigured ? (
               <p className="text-sm text-muted-foreground">
                 Google OAuth is not configured yet. Set AUTH_SECRET,
-                AUTH_GOOGLE_ID, and AUTH_GOOGLE_SECRET in your local env file.
+                AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, and optionally
+                AUTH_ALLOWED_EMAILS in your local env file.
               </p>
             ) : null}
           </CardContent>

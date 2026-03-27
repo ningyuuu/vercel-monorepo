@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
 
-import { auth } from "@/auth";
+import {
+  auth,
+  getAuthAccessState,
+  getRedirectRouteForAccess,
+} from "@/lib/auth";
 
 export default auth((request) => {
-  const isLoggedIn = Boolean(request.auth);
-  const isLoginPage = request.nextUrl.pathname === "/login";
+  const accessState = getAuthAccessState({
+    isAuthenticated: Boolean(request.auth),
+    email: request.auth?.user?.email,
+  });
+  const redirectTarget = getRedirectRouteForAccess(
+    request.nextUrl.pathname,
+    accessState,
+  );
 
-  if (!isLoggedIn && !isLoginPage) {
-    return NextResponse.redirect(new URL("/login", request.nextUrl));
-  }
-
-  if (isLoggedIn && isLoginPage) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
+  if (redirectTarget && redirectTarget !== request.nextUrl.pathname) {
+    return NextResponse.redirect(new URL(redirectTarget, request.nextUrl));
   }
 
   return NextResponse.next();

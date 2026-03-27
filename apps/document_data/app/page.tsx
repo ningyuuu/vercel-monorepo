@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 import { Navbar } from "@repo/ui/shared/Navbar";
 import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
@@ -12,14 +10,10 @@ import {
 } from "@repo/ui/card";
 
 import { AuthActions } from "@/app/components/AuthActions";
-import { auth } from "@/auth";
+import { HOME_ROUTE, requirePageAccess } from "@/lib/auth";
 
 export default async function Home() {
-  const session = await auth();
-
-  if (!session?.user) {
-    redirect("/login");
-  }
+  await requirePageAccess(HOME_ROUTE);
 
   return (
     <div className="min-h-screen bg-background font-sans">
