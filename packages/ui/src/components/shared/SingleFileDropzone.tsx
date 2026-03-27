@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FileText, Upload, X } from "lucide-react";
 
 import { cn } from "lib/utils";
@@ -26,7 +26,11 @@ export type SingleFileDropzoneProps = {
   invalidTypeMessage?: string;
   invalidSizeMessage?: string;
   multipleFilesMessage?: string;
+  name?: string;
+  required?: boolean;
+  disabled?: boolean;
   className?: string;
+  file?: File | null;
   onFileSelect?: (file: File | null) => void;
 };
 
@@ -91,22 +95,45 @@ export function SingleFileDropzone({
   invalidTypeMessage = "This file type is not allowed.",
   invalidSizeMessage = "File is too large.",
   multipleFilesMessage = "Select a single file.",
+  name,
+  required = false,
+  disabled = false,
   className,
+  file,
   onFileSelect,
 }: SingleFileDropzoneProps) {
-  const [files, setFiles] = useState<File[]>([]);
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
+  const [internalFile, setInternalFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const selectedFile = files[0] ?? null;
+  const isControlled = file !== undefined;
+  const selectedFile = isControlled ? file : internalFile;
+  const files = selectedFile ? [selectedFile] : [];
 
-  const handleValueChange = (nextFiles: File[]) => {
-    if (nextFiles.length > 1) {
-      setError(multipleFilesMessage);
+  useEffect(() => {
+    const inputElement = hiddenInputRef.current;
+
+    if (!inputElement) {
       return;
     }
 
-    const replacementFile = nextFiles[0] ?? null;
+    if (!selectedFile) {
+      inputElement.value = "";
+      return;
+    }
 
-    setFiles(replacementFile ? [replacementFile] : []);
+    const dataTransfer = new DataTransfer();
+
+    dataTransfer.items.add(selectedFile);
+    inputElement.files = dataTransfer.files;
+  }, [selectedFile]);
+
+  const handleValueChange = (nextFiles: File[]) => {
+    const replacementFile = nextFiles.at(-1) ?? null;
+
+    if (!isControlled) {
+      setInternalFile(replacementFile);
+    }
+
     setError(null);
     onFileSelect?.(replacementFile);
   };
@@ -139,75 +166,97 @@ export function SingleFileDropzone({
   };
 
   return (
-    <FileUpload
-      value={files}
-      onValueChange={handleValueChange}
-      onFileValidate={handleFileValidate}
-      onFileReject={handleFileReject}
-      accept={accept}
-      maxSize={maxFileSize}
-      multiple={false}
-      label={idleLabel}
-      className={cn("space-y-4", className)}
-    >
-      <FileUploadDropzone
-        className={cn(
-          "min-h-56 rounded-xl border px-6 py-10 text-center transition-colors data-[dragging]:border-foreground data-[dragging]:bg-muted hover:border-foreground/40 hover:bg-muted/50",
-        )}
-        aria-label="Upload a file"
+    <>
+      <FileUpload
+        value={files}
+        onValueChange={handleValueChange}
+        onFileValidate={handleFileValidate}
+        onFileReject={handleFileReject}
+        accept={accept}
+        maxSize={maxFileSize}
+        multiple={false}
+        label={idleLabel}
+        disabled={disabled}
+        className={cn("space-y-4", className)}
       >
-        <div className="mb-4 rounded-full border border-border bg-background p-3">
-          <Upload className="size-5" />
-        </div>
-        <p className="text-base font-medium">{idleLabel}</p>
-        <p className="mt-2 text-sm text-muted-foreground">{idleDescription}</p>
-        <FileUploadTrigger asChild>
-          <Button type="button" variant="outline" className="mt-5">
-            Choose file
-          </Button>
-        </FileUploadTrigger>
-      </FileUploadDropzone>
+        <FileUploadDropzone
+          className={cn(
+            "min-h-56 rounded-xl border px-6 py-10 text-center transition-colors data-[dragging]:border-foreground data-[dragging]:bg-muted hover:border-foreground/40 hover:bg-muted/50",
+          )}
+          aria-label="Upload a file"
+        >
+          <div className="mb-4 rounded-full border border-border bg-background p-3">
+            <Upload className="size-5" />
+          </div>
+          <p className="text-base font-medium">{idleLabel}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {idleDescription}
+          </p>
+          <FileUploadTrigger asChild>
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-5"
+              disabled={disabled}
+            >
+              Choose file
+            </Button>
+          </FileUploadTrigger>
+        </FileUploadDropzone>
 
-      {selectedFile ? (
-        <FileUploadList>
-          <FileUploadItem
-            value={selectedFile}
-            className="justify-between rounded-xl bg-muted/40 px-4 py-3"
-          >
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="rounded-lg bg-background p-2">
-                <FileText className="size-4" />
+        {selectedFile ? (
+          <FileUploadList>
+            <FileUploadItem
+              value={selectedFile}
+              className="justify-between rounded-xl bg-muted/40 px-4 py-3"
+            >
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="rounded-lg bg-background p-2">
+                  <FileText className="size-4" />
+                </div>
+                <FileUploadItemMetadata>
+                  <p className="truncate text-sm font-medium">
+                    {selectedFile.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {formatFileSize(selectedFile.size)}
+                  </p>
+                </FileUploadItemMetadata>
               </div>
-              <FileUploadItemMetadata>
-                <p className="truncate text-sm font-medium">
-                  {selectedFile.name}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {formatFileSize(selectedFile.size)}
-                </p>
-              </FileUploadItemMetadata>
-            </div>
-            <FileUploadItemDelete asChild>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                aria-label="Remove selected file"
-              >
-                <X className="size-4" />
-              </Button>
-            </FileUploadItemDelete>
-          </FileUploadItem>
-        </FileUploadList>
-      ) : null}
+              <FileUploadItemDelete asChild>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Remove selected file"
+                  disabled={disabled}
+                >
+                  <X className="size-4" />
+                </Button>
+              </FileUploadItemDelete>
+            </FileUploadItem>
+          </FileUploadList>
+        ) : null}
 
-      {error ? (
-        <p className="text-sm text-destructive" role="alert">
-          {error}
-        </p>
-      ) : (
-        <p className="text-sm text-muted-foreground">{emptyMessage}</p>
-      )}
-    </FileUpload>
+        {error ? (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        ) : !selectedFile ? (
+          <p className="text-sm text-muted-foreground">{emptyMessage}</p>
+        ) : null}
+      </FileUpload>
+      <input
+        ref={hiddenInputRef}
+        type="file"
+        name={name}
+        accept={accept}
+        required={required}
+        disabled={disabled}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="sr-only"
+      />
+    </>
   );
 }

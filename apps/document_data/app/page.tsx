@@ -1,5 +1,4 @@
 import { Navbar } from "@repo/ui/shared/Navbar";
-import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 import {
   Card,
@@ -10,6 +9,7 @@ import {
 } from "@repo/ui/card";
 
 import { AuthActions } from "@/app/components/AuthActions";
+import { DocumentUploadForm } from "@/app/components/DocumentUploadForm";
 import { HOME_ROUTE, requirePageAccess } from "@/lib/auth";
 
 export default async function Home() {
@@ -29,18 +29,10 @@ export default async function Home() {
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Document Data</CardTitle>
-            <CardDescription>
-              Drop in a single PDF file to prepare it for extraction.
-            </CardDescription>
+            <CardDescription>Select a PDF to be uploaded.</CardDescription>
           </CardHeader>
           <CardContent>
-            <SingleFileDropzone
-              idleLabel="Drop a PDF here"
-              idleDescription="Or click to browse. Only one PDF under 10 MB is allowed."
-              invalidTypeMessage="Only PDF files are allowed."
-              invalidSizeMessage="File must be smaller than 10 MB."
-              multipleFilesMessage="Select a single PDF file."
-            />
+            <DocumentUploadForm />
           </CardContent>
         </Card>
       </main>
