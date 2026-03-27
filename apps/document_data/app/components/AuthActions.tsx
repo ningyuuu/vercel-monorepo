@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { Button } from "@repo/ui/button";
 
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { signOutAction } from "@/app/actions/auth";
 
 type AuthActionsProps = {

@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn, signOut } from "@/auth";
+import { signIn, signOut } from "@/lib/auth";
 
 export async function signInWithGoogle() {
   await signIn("google", { redirectTo: "/" });

@@ -1,0 +1,120 @@
+import { redirect } from "next/navigation";
+
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+
+export const HOME_ROUTE = "/";
+export const LOGIN_ROUTE = "/login";
+export const ACCESS_DENIED_ROUTE = "/access-denied";
+
+export type AuthAccessState = "guest" | "allowed" | "denied";
+export type AppRoute =
+  | typeof HOME_ROUTE
+  | typeof LOGIN_ROUTE
+  | typeof ACCESS_DENIED_ROUTE;
+
+export const allowedEmails = new Set(
+  (process.env.AUTH_ALLOWED_EMAILS ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+);
+
+export function isAllowedEmail(email?: string | null) {
+  if (allowedEmails.size === 0) {
+    return true;
+  }
+
+  const normalizedEmail = email?.trim().toLowerCase();
+
+  return Boolean(normalizedEmail && allowedEmails.has(normalizedEmail));
+}
+
+export function getAuthAccessState(options: {
+  isAuthenticated: boolean;
+  email?: string | null;
+}): AuthAccessState {
+  if (!options.isAuthenticated) {
+    return "guest";
+  }
+
+  return isAllowedEmail(options.email) ? "allowed" : "denied";
+}
+
+export function getRedirectRouteForAccess(
+  pathname: string,
+  accessState: AuthAccessState,
+) {
+  if (pathname === LOGIN_ROUTE) {
+    if (accessState === "allowed") {
+      return HOME_ROUTE;
+    }
+
+    if (accessState === "denied") {
+      return ACCESS_DENIED_ROUTE;
+    }
+
+    return null;
+  }
+
+  if (pathname === ACCESS_DENIED_ROUTE) {
+    if (accessState === "allowed") {
+      return HOME_ROUTE;
+    }
+
+    return null;
+  }
+
+  if (accessState === "guest") {
+    return LOGIN_ROUTE;
+  }
+
+  if (accessState === "denied") {
+    return ACCESS_DENIED_ROUTE;
+  }
+
+  return null;
+}
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID ?? "",
+      clientSecret: process.env.AUTH_GOOGLE_SECRET ?? "",
+    }),
+  ],
+  pages: {
+    signIn: LOGIN_ROUTE,
+  },
+  callbacks: {
+    signIn({ user, account }) {
+      if (account?.provider !== "google") {
+        return false;
+      }
+
+      if (!isAllowedEmail(user.email)) {
+        return ACCESS_DENIED_ROUTE;
+      }
+
+      return true;
+    },
+  },
+});
+
+export async function requirePageAccess(currentRoute: AppRoute) {
+  const session = await auth();
+  const accessState = getAuthAccessState({
+    isAuthenticated: Boolean(session?.user),
+    email: session?.user?.email,
+  });
+  const redirectTarget = getRedirectRouteForAccess(currentRoute, accessState);
+
+  if (redirectTarget && redirectTarget !== currentRoute) {
+    redirect(redirectTarget);
+  }
+
+  return {
+    accessState,
+    session,
+  };
+}
