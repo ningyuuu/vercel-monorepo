@@ -32,7 +32,7 @@ export async function GET(
   }
 
   const response = await fetch(
-    `${getSummariseDocApiBaseUrl()}/tasks/summarise_doc/${encodeURIComponent(taskId)}`,
+    `${getSummariseDocApiBaseUrl()}/tasks/extract_data/${encodeURIComponent(taskId)}`,
     {
       cache: "no-store",
     },

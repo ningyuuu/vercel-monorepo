@@ -105,7 +105,7 @@ export function DocumentUploadForm() {
           status: "error",
           message:
             (isSummaryTaskAcceptedResponse(data) ? undefined : data.error) ||
-            "Unable to start summary task.",
+            "Unable to start extract-data task.",
         });
         return;
       }
@@ -117,7 +117,7 @@ export function DocumentUploadForm() {
   };
 
   return (
-    <form action={handleSubmit} className="space-y-6">
+    <form action={handleSubmit}>
       <SingleFileDropzone
         name="document"
         required
@@ -135,9 +135,7 @@ export function DocumentUploadForm() {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
-          Submit uploads the PDF to a private Vercel Blob object, starts the
-          summary task, and polls for the result. Keep files under{" "}
-          {formatMaxFileSize(MAX_FILE_SIZE)} for Vercel server uploads.
+          Files should be under {formatMaxFileSize(MAX_FILE_SIZE)}.
         </p>
         <Button
           type="submit"

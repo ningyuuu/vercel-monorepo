@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   }
 
   const response = await fetch(
-    `${getSummariseDocApiBaseUrl()}/tasks/summarise_doc`,
+    `${getSummariseDocApiBaseUrl()}/tasks/extract_data`,
     {
       method: "POST",
       headers: {

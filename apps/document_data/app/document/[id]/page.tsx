@@ -40,7 +40,9 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Document Tracking</CardTitle>
-            <CardDescription>Follow summary task processing.</CardDescription>
+            <CardDescription>
+              Follow data extraction task processing.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <section className="space-y-4">
@@ -48,7 +50,7 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
                 <div>
                   <p className="text-sm font-medium">Task {id}</p>
                   <p className="text-sm text-muted-foreground">
-                    Tracking summary generation for the uploaded file.
+                    Tracking extracted quotation items for the uploaded file.
                   </p>
                 </div>
                 <Button asChild variant="outline">

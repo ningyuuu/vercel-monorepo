@@ -24,15 +24,15 @@ type SummaryTaskErrorResponse = {
 function formatTaskMessage(status: SummaryTaskStatus) {
   switch (status) {
     case "queued":
-      return "The summary task is queued.";
+      return "The extract-data task is queued.";
     case "in_progress":
-      return "The document is being summarised.";
+      return "The document is being processed.";
     case "completed":
-      return "Summary complete.";
+      return "Extraction complete.";
     case "failed":
-      return "Summary failed.";
+      return "Extraction failed.";
     default:
-      return "Processing summary task.";
+      return "Processing extract-data task.";
   }
 }
 
