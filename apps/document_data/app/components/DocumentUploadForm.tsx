@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@repo/ui/button";
 import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
@@ -9,6 +10,7 @@ import {
   uploadDocumentAction,
   type UploadFormState,
 } from "@/app/actions/upload";
+import { saveUploadState } from "@/lib/document-upload-store";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
 const initialUploadFormState: UploadFormState = {
@@ -20,24 +22,44 @@ function formatMaxFileSize(size: number) {
 }
 
 export function DocumentUploadForm() {
+  const router = useRouter();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [state, setState] = useState<UploadFormState>(initialUploadFormState);
-  const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (formData: FormData) => {
-    startTransition(() => {
-      void (async () => {
-        const nextState = await uploadDocumentAction(state, formData);
+  const isBusy = isSubmitting;
 
-        setState(nextState);
+  const handleFileSelect = (file: File | null) => {
+    setSelectedFile(file);
+    setState(initialUploadFormState);
+  };
 
-        if (nextState.status !== "success") {
-          return;
-        }
+  const handleSubmit = async (formData: FormData) => {
+    setIsSubmitting(true);
 
-        setSelectedFile(null);
-      })();
-    });
+    try {
+      const nextState = await uploadDocumentAction(
+        initialUploadFormState,
+        formData,
+      );
+
+      setState(nextState);
+
+      if (nextState.status !== "success") {
+        return;
+      }
+
+      setSelectedFile(null);
+
+      if (!nextState.documentId) {
+        return;
+      }
+
+      saveUploadState(nextState);
+      router.push(`/document/${encodeURIComponent(nextState.documentId)}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -45,7 +67,7 @@ export function DocumentUploadForm() {
       <SingleFileDropzone
         name="document"
         required
-        disabled={isPending}
+        disabled={isBusy}
         file={selectedFile}
         maxFileSize={MAX_FILE_SIZE}
         idleLabel="Drop a PDF here"
@@ -54,20 +76,21 @@ export function DocumentUploadForm() {
         invalidTypeMessage="Only PDF files are allowed."
         invalidSizeMessage={`File must be smaller than ${formatMaxFileSize(MAX_FILE_SIZE)}.`}
         multipleFilesMessage="Select a single PDF file."
-        onFileSelect={setSelectedFile}
+        onFileSelect={handleFileSelect}
       />
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
-          Submit uploads the PDF to a private Vercel Blob object. Keep files
-          under {formatMaxFileSize(MAX_FILE_SIZE)} for Vercel server uploads.
+          Submit uploads the PDF to a private Vercel Blob object, starts the
+          summary task, and polls for the result. Keep files under{" "}
+          {formatMaxFileSize(MAX_FILE_SIZE)} for Vercel server uploads.
         </p>
         <Button
           type="submit"
-          disabled={!selectedFile || isPending}
+          disabled={!selectedFile || isBusy}
           className="w-full sm:w-auto"
         >
-          {isPending ? "Uploading..." : "Upload PDF"}
+          {isBusy ? "Processing..." : "Upload PDF"}
         </Button>
       </div>
 
@@ -75,17 +98,6 @@ export function DocumentUploadForm() {
         <p className="text-sm text-destructive" role="alert">
           {state.message}
         </p>
-      ) : null}
-
-      {state.status === "success" ? (
-        <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
-          <p className="text-sm font-medium">{state.message}</p>
-          {state.pathname ? (
-            <p className="mt-1 break-all text-sm text-muted-foreground">
-              Stored at {state.pathname}
-            </p>
-          ) : null}
-        </div>
       ) : null}
     </form>
   );
