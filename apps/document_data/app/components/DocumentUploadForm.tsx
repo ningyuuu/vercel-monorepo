@@ -10,15 +10,46 @@ import {
   uploadDocumentAction,
   type UploadFormState,
 } from "@/app/actions/upload";
-import { saveUploadState } from "@/lib/document-upload-store";
+import {
+  type SummariseDocRequestBody,
+  type SummaryTaskAcceptedResponse,
+} from "@/lib/summarise-doc";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
 const initialUploadFormState: UploadFormState = {
   status: "idle",
 };
 
+type SummaryTaskErrorResponse = {
+  error?: string;
+};
+
 function formatMaxFileSize(size: number) {
   return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function isSummaryTaskAcceptedResponse(
+  value: SummaryTaskAcceptedResponse | SummaryTaskErrorResponse,
+): value is SummaryTaskAcceptedResponse {
+  return "task_id" in value && "status" in value;
+}
+
+async function createSummaryTask(payload: SummariseDocRequestBody) {
+  const response = await fetch("/api/tasks/summarise_doc", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = (await response.json()) as
+    | SummaryTaskAcceptedResponse
+    | SummaryTaskErrorResponse;
+
+  return {
+    ok: response.ok,
+    data,
+  };
 }
 
 export function DocumentUploadForm() {
@@ -51,12 +82,35 @@ export function DocumentUploadForm() {
 
       setSelectedFile(null);
 
-      if (!nextState.documentId) {
+      const blobUrl = nextState.blobUrl;
+      const userLink = nextState.pathname ?? nextState.fileName ?? blobUrl;
+
+      if (!blobUrl || !userLink) {
+        setState({
+          status: "error",
+          message: "Upload finished but task setup data is missing.",
+        });
         return;
       }
 
-      saveUploadState(nextState);
-      router.push(`/document/${encodeURIComponent(nextState.documentId)}`);
+      const payload: SummariseDocRequestBody = {
+        user_link: userLink,
+        blob_link: blobUrl,
+        blob_type: "vercel",
+      };
+      const { ok, data } = await createSummaryTask(payload);
+
+      if (!ok || !isSummaryTaskAcceptedResponse(data)) {
+        setState({
+          status: "error",
+          message:
+            (isSummaryTaskAcceptedResponse(data) ? undefined : data.error) ||
+            "Unable to start summary task.",
+        });
+        return;
+      }
+
+      router.push(`/document/${encodeURIComponent(data.task_id)}`);
     } finally {
       setIsSubmitting(false);
     }
