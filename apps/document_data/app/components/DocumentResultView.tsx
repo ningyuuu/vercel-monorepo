@@ -112,7 +112,7 @@ export function DocumentResultView({ taskId }: Props) {
                     {item.name || "-"}
                   </TableCell>
                   <TableCell>{item.unit || "-"}</TableCell>
-                  <TableCell>{item.unit_cost || "-"}</TableCell>
+                  <TableCell>${item.unit_cost || "-"}</TableCell>
                   <TableCell>{item.qty_count || "-"}</TableCell>
                   <TableCell className="whitespace-normal break-words text-muted-foreground">
                     {item.remarks || "-"}

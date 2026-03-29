@@ -7,7 +7,7 @@ import {
   type SummaryTaskStatus,
 } from "@/lib/summarise-doc";
 
-const TASK_POLL_INTERVAL_MS = 1500;
+const TASK_POLL_INTERVAL_MS = 5000;
 
 export type SummaryTaskState = {
   phase: "idle" | "polling" | "success" | "error";
@@ -79,72 +79,73 @@ export function useSummaryTaskState(taskId: string) {
 
     let cancelled = false;
     const nextTaskId = summaryTask.taskId;
-    const timer = window.setTimeout(() => {
-      async function pollTask() {
-        try {
-          const { ok, data } = await fetchSummaryTask(nextTaskId);
+    async function pollTask() {
+      try {
+        const { ok, data } = await fetchSummaryTask(nextTaskId);
 
-          if (cancelled) {
-            return;
-          }
+        if (cancelled) {
+          return;
+        }
 
-          if (!ok || !isSummaryTaskDetailResponse(data)) {
-            setSummaryTask({
-              phase: "error",
-              taskId: nextTaskId,
-              message: data.error || "Unable to retrieve task status.",
-            });
-            return;
-          }
-
-          if (data.status === "completed") {
-            setSummaryTask({
-              phase: "success",
-              taskId: data.task_id,
-              status: data.status,
-              message: formatTaskMessage(data.status),
-              result: data.result,
-            });
-            return;
-          }
-
-          if (data.status === "failed") {
-            setSummaryTask({
-              phase: "error",
-              taskId: data.task_id,
-              status: data.status,
-              message: data.error || formatTaskMessage(data.status),
-              result: data.result,
-            });
-            return;
-          }
-
+        if (!ok || !isSummaryTaskDetailResponse(data)) {
           setSummaryTask({
-            phase: "polling",
+            phase: "error",
+            taskId: nextTaskId,
+            message: data.error || "Unable to retrieve task status.",
+          });
+          return;
+        }
+
+        if (data.status === "completed") {
+          setSummaryTask({
+            phase: "success",
             taskId: data.task_id,
             status: data.status,
             message: formatTaskMessage(data.status),
             result: data.result,
           });
-        } catch {
-          if (cancelled) {
-            return;
-          }
+          return;
+        }
 
+        if (data.status === "failed") {
           setSummaryTask({
             phase: "error",
-            taskId: nextTaskId,
-            message: "Unable to retrieve task status.",
+            taskId: data.task_id,
+            status: data.status,
+            message: data.error || formatTaskMessage(data.status),
+            result: data.result,
           });
+          return;
         }
-      }
 
-      void pollTask();
+        setSummaryTask({
+          phase: "polling",
+          taskId: data.task_id,
+          status: data.status,
+          message: formatTaskMessage(data.status),
+          result: data.result,
+        });
+      } catch {
+        if (cancelled) {
+          return;
+        }
+
+        setSummaryTask({
+          phase: "error",
+          taskId: nextTaskId,
+          message: "Unable to retrieve task status.",
+        });
+      }
+    }
+
+    pollTask();
+    const intervalId = window.setInterval(() => {
+      pollTask();
     }, TASK_POLL_INTERVAL_MS);
 
     return () => {
       cancelled = true;
-      window.clearTimeout(timer);
+      window.clearInterval(intervalId);
     };
   }, [isPolling, summaryTask.taskId, summaryTask.status]);
 
