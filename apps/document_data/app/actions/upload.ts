@@ -9,8 +9,11 @@ const DOCUMENT_FIELD_NAME = "document";
 
 export type UploadFormState = {
   status: "idle" | "success" | "error";
+  documentId?: string;
   message?: string;
   pathname?: string;
+  blobUrl?: string;
+  fileName?: string;
 };
 
 function hasPdfExtension(fileName: string) {
@@ -27,12 +30,16 @@ function sanitizePathSegment(value: string) {
   return sanitized || "file";
 }
 
-function buildBlobPath(fileName: string, userEmail?: string | null) {
+function buildBlobPath(
+  fileName: string,
+  documentId: string,
+  userEmail?: string | null,
+) {
   const datePrefix = new Date().toISOString().slice(0, 10);
   const safeEmail = sanitizePathSegment(userEmail ?? "anonymous");
   const safeFileName = sanitizePathSegment(fileName);
 
-  return `document-data/${datePrefix}/${safeEmail}/${crypto.randomUUID()}-${safeFileName}`;
+  return `document-data/${datePrefix}/${safeEmail}/${documentId}-${safeFileName}`;
 }
 
 export async function uploadDocumentAction(
@@ -90,15 +97,23 @@ export async function uploadDocumentAction(
   }
 
   try {
-    const blob = await put(buildBlobPath(file.name, session.user.email), file, {
-      access: "private",
-      addRandomSuffix: false,
-      contentType: file.type || "application/pdf",
-    });
+    const documentId = crypto.randomUUID();
+    const blob = await put(
+      buildBlobPath(file.name, documentId, session.user.email),
+      file,
+      {
+        access: "private",
+        addRandomSuffix: false,
+        contentType: file.type || "application/pdf",
+      },
+    );
 
     return {
       status: "success",
+      documentId,
       message: "PDF uploaded to Vercel Blob.",
+      blobUrl: blob.url,
+      fileName: file.name,
       pathname: blob.pathname,
     };
   } catch (error) {
