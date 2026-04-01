@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
 
 import {
-  getExtractQuoteApiBaseUrl,
-  getExtractQuoteTaskRequestAccess,
-  readExtractQuoteTaskApiError,
   type ExtractQuoteRequestBody,
   type ExtractQuoteTaskAcceptedResponse,
 } from "@/lib/extract-quote";
+import {
+  getTaskApiBaseUrl,
+  getTaskRequestAccess,
+  readTaskApiError,
+} from "@/lib/task-api";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const access = await getExtractQuoteTaskRequestAccess();
+  const access = await getTaskRequestAccess();
 
   if ("error" in access) {
     return NextResponse.json(
@@ -20,11 +22,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiBaseUrl = getExtractQuoteApiBaseUrl();
+  const apiBaseUrl = getTaskApiBaseUrl();
 
   if (!apiBaseUrl) {
     return NextResponse.json(
-      { error: "EXTRACT_QUOTE_API_BASE_URL is not configured." },
+      { error: "LLM_API_BASE_URL is not configured." },
       { status: 500 },
     );
   }
@@ -68,7 +70,7 @@ export async function POST(request: Request) {
 
   if (!response.ok) {
     return NextResponse.json(
-      { error: await readExtractQuoteTaskApiError(response) },
+      { error: await readTaskApiError(response) },
       { status: response.status },
     );
   }

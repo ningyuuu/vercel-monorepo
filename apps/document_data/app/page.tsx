@@ -28,7 +28,7 @@ export default async function Home() {
       <main className="flex min-h-screen items-center justify-center px-6 pb-8 pt-24 sm:pt-28">
         <Card className="w-full max-w-2xl">
           <CardHeader>
-            <CardTitle>Document Data</CardTitle>
+            <CardTitle>Extract Quotes</CardTitle>
             <CardDescription>Select a PDF to be uploaded.</CardDescription>
           </CardHeader>
           <CardContent>
