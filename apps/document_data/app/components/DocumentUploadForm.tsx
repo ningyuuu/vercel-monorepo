@@ -14,6 +14,7 @@ import {
   type ExtractQuoteRequestBody,
   type ExtractQuoteTaskAcceptedResponse,
 } from "@/lib/extract-quote";
+import { QUOTATION_ITEMS_ROUTE } from "@/lib/auth";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
 const initialUploadFormState: UploadFormState = {
@@ -111,7 +112,9 @@ export function DocumentUploadForm() {
         return;
       }
 
-      router.push(`/document/${encodeURIComponent(data.task_id)}`);
+      router.push(
+        `${QUOTATION_ITEMS_ROUTE}/${encodeURIComponent(data.task_id)}`,
+      );
     } finally {
       setIsSubmitting(false);
     }

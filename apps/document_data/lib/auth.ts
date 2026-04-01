@@ -6,12 +6,17 @@ import Google from "next-auth/providers/google";
 export const HOME_ROUTE = "/";
 export const LOGIN_ROUTE = "/login";
 export const ACCESS_DENIED_ROUTE = "/access-denied";
+export const QUOTATION_ITEMS_ROUTE = "/quotation-items";
+export const PURCHASE_ORDERS_ROUTE = "/purchase-orders";
+export const DEFAULT_AUTHENTICATED_ROUTE = QUOTATION_ITEMS_ROUTE;
 
 export type AuthAccessState = "guest" | "allowed" | "denied";
 export type AppRoute =
   | typeof HOME_ROUTE
   | typeof LOGIN_ROUTE
-  | typeof ACCESS_DENIED_ROUTE;
+  | typeof ACCESS_DENIED_ROUTE
+  | typeof QUOTATION_ITEMS_ROUTE
+  | typeof PURCHASE_ORDERS_ROUTE;
 
 export const allowedEmails = new Set(
   (process.env.AUTH_ALLOWED_EMAILS ?? "")
@@ -47,7 +52,7 @@ export function getRedirectRouteForAccess(
 ) {
   if (pathname === LOGIN_ROUTE) {
     if (accessState === "allowed") {
-      return HOME_ROUTE;
+      return DEFAULT_AUTHENTICATED_ROUTE;
     }
 
     if (accessState === "denied") {
@@ -59,7 +64,7 @@ export function getRedirectRouteForAccess(
 
   if (pathname === ACCESS_DENIED_ROUTE) {
     if (accessState === "allowed") {
-      return HOME_ROUTE;
+      return DEFAULT_AUTHENTICATED_ROUTE;
     }
 
     return;
