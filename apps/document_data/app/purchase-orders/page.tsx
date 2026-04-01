@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-import { Button } from "@repo/ui/button";
 import { Navbar } from "@repo/ui/shared/Navbar";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 import {
@@ -31,17 +28,10 @@ export default async function PurchaseOrdersPage() {
       <main className="flex min-h-screen items-center justify-center px-6 pb-8 pt-24 sm:pt-28">
         <Card className="w-full max-w-2xl">
           <CardHeader>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <CardTitle>Extract Purchase Orders</CardTitle>
-                <CardDescription>
-                  Upload a purchase-order PDF to extract line items.
-                </CardDescription>
-              </div>
-              <Button asChild variant="outline">
-                <Link href="/">Quote Extraction</Link>
-              </Button>
-            </div>
+            <CardTitle>Extract Purchase Orders</CardTitle>
+            <CardDescription>
+              Upload a purchase-order PDF to extract line items.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <PurchaseOrderUploadForm />
