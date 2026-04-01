@@ -1,43 +1,45 @@
 import { auth, isAllowedEmail } from "@/lib/auth";
 
-const DEFAULT_SUMMARISE_DOC_API_BASE_URL = "http://localhost:8000";
-
-export type SummaryTaskStatus =
+export type ExtractQuoteTaskStatus =
   | "queued"
   | "in_progress"
   | "completed"
   | "failed";
 
-export type SummariseDocRequestBody = {
+export type ExtractQuoteRequestBody = {
   user_link: string;
   blob_link: string;
   blob_type: "vercel";
 };
 
-export type SummaryTaskAcceptedResponse = {
+export type ExtractQuoteTaskAcceptedResponse = {
   task_id: string;
-  status: SummaryTaskStatus;
+  status: ExtractQuoteTaskStatus;
 };
 
-export type SummaryTaskDetailResponse = {
+export type ExtractQuoteTaskDetailResponse = {
   task_id: string;
-  status: SummaryTaskStatus;
+  status: ExtractQuoteTaskStatus;
   result: Record<string, unknown> | null;
   error: string | null;
 };
 
-export function getSummariseDocApiBaseUrl() {
-  return (
-    process.env.SUMMARISE_DOC_API_BASE_URL ?? DEFAULT_SUMMARISE_DOC_API_BASE_URL
-  ).replace(/\/+$/, "");
+export function getExtractQuoteApiBaseUrl() {
+  const apiBaseUrl = process.env.LLM_API_BASE_URL?.trim();
+
+  if (!apiBaseUrl) {
+    return null;
+  }
+
+  return apiBaseUrl.replace(/\/+$/, "");
 }
 
-export async function getTaskRequestAccess() {
+export async function getExtractQuoteTaskRequestAccess() {
   const session = await auth();
 
   if (!session?.user) {
     return {
-      error: "You must be signed in to summarise a document.",
+      error: "You must be signed in to extract a quote.",
       status: 401,
     } as const;
   }
@@ -53,7 +55,7 @@ export async function getTaskRequestAccess() {
 
   if (!isAllowedEmail(email)) {
     return {
-      error: "You do not have access to summarise documents.",
+      error: "You do not have access to extract quotes.",
       status: 403,
     } as const;
   }
@@ -61,7 +63,7 @@ export async function getTaskRequestAccess() {
   return { email } as const;
 }
 
-export async function readTaskApiError(response: Response) {
+export async function readExtractQuoteTaskApiError(response: Response) {
   try {
     const data = (await response.json()) as {
       detail?: string;

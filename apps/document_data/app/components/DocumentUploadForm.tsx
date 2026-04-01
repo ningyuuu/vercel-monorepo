@@ -11,16 +11,16 @@ import {
   type UploadFormState,
 } from "@/app/actions/upload";
 import {
-  type SummariseDocRequestBody,
-  type SummaryTaskAcceptedResponse,
-} from "@/lib/summarise-doc";
+  type ExtractQuoteRequestBody,
+  type ExtractQuoteTaskAcceptedResponse,
+} from "@/lib/extract-quote";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
 const initialUploadFormState: UploadFormState = {
   status: "idle",
 };
 
-type SummaryTaskErrorResponse = {
+type ExtractQuoteTaskErrorResponse = {
   error?: string;
 };
 
@@ -28,14 +28,14 @@ function formatMaxFileSize(size: number) {
   return `${(size / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-function isSummaryTaskAcceptedResponse(
-  value: SummaryTaskAcceptedResponse | SummaryTaskErrorResponse,
-): value is SummaryTaskAcceptedResponse {
+function isExtractQuoteTaskAcceptedResponse(
+  value: ExtractQuoteTaskAcceptedResponse | ExtractQuoteTaskErrorResponse,
+): value is ExtractQuoteTaskAcceptedResponse {
   return "task_id" in value && "status" in value;
 }
 
-async function createSummaryTask(payload: SummariseDocRequestBody) {
-  const response = await fetch("/api/tasks/summarise_doc", {
+async function createExtractQuoteTask(payload: ExtractQuoteRequestBody) {
+  const response = await fetch("/api/tasks/extract_quote", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,8 +43,8 @@ async function createSummaryTask(payload: SummariseDocRequestBody) {
     body: JSON.stringify(payload),
   });
   const data = (await response.json()) as
-    | SummaryTaskAcceptedResponse
-    | SummaryTaskErrorResponse;
+    | ExtractQuoteTaskAcceptedResponse
+    | ExtractQuoteTaskErrorResponse;
 
   return {
     ok: response.ok,
@@ -93,19 +93,20 @@ export function DocumentUploadForm() {
         return;
       }
 
-      const payload: SummariseDocRequestBody = {
+      const payload: ExtractQuoteRequestBody = {
         user_link: userLink,
         blob_link: blobUrl,
         blob_type: "vercel",
       };
-      const { ok, data } = await createSummaryTask(payload);
+      const { ok, data } = await createExtractQuoteTask(payload);
 
-      if (!ok || !isSummaryTaskAcceptedResponse(data)) {
+      if (!ok || !isExtractQuoteTaskAcceptedResponse(data)) {
         setState({
           status: "error",
           message:
-            (isSummaryTaskAcceptedResponse(data) ? undefined : data.error) ||
-            "Unable to start extract-data task.",
+            (isExtractQuoteTaskAcceptedResponse(data)
+              ? undefined
+              : data.error) || "Unable to start extract quote task.",
         });
         return;
       }

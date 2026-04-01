@@ -10,9 +10,9 @@ import {
 } from "@repo/ui/table";
 
 import {
-  useSummaryTaskState,
-  formatTaskStatus,
-} from "@/app/hooks/useSummaryTaskState";
+  useExtractQuoteTaskState,
+  formatExtractQuoteTaskStatus,
+} from "@/app/hooks/useExtractQuoteTaskState";
 
 type Props = { taskId: string };
 
@@ -65,34 +65,34 @@ function getSummaryText(result?: Record<string, unknown> | null) {
 }
 
 export function DocumentResultView({ taskId }: Props) {
-  const summaryTask = useSummaryTaskState(taskId);
+  const extractQuoteTask = useExtractQuoteTaskState(taskId);
 
-  const extractedItems = getExtractedItems(summaryTask.result);
-  const summaryText = getSummaryText(summaryTask.result);
+  const extractedItems = getExtractedItems(extractQuoteTask.result);
+  const summaryText = getSummaryText(extractQuoteTask.result);
 
   return (
     <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-medium">
-          {summaryTask.status
-            ? `Task status: ${formatTaskStatus(summaryTask.status)}`
+          {extractQuoteTask.status
+            ? `Task status: ${formatExtractQuoteTaskStatus(extractQuoteTask.status)}`
             : "Task status: Starting"}
         </p>
         <p className="text-xs text-muted-foreground">
-          Task ID: {summaryTask.taskId}
+          Task ID: {extractQuoteTask.taskId}
         </p>
       </div>
-      {summaryTask.message ? (
+      {extractQuoteTask.message ? (
         <p className="mt-1 text-sm text-muted-foreground">
-          {summaryTask.message}
+          {extractQuoteTask.message}
         </p>
       ) : null}
-      {summaryTask.phase === "error" ? (
+      {extractQuoteTask.phase === "error" ? (
         <p className="mt-3 text-sm text-destructive" role="alert">
-          {summaryTask.message}
+          {extractQuoteTask.message}
         </p>
       ) : null}
-      {summaryTask.phase === "success" && extractedItems.length > 0 ? (
+      {extractQuoteTask.phase === "success" && extractedItems.length > 0 ? (
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Extracted Items</p>
           <Table>
@@ -123,14 +123,14 @@ export function DocumentResultView({ taskId }: Props) {
           </Table>
         </div>
       ) : null}
-      {summaryTask.phase === "success" &&
+      {extractQuoteTask.phase === "success" &&
       extractedItems.length === 0 &&
       !summaryText ? (
         <p className="mt-3 text-sm text-muted-foreground">
           No quoted items were extracted.
         </p>
       ) : null}
-      {summaryTask.phase === "success" && summaryText ? (
+      {extractQuoteTask.phase === "success" && summaryText ? (
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Result</p>
           <p className="whitespace-pre-wrap text-sm text-foreground">

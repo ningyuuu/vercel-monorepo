@@ -3,55 +3,55 @@
 import { useEffect, useState } from "react";
 
 import {
-  type SummaryTaskDetailResponse,
-  type SummaryTaskStatus,
-} from "@/lib/summarise-doc";
+  type ExtractQuoteTaskDetailResponse,
+  type ExtractQuoteTaskStatus,
+} from "@/lib/extract-quote";
 
 const TASK_POLL_INTERVAL_MS = 5000;
 
-export type SummaryTaskState = {
+export type ExtractQuoteTaskState = {
   phase: "idle" | "polling" | "success" | "error";
   taskId: string;
-  status?: SummaryTaskStatus;
+  status?: ExtractQuoteTaskStatus;
   message?: string;
   result?: Record<string, unknown> | null;
 };
 
-type SummaryTaskErrorResponse = {
+type ExtractQuoteTaskErrorResponse = {
   error?: string;
 };
 
-function formatTaskMessage(status: SummaryTaskStatus) {
+function formatExtractQuoteTaskMessage(status: ExtractQuoteTaskStatus) {
   switch (status) {
     case "queued":
-      return "The extract-data task is queued.";
+      return "The extract quote task is queued.";
     case "in_progress":
       return "The document is being processed.";
     case "completed":
-      return "Extraction complete.";
+      return "Quote extraction complete.";
     case "failed":
-      return "Extraction failed.";
+      return "Quote extraction failed.";
     default:
-      return "Processing extract-data task.";
+      return "Processing extract quote task.";
   }
 }
 
-function isSummaryTaskDetailResponse(
-  value: SummaryTaskDetailResponse | SummaryTaskErrorResponse,
-): value is SummaryTaskDetailResponse {
+function isExtractQuoteTaskDetailResponse(
+  value: ExtractQuoteTaskDetailResponse | ExtractQuoteTaskErrorResponse,
+): value is ExtractQuoteTaskDetailResponse {
   return "task_id" in value && "status" in value;
 }
 
-async function fetchSummaryTask(taskId: string) {
+async function fetchExtractQuoteTask(taskId: string) {
   const response = await fetch(
-    `/api/tasks/summarise_doc/${encodeURIComponent(taskId)}`,
+    `/api/tasks/extract_quote/${encodeURIComponent(taskId)}`,
     {
       cache: "no-store",
     },
   );
   const data = (await response.json()) as
-    | SummaryTaskDetailResponse
-    | SummaryTaskErrorResponse;
+    | ExtractQuoteTaskDetailResponse
+    | ExtractQuoteTaskErrorResponse;
 
   return {
     ok: response.ok,
@@ -59,36 +59,37 @@ async function fetchSummaryTask(taskId: string) {
   };
 }
 
-export function useSummaryTaskState(taskId: string) {
-  const [summaryTask, setSummaryTask] = useState<SummaryTaskState>({
-    phase: "polling",
-    taskId,
-    message: "Loading task status...",
-  });
+export function useExtractQuoteTaskState(taskId: string) {
+  const [extractQuoteTask, setExtractQuoteTask] =
+    useState<ExtractQuoteTaskState>({
+      phase: "polling",
+      taskId,
+      message: "Loading task status...",
+    });
 
   const isPolling =
-    summaryTask.phase === "polling" &&
-    Boolean(summaryTask.taskId) &&
-    !["completed", "failed"].includes(summaryTask.status ?? "");
+    extractQuoteTask.phase === "polling" &&
+    Boolean(extractQuoteTask.taskId) &&
+    !["completed", "failed"].includes(extractQuoteTask.status ?? "");
 
-  // set up an effect to poll task status
   useEffect(() => {
-    if (!isPolling || !summaryTask.taskId) {
+    if (!isPolling || !extractQuoteTask.taskId) {
       return;
     }
 
     let cancelled = false;
-    const nextTaskId = summaryTask.taskId;
+    const nextTaskId = extractQuoteTask.taskId;
+
     async function pollTask() {
       try {
-        const { ok, data } = await fetchSummaryTask(nextTaskId);
+        const { ok, data } = await fetchExtractQuoteTask(nextTaskId);
 
         if (cancelled) {
           return;
         }
 
-        if (!ok || !isSummaryTaskDetailResponse(data)) {
-          setSummaryTask({
+        if (!ok || !isExtractQuoteTaskDetailResponse(data)) {
+          setExtractQuoteTask({
             phase: "error",
             taskId: nextTaskId,
             message: data.error || "Unable to retrieve task status.",
@@ -97,32 +98,32 @@ export function useSummaryTaskState(taskId: string) {
         }
 
         if (data.status === "completed") {
-          setSummaryTask({
+          setExtractQuoteTask({
             phase: "success",
             taskId: data.task_id,
             status: data.status,
-            message: formatTaskMessage(data.status),
+            message: formatExtractQuoteTaskMessage(data.status),
             result: data.result,
           });
           return;
         }
 
         if (data.status === "failed") {
-          setSummaryTask({
+          setExtractQuoteTask({
             phase: "error",
             taskId: data.task_id,
             status: data.status,
-            message: data.error || formatTaskMessage(data.status),
+            message: data.error || formatExtractQuoteTaskMessage(data.status),
             result: data.result,
           });
           return;
         }
 
-        setSummaryTask({
+        setExtractQuoteTask({
           phase: "polling",
           taskId: data.task_id,
           status: data.status,
-          message: formatTaskMessage(data.status),
+          message: formatExtractQuoteTaskMessage(data.status),
           result: data.result,
         });
       } catch {
@@ -130,7 +131,7 @@ export function useSummaryTaskState(taskId: string) {
           return;
         }
 
-        setSummaryTask({
+        setExtractQuoteTask({
           phase: "error",
           taskId: nextTaskId,
           message: "Unable to retrieve task status.",
@@ -147,12 +148,12 @@ export function useSummaryTaskState(taskId: string) {
       cancelled = true;
       window.clearInterval(intervalId);
     };
-  }, [isPolling, summaryTask.taskId, summaryTask.status]);
+  }, [extractQuoteTask.status, extractQuoteTask.taskId, isPolling]);
 
-  return summaryTask;
+  return extractQuoteTask;
 }
 
-export function formatTaskStatus(status: SummaryTaskStatus) {
+export function formatExtractQuoteTaskStatus(status: ExtractQuoteTaskStatus) {
   switch (status) {
     case "queued":
       return "Queued";

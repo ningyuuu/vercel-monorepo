@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 
 import {
-  getSummariseDocApiBaseUrl,
-  getTaskRequestAccess,
-  readTaskApiError,
-  type SummaryTaskDetailResponse,
-} from "@/lib/summarise-doc";
+  getExtractQuoteApiBaseUrl,
+  getExtractQuoteTaskRequestAccess,
+  readExtractQuoteTaskApiError,
+  type ExtractQuoteTaskDetailResponse,
+} from "@/lib/extract-quote";
 
 export const dynamic = "force-dynamic";
 
@@ -13,12 +13,21 @@ export async function GET(
   _request: Request,
   context: { params: Promise<{ taskId: string }> },
 ) {
-  const access = await getTaskRequestAccess();
+  const access = await getExtractQuoteTaskRequestAccess();
 
   if ("error" in access) {
     return NextResponse.json(
       { error: access.error },
       { status: access.status },
+    );
+  }
+
+  const apiBaseUrl = getExtractQuoteApiBaseUrl();
+
+  if (!apiBaseUrl) {
+    return NextResponse.json(
+      { error: "EXTRACT_QUOTE_API_BASE_URL is not configured." },
+      { status: 500 },
     );
   }
 
@@ -32,7 +41,7 @@ export async function GET(
   }
 
   const response = await fetch(
-    `${getSummariseDocApiBaseUrl()}/tasks/extract_data/${encodeURIComponent(taskId)}`,
+    `${apiBaseUrl}/tasks/extract_quote/${encodeURIComponent(taskId)}`,
     {
       cache: "no-store",
     },
@@ -40,12 +49,12 @@ export async function GET(
 
   if (!response.ok) {
     return NextResponse.json(
-      { error: await readTaskApiError(response) },
+      { error: await readExtractQuoteTaskApiError(response) },
       { status: response.status },
     );
   }
 
-  const data = (await response.json()) as SummaryTaskDetailResponse;
+  const data = (await response.json()) as ExtractQuoteTaskDetailResponse;
 
   return NextResponse.json(data, { status: response.status });
 }
