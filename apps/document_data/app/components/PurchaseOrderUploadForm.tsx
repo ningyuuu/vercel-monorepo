@@ -119,16 +119,16 @@ export function PurchaseOrderUploadForm() {
   };
 
   return (
-    <form action={handleSubmit} className="space-y-4">
+    <form action={handleSubmit}>
       <SingleFileDropzone
         name="document"
         required
         disabled={isBusy}
         file={selectedFile}
         maxFileSize={MAX_FILE_SIZE}
-        idleLabel="Drop a purchase-order PDF here"
+        idleLabel="Drop a PDF here"
         idleDescription={`Or click to browse. Only one PDF under ${formatMaxFileSize(MAX_FILE_SIZE)} is allowed.`}
-        emptyMessage="No purchase-order PDF selected yet."
+        emptyMessage="No PDF selected yet."
         invalidTypeMessage="Only PDF files are allowed."
         invalidSizeMessage={`File must be smaller than ${formatMaxFileSize(MAX_FILE_SIZE)}.`}
         multipleFilesMessage="Select a single PDF file."
@@ -144,7 +144,7 @@ export function PurchaseOrderUploadForm() {
           disabled={!selectedFile || isBusy}
           className="w-full sm:w-auto"
         >
-          {isBusy ? "Processing..." : "Upload Purchase Order"}
+          {isBusy ? "Processing..." : "Upload PDF"}
         </Button>
       </div>
 

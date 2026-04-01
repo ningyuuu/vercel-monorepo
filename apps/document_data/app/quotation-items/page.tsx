@@ -19,8 +19,10 @@ export default async function QuotationItemsPage() {
       <main className="flex min-h-screen items-center justify-center px-6 pb-8 pt-24 sm:pt-28">
         <Card className="w-full max-w-2xl">
           <CardHeader>
-            <CardTitle>Extract Quotations</CardTitle>
-            <CardDescription>Select a PDF to be uploaded.</CardDescription>
+            <CardTitle>Extract Quotation Items</CardTitle>
+            <CardDescription>
+              Upload a quotation PDF to extract quoted items.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <DocumentUploadForm />
