@@ -21,3 +21,13 @@ export type ExtractPoItemsTaskDetailResponse = {
   result: Record<string, unknown> | null;
   error: string | null;
 };
+
+export type TaskListItem = {
+  task_id: string;
+  email: string;
+  task_name: string;
+  status: string;
+  created_at: string;
+  result: Record<string, unknown> | null;
+  error: string | null;
+};
