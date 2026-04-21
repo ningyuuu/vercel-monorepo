@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   Table,
   TableBody,
@@ -10,6 +12,7 @@ import {
 import { AppNavbar } from "@/app/components/AppNavbar";
 import {
   PURCHASE_ORDERS_HISTORY_ROUTE,
+  PURCHASE_ORDERS_ROUTE,
   requirePageAccess,
 } from "@/lib/auth";
 import { type TaskListItem } from "@/lib/extract-po-items";
@@ -45,7 +48,7 @@ export default async function PurchaseOrdersHistoryPage() {
   return (
     <div className="min-h-screen bg-background font-sans">
       <AppNavbar />
-      <main className="flex min-h-screen flex-col px-6 pb-8 pt-24 sm:pt-28">
+      <main className="flex min-h-screen justify-center px-6 pb-8 pt-24 sm:pt-28">
         <div className="w-full max-w-4xl">
           <h1 className="mb-6 text-2xl font-semibold tracking-tight">
             Purchase Orders History
@@ -60,6 +63,7 @@ export default async function PurchaseOrdersHistoryPage() {
                   <TableHead>Status</TableHead>
                   <TableHead>Created At</TableHead>
                   <TableHead>Error</TableHead>
+                  <TableHead>Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -74,6 +78,18 @@ export default async function PurchaseOrdersHistoryPage() {
                     </TableCell>
                     <TableCell className="text-destructive">
                       {task.error ?? "-"}
+                    </TableCell>
+                    <TableCell>
+                      {task.status === "completed" && task.result ? (
+                        <Link
+                          href={`${PURCHASE_ORDERS_ROUTE}/${encodeURIComponent(task.task_id)}`}
+                          className="text-primary underline hover:underline"
+                        >
+                          View
+                        </Link>
+                      ) : (
+                        <span className="text-muted-foreground">-</span>
+                      )}
                     </TableCell>
                   </TableRow>
                 ))}
