@@ -2,7 +2,11 @@ import { Navbar } from "@repo/ui/shared/Navbar";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 
 import { AuthActions } from "@/app/components/AuthActions";
-import { PURCHASE_ORDERS_ROUTE, QUOTATION_ITEMS_ROUTE } from "@/lib/auth";
+import {
+  PURCHASE_ORDERS_HISTORY_ROUTE,
+  PURCHASE_ORDERS_ROUTE,
+  QUOTATION_ITEMS_ROUTE,
+} from "@/lib/auth";
 
 export async function AppNavbar() {
   return (
@@ -10,7 +14,13 @@ export async function AppNavbar() {
       title="Document Data Extractor"
       links={[
         { label: "Quotation Items", href: QUOTATION_ITEMS_ROUTE },
-        { label: "Purchase Orders", href: PURCHASE_ORDERS_ROUTE },
+        {
+          label: "Purchase Orders",
+          subItems: [
+            { label: "New Task", href: PURCHASE_ORDERS_ROUTE },
+            { label: "View History", href: PURCHASE_ORDERS_HISTORY_ROUTE },
+          ],
+        },
       ]}
       actions={
         <AuthActions>
