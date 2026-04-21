@@ -77,13 +77,13 @@ export function Navbar({
                             {item.label}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                            <ul className="grid gap-2 p-2 w-[200px]">
                               {item.subItems.map((subItem) => (
                                 <li key={subItem.href}>
                                   <NavigationMenuLink asChild>
                                     <Link
                                       href={subItem.href}
-                                      className={navigationMenuTriggerStyle()}
+                                      className="block rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                                     >
                                       {subItem.label}
                                     </Link>
