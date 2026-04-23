@@ -1,36 +1,15 @@
 "use client";
 
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@repo/ui/table";
-
-import {
   formatExtractPoItemsTaskStatus,
   useExtractPoItemsTaskState,
 } from "@/app/hooks/useExtractPoItemsTaskState";
 
+import { EditableTable, type Column } from "./EditableTable";
+
 type Props = { taskId: string };
 
-function formatCellValue(value: unknown) {
-  if (typeof value === "number") {
-    return Number.isFinite(value) ? String(value) : "";
-  }
-
-  if (typeof value === "string") {
-    return value;
-  }
-
-  if (typeof value === "boolean") {
-    return value ? "true" : "false";
-  }
-
-  return "";
-}
+type ResultRow = Record<string, unknown>;
 
 function getResultRows(result?: Record<string, unknown> | null) {
   const candidates = [result?.items, result?.po_items, result?.line_items];
@@ -56,21 +35,22 @@ function getResultRows(result?: Record<string, unknown> | null) {
   return [];
 }
 
-function getResultColumns(rows: Record<string, unknown>[]) {
-  return Array.from(new Set(rows.flatMap((row) => Object.keys(row))));
-}
+function getColumns(rows: ResultRow[]): Column[] {
+  const keys = Array.from(new Set(rows.flatMap((row) => Object.keys(row))));
 
-function formatColumnLabel(column: string) {
-  return column
-    .split("_")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+  return keys.map((key) => ({
+    key,
+    label: key
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" "),
+  }));
 }
 
 export function PurchaseOrderResultView({ taskId }: Props) {
   const extractPoItemsTask = useExtractPoItemsTaskState(taskId);
-  const rows = getResultRows(extractPoItemsTask.result);
-  const columns = getResultColumns(rows);
+  const initialRows = getResultRows(extractPoItemsTask.result);
+  const columns = getColumns(initialRows);
   const prettyResult = extractPoItemsTask.result
     ? JSON.stringify(extractPoItemsTask.result, null, 2)
     : null;
@@ -97,34 +77,10 @@ export function PurchaseOrderResultView({ taskId }: Props) {
           {extractPoItemsTask.message}
         </p>
       ) : null}
-      {extractPoItemsTask.phase === "success" && rows.length > 0 ? (
+      {extractPoItemsTask.phase === "success" && initialRows.length > 0 ? (
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Extracted Purchase Order Items</p>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableHead key={column}>
-                    {formatColumnLabel(column)}
-                  </TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {rows.map((row, index) => (
-                <TableRow key={`po-item-${index}`}>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={`${column}-${index}`}
-                      className="whitespace-normal break-words"
-                    >
-                      {formatCellValue(row[column]) || "-"}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <EditableTable rows={initialRows} columns={columns} />
         </div>
       ) : null}
       {extractPoItemsTask.phase === "success" && !prettyResult ? (

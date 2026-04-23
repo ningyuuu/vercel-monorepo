@@ -1,28 +1,17 @@
 "use client";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@repo/ui/table";
+import { useEffect } from "react";
 
 import {
-  useExtractQuoteTaskState,
   formatExtractQuoteTaskStatus,
+  useExtractQuoteTaskState,
 } from "@/app/hooks/useExtractQuoteTaskState";
+
+import { EditableTable, type Column } from "./EditableTable";
 
 type Props = { taskId: string };
 
-type ExtractedItemRow = {
-  name: string;
-  unit: string;
-  unit_cost: string;
-  qty_count: string;
-  remarks: string;
-};
+type ExtractedItemRow = Record<string, unknown>;
 
 function formatCellValue(value: unknown) {
   if (typeof value === "number") {
@@ -45,17 +34,26 @@ function getExtractedItems(result?: Record<string, unknown> | null) {
     }
 
     const row = item as Record<string, unknown>;
+    const formattedRow: Record<string, unknown> = {};
 
-    return [
-      {
-        name: formatCellValue(row.name),
-        unit: formatCellValue(row.unit),
-        unit_cost: formatCellValue(row.unit_cost),
-        qty_count: formatCellValue(row.qty_count),
-        remarks: formatCellValue(row.remarks),
-      } satisfies ExtractedItemRow,
-    ];
+    for (const [key, value] of Object.entries(row)) {
+      formattedRow[key] = formatCellValue(value);
+    }
+
+    return [formattedRow];
   });
+}
+
+function getColumns(rows: ExtractedItemRow[]): Column[] {
+  const keys = Array.from(new Set(rows.flatMap((row) => Object.keys(row))));
+
+  return keys.map((key) => ({
+    key,
+    label: key
+      .split("_")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" "),
+  }));
 }
 
 function getSummaryText(result?: Record<string, unknown> | null) {
@@ -66,8 +64,8 @@ function getSummaryText(result?: Record<string, unknown> | null) {
 
 export function DocumentResultView({ taskId }: Props) {
   const extractQuoteTask = useExtractQuoteTaskState(taskId);
-
   const extractedItems = getExtractedItems(extractQuoteTask.result);
+  const columns = getColumns(extractedItems);
   const summaryText = getSummaryText(extractQuoteTask.result);
 
   return (
@@ -95,32 +93,7 @@ export function DocumentResultView({ taskId }: Props) {
       {extractQuoteTask.phase === "success" && extractedItems.length > 0 ? (
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Extracted Items</p>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Unit</TableHead>
-                <TableHead>Unit Cost</TableHead>
-                <TableHead>Quantity</TableHead>
-                <TableHead>Remarks</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {extractedItems.map((item, index) => (
-                <TableRow key={`${item.name}-${item.unit}-${index}`}>
-                  <TableCell className="whitespace-normal break-words font-medium">
-                    {item.name || "-"}
-                  </TableCell>
-                  <TableCell>{item.unit || "-"}</TableCell>
-                  <TableCell>${item.unit_cost || "-"}</TableCell>
-                  <TableCell>{item.qty_count || "-"}</TableCell>
-                  <TableCell className="whitespace-normal break-words text-muted-foreground">
-                    {item.remarks || "-"}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <EditableTable rows={extractedItems} columns={columns} />
         </div>
       ) : null}
       {extractQuoteTask.phase === "success" &&
