@@ -18,6 +18,13 @@ export default function Home() {
       url: "https://innoquest.ningyu.dev",
       description: "Explore Innoquest's lab tests with a better UI.",
     },
+    {
+      title: "Document Data Extractor",
+      image: "/docdata.png",
+      url: "https://document-data.ningyu.dev",
+      description:
+        "Extract structured data from documents in a user-friendly flow (gated by authentication due to costs of LLMs).",
+    },
   ];
 
   return (
