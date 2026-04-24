@@ -6,6 +6,7 @@ import {
   useExtractPoItemsTaskState,
 } from "@/app/hooks/useExtractPoItemsTaskState";
 import { ChevronRight } from "lucide-react";
+import { Button } from "@repo/ui/button";
 
 import { EditableTable, type Column } from "./EditableTable";
 
@@ -57,6 +58,43 @@ export function PurchaseOrderResultView({ taskId }: Props) {
     ? JSON.stringify(extractPoItemsTask.result, null, 2)
     : null;
   const [isRawResultOpen, setIsRawResultOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadResult, setUploadResult] = useState<{
+    success: boolean;
+    uploaded: number;
+    errors: string[];
+  } | null>(null);
+
+  async function handleUpload() {
+    if (isUploading || initialRows.length === 0) return;
+
+    setIsUploading(true);
+    setUploadResult(null);
+
+    try {
+      const response = await fetch("/api/upload-airtable", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: initialRows }),
+      });
+
+      const result = (await response.json()) as {
+        success: boolean;
+        uploaded: number;
+        errors: string[];
+      };
+
+      setUploadResult(result);
+    } catch (error) {
+      setUploadResult({
+        success: false,
+        uploaded: 0,
+        errors: [error instanceof Error ? error.message : String(error)],
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  }
 
   return (
     <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
@@ -104,6 +142,18 @@ export function PurchaseOrderResultView({ taskId }: Props) {
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Extracted Purchase Order Items</p>
           <EditableTable rows={initialRows} columns={columns} />
+          <div className="flex justify-end">
+            <Button type="button" onClick={handleUpload} disabled={isUploading}>
+              {isUploading ? "Uploading..." : "Upload to Airtable"}
+            </Button>
+          </div>
+          {uploadResult && (
+            <p className={`mt-2 text-sm ${uploadResult.success ? "text-green-600" : "text-destructive"}`}>
+              {uploadResult.success
+                ? `Successfully uploaded ${uploadResult.uploaded} rows`
+                : `Upload failed: ${uploadResult.errors.join(", ")}`}
+            </p>
+          )}
         </div>
       ) : null}
       {extractPoItemsTask.phase === "success" && !prettyResult ? (
