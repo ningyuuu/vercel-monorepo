@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import {
   formatExtractPoItemsTaskStatus,
   useExtractPoItemsTaskState,
 } from "@/app/hooks/useExtractPoItemsTaskState";
+import { ChevronRight } from "lucide-react";
 
 import { EditableTable, type Column } from "./EditableTable";
 
@@ -54,6 +56,7 @@ export function PurchaseOrderResultView({ taskId }: Props) {
   const prettyResult = extractPoItemsTask.result
     ? JSON.stringify(extractPoItemsTask.result, null, 2)
     : null;
+  const [isRawResultOpen, setIsRawResultOpen] = useState(false);
 
   return (
     <div className="rounded-xl border border-border bg-muted/40 px-4 py-3">
@@ -90,10 +93,21 @@ export function PurchaseOrderResultView({ taskId }: Props) {
       ) : null}
       {extractPoItemsTask.phase === "success" && prettyResult ? (
         <div className="mt-3 space-y-2">
-          <p className="text-sm font-medium">Raw Result</p>
-          <pre className="overflow-x-auto rounded-lg bg-background p-3 text-xs text-foreground">
-            {prettyResult}
-          </pre>
+          <button
+            type="button"
+            className="flex items-center gap-1 text-sm font-medium hover:opacity-80"
+            onClick={() => setIsRawResultOpen(!isRawResultOpen)}
+          >
+            <ChevronRight
+              className={`h-4 w-4 transition-transform ${isRawResultOpen ? "rotate-90" : ""}`}
+            />
+            Raw Result
+          </button>
+          {isRawResultOpen && (
+            <pre className="overflow-x-auto rounded-lg bg-background p-3 text-xs text-foreground">
+              {prettyResult}
+            </pre>
+          )}
         </div>
       ) : null}
     </div>
