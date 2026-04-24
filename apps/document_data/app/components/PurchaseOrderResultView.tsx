@@ -75,6 +75,26 @@ export function PurchaseOrderResultView({ taskId }: Props) {
           {extractPoItemsTask.message}
         </p>
       ) : null}
+
+      {extractPoItemsTask.phase === "success" && prettyResult ? (
+        <div className="mt-3 space-y-2">
+          <button
+            type="button"
+            className="flex items-center gap-1 text-sm font-medium hover:opacity-80"
+            onClick={() => setIsRawResultOpen(!isRawResultOpen)}
+          >
+            <ChevronRight
+              className={`h-4 w-4 transition-transform ${isRawResultOpen ? "rotate-90" : ""}`}
+            />
+            See Raw Result
+          </button>
+          {isRawResultOpen && (
+            <pre className="overflow-x-auto rounded-lg bg-background p-3 text-xs text-foreground">
+              {prettyResult}
+            </pre>
+          )}
+        </div>
+      ) : null}
       {extractPoItemsTask.phase === "error" ? (
         <p className="mt-3 text-sm text-destructive" role="alert">
           {extractPoItemsTask.message}
@@ -90,25 +110,6 @@ export function PurchaseOrderResultView({ taskId }: Props) {
         <p className="mt-3 text-sm text-muted-foreground">
           No purchase-order items were extracted.
         </p>
-      ) : null}
-      {extractPoItemsTask.phase === "success" && prettyResult ? (
-        <div className="mt-3 space-y-2">
-          <button
-            type="button"
-            className="flex items-center gap-1 text-sm font-medium hover:opacity-80"
-            onClick={() => setIsRawResultOpen(!isRawResultOpen)}
-          >
-            <ChevronRight
-              className={`h-4 w-4 transition-transform ${isRawResultOpen ? "rotate-90" : ""}`}
-            />
-            Raw Result
-          </button>
-          {isRawResultOpen && (
-            <pre className="overflow-x-auto rounded-lg bg-background p-3 text-xs text-foreground">
-              {prettyResult}
-            </pre>
-          )}
-        </div>
       ) : null}
     </div>
   );
