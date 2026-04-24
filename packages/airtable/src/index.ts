@@ -38,4 +38,4 @@ export function createAirtableClient(config: AirtableConfig) {
   };
 }
 
-export type { AirtableConfig };
+export type { AirtableConfig, FieldSet };
