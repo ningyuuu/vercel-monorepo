@@ -7,7 +7,7 @@ import {
 } from "@/app/hooks/useExtractPoItemsTaskState";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@repo/ui/button";
-
+import { COLUMN_MAPPING } from "@/lib/column-mapping";
 import { EditableTable, type Column } from "./EditableTable";
 
 type Props = { taskId: string };
@@ -27,7 +27,14 @@ function getResultRows(result?: Record<string, unknown> | null) {
         return [];
       }
 
-      return [item as Record<string, unknown>];
+      // Map keys to Airtable column names
+      const mapped: Record<string, unknown> = {};
+      for (const [key, value] of Object.entries(item as Record<string, unknown>)) {
+        const airtableKey = COLUMN_MAPPING[key] || key;
+        mapped[airtableKey] = value;
+      }
+
+      return [mapped];
     });
 
     if (rows.length > 0) {
@@ -43,10 +50,7 @@ function getColumns(rows: ResultRow[]): Column[] {
 
   return keys.map((key) => ({
     key,
-    label: key
-      .split("_")
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(" "),
+    label: key,
   }));
 }
 
@@ -148,7 +152,9 @@ export function PurchaseOrderResultView({ taskId }: Props) {
             </Button>
           </div>
           {uploadResult && (
-            <p className={`mt-2 text-sm ${uploadResult.success ? "text-green-600" : "text-destructive"}`}>
+            <p
+              className={`mt-2 text-sm ${uploadResult.success ? "text-green-600" : "text-destructive"}`}
+            >
               {uploadResult.success
                 ? `Successfully uploaded ${uploadResult.uploaded} rows`
                 : `Upload failed: ${uploadResult.errors.join(", ")}`}
