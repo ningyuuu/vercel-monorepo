@@ -8,8 +8,9 @@ import {
 } from "@repo/ui/card";
 import { Navbar } from "@repo/ui/shared/Navbar";
 import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
+import Link from "next/link";
 
-import { LOGIN_ROUTE, requirePageAccess } from "@/lib/auth";
+import { LOGIN_ROUTE, requirePageAccess, PRIVACY_ROUTE } from "@/lib/auth";
 import { signInWithGoogle } from "@/app/actions/auth";
 
 const isGoogleAuthConfigured = Boolean(
@@ -53,6 +54,15 @@ export default async function LoginPage() {
                 AUTH_ALLOWED_EMAILS in your local env file.
               </p>
             ) : null}
+            <p className="text-sm text-center text-muted-foreground">
+              By signing in, you agree to our{" "}
+              <Link
+                href={PRIVACY_ROUTE}
+                className="underline hover:text-foreground"
+              >
+                Privacy Policy
+              </Link>
+            </p>
           </CardContent>
         </Card>
       </main>
