@@ -3,6 +3,12 @@ import { redirect } from "next/navigation";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
+declare module "next-auth" {
+  interface Session {
+    accessToken?: string;
+  }
+}
+
 export const HOME_ROUTE = "/";
 export const LOGIN_ROUTE = "/login";
 export const ACCESS_DENIED_ROUTE = "/access-denied";
@@ -136,6 +142,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
 
       return true;
+    },
+    session({ session, token }) {
+      session.accessToken = token.accessToken as string;
+      return session;
     },
   },
 });
