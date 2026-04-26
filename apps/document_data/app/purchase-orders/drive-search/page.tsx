@@ -15,6 +15,7 @@ import {
 } from "@repo/ui/card";
 import { listAllPdfs } from "@repo/google-drive";
 import { getToken } from "next-auth/jwt";
+import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
@@ -39,13 +40,18 @@ export default async function DriveSearchPage({
   try {
     const token = await getToken({
       req: { headers: await headers() },
-      secret: process.env.AUTH_SECRET,
     });
     const accessToken = token?.accessToken as string | undefined;
 
     if (!accessToken) {
-      error = "No access token. Please sign in again.";
-    } else if (folderId) {
+      const session = await auth();
+      throw new Error(
+        `No accessToken in token. Token keys: ${token ? Object.keys(token).join(", ") : "undefined"}. ` +
+          `Session: ${JSON.stringify(session?.user)}. Please sign in again.`,
+      );
+    }
+
+    if (folderId) {
       pdfs = await listAllPdfs(accessToken, folderId);
     }
   } catch (e) {
