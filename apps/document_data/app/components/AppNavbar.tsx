@@ -3,6 +3,7 @@ import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 
 import { AuthActions } from "@/app/components/AuthActions";
 import {
+  PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE,
   PURCHASE_ORDERS_HISTORY_ROUTE,
   PURCHASE_ORDERS_ROUTE,
   QUOTATION_ITEMS_ROUTE,
@@ -18,6 +19,7 @@ export async function AppNavbar() {
           label: "Purchase Orders",
           subItems: [
             { label: "New Task", href: PURCHASE_ORDERS_ROUTE },
+            { label: "Drive Search", href: PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE },
             { label: "View History", href: PURCHASE_ORDERS_HISTORY_ROUTE },
           ],
         },

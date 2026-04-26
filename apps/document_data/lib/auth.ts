@@ -9,6 +9,7 @@ export const ACCESS_DENIED_ROUTE = "/access-denied";
 export const QUOTATION_ITEMS_ROUTE = "/quotation-items";
 export const PURCHASE_ORDERS_ROUTE = "/purchase-orders";
 export const PURCHASE_ORDERS_HISTORY_ROUTE = "/purchase-orders/history";
+export const PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE = "/purchase-orders/drive-search";
 export const DEFAULT_AUTHENTICATED_ROUTE = QUOTATION_ITEMS_ROUTE;
 
 export type AuthAccessState = "guest" | "allowed" | "denied";
@@ -18,7 +19,8 @@ export type AppRoute =
   | typeof ACCESS_DENIED_ROUTE
   | typeof QUOTATION_ITEMS_ROUTE
   | typeof PURCHASE_ORDERS_ROUTE
-  | typeof PURCHASE_ORDERS_HISTORY_ROUTE;
+  | typeof PURCHASE_ORDERS_HISTORY_ROUTE
+  | typeof PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE;
 
 export const allowedEmails = new Set(
   (process.env.AUTH_ALLOWED_EMAILS ?? "")
