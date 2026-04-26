@@ -107,8 +107,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             "profile",
             "https://www.googleapis.com/auth/drive.readonly",
           ].join(" "),
-          access_type: "offline",
-          prompt: "consent",
         },
       },
     }),
