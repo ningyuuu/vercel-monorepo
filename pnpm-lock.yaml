@@ -87,6 +87,9 @@ importers:
       '@repo/airtable':
         specifier: workspace:*
         version: link:../../packages/airtable
+      '@repo/google-drive':
+        specifier: workspace:*
+        version: link:../../packages/google-drive
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui

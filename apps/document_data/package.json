@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@repo/airtable": "workspace:*",
+        "@repo/google-drive": "workspace:*",
         "@repo/ui": "workspace:*",
         "@vercel/blob": "^2.3.1",
         "class-variance-authority": "^0.7.1",
