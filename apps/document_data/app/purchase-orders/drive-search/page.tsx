@@ -39,14 +39,16 @@ export default async function DriveSearchPage({
 
   try {
     const cookieStore = await cookies();
+    const allCookies = Object.fromEntries(
+      cookieStore.getAll().map((c) => [c.name, c.value]),
+    );
+    console.warn("Cookie keys:", Object.keys(allCookies));
+
     const token = await getToken({
-      req: {
-        cookies: Object.fromEntries(
-          cookieStore.getAll().map((c) => [c.name, c.value]),
-        ),
-      } as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+      req: { cookies: allCookies } as any,
       secret: process.env.AUTH_SECRET,
     });
+    console.warn("Token result:", token ? Object.keys(token) : "null");
     const accessToken = token?.accessToken as string | undefined;
 
     if (!accessToken) {
