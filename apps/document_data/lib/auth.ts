@@ -115,14 +115,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     jwt({ token, account }) {
+      console.warn("JWT callback:", {
+        account: !!account,
+        accountScope: account?.scope,
+        accessToken: account?.access_token ? "present" : "missing",
+        tokenKeys: Object.keys(token),
+      });
       if (account) {
         token.accessToken = account.access_token;
       }
       return token;
-    },
-    session({ session, token }) {
-      session.accessToken = token.accessToken as string;
-      return session;
     },
     signIn({ user, account }) {
       if (account?.provider !== "google") {

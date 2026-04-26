@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@repo/ui/card";
 import { listAllPdfs } from "@repo/google-drive";
+import { getToken } from "next-auth/jwt";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -37,8 +38,12 @@ export default async function DriveSearchPage({
   let error: string | null = null;
 
   try {
-    const session = await auth();
-    const accessToken = (session as any)?.accessToken as string | undefined;
+    const headersList = await headers();
+    const token = await getToken({
+      req: { headers: headersList },
+      secret: process.env.AUTH_SECRET,
+    });
+    const accessToken = token?.accessToken as string | undefined;
 
     if (!accessToken) {
       const session = await auth();
