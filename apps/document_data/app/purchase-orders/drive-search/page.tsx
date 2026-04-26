@@ -1,4 +1,12 @@
 import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/table";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -8,7 +16,6 @@ import {
 import { listAllPdfs } from "@repo/google-drive";
 import { getToken } from "next-auth/jwt";
 import { headers } from "next/headers";
-import { Suspense } from "react";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
 import { DriveSearchForm } from "@/app/components/DriveSearchForm";
@@ -31,7 +38,8 @@ export default async function DriveSearchPage({
     secret: process.env.AUTH_SECRET,
   });
   const accessToken = token?.accessToken as string | undefined;
-  const pdfs = accessToken && folderId ? await listAllPdfs(accessToken, folderId) : [];
+  const pdfs =
+    accessToken && folderId ? await listAllPdfs(accessToken, folderId) : [];
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -41,44 +49,55 @@ export default async function DriveSearchPage({
           <CardHeader>
             <CardTitle>Google Drive Search</CardTitle>
             <CardDescription>
-              Enter a Google Drive folder ID to search for PDFs
+              Enter a Google Drive folder URL or ID to search for PDFs
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <Suspense fallback={<div>Loading...</div>}>
-              <DriveSearchForm />
-            </Suspense>
+          <CardContent className="flex flex-col gap-6">
+            <DriveSearchForm />
+
+            {folderId && (
+              <>
+                <div className="border-b" />
+                <CardDescription>
+                  {pdfs.length} PDF(s) found
+                </CardDescription>
+                {pdfs.length === 0 ? (
+                  <p className="text-muted-foreground">
+                    No PDFs found in this folder.
+                  </p>
+                ) : (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Title</TableHead>
+                        <TableHead className="text-right">View</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {pdfs.map((pdf) => (
+                        <TableRow key={pdf.id}>
+                          <TableCell className="font-medium">
+                            {pdf.name}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <a
+                              href={`https://drive.google.com/file/d/${pdf.id}/view`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 underline hover:text-blue-800"
+                            >
+                              View
+                            </a>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </>
+            )}
           </CardContent>
         </Card>
-
-        {folderId && (
-          <Card className="w-full max-w-2xl">
-            <CardHeader>
-              <CardTitle>Google Drive PDFs</CardTitle>
-              <CardDescription>{pdfs.length} PDF(s) found</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {pdfs.length === 0 ? (
-                <p className="text-muted-foreground">No PDFs found in this folder.</p>
-              ) : (
-                <ul className="flex flex-col gap-2">
-                  {pdfs.map((pdf) => (
-                    <li key={pdf.id}>
-                      <a
-                        href={`https://drive.google.com/file/d/${pdf.id}/view`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline hover:text-blue-800"
-                      >
-                        {pdf.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </CardContent>
-          </Card>
-        )}
       </main>
     </div>
   );
