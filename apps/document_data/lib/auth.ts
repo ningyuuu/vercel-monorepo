@@ -104,6 +104,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: LOGIN_ROUTE,
   },
   callbacks: {
+    jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
     signIn({ user, account }) {
       if (account?.provider !== "google") {
         return false;
