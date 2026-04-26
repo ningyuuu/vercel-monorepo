@@ -6,17 +6,22 @@ import {
   getRedirectRouteForAccess,
 } from "@/lib/auth";
 
+const publicRoutes = ["/privacy", "/login", "/access-denied"];
+
 export default auth((request) => {
+  const pathname = request.nextUrl.pathname;
+
+  if (publicRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"))) {
+    return NextResponse.next();
+  }
+
   const accessState = getAuthAccessState({
     isAuthenticated: Boolean(request.auth),
     email: request.auth?.user?.email,
   });
-  const redirectTarget = getRedirectRouteForAccess(
-    request.nextUrl.pathname,
-    accessState,
-  );
+  const redirectTarget = getRedirectRouteForAccess(pathname, accessState);
 
-  if (redirectTarget && redirectTarget !== request.nextUrl.pathname) {
+  if (redirectTarget && redirectTarget !== pathname) {
     return NextResponse.redirect(new URL(redirectTarget, request.nextUrl));
   }
 

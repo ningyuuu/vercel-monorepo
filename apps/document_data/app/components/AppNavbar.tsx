@@ -6,6 +6,7 @@ import {
   PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE,
   PURCHASE_ORDERS_HISTORY_ROUTE,
   PURCHASE_ORDERS_ROUTE,
+  PRIVACY_ROUTE,
   QUOTATION_ITEMS_ROUTE,
 } from "@/lib/auth";
 
@@ -23,6 +24,7 @@ export async function AppNavbar() {
             { label: "View History", href: PURCHASE_ORDERS_HISTORY_ROUTE },
           ],
         },
+        { label: "Privacy Policy", href: PRIVACY_ROUTE },
       ]}
       actions={
         <AuthActions>
