@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getTaskRequestAccess } from "@/lib/task-api";
-import { uploadToAirtable } from "@/lib/impart";
+import { uploadToAirtable } from "@/lib/airtable";
 
 export const dynamic = "force-dynamic";
 
