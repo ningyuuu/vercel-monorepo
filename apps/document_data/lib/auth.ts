@@ -101,6 +101,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             "profile",
             "https://www.googleapis.com/auth/drive.readonly",
           ].join(" "),
+          access_type: "offline",
+          prompt: "consent",
         },
       },
     }),
@@ -113,15 +115,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     jwt({ token, account }) {
-      console.warn("JWT callback:", {
-        account: !!account,
-        tokenKeys: Object.keys(token),
-      });
       if (account) {
-        console.warn("JWT callback - setting accessToken from account");
         token.accessToken = account.access_token;
       }
       return token;
+    },
+    session({ session, token }) {
+      session.accessToken = token.accessToken as string;
+      return session;
     },
     signIn({ user, account }) {
       if (account?.provider !== "google") {

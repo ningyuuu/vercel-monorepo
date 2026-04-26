@@ -14,7 +14,6 @@ import {
   CardTitle,
 } from "@repo/ui/card";
 import { listAllPdfs } from "@repo/google-drive";
-import { getToken } from "next-auth/jwt";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -38,20 +37,8 @@ export default async function DriveSearchPage({
   let error: string | null = null;
 
   try {
-    const headersList = await headers();
-    const cookieHeader = headersList.get("cookie");
-    console.warn("Cookie header present:", !!cookieHeader);
-    console.warn(
-      "Cookie header contains auth-token:",
-      cookieHeader?.includes("auth-token"),
-    );
-
-    const token = await getToken({
-      req: { headers: headersList },
-      secret: process.env.AUTH_SECRET,
-    });
-    console.warn("getToken raw result:", token);
-    const accessToken = token?.accessToken as string | undefined;
+    const session = await auth();
+    const accessToken = (session as any)?.accessToken as string | undefined;
 
     if (!accessToken) {
       const session = await auth();
