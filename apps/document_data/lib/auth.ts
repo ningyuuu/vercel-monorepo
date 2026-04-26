@@ -9,7 +9,8 @@ export const ACCESS_DENIED_ROUTE = "/access-denied";
 export const QUOTATION_ITEMS_ROUTE = "/quotation-items";
 export const PURCHASE_ORDERS_ROUTE = "/purchase-orders";
 export const PURCHASE_ORDERS_HISTORY_ROUTE = "/purchase-orders/history";
-export const PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE = "/purchase-orders/drive-search";
+export const PURCHASE_ORDERS_DRIVE_SEARCH_ROUTE =
+  "/purchase-orders/drive-search";
 export const PRIVACY_ROUTE = "/privacy";
 export const DEFAULT_AUTHENTICATED_ROUTE = QUOTATION_ITEMS_ROUTE;
 
@@ -104,6 +105,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   pages: {
     signIn: LOGIN_ROUTE,
   },

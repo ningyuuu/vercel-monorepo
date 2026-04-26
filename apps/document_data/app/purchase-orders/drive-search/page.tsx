@@ -38,8 +38,9 @@ export default async function DriveSearchPage({
   let error: string | null = null;
 
   try {
+    const headersList = await headers();
     const token = await getToken({
-      req: { headers: await headers() },
+      req: { headers: headersList },
       secret: process.env.AUTH_SECRET,
     });
     const accessToken = token?.accessToken as string | undefined;
@@ -47,8 +48,7 @@ export default async function DriveSearchPage({
     if (!accessToken) {
       const session = await auth();
       throw new Error(
-        `No accessToken in token. Token keys: ${token ? Object.keys(token).join(", ") : "undefined"}. ` +
-          `Session: ${JSON.stringify(session?.user)}. Please sign in again.`,
+        `No accessToken found. Session: ${JSON.stringify(session?.user)}. Please sign in again.`,
       );
     }
 
