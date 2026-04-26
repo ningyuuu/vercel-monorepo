@@ -14,9 +14,7 @@ import {
   CardTitle,
 } from "@repo/ui/card";
 import { listAllPdfs } from "@repo/google-drive";
-import { getToken } from "next-auth/jwt";
 import { auth } from "@/lib/auth";
-import { cookies } from "next/headers";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
 import { DriveSearchForm } from "@/app/components/DriveSearchForm";
