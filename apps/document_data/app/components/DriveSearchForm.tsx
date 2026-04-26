@@ -25,7 +25,12 @@ function extractFolderId(input: string): string | null {
   return null;
 }
 
-export function DriveSearchForm({ folderId: id }: { folderId?: string }) {
+interface Props {
+  initialId?: string;
+  error?: string | null;
+}
+
+export function DriveSearchForm({ initialId: id, error }: Props) {
   const router = useRouter();
   const [folderId, setFolderId] = useState(id ?? "");
 
@@ -50,8 +55,13 @@ export function DriveSearchForm({ folderId: id }: { folderId?: string }) {
         required
       />
       <Button type="submit" disabled={!folderId.trim()}>
-        Search
+        {id ? "Search Again" : "Search"}
       </Button>
+      {error && (
+        <p className="text-sm text-destructive" role="alert">
+          {error}
+        </p>
+      )}
     </form>
   );
 }

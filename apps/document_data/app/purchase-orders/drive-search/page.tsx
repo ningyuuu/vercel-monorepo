@@ -33,13 +33,25 @@ export default async function DriveSearchPage({
   const params = await searchParams;
   const folderId = params.folderId;
 
-  const token = await getToken({
-    req: { headers: await headers() },
-    secret: process.env.AUTH_SECRET,
-  });
-  const accessToken = token?.accessToken as string | undefined;
-  const pdfs =
-    accessToken && folderId ? await listAllPdfs(accessToken, folderId) : [];
+  let pdfs: { id: string; name: string; mimeType: string }[] = [];
+  let error: string | null = null;
+
+  try {
+    const token = await getToken({
+      req: { headers: await headers() },
+      secret: process.env.AUTH_SECRET,
+    });
+    const accessToken = token?.accessToken as string | undefined;
+
+    if (!accessToken) {
+      error = "No access token. Please sign in again.";
+    } else if (folderId) {
+      pdfs = await listAllPdfs(accessToken, folderId);
+    }
+  } catch (e) {
+    error =
+      e instanceof Error ? e.message : "An error occurred while searching";
+  }
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -53,9 +65,9 @@ export default async function DriveSearchPage({
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
-            <DriveSearchForm folderId={folderId} />
+            <DriveSearchForm initialId={folderId} error={error} />
 
-            {folderId && (
+            {folderId && !error && (
               <>
                 <div className="border-b" />
                 <CardDescription>{pdfs.length} PDF(s) found</CardDescription>
