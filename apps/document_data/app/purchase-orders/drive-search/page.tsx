@@ -16,7 +16,7 @@ import {
 import { listAllPdfs } from "@repo/google-drive";
 import { getToken } from "next-auth/jwt";
 import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
 import { DriveSearchForm } from "@/app/components/DriveSearchForm";
@@ -38,9 +38,13 @@ export default async function DriveSearchPage({
   let error: string | null = null;
 
   try {
-    const headersList = await headers();
+    const cookieStore = await cookies();
     const token = await getToken({
-      req: { headers: headersList },
+      req: {
+        cookies: Object.fromEntries(
+          cookieStore.getAll().map((c) => [c.name, c.value]),
+        ),
+      } as any, // eslint-disable-line @typescript-eslint/no-explicit-any
       secret: process.env.AUTH_SECRET,
     });
     const accessToken = token?.accessToken as string | undefined;
