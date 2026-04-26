@@ -38,10 +38,19 @@ export default async function DriveSearchPage({
   let error: string | null = null;
 
   try {
+    const headersList = await headers();
+    const cookieHeader = headersList.get("cookie");
+    console.log("Cookie header present:", !!cookieHeader);
+    console.log(
+      "Cookie header contains auth-token:",
+      cookieHeader?.includes("auth-token"),
+    );
+
     const token = await getToken({
-      req: { headers: await headers() },
+      req: { headers: headersList },
       secret: process.env.AUTH_SECRET,
     });
+    console.log("getToken raw result:", token);
     const accessToken = token?.accessToken as string | undefined;
 
     if (!accessToken) {
