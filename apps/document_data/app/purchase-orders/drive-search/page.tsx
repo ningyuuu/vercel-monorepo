@@ -40,6 +40,7 @@ export default async function DriveSearchPage({
   try {
     const token = await getToken({
       req: { headers: await headers() },
+      secret: process.env.AUTH_SECRET,
     });
     const accessToken = token?.accessToken as string | undefined;
 
