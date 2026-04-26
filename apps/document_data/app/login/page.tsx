@@ -30,13 +30,17 @@ export default async function LoginPage() {
       <main className="flex min-h-screen items-center justify-center px-6 pb-8 pt-24 sm:pt-28">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle>Sign in</CardTitle>
+            <CardTitle>Document Data Suite</CardTitle>
             <CardDescription>
-              Access is restricted to authenticated users. Continue with Google
-              to open the document upload flow.
+              Extract structured data from PDF documents using AI
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              This app helps you automatically extract line items from purchase
+              orders and quotation PDFs. Sign in with Google to upload PDFs or
+              search your Google Drive folder.
+            </p>
             <form action={signInWithGoogle}>
               <Button className="w-full" size="lg" type="submit">
                 Continue with Google
