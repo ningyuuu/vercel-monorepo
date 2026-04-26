@@ -42,6 +42,7 @@ export default async function DriveSearchPage({
     const token = await getToken({
       req: { headers: headersList },
       secret: process.env.AUTH_SECRET,
+      secureCookie: process.env.NODE_ENV === "production",
     });
     const accessToken = token?.accessToken as string | undefined;
 
