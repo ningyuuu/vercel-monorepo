@@ -113,7 +113,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     jwt({ token, account }) {
+      console.warn("JWT callback:", {
+        account: !!account,
+        tokenKeys: Object.keys(token),
+      });
       if (account) {
+        console.warn("JWT callback - setting accessToken from account");
         token.accessToken = account.access_token;
       }
       return token;

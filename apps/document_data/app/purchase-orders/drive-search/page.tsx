@@ -40,8 +40,8 @@ export default async function DriveSearchPage({
   try {
     const headersList = await headers();
     const cookieHeader = headersList.get("cookie");
-    console.log("Cookie header present:", !!cookieHeader);
-    console.log(
+    console.warn("Cookie header present:", !!cookieHeader);
+    console.warn(
       "Cookie header contains auth-token:",
       cookieHeader?.includes("auth-token"),
     );
@@ -50,7 +50,7 @@ export default async function DriveSearchPage({
       req: { headers: headersList },
       secret: process.env.AUTH_SECRET,
     });
-    console.log("getToken raw result:", token);
+    console.warn("getToken raw result:", token);
     const accessToken = token?.accessToken as string | undefined;
 
     if (!accessToken) {
