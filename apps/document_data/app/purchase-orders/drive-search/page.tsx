@@ -53,14 +53,12 @@ export default async function DriveSearchPage({
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
-            <DriveSearchForm />
+            <DriveSearchForm folderId={folderId} />
 
             {folderId && (
               <>
                 <div className="border-b" />
-                <CardDescription>
-                  {pdfs.length} PDF(s) found
-                </CardDescription>
+                <CardDescription>{pdfs.length} PDF(s) found</CardDescription>
                 {pdfs.length === 0 ? (
                   <p className="text-muted-foreground">
                     No PDFs found in this folder.

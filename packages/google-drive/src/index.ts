@@ -4,7 +4,10 @@ export interface DriveFile {
   mimeType: string;
 }
 
-export async function listFolder(accessToken: string, folderId: string): Promise<DriveFile[]> {
+export async function listFolder(
+  accessToken: string,
+  folderId: string,
+): Promise<DriveFile[]> {
   const params = new URLSearchParams({
     q: `'${folderId}' in parents`,
     fields: "files(id,name,mimeType)",
@@ -12,9 +15,10 @@ export async function listFolder(accessToken: string, folderId: string): Promise
     includeItemsFromAllDrives: "true",
   });
 
-  const res = await fetch(`https://www.googleapis.com/drive/v3/files?${params}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
+  const res = await fetch(
+    `https://www.googleapis.com/drive/v3/files?${params}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+  );
 
   if (!res.ok) {
     throw new Error(`Drive API error: ${res.status}`);
@@ -24,11 +28,19 @@ export async function listFolder(accessToken: string, folderId: string): Promise
   return data.files ?? [];
 }
 
-export async function listAllPdfs(accessToken: string, rootFolderId: string): Promise<DriveFile[]> {
+export async function listAllPdfs(
+  accessToken: string,
+  rootFolderId: string,
+  maxDurationMs = 30000,
+): Promise<DriveFile[]> {
   const queue: string[] = [rootFolderId];
   const pdfs: DriveFile[] = [];
 
+  const startTime = Date.now();
+
   while (queue.length > 0) {
+    if (Date.now() - startTime >= maxDurationMs) break;
+
     const folderId = queue.shift()!;
     const files = await listFolder(accessToken, folderId);
 

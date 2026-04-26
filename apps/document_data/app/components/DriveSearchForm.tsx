@@ -25,10 +25,9 @@ function extractFolderId(input: string): string | null {
   return null;
 }
 
-export function DriveSearchForm() {
+export function DriveSearchForm({ folderId: id }: { folderId?: string }) {
   const router = useRouter();
-  const [folderId, setFolderId] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [folderId, setFolderId] = useState(id ?? "");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,8 +35,9 @@ export function DriveSearchForm() {
     const extractedId = extractFolderId(folderId);
     if (!extractedId) return;
 
-    setIsSubmitting(true);
-    router.push(`/purchase-orders/drive-search?folderId=${encodeURIComponent(extractedId)}`);
+    router.push(
+      `/purchase-orders/drive-search?folderId=${encodeURIComponent(extractedId)}`,
+    );
   };
 
   return (
@@ -49,8 +49,8 @@ export function DriveSearchForm() {
         onChange={(e) => setFolderId(e.target.value)}
         required
       />
-      <Button type="submit" disabled={!folderId.trim() || isSubmitting}>
-        {isSubmitting ? "Searching..." : "Search"}
+      <Button type="submit" disabled={!folderId.trim()}>
+        Search
       </Button>
     </form>
   );
