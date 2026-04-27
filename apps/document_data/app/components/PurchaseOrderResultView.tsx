@@ -29,7 +29,9 @@ function getResultRows(result?: Record<string, unknown> | null) {
 
       // Map keys to Airtable column names
       const mapped: Record<string, unknown> = {};
-      for (const [key, value] of Object.entries(item as Record<string, unknown>)) {
+      for (const [key, value] of Object.entries(
+        item as Record<string, unknown>,
+      )) {
         const airtableKey = COLUMN_MAPPING[key] || key;
         mapped[airtableKey] = value;
       }
@@ -62,6 +64,7 @@ export function PurchaseOrderResultView({ taskId }: Props) {
     ? JSON.stringify(extractPoItemsTask.result, null, 2)
     : null;
   const [isRawResultOpen, setIsRawResultOpen] = useState(false);
+  const [editedRows, setEditedRows] = useState<ResultRow[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadResult, setUploadResult] = useState<{
     success: boolean;
@@ -70,7 +73,10 @@ export function PurchaseOrderResultView({ taskId }: Props) {
   } | null>(null);
 
   async function handleUpload() {
-    if (isUploading || initialRows.length === 0) return;
+    if (isUploading) return;
+
+    const rowsToUpload = editedRows.length > 0 ? editedRows : initialRows;
+    if (rowsToUpload.length === 0) return;
 
     setIsUploading(true);
     setUploadResult(null);
@@ -79,7 +85,7 @@ export function PurchaseOrderResultView({ taskId }: Props) {
       const response = await fetch("/api/upload-airtable", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: initialRows }),
+        body: JSON.stringify({ data: rowsToUpload }),
       });
 
       const result = (await response.json()) as {
@@ -98,6 +104,15 @@ export function PurchaseOrderResultView({ taskId }: Props) {
     } finally {
       setIsUploading(false);
     }
+  }
+
+  function handleCellSave(rowIndex: number, column: string, newValue: string) {
+    setEditedRows((prev) => {
+      const rows = prev.length > 0 ? [...prev] : [...initialRows];
+      rows[rowIndex] = { ...rows[rowIndex] };
+      rows[rowIndex][column] = newValue;
+      return rows;
+    });
   }
 
   return (
@@ -145,7 +160,11 @@ export function PurchaseOrderResultView({ taskId }: Props) {
       {extractPoItemsTask.phase === "success" && initialRows.length > 0 ? (
         <div className="mt-3 space-y-2">
           <p className="text-sm font-medium">Extracted Purchase Order Items</p>
-          <EditableTable rows={initialRows} columns={columns} />
+          <EditableTable
+            rows={initialRows}
+            columns={columns}
+            onCellSave={handleCellSave}
+          />
           <div className="flex justify-end">
             <Button type="button" onClick={handleUpload} disabled={isUploading}>
               {isUploading ? "Uploading..." : "Upload to Airtable"}
