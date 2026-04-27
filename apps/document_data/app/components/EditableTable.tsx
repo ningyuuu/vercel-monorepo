@@ -91,14 +91,8 @@ export function EditableTable<T extends Record<string, unknown>>({
   onCellSave,
   emptyMessage = "No items found.",
 }: EditableTableProps<T>) {
-  const [editableRows, setEditableRows] = useState<T[]>([]);
+  const [editableRows, setEditableRows] = useState<T[]>(rows);
   const [hasEdited, setHasEdited] = useState(false);
-
-  useEffect(() => {
-    if (!hasEdited) {
-      setEditableRows(rows);
-    }
-  }, [rows, hasEdited]);
 
   const handleCellSave = (
     rowIndex: number,
