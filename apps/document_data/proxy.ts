@@ -6,7 +6,7 @@ import {
   getRedirectRouteForAccess,
 } from "@/lib/auth";
 
-const publicRoutes = ["/privacy", "/login", "/access-denied"];
+const publicRoutes = ["/login", "/access-denied"];
 
 export default auth((request) => {
   const pathname = request.nextUrl.pathname;
