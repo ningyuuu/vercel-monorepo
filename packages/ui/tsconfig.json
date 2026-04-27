@@ -3,13 +3,14 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "lib/*": ["lib/*"],
+      "lib/*": ["src/lib/*"],
       "@/*": ["src/*"],
-      "@ui/*": ["src/components/ui/*"],
+      "components/ui/*": ["src/components/ui/*"],
+      "components/ui/button": ["src/components/ui/button.tsx"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
