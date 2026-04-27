@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ["@repo/ui"],
+  turbopack: {
+    resolveAlias: {
+      "components/ui": "../../packages/ui/src/components/ui",
+      "components/ui/button": "../../packages/ui/src/components/ui/button.tsx",
+    },
+  },
 };
 
 export default nextConfig;
