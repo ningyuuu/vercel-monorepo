@@ -7,7 +7,7 @@ import {
 } from "@/app/hooks/useExtractPoItemsTaskState";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@repo/ui/button";
-import { COLUMN_MAPPING } from "@/lib/column-mapping";
+import { PURCHASE_ORDER_COLUMNS } from "@/lib/airtable";
 import { EditableTable, type Column } from "./EditableTable";
 
 type Props = { taskId: string };
@@ -27,13 +27,14 @@ function getResultRows(result?: Record<string, unknown> | null) {
         return [];
       }
 
-      // Map keys to Airtable column names
+      // Map keys to internal column keys for upload
       const mapped: Record<string, unknown> = {};
       for (const [key, value] of Object.entries(
         item as Record<string, unknown>,
       )) {
-        const airtableKey = COLUMN_MAPPING[key] || key;
-        mapped[airtableKey] = value;
+        if (key in PURCHASE_ORDER_COLUMNS) {
+          mapped[key] = value;
+        }
       }
 
       return [mapped];
@@ -52,7 +53,7 @@ function getColumns(rows: ResultRow[]): Column[] {
 
   return keys.map((key) => ({
     key,
-    label: key,
+    label: PURCHASE_ORDER_COLUMNS[key]?.displayName ?? key,
   }));
 }
 

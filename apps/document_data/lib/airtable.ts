@@ -1,13 +1,49 @@
 import { createAirtableClient, FieldSet } from "@repo/airtable";
-import { COLUMN_MAPPING } from "./column-mapping";
+type ColumnType = "string" | "number";
 
-export function getAirtableConfig() {
+type ColumnConfig = {
+  displayName: string;
+  type: ColumnType;
+};
+
+export const PURCHASE_ORDER_COLUMNS: Record<string, ColumnConfig> = {
+  name: { displayName: "Name", type: "string" },
+  unit_cost: { displayName: "Unit Cost", type: "number" },
+  qty_count: { displayName: "Qty Count", type: "number" },
+  unit_type: { displayName: "Unit Type", type: "string" },
+  remarks: { displayName: "Remarks", type: "string" },
+};
+
+function convertColumn(value: unknown, type: ColumnType): string | number {
+  if (value === undefined || value === null) {
+    throw new Error("value is empty");
+  }
+
+  if (type === "number") {
+    if (typeof value === "number") {
+      return value;
+    }
+    if (typeof value === "string") {
+      const trimmed = value.trim();
+      if (trimmed === "") {
+        throw new Error("value is empty");
+      }
+      const parsed = Number(trimmed);
+      if (Number.isNaN(parsed)) {
+        throw new Error(`cannot convert "${value}" to number`);
+      }
+      return parsed;
+    }
+    throw new Error(`cannot convert ${typeof value} to number`);
+  }
+
+  return String(value);
+}
+
+function getAirtableConfig() {
   const apiKey = process.env.AIRTABLE_API_KEY;
   const baseId = process.env.AIRTABLE_BASE_ID;
   const tableId = process.env.AIRTABLE_TABLE_ID;
-  console.log(
-    `Airtable environment variables: ${apiKey}, ${baseId}, and ${tableId}.`,
-  );
 
   if (!apiKey || !baseId || !tableId) {
     throw new Error(
@@ -40,15 +76,40 @@ export async function uploadToAirtable(
   const { apiKey, baseId, tableId } = getAirtableConfig();
   const client = createAirtableClient({ apiKey, baseId });
 
-  // Transform data keys to Airtable column names
-  const transformedData = data.map((row) => {
+  const errors: string[] = [];
+  const transformedData: Record<string, unknown>[] = [];
+  let rowIndex = 0;
+
+  for (const row of data) {
+    rowIndex++;
     const transformed: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(row)) {
-      const airtableKey = COLUMN_MAPPING[key] || key;
-      transformed[airtableKey] = value;
+      const config = PURCHASE_ORDER_COLUMNS[key];
+
+      if (!config) {
+        errors.push(
+          `Row ${rowIndex}: Unknown field "${key}" - field must be one of: ${Object.keys(PURCHASE_ORDER_COLUMNS).join(", ")}`,
+        );
+        continue;
+      }
+
+      const displayName = config.displayName;
+
+      try {
+        transformed[displayName] = convertColumn(value, config.type);
+      } catch (e) {
+        errors.push(
+          `Row ${rowIndex}: ${displayName} - ${e instanceof Error ? e.message : String(e)}`,
+        );
+        continue;
+      }
     }
-    return transformed;
-  });
+    transformedData.push(transformed);
+  }
+
+  if (errors.length > 0) {
+    return { success: false, uploaded: 0, errors };
+  }
 
   const dataFields = new Set<string>();
   for (const row of transformedData) {
@@ -75,9 +136,8 @@ export async function uploadToAirtable(
     );
   }
 
-  // Upload data and collate errors
-  const errors: string[] = [];
   let uploaded = 0;
+  const uploadErrors: string[] = [];
 
   for (const row of transformedData) {
     try {
@@ -85,9 +145,9 @@ export async function uploadToAirtable(
       uploaded++;
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      errors.push(`Failed to upload row: ${message}`);
+      uploadErrors.push(`Failed to upload row: ${message}`);
     }
   }
 
-  return { success: errors.length === 0, uploaded, errors };
+  return { success: uploadErrors.length === 0, uploaded, errors: uploadErrors };
 }
