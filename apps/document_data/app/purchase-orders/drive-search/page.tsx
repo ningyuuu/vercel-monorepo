@@ -1,12 +1,4 @@
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@repo/ui/table";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -18,6 +10,7 @@ import { auth } from "@/lib/auth";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
 import { DriveSearchForm } from "@/app/components/DriveSearchForm";
+import { DriveSearchTable } from "@/app/components/DriveSearchTable";
 import { PURCHASE_ORDERS_ROUTE, requirePageAccess } from "@/lib/auth";
 
 interface DriveSearchPageProps {
@@ -77,33 +70,7 @@ export default async function DriveSearchPage({
                     No PDFs found in this folder.
                   </p>
                 ) : (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Title</TableHead>
-                        <TableHead className="text-right">View</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {pdfs.map((pdf) => (
-                        <TableRow key={pdf.id}>
-                          <TableCell className="font-medium">
-                            {pdf.name}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            <a
-                              href={`https://drive.google.com/file/d/${pdf.id}/view`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 underline hover:text-blue-800"
-                            >
-                              View
-                            </a>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                  <DriveSearchTable pdfs={pdfs} />
                 )}
               </>
             )}
