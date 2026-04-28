@@ -47,9 +47,14 @@ export default async function PurchaseOrderPage({
                     file.
                   </p>
                 </div>
-                <Button asChild variant="outline">
-                  <Link href="/purchase-orders">Upload another PDF</Link>
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button asChild variant="outline">
+                    <Link href="/purchase-orders/drive-search">Back to Drive search</Link>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/purchase-orders">Upload another PDF</Link>
+                  </Button>
+                </div>
               </div>
               <PurchaseOrderResultView taskId={id} />
             </section>

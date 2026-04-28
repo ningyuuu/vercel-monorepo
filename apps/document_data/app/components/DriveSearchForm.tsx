@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@repo/ui/button";
 import { Input } from "@repo/ui/input";
@@ -34,11 +34,23 @@ export function DriveSearchForm({ initialId: id, error }: Props) {
   const router = useRouter();
   const [folderId, setFolderId] = useState(id ?? "");
 
+  useEffect(() => {
+    if (!id) {
+      const saved = localStorage.getItem("document_data:last_drive_search");
+      // loading without useEffect will cause a hydration mismatch
+      // further optimization would be useSyncExternalStore
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (saved) setFolderId(saved);
+    }
+  }, [id]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const extractedId = extractFolderId(folderId);
     if (!extractedId) return;
+
+    localStorage.setItem("document_data:last_drive_search", folderId);
 
     router.push(
       `/purchase-orders/drive-search?folderId=${encodeURIComponent(extractedId)}`,
