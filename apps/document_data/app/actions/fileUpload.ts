@@ -1,8 +1,7 @@
 "use server";
 
-import { put } from "@vercel/blob";
-
 import { auth } from "@/lib/auth";
+import { uploadFileToBlob } from "@/lib/blob-upload";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
 const DOCUMENT_FIELD_NAME = "document";
@@ -18,28 +17,6 @@ export type UploadFormState = {
 
 function hasPdfExtension(fileName: string) {
   return fileName.trim().toLowerCase().endsWith(".pdf");
-}
-
-function sanitizePathSegment(value: string) {
-  const sanitized = value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9._-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  return sanitized || "file";
-}
-
-function buildBlobPath(
-  fileName: string,
-  documentId: string,
-  userEmail?: string | null,
-) {
-  const datePrefix = new Date().toISOString().slice(0, 10);
-  const safeEmail = sanitizePathSegment(userEmail ?? "anonymous");
-  const safeFileName = sanitizePathSegment(fileName);
-
-  return `document-data/${datePrefix}/${safeEmail}/${documentId}-${safeFileName}`;
 }
 
 export async function uploadDocumentAction(
@@ -97,24 +74,20 @@ export async function uploadDocumentAction(
   }
 
   try {
-    const documentId = crypto.randomUUID();
-    const blob = await put(
-      buildBlobPath(file.name, documentId, session.user.email),
+    const email = session.user.email ?? "anonymous";
+    const { blobUrl, pathname, documentId } = await uploadFileToBlob(
       file,
-      {
-        access: "private",
-        addRandomSuffix: false,
-        contentType: file.type || "application/pdf",
-      },
+      file.name,
+      email,
     );
 
     return {
       status: "success",
       documentId,
       message: "PDF uploaded to Vercel Blob.",
-      blobUrl: blob.url,
+      blobUrl,
       fileName: file.name,
-      pathname: blob.pathname,
+      pathname,
     };
   } catch (error) {
     console.error("Failed to upload document to Vercel Blob", error);

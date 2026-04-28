@@ -9,7 +9,7 @@ import { SingleFileDropzone } from "@repo/ui/shared/SingleFileDropzone";
 import {
   uploadDocumentAction,
   type UploadFormState,
-} from "@/app/actions/upload";
+} from "@/app/actions/fileUpload";
 import {
   createExtractPoItemsTask,
   type ExtractPoItemsRequestBody,
