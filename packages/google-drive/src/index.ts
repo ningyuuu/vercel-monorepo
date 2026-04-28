@@ -1,3 +1,10 @@
+export class DriveSessionExpiredError extends Error {
+  constructor() {
+    super("Google Drive session expired. Please reconnect your account.");
+    this.name = "DriveSessionExpiredError";
+  }
+}
+
 export interface DriveFile {
   id: string;
   name: string;
@@ -21,6 +28,9 @@ export async function listFolder(
   );
 
   if (!res.ok) {
+    if (res.status === 401) {
+      throw new DriveSessionExpiredError();
+    }
     throw new Error(`Drive API error: ${res.status}`);
   }
 

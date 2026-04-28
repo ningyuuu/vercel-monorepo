@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/card";
-import { listAllPdfs } from "@repo/google-drive";
+import { listAllPdfs, DriveSessionExpiredError } from "@repo/google-drive";
 import { auth } from "@/lib/auth";
 
 import { AppNavbar } from "@/app/components/AppNavbar";
@@ -33,9 +33,8 @@ export default async function DriveSearchPage({
     const accessToken = session?.accessToken as string;
 
     if (!accessToken) {
-      const session = await auth();
       throw new Error(
-        `No accessToken found. Session: ${JSON.stringify(session?.user)}. Please sign in again.`,
+        "No access token found. Please sign in again.",
       );
     }
 
@@ -43,8 +42,13 @@ export default async function DriveSearchPage({
       pdfs = await listAllPdfs(accessToken, folderId);
     }
   } catch (e) {
-    error =
-      e instanceof Error ? e.message : "An error occurred while searching";
+    if (e instanceof DriveSessionExpiredError) {
+      error =
+        "Your Google Drive session has expired. Please sign out and sign in again to continue.";
+    } else {
+      error =
+        e instanceof Error ? e.message : "An error occurred while searching";
+    }
   }
 
   return (
