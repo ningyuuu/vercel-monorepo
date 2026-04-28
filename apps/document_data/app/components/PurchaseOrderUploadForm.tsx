@@ -11,8 +11,8 @@ import {
   type UploadFormState,
 } from "@/app/actions/upload";
 import {
+  createExtractPoItemsTask,
   type ExtractPoItemsRequestBody,
-  type ExtractPoItemsTaskAcceptedResponse,
 } from "@/lib/extract-po-items";
 
 const MAX_FILE_SIZE = 4.5 * 1024 * 1024;
@@ -20,36 +20,8 @@ const initialUploadFormState: UploadFormState = {
   status: "idle",
 };
 
-type ExtractPoItemsTaskErrorResponse = {
-  error?: string;
-};
-
 function formatMaxFileSize(size: number) {
   return `${(size / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function isExtractPoItemsTaskAcceptedResponse(
-  value: ExtractPoItemsTaskAcceptedResponse | ExtractPoItemsTaskErrorResponse,
-): value is ExtractPoItemsTaskAcceptedResponse {
-  return "task_id" in value && "status" in value;
-}
-
-async function createExtractPoItemsTask(payload: ExtractPoItemsRequestBody) {
-  const response = await fetch("/api/tasks/extract_po_items", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  const data = (await response.json()) as
-    | ExtractPoItemsTaskAcceptedResponse
-    | ExtractPoItemsTaskErrorResponse;
-
-  return {
-    ok: response.ok,
-    data,
-  };
 }
 
 export function PurchaseOrderUploadForm() {
@@ -98,21 +70,17 @@ export function PurchaseOrderUploadForm() {
         blob_link: blobUrl,
         blob_type: "vercel",
       };
-      const { ok, data } = await createExtractPoItemsTask(payload);
+      const result = await createExtractPoItemsTask(payload);
 
-      if (!ok || !isExtractPoItemsTaskAcceptedResponse(data)) {
+      if (!result.ok) {
         setState({
           status: "error",
-          message:
-            (isExtractPoItemsTaskAcceptedResponse(data)
-              ? undefined
-              : data.error) ||
-            "Unable to start purchase-order extraction task.",
+          message: result.error,
         });
         return;
       }
 
-      router.push(`/purchase-orders/${encodeURIComponent(data.task_id)}`);
+      router.push(`/purchase-orders/${encodeURIComponent(result.data.task_id)}`);
     } finally {
       setIsSubmitting(false);
     }
