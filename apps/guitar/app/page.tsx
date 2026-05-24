@@ -8,8 +8,8 @@ import {
 
 export default function Home() {
   return (
-    <div>
-      <main>
+    <div className="flex min-h-screen items-start justify-center bg-background font-sans">
+      <main className="w-full max-w-4xl bg-transparent px-6 pb-8 pt-20 space-y-4 sm:pt-24">
         <Card>
           <CardHeader>
             <CardTitle>Guitar</CardTitle>
