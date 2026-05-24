@@ -27,7 +27,6 @@ const NOTES = [
 ];
 
 const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19];
-const DOUBLE_MARKERS = [12];
 
 function getNoteName(openNote: string, fret: number): string {
   const openIndex = NOTES.indexOf(openNote);
@@ -71,8 +70,6 @@ export function Fretboard() {
           {STRINGS.map((string, stringIndex) =>
             frets.map((fret) => {
               const isNut = fret === 0;
-              const isDoubleMarker = DOUBLE_MARKERS.includes(fret);
-              const isMarker = FRET_MARKERS.includes(fret);
               const note = isNut ? string.note : getNoteName(string.note, fret);
               const stringThickness = Math.max(1, 3.2 - stringIndex * 0.35);
 
@@ -101,20 +98,6 @@ export function Fretboard() {
                     group
                   `}
                 >
-                  {/* Fret marker dots */}
-                  {isMarker && (
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      {isDoubleMarker ? (
-                        <div className="flex gap-2">
-                          <div className="h-2 w-2 rounded-full bg-amber-100/30" />
-                          <div className="h-2 w-2 rounded-full bg-amber-100/30" />
-                        </div>
-                      ) : (
-                        <div className="h-2 w-2 rounded-full bg-amber-100/30" />
-                      )}
-                    </div>
-                  )}
-
                   {/* String line */}
                   <div
                     className="absolute left-0 right-0 pointer-events-none"
