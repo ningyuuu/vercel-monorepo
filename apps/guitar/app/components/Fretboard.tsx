@@ -27,7 +27,16 @@ export const NOTES = [
   "B",
 ];
 
-const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19];
+const FRET_MARKERS = [
+  { fret: 3, dots: 1 },
+  { fret: 5, dots: 1 },
+  { fret: 7, dots: 1 },
+  { fret: 9, dots: 1 },
+  { fret: 12, dots: 2 },
+  { fret: 15, dots: 1 },
+  { fret: 17, dots: 1 },
+  { fret: 19, dots: 1 },
+];
 
 export function getNoteName(openNote: string, fret: number): string {
   const openIndex = NOTES.indexOf(openNote);
@@ -163,9 +172,20 @@ export function Fretboard({
               key={fret}
               className="text-muted-foreground text-[11px] font-medium text-center"
             >
-              {FRET_MARKERS.includes(fret) && (
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/60 align-middle" />
-              )}
+              {(() => {
+                const marker = FRET_MARKERS.find((m) => m.fret === fret);
+                if (!marker) return null;
+                return (
+                  <div className="flex items-center justify-center gap-0.5">
+                    {Array.from({ length: marker.dots }).map((_, i) => (
+                      <span
+                        key={i}
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-primary/60"
+                      />
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           ))}
         </div>
