@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/card";
-import { Fretboard } from "./components/Fretboard";
+import NoteQuiz from "./components/NoteQuiz";
 
 export default function Home() {
   return (
@@ -13,13 +13,13 @@ export default function Home() {
       <main className="w-full max-w-6xl bg-transparent px-4 pb-8 pt-20 space-y-6 sm:px-6 sm:pt-24">
         <Card>
           <CardHeader>
-            <CardTitle>Guitar</CardTitle>
+            <CardTitle>Guitar Note Quiz</CardTitle>
             <CardDescription>
-              Interactive fretboard — 6 strings, 19 frets
+              Guess the note for each highlighted fret position.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Fretboard />
+            <NoteQuiz />
           </CardContent>
         </Card>
       </main>

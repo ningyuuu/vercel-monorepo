@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
-const STRINGS = [
+export const STRINGS = [
   { label: "e", note: "E", octave: 4 },
   { label: "B", note: "B", octave: 3 },
   { label: "G", note: "G", octave: 3 },
@@ -11,7 +12,7 @@ const STRINGS = [
   { label: "E", note: "E", octave: 2 },
 ];
 
-const NOTES = [
+export const NOTES = [
   "C",
   "C#",
   "D",
@@ -28,14 +29,24 @@ const NOTES = [
 
 const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19];
 
-function getNoteName(openNote: string, fret: number): string {
+export function getNoteName(openNote: string, fret: number): string {
   const openIndex = NOTES.indexOf(openNote);
   if (openIndex === -1) return "";
   return NOTES[(openIndex + fret) % 12] ?? "";
 }
 
-export function Fretboard() {
+export function Fretboard({
+  highlight,
+  showNotes = true,
+}: {
+  highlight?: { stringIndex: number; fret: number } | null;
+  showNotes?: boolean;
+}) {
+  const [showStringNames, setShowStringNames] = useState(false);
   const frets = Array.from({ length: 20 }, (_, i) => i); // 0 (open/nut) to 19
+
+  const isHighlighted = (stringIndex: number, fret: number) =>
+    highlight?.stringIndex === stringIndex && highlight?.fret === fret;
 
   return (
     <div className="w-full overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
@@ -45,16 +56,26 @@ export function Fretboard() {
           className="grid items-end pb-2"
           style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}
         >
-          <div />
+          <div className="flex items-center justify-center pb-0.5">
+            <button
+              type="button"
+              onClick={() => setShowStringNames((v) => !v)}
+              className="flex items-center gap-1 rounded-md border border-border bg-muted/50 px-2 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              title={showStringNames ? "Show numbers" : "Show note names"}
+            >
+              {showStringNames ? (
+                <EyeOff className="size-3" />
+              ) : (
+                <Eye className="size-3" />
+              )}
+            </button>
+          </div>
           {frets.slice(1).map((fret) => (
             <div
               key={fret}
-              className="text-muted-foreground text-[11px] font-medium text-center"
+              className={`text-muted-foreground text-[11px] font-medium text-center ${showStringNames ? "" : "opacity-0"}`}
             >
               {fret}
-              {FRET_MARKERS.includes(fret) && (
-                <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-primary/60 align-middle" />
-              )}
             </div>
           ))}
         </div>
@@ -72,16 +93,19 @@ export function Fretboard() {
               const isNut = fret === 0;
               const note = isNut ? string.note : getNoteName(string.note, fret);
               const stringThickness = Math.max(1, 3.2 - stringIndex * 0.35);
+              const highlighted = isHighlighted(stringIndex, fret);
 
               if (isNut) {
                 // String name cell
                 return (
                   <div
                     key={`${stringIndex}-${fret}`}
-                    className="flex items-center justify-center h-10 bg-amber-950/60 border-r-2 border-r-amber-950"
+                    className={`flex items-center justify-center h-10 bg-amber-950/60 border-r-2 border-r-amber-950 ${
+                      highlighted ? "ring-2 ring-inset ring-yellow-400" : ""
+                    }`}
                   >
                     <span className="text-xs font-bold text-amber-200">
-                      {string.label}
+                      {showStringNames ? string.label : stringIndex + 1}
                     </span>
                   </div>
                 );
@@ -96,6 +120,7 @@ export function Fretboard() {
                     ${stringIndex !== STRINGS.length - 1 ? "border-b border-b-amber-900/30" : ""}
                     h-10
                     group
+                    ${highlighted ? "bg-yellow-400/20" : ""}
                   `}
                 >
                   {/* String line */}
@@ -112,27 +137,35 @@ export function Fretboard() {
                   />
 
                   {/* Note label (above the string line) */}
-                  <span className="relative z-10 text-[10px] font-medium text-amber-100/60 transition-colors group-hover:text-amber-100">
-                    {note}
+                  <span
+                    className={`relative z-10 text-[10px] font-medium transition-colors ${
+                      highlighted
+                        ? "text-yellow-300 font-bold"
+                        : "text-amber-100/60 group-hover:text-amber-100"
+                    }`}
+                  >
+                    {showNotes ? note : ""}
                   </span>
                 </div>
               );
-            })
+            }),
           )}
         </div>
 
-        {/* Footer labels */}
+        {/* Footer dots */}
         <div
-          className="grid mt-1"
+          className="grid items-start pt-2"
           style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}
         >
           <div />
           {frets.slice(1).map((fret) => (
             <div
               key={fret}
-              className="text-muted-foreground text-[10px] text-center"
+              className="text-muted-foreground text-[11px] font-medium text-center"
             >
-              {fret}f
+              {FRET_MARKERS.includes(fret) && (
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/60 align-middle" />
+              )}
             </div>
           ))}
         </div>
