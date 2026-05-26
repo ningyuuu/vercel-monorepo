@@ -25,6 +25,13 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-background font-sans">
       <main className="w-full max-w-4xl py-20 px-6 bg-transparent space-y-6">
         <GameCard
+          title="Position Sweeps"
+          description="Play all 6 strings across a fret."
+          icon={Guitar}
+          modes={sweepStages}
+          accentColor="primary"
+        />
+        <GameCard
           title="Single Frets"
           description="Practice one fret at a time."
           icon={Guitar}
@@ -36,13 +43,6 @@ export default function Home() {
           description="Mix multiple frets together."
           icon={Guitar}
           modes={groupStages}
-          accentColor="primary"
-        />
-        <GameCard
-          title="Position Sweeps"
-          description="Play all 6 strings across a fret."
-          icon={Guitar}
-          modes={sweepStages}
           accentColor="primary"
         />
       </main>
