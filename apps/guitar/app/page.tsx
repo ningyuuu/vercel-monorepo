@@ -1,9 +1,15 @@
 import { Guitar } from "lucide-react";
 import { GameCard } from "./components/GameCard";
-import { LEVELS } from "./components/levels";
+import { SINGLE_FRETS, GROUPS } from "./components/levels";
 
 export default function Home() {
-  const stages = LEVELS.map((level) => ({
+  const singleFretStages = SINGLE_FRETS.map((level) => ({
+    label: level.name,
+    href: `/stage/${level.id}`,
+    description: level.description,
+  }));
+
+  const groupStages = GROUPS.map((level) => ({
     label: level.name,
     href: `/stage/${level.id}`,
     description: level.description,
@@ -13,10 +19,17 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-background font-sans">
       <main className="w-full max-w-4xl py-20 px-6 bg-transparent space-y-6">
         <GameCard
-          title="Guitar Note Quiz"
-          description="Guess the note for each highlighted fret position."
+          title="Single Frets"
+          description="Practice one fret at a time."
           icon={Guitar}
-          modes={stages}
+          modes={singleFretStages}
+          accentColor="primary"
+        />
+        <GameCard
+          title="Groups"
+          description="Mix multiple frets together."
+          icon={Guitar}
+          modes={groupStages}
           accentColor="primary"
         />
       </main>
