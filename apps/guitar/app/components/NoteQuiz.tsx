@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { Fretboard, STRINGS, getNoteName, NOTES } from "./Fretboard";
+import { type Level } from "./levels";
 
 export type Question = {
   stringIndex: number;
@@ -11,21 +13,19 @@ export type Question = {
   note: string;
 };
 
-function generateQuestions(count = 10): Question[] {
+function generateQuestions(count = 10, allowedFrets: number[]): Question[] {
   const questions: Question[] = [];
   for (let i = 0; i < count; i++) {
     const stringIndex = Math.floor(Math.random() * STRINGS.length);
-    const fret = Math.floor(Math.random() * 20); // 0-19
+    const fret =
+      allowedFrets[Math.floor(Math.random() * allowedFrets.length)] ?? 0;
     const note = getNoteName(STRINGS[stringIndex]!.note, fret);
     questions.push({ stringIndex, fret, note });
   }
   return questions;
 }
 
-export default function NoteQuiz() {
-  const [gameState, setGameState] = useState<"idle" | "playing" | "finished">(
-    "idle",
-  );
+export default function NoteQuiz({ level }: { level: Level }) {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
@@ -33,18 +33,27 @@ export default function NoteQuiz() {
     null,
   );
   const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
 
-  const current = questions[index];
-
-  function startGame() {
-    const qs = generateQuestions(10);
-    setQuestions(qs);
+  useEffect(() => {
+    setQuestions(generateQuestions(10, level.allowedFrets));
     setIndex(0);
     setScore(0);
     setSelected(null);
     setFeedback(null);
-    setGameState("playing");
+    setFinished(false);
+  }, [level]);
+
+  const current = questions[index];
+
+  function reset() {
+    setQuestions(generateQuestions(10, level.allowedFrets));
+    setIndex(0);
+    setScore(0);
+    setSelected(null);
+    setFeedback(null);
+    setFinished(false);
   }
 
   function handleGuess(note: string) {
@@ -59,7 +68,7 @@ export default function NoteQuiz() {
     setTimeout(() => {
       const nextIndex = index + 1;
       if (nextIndex >= questions.length) {
-        setGameState("finished");
+        setFinished(true);
       } else {
         setIndex(nextIndex);
         setSelected(null);
@@ -68,38 +77,30 @@ export default function NoteQuiz() {
     }, 1200);
   }
 
-  const noteButtons = useMemo(() => {
+  const noteButtons = useMemo((): string[] => {
     return NOTES;
   }, []);
 
-  if (gameState === "idle") {
+  if (finished) {
     return (
       <div className="flex flex-col items-center gap-6 py-12">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-semibold">Note Quiz</h2>
+          <h2 className="text-2xl font-semibold">Stage Complete!</h2>
           <p className="text-muted-foreground">
-            Guess the note for 10 random fret positions.
+            {level.name} — {level.description}
           </p>
-        </div>
-        <Button size="lg" onClick={startGame}>
-          Start Game
-        </Button>
-      </div>
-    );
-  }
-
-  if (gameState === "finished") {
-    return (
-      <div className="flex flex-col items-center gap-6 py-12">
-        <div className="text-center space-y-2">
-          <h2 className="text-2xl font-semibold">Done!</h2>
           <p className="text-muted-foreground">
             You got {score} out of {questions.length} correct.
           </p>
         </div>
-        <Button size="lg" onClick={startGame}>
-          Play Again
-        </Button>
+        <div className="flex gap-3">
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/">Stage Select</Link>
+          </Button>
+          <Button size="lg" onClick={reset}>
+            Retry Stage
+          </Button>
+        </div>
       </div>
     );
   }
@@ -108,7 +109,8 @@ export default function NoteQuiz() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="text-sm text-muted-foreground">
-          Question {index + 1} of {questions.length}
+          <span className="font-medium text-foreground">Stage {level.id}</span>{" "}
+          — Question {index + 1} of {questions.length}
         </div>
         <div className="text-sm text-muted-foreground">
           Score: {score} / {index + (feedback ? 1 : 0)}
@@ -151,18 +153,6 @@ export default function NoteQuiz() {
             </div>
           )}
 
-          {feedback && (
-            <div
-              className={`text-sm font-medium ${
-                feedback === "correct" ? "text-emerald-600" : "text-red-600"
-              }`}
-            >
-              {feedback === "correct"
-                ? "Correct!"
-                : `Incorrect — it was ${current.note}`}
-            </div>
-          )}
-
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
             {noteButtons.map((note) => {
               const isSelected = selected === note;
@@ -192,6 +182,18 @@ export default function NoteQuiz() {
               );
             })}
           </div>
+
+          {feedback && (
+            <div
+              className={`text-sm font-medium ${
+                feedback === "correct" ? "text-emerald-600" : "text-red-600"
+              }`}
+            >
+              {feedback === "correct"
+                ? "Correct!"
+                : `Incorrect — it was ${current.note}`}
+            </div>
+          )}
         </div>
       )}
     </div>
