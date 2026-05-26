@@ -82,32 +82,37 @@ export const GROUPS: Level[] = [
 export const SWEEPS: Level[] = [
   {
     id: 10,
+    name: "Key Frets",
+    description: "Sweeps across frets 0, 3, 5, 7, 9.",
+    allowedFrets: [0, 3, 5, 7, 9],
+    mode: "sweep",
+  },
+  {
+    id: 11,
     name: "0 – 3",
     description: "Sweeps across frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
     mode: "sweep",
   },
   {
-    id: 11,
+    id: 12,
     name: "0 – 7",
     description: "Sweeps across frets 0 to 7.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7],
     mode: "sweep",
   },
   {
-    id: 12,
+    id: 13,
     name: "0 – 12",
     description: "Sweeps across frets 0 to 12.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     mode: "sweep",
   },
   {
-    id: 13,
+    id: 14,
     name: "0 – 19",
     description: "Sweeps across all frets.",
-    allowedFrets: [
-      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-    ],
+    allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
     mode: "sweep",
   },
 ];
