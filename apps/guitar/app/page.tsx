@@ -1,6 +1,6 @@
 import { Guitar } from "lucide-react";
 import { GameCard } from "./components/GameCard";
-import { SINGLE_FRETS, GROUPS } from "./components/levels";
+import { SINGLE_FRETS, GROUPS, SWEEPS } from "./components/levels";
 
 export default function Home() {
   const singleFretStages = SINGLE_FRETS.map((level) => ({
@@ -10,6 +10,12 @@ export default function Home() {
   }));
 
   const groupStages = GROUPS.map((level) => ({
+    label: level.name,
+    href: `/stage/${level.id}`,
+    description: level.description,
+  }));
+
+  const sweepStages = SWEEPS.map((level) => ({
     label: level.name,
     href: `/stage/${level.id}`,
     description: level.description,
@@ -30,6 +36,13 @@ export default function Home() {
           description="Mix multiple frets together."
           icon={Guitar}
           modes={groupStages}
+          accentColor="primary"
+        />
+        <GameCard
+          title="Position Sweeps"
+          description="Play all 6 strings across a fret."
+          icon={Guitar}
+          modes={sweepStages}
           accentColor="primary"
         />
       </main>
