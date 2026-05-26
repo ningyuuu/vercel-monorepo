@@ -13,6 +13,13 @@ export default function Home() {
         "Series of games to build arithmetic ability. Built with Next.js.",
     },
     {
+      title: "Guitar Note Quiz",
+      image: "/guitar.png",
+      url: "https://guitar.ningyu.dev",
+      description:
+        "Interactive fretboard trainer for memorizing guitar note positions.",
+    },
+    {
       title: "Innoquest Explorer",
       image: "/innoquest.png",
       url: "https://innoquest.ningyu.dev",
