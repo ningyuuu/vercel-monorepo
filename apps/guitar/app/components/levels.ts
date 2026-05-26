@@ -49,6 +49,13 @@ export const SINGLE_FRETS: Level[] = [
 export const GROUPS: Level[] = [
   {
     id: 6,
+    name: "Key Frets",
+    description: "Frets 0, 3, 5, 7, and 9.",
+    allowedFrets: [0, 3, 5, 7, 9],
+    mode: "random",
+  },
+  {
+    id: 7,
     name: "0 – 3",
     description: "Frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
