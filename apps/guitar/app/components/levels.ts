@@ -62,21 +62,21 @@ export const GROUPS: Level[] = [
     mode: "random",
   },
   {
-    id: 7,
+    id: 8,
     name: "0 – 7",
     description: "Frets 0 to 7.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7],
     mode: "random",
   },
   {
-    id: 8,
+    id: 9,
     name: "0 – 11",
     description: "Frets 0 to 11.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     mode: "random",
   },
   {
-    id: 9,
+    id: 10,
     name: "0 – 19",
     description: "All frets.",
     allowedFrets: [
@@ -119,7 +119,9 @@ export const SWEEPS: Level[] = [
     id: 14,
     name: "0 – 19",
     description: "Sweeps across all frets.",
-    allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+    allowedFrets: [
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+    ],
     mode: "sweep",
   },
 ];
