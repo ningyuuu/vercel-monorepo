@@ -4,26 +4,15 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import { Eye, EyeOff } from "lucide-react";
-import { Fretboard, STRINGS, getNoteName, NOTES } from "./Fretboard";
+import { Fretboard, NOTES } from "./Fretboard";
 import { type Level } from "./levels";
+import { generateQuestions } from "@/lib/questions";
 
 export type Question = {
   stringIndex: number;
   fret: number;
   note: string;
 };
-
-function generateQuestions(count = 10, allowedFrets: number[]): Question[] {
-  const questions: Question[] = [];
-  for (let i = 0; i < count; i++) {
-    const stringIndex = Math.floor(Math.random() * STRINGS.length);
-    const fret =
-      allowedFrets[Math.floor(Math.random() * allowedFrets.length)] ?? 0;
-    const note = getNoteName(STRINGS[stringIndex]!.note, fret);
-    questions.push({ stringIndex, fret, note });
-  }
-  return questions;
-}
 
 export default function NoteQuiz({ level }: { level: Level }) {
   const [questions, setQuestions] = useState<Question[]>([]);
