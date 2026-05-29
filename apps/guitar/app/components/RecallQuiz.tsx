@@ -1,15 +1,18 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import { Fretboard, STRINGS, getNoteName, NOTES } from "./Fretboard";
 import { type Level } from "./levels";
 
+type Phase = "learning" | "learning-done" | "recalling" | "done";
+
 const MAX_FRETS = 5;
 
-export default function StringSweepQuiz({ level }: { level: Level }) {
+export default function RecallQuiz({ level }: { level: Level }) {
+  const [phase, setPhase] = useState<Phase>("learning");
   const [frets, setFrets] = useState<number[]>([]);
   const [fretIndex, setFretIndex] = useState(0);
   const [stringIndex, setStringIndex] = useState(5);
@@ -17,36 +20,53 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
     null,
   );
-  const [score, setScore] = useState(0);
-  const [totalGuesses, setTotalGuesses] = useState(0);
-  const [finished, setFinished] = useState(false);
+  const [learnScore, setLearnScore] = useState(0);
+  const [learnTotal, setLearnTotal] = useState(0);
+  const [recallScore, setRecallScore] = useState(0);
+  const [recallTotal, setRecallTotal] = useState(0);
   const [showLabel, setShowLabel] = useState(false);
+  const fretsRef = useRef<number[]>([]);
 
   useEffect(() => {
     const selected = level.allowedFrets.slice(0, MAX_FRETS);
+    fretsRef.current = selected;
     setFrets(selected);
+    setPhase("learning");
     setFretIndex(0);
     setStringIndex(5);
-    setScore(0);
-    setTotalGuesses(0);
     setSelected(null);
     setFeedback(null);
-    setFinished(false);
+    setLearnScore(0);
+    setLearnTotal(0);
+    setRecallScore(0);
+    setRecallTotal(0);
   }, [level]);
 
   const currentFret = frets[fretIndex];
   const currentString = STRINGS[stringIndex];
+  const showNotes = phase === "learning";
+  const score = phase === "recalling" ? recallScore : learnScore;
+  const total = phase === "recalling" ? recallTotal : learnTotal;
 
   function reset() {
-    const selected = level.allowedFrets.slice(0, MAX_FRETS);
-    setFrets(selected);
+    setPhase("learning");
     setFretIndex(0);
     setStringIndex(5);
-    setScore(0);
-    setTotalGuesses(0);
     setSelected(null);
     setFeedback(null);
-    setFinished(false);
+    setLearnScore(0);
+    setLearnTotal(0);
+    setRecallScore(0);
+    setRecallTotal(0);
+  }
+
+  function startRecall() {
+    setFrets(fretsRef.current);
+    setPhase("recalling");
+    setFretIndex(0);
+    setStringIndex(5);
+    setSelected(null);
+    setFeedback(null);
   }
 
   function advance() {
@@ -57,7 +77,11 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
     } else {
       const nextFret = fretIndex + 1;
       if (nextFret >= frets.length) {
-        setFinished(true);
+        if (phase === "learning") {
+          setPhase("learning-done");
+        } else {
+          setPhase("done");
+        }
       } else {
         setFretIndex(nextFret);
         setStringIndex(5);
@@ -72,11 +96,20 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
 
     const correctNote = getNoteName(currentString.note, currentFret);
     setSelected(note);
-    setTotalGuesses((t) => t + 1);
+
+    if (phase === "learning") {
+      setLearnTotal((t) => t + 1);
+    } else {
+      setRecallTotal((t) => t + 1);
+    }
 
     if (note === correctNote) {
       setFeedback("correct");
-      setScore((s) => s + 1);
+      if (phase === "learning") {
+        setLearnScore((s) => s + 1);
+      } else {
+        setRecallScore((s) => s + 1);
+      }
     } else {
       setFeedback("incorrect");
     }
@@ -90,17 +123,42 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
     return NOTES;
   }, []);
 
-  if (finished) {
+  if (phase === "learning-done") {
     return (
       <div className="flex flex-col items-center gap-6 py-12">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-semibold">Stage Complete!</h2>
+          <h2 className="text-2xl font-semibold">Learning Complete!</h2>
+          <p className="text-muted-foreground">
+            You got {learnScore} out of {learnTotal} correct with the notes
+            visible.
+          </p>
+          <p className="text-muted-foreground">
+            Now test your recall — same frets, notes hidden.
+          </p>
+        </div>
+        <Button size="lg" onClick={startRecall}>
+          Start Recall
+        </Button>
+      </div>
+    );
+  }
+
+  if (phase === "done") {
+    return (
+      <div className="flex flex-col items-center gap-6 py-12">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-semibold">Recall Complete!</h2>
           <p className="text-muted-foreground">
             {level.name} — {level.description}
           </p>
-          <p className="text-muted-foreground">
-            You got {score} out of {totalGuesses} correct.
-          </p>
+          <div className="mt-4 space-y-1">
+            <p className="text-muted-foreground">
+              Learn: {learnScore} / {learnTotal} correct
+            </p>
+            <p className="text-muted-foreground">
+              Recall: {recallScore} / {recallTotal} correct
+            </p>
+          </div>
         </div>
         <div className="flex gap-3">
           <Button size="lg" variant="outline" asChild>
@@ -125,16 +183,17 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
           <span className="font-medium text-foreground">
             Stage {level.id}
           </span>{" "}
-          — Fret {fretIndex + 1} of {frets.length}
+          —{showNotes ? " Learn" : " Recall"} · Fret {fretIndex + 1} of{" "}
+          {frets.length}
         </div>
         <div className="text-sm text-muted-foreground">
-          Score: {score} / {totalGuesses}
+          Score: {score} / {total}
         </div>
       </div>
 
       <Fretboard
         highlight={{ stringIndex, fret: currentFret }}
-        showNotes={level.mode === "learn"}
+        showNotes={showNotes}
       />
 
       <div className="flex flex-col items-center gap-3">
