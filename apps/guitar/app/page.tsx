@@ -11,8 +11,8 @@ export default function Home() {
     }));
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background font-sans">
-      <main className="w-full max-w-4xl py-20 px-6 bg-transparent space-y-6">
+    <div className="flex min-h-screen items-start justify-center bg-background font-sans">
+      <main className="w-full max-w-4xl px-6 pb-8 pt-20 space-y-6 sm:pt-24">
         <GameCard
           title="Learn"
           description="Sweep all strings with notes visible."

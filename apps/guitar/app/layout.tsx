@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Navbar } from "@repo/ui/shared/Navbar";
+import { ThemeToggle } from "@repo/ui/shared/ThemeToggle";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +40,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar
+          title="Guitar"
+          links={[{ label: "Directory", href: "/" }]}
+          actions={
+            <ThemeToggle className="static right-auto top-auto z-auto" />
+          }
+        />
         {children}
       </body>
     </html>
