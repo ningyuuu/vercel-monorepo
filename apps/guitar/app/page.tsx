@@ -28,7 +28,7 @@ export default function Home() {
           accentColor="primary"
         />
         <GameCard
-          title="Position Sweeps"
+          title="Practice"
           description="Play all 6 strings across a fret."
           icon={Guitar}
           modes={toModes(SWEEPS)}
