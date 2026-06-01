@@ -94,7 +94,7 @@ export function Fretboard({
           className="grid gap-0 rounded-lg border border-border overflow-hidden"
           style={{
             gridTemplateColumns: `48px repeat(19, 1fr)`,
-            background: "linear-gradient(to right, #3d2b1f, #4e3826, #3d2b1f)",
+            background: "var(--fretboard-wood)",
           }}
         >
           {STRINGS.map((string, stringIndex) =>
@@ -107,13 +107,13 @@ export function Fretboard({
               if (isNut) {
                 // String name cell
                 return (
-                  <div
+                    <div
                     key={`${stringIndex}-${fret}`}
-                    className={`flex items-center justify-center h-10 bg-amber-950/60 border-r-2 border-r-amber-950 ${
+                    className={`flex items-center justify-center h-10 bg-stone-300 dark:bg-amber-950/60 border-r-2 border-r-stone-400 dark:border-r-amber-950 ${
                       highlighted ? "ring-2 ring-inset ring-yellow-400" : ""
                     }`}
                   >
-                    <span className="text-xs font-bold text-amber-200">
+                    <span className="text-xs font-bold text-stone-700 dark:text-amber-200">
                       {showStringNames ? string.label : stringIndex + 1}
                     </span>
                   </div>
@@ -125,8 +125,8 @@ export function Fretboard({
                   key={`${stringIndex}-${fret}`}
                   className={`
                     relative flex items-start justify-center pt-1.5
-                    border-r border-r-amber-900/40
-                    ${stringIndex !== STRINGS.length - 1 ? "border-b border-b-amber-900/30" : ""}
+                    border-r border-r-stone-400/40 dark:border-r-amber-900/40
+                    ${stringIndex !== STRINGS.length - 1 ? "border-b border-b-stone-400/30 dark:border-b-amber-900/30" : ""}
                     h-10
                     group
                     ${highlighted ? "bg-yellow-400/20" : ""}
@@ -138,7 +138,7 @@ export function Fretboard({
                     style={{
                       height: stringThickness,
                       background:
-                        "linear-gradient(to bottom, #bfa080 0%, #e8d8c0 40%, #e8d8c0 60%, #bfa080 100%)",
+                        "var(--fretboard-string)",
                       top: "50%",
                       transform: "translateY(-50%)",
                       zIndex: 1,
@@ -149,8 +149,8 @@ export function Fretboard({
                   <span
                     className={`relative z-10 text-[10px] font-medium transition-colors ${
                       highlighted
-                        ? "text-yellow-300 font-bold"
-                        : "text-amber-100/60 group-hover:text-amber-100"
+                        ? "text-yellow-600 dark:text-yellow-300 font-bold"
+                        : "text-stone-600/60 dark:text-amber-100/60 group-hover:text-stone-800 dark:group-hover:text-amber-100"
                     }`}
                   >
                     {showNotes ? note : ""}

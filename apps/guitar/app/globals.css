@@ -1,2 +1,12 @@
 @import "@repo/ui/globals.css";
 @source "../../../packages/ui/src";
+
+:root {
+  --fretboard-wood: linear-gradient(to right, #e0c9a3, #eddcc0, #e0c9a3);
+  --fretboard-string: linear-gradient(to bottom, #b0b0b0 0%, #e0e0e0 40%, #e0e0e0 60%, #b0b0b0 100%);
+}
+
+.dark {
+  --fretboard-wood: linear-gradient(to right, #3d2b1f, #4e3826, #3d2b1f);
+  --fretboard-string: linear-gradient(to bottom, #bfa080 0%, #e8d8c0 40%, #e8d8c0 60%, #bfa080 100%);
+}
