@@ -1,7 +1,7 @@
 export type GameMode = "random" | "sweep" | "learn" | "recall";
 
 export interface Level {
-  id: number;
+  slug: string;
   name: string;
   description: string;
   allowedFrets: number[];
@@ -10,35 +10,35 @@ export interface Level {
 
 export const SINGLE_FRETS: Level[] = [
   {
-    id: 1,
+    slug: "0",
     name: "Fret 0",
     description: "Open strings only.",
     allowedFrets: [0],
     mode: "random",
   },
   {
-    id: 2,
+    slug: "3",
     name: "Fret 3",
     description: "Fret 3 only.",
     allowedFrets: [3],
     mode: "random",
   },
   {
-    id: 3,
+    slug: "5",
     name: "Fret 5",
     description: "Fret 5 only.",
     allowedFrets: [5],
     mode: "random",
   },
   {
-    id: 4,
+    slug: "7",
     name: "Fret 7",
     description: "Fret 7 only.",
     allowedFrets: [7],
     mode: "random",
   },
   {
-    id: 5,
+    slug: "9",
     name: "Fret 9",
     description: "Fret 9 only.",
     allowedFrets: [9],
@@ -48,35 +48,35 @@ export const SINGLE_FRETS: Level[] = [
 
 export const GROUPS: Level[] = [
   {
-    id: 6,
+    slug: "key-frets",
     name: "Key Frets",
     description: "Frets 0, 3, 5, 7, and 9.",
     allowedFrets: [0, 3, 5, 7, 9],
     mode: "random",
   },
   {
-    id: 7,
+    slug: "0-3",
     name: "0 – 3",
     description: "Frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
     mode: "random",
   },
   {
-    id: 8,
+    slug: "0-7",
     name: "0 – 7",
     description: "Frets 0 to 7.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7],
     mode: "random",
   },
   {
-    id: 9,
+    slug: "0-11",
     name: "0 – 11",
     description: "Frets 0 to 11.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     mode: "random",
   },
   {
-    id: 10,
+    slug: "0-19",
     name: "0 – 19",
     description: "All frets.",
     allowedFrets: [
@@ -88,35 +88,35 @@ export const GROUPS: Level[] = [
 
 export const SWEEPS: Level[] = [
   {
-    id: 11,
+    slug: "key-frets",
     name: "Key Frets",
     description: "Sweeps across frets 0, 3, 5, 7, 9.",
     allowedFrets: [0, 3, 5, 7, 9],
     mode: "sweep",
   },
   {
-    id: 12,
+    slug: "0-3",
     name: "0 – 3",
     description: "Sweeps across frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
     mode: "sweep",
   },
   {
-    id: 13,
+    slug: "0-7",
     name: "0 – 7",
     description: "Sweeps across frets 0 to 7.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7],
     mode: "sweep",
   },
   {
-    id: 14,
+    slug: "0-12",
     name: "0 – 12",
     description: "Sweeps across frets 0 to 12.",
     allowedFrets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     mode: "sweep",
   },
   {
-    id: 15,
+    slug: "0-19",
     name: "0 – 19",
     description: "Sweeps across all frets.",
     allowedFrets: [
@@ -128,35 +128,35 @@ export const SWEEPS: Level[] = [
 
 export const LEARN: Level[] = [
   {
-    id: 16,
+    slug: "key-frets",
     name: "Key Frets",
     description: "Frets 0, 3, 5, 7, 9.",
     allowedFrets: [0, 3, 5, 7, 9],
     mode: "learn",
   },
   {
-    id: 17,
+    slug: "0-3",
     name: "0 – 3",
     description: "Frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
     mode: "learn",
   },
   {
-    id: 18,
+    slug: "4-7",
     name: "4 – 7",
     description: "Frets 4 to 7.",
     allowedFrets: [4, 5, 6, 7],
     mode: "learn",
   },
   {
-    id: 19,
+    slug: "8-9",
     name: "8 – 9",
     description: "Frets 8 and 9.",
     allowedFrets: [8, 9],
     mode: "learn",
   },
   {
-    id: 20,
+    slug: "10-12",
     name: "10 – 12",
     description: "Frets 10 to 12.",
     allowedFrets: [10, 11, 12],
@@ -166,35 +166,35 @@ export const LEARN: Level[] = [
 
 export const RECALL: Level[] = [
   {
-    id: 21,
+    slug: "key-frets",
     name: "Key Frets",
     description: "Frets 0, 3, 5, 7, 9.",
     allowedFrets: [0, 3, 5, 7, 9],
     mode: "recall",
   },
   {
-    id: 22,
+    slug: "0-3",
     name: "0 – 3",
     description: "Frets 0 to 3.",
     allowedFrets: [0, 1, 2, 3],
     mode: "recall",
   },
   {
-    id: 23,
+    slug: "4-7",
     name: "4 – 7",
     description: "Frets 4 to 7.",
     allowedFrets: [4, 5, 6, 7],
     mode: "recall",
   },
   {
-    id: 24,
+    slug: "8-9",
     name: "8 – 9",
     description: "Frets 8 and 9.",
     allowedFrets: [8, 9],
     mode: "recall",
   },
   {
-    id: 25,
+    slug: "10-12",
     name: "10 – 12",
     description: "Frets 10 to 12.",
     allowedFrets: [10, 11, 12],

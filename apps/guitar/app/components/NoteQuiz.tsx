@@ -98,7 +98,7 @@ export default function NoteQuiz({ level }: { level: Level }) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">Stage {level.id}</span>{" "}
+          <span className="font-medium text-foreground">{level.name}</span>{" "}
           — Question {index + 1} of {questions.length}
         </div>
         <div className="text-sm text-muted-foreground">

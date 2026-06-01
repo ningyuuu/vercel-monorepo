@@ -2,15 +2,27 @@ import { notFound } from "next/navigation";
 import NoteQuiz from "../../components/NoteQuiz";
 import StringSweepQuiz from "../../components/StringSweepQuiz";
 import RecallQuiz from "../../components/RecallQuiz";
-import { LEVELS } from "../../components/levels";
+import { LEARN, RECALL, SWEEPS, SINGLE_FRETS, GROUPS } from "../../components/levels";
+import type { Level } from "../../components/levels";
 
-export default async function StagePage({
+const CATEGORIES: Record<string, Level[]> = {
+  learn: LEARN,
+  recall: RECALL,
+  practice: SWEEPS,
+  "single-frets": SINGLE_FRETS,
+  groups: GROUPS,
+};
+
+export default async function CategoryStagePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }) {
-  const { id } = await params;
-  const level = LEVELS.find((l) => l.id === parseInt(id, 10));
+  const { category, slug } = await params;
+  const levels = CATEGORIES[category];
+  if (!levels) notFound();
+
+  const level = levels.find((l) => l.slug === slug);
   if (!level) notFound();
 
   return (

@@ -123,7 +123,7 @@ export default function StringSweepQuiz({ level }: { level: Level }) {
       <div className="flex items-center justify-between">
         <div className="text-sm text-muted-foreground">
           <span className="font-medium text-foreground">
-            Stage {level.id}
+            {level.name}
           </span>{" "}
           — Fret {fretIndex + 1} of {frets.length}
         </div>

@@ -1,12 +1,18 @@
 import { Guitar } from "lucide-react";
 import { GameCard } from "./components/GameCard";
-import { LEARN, RECALL, SWEEPS, SINGLE_FRETS, GROUPS } from "./components/levels";
+import {
+  LEARN,
+  RECALL,
+  SWEEPS,
+  SINGLE_FRETS,
+  GROUPS,
+} from "./components/levels";
 
 export default function Home() {
-  const toModes = (levels: typeof LEARN) =>
+  const toModes = (levels: typeof LEARN, prefix: string) =>
     levels.map((level) => ({
       label: level.name,
-      href: `/stage/${level.id}`,
+      href: `/${prefix}/${level.slug}`,
       description: level.description,
     }));
 
@@ -17,35 +23,35 @@ export default function Home() {
           title="Learn"
           description="Sweep all strings with notes visible."
           icon={Guitar}
-          modes={toModes(LEARN)}
+          modes={toModes(LEARN, "learn")}
           accentColor="primary"
         />
         <GameCard
           title="Recall"
           description="Learn then recall — notes hidden on second pass."
           icon={Guitar}
-          modes={toModes(RECALL)}
+          modes={toModes(RECALL, "recall")}
           accentColor="primary"
         />
         <GameCard
           title="Practice"
           description="Play all 6 strings across a fret."
           icon={Guitar}
-          modes={toModes(SWEEPS)}
+          modes={toModes(SWEEPS, "practice")}
           accentColor="primary"
         />
         <GameCard
           title="Single Frets"
-          description="Practice one fret at a time."
+          description="Quiz on individual frets."
           icon={Guitar}
-          modes={toModes(SINGLE_FRETS)}
+          modes={toModes(SINGLE_FRETS, "single-frets")}
           accentColor="primary"
         />
         <GameCard
           title="Groups"
-          description="Mix multiple frets together."
+          description="Quiz a mix of multiple frets."
           icon={Guitar}
-          modes={toModes(GROUPS)}
+          modes={toModes(GROUPS, "groups")}
           accentColor="primary"
         />
       </main>
