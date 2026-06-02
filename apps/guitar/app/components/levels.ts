@@ -1,4 +1,6 @@
-export type GameMode = "random" | "sweep" | "learn" | "recall";
+export type GameMode = "random" | "sweep" | "learn" | "recall" | "chord";
+
+import type { ChordDef } from "./chords";
 
 export interface Level {
   slug: string;
@@ -6,9 +8,10 @@ export interface Level {
   description: string;
   allowedFrets: number[];
   mode: GameMode;
+  chords?: ChordDef[];
 }
 
-export const SINGLE_FRETS: Level[] = [
+export const NOTES: Level[] = [
   {
     slug: "0",
     name: "Fret 0",
@@ -202,10 +205,13 @@ export const RECALL: Level[] = [
   },
 ];
 
-export const LEVELS: Level[] = [
-  ...SINGLE_FRETS,
-  ...GROUPS,
-  ...SWEEPS,
-  ...LEARN,
-  ...RECALL,
-];
+// Chord level helpers (used by quiz routes)
+
+export function makeChordLevel(
+  slug: string,
+  name: string,
+  description: string,
+  chords: ChordDef[],
+): Level {
+  return { slug, name, description, allowedFrets: [], mode: "chord", chords };
+}

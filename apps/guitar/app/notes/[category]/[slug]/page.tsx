@@ -1,19 +1,25 @@
 import { notFound } from "next/navigation";
-import NoteQuiz from "../../components/NoteQuiz";
-import StringSweepQuiz from "../../components/StringSweepQuiz";
-import RecallQuiz from "../../components/RecallQuiz";
-import { LEARN, RECALL, SWEEPS, SINGLE_FRETS, GROUPS } from "../../components/levels";
-import type { Level } from "../../components/levels";
+import NoteQuiz from "../../../components/NoteQuiz";
+import StringSweepQuiz from "../../../components/StringSweepQuiz";
+import RecallQuiz from "../../../components/RecallQuiz";
+import {
+  LEARN,
+  RECALL,
+  SWEEPS,
+  NOTES,
+  GROUPS,
+} from "../../../components/levels";
+import type { Level } from "../../../components/levels";
 
 const CATEGORIES: Record<string, Level[]> = {
   learn: LEARN,
   recall: RECALL,
   practice: SWEEPS,
-  "single-frets": SINGLE_FRETS,
+  notes: NOTES,
   groups: GROUPS,
 };
 
-export default async function CategoryStagePage({
+export default async function NotesStagePage({
   params,
 }: {
   params: Promise<{ category: string; slug: string }>;

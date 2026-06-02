@@ -3,19 +3,30 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Button } from "@repo/ui/button";
-import { Eye, EyeOff } from "lucide-react";
-import { Fretboard, NOTES } from "./Fretboard";
-import { type Level } from "./levels";
-import { generateQuestions } from "@/lib/questions";
+import { Fretboard } from "./Fretboard";
+import type { Level } from "./levels";
+import type { ChordDef } from "./chords";
 
-export type Question = {
-  stringIndex: number;
-  fret: number;
-  note: string;
-};
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j]!, a[i]!];
+  }
+  return a;
+}
 
-export default function NoteQuiz({ level }: { level: Level }) {
-  const [questions, setQuestions] = useState<Question[]>([]);
+function pickOptions(correct: ChordDef, pool: ChordDef[], count = 4): string[] {
+  const others = pool.filter((c) => c.slug !== correct.slug);
+  const shuffled = shuffle(others).slice(0, count - 1);
+  const options = [correct.name, ...shuffled.map((c) => c.name)];
+  return shuffle(options);
+}
+
+export default function ChordQuiz({ level }: { level: Level }) {
+  const chords = useMemo(() => level.chords ?? [], [level.chords]);
+
+  const [questions, setQuestions] = useState<ChordDef[]>([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
@@ -23,21 +34,27 @@ export default function NoteQuiz({ level }: { level: Level }) {
   );
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [showLabel, setShowLabel] = useState(false);
 
   useEffect(() => {
-    setQuestions(generateQuestions(10, level.allowedFrets));
+    if (chords.length === 0) return;
+    const picked = shuffle(chords).slice(0, Math.min(10, chords.length));
+    setQuestions(picked);
     setIndex(0);
     setScore(0);
     setSelected(null);
     setFeedback(null);
     setFinished(false);
-  }, [level]);
+  }, [chords]);
 
   const current = questions[index];
+  const options = useMemo(
+    () => (current ? pickOptions(current, chords) : []),
+    [current, chords],
+  );
 
   function reset() {
-    setQuestions(generateQuestions(10, level.allowedFrets));
+    const picked = shuffle(chords).slice(0, Math.min(10, chords.length));
+    setQuestions(picked);
     setIndex(0);
     setScore(0);
     setSelected(null);
@@ -45,10 +62,10 @@ export default function NoteQuiz({ level }: { level: Level }) {
     setFinished(false);
   }
 
-  function handleGuess(note: string) {
+  function handleGuess(name: string) {
     if (!current || feedback) return;
-    setSelected(note);
-    if (note === current.note) {
+    setSelected(name);
+    if (name === current.name) {
       setFeedback("correct");
       setScore((s) => s + 1);
     } else {
@@ -63,12 +80,19 @@ export default function NoteQuiz({ level }: { level: Level }) {
         setSelected(null);
         setFeedback(null);
       }
-    }, 1200);
+    }, 1500);
   }
 
-  const noteButtons = useMemo((): string[] => {
-    return NOTES;
-  }, []);
+  if (chords.length === 0) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-12">
+        <p className="text-muted-foreground">No chords defined for this level.</p>
+        <Button size="lg" variant="outline" asChild>
+          <Link href="/">Stage Select</Link>
+        </Button>
+      </div>
+    );
+  }
 
   if (finished) {
     return (
@@ -84,7 +108,7 @@ export default function NoteQuiz({ level }: { level: Level }) {
         </div>
         <div className="flex gap-3">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/notes">Stage Select</Link>
+          <Link href="/chords">Stage Select</Link>
           </Button>
           <Button size="lg" onClick={reset}>
             Retry Stage
@@ -93,6 +117,8 @@ export default function NoteQuiz({ level }: { level: Level }) {
       </div>
     );
   }
+
+  if (!current) return null;
 
   return (
     <div className="space-y-6">
@@ -107,47 +133,26 @@ export default function NoteQuiz({ level }: { level: Level }) {
       </div>
 
       <Fretboard
-        highlights={
-          current
-            ? [{ stringIndex: current.stringIndex, fret: current.fret }]
-            : null
-        }
+        highlights={current.positions}
         showNotes={false}
+        muted={current.muted}
       />
 
       {current && (
         <div className="flex flex-col items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setShowLabel((v) => !v)}
-            className="flex items-center gap-1.5 rounded-md border border-border bg-muted/50 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            {showLabel ? (
-              <>
-                <EyeOff className="size-4" />
-                Hide position
-              </>
-            ) : (
-              <>
-                <Eye className="size-4" />
-                Show position
-              </>
-            )}
-          </button>
+          <p className="text-sm text-muted-foreground">
+            Which chord is this?
+          </p>
 
-          {showLabel && (
-            <div className="text-lg font-medium">
-              String {current.stringIndex + 1},{" "}
-              {current.fret === 0 ? "open" : `fret ${current.fret}`}
-            </div>
-          )}
-
-          <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
-            {noteButtons.map((note) => {
-              const isSelected = selected === note;
-              const isCorrect = current.note === note;
-              let variant: "default" | "outline" | "secondary" | "destructive" =
-                "outline";
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 max-w-md w-full">
+            {options.map((name) => {
+              const isSelected = selected === name;
+              const isCorrect = current.name === name;
+              let variant:
+                | "default"
+                | "outline"
+                | "secondary"
+                | "destructive" = "outline";
               if (feedback) {
                 if (isCorrect) {
                   variant = "default";
@@ -160,13 +165,13 @@ export default function NoteQuiz({ level }: { level: Level }) {
 
               return (
                 <Button
-                  key={note}
+                  key={name}
                   variant={variant}
-                  className="min-w-[3.5rem]"
-                  onClick={() => handleGuess(note)}
+                  className="min-h-[3rem]"
+                  onClick={() => handleGuess(name)}
                   disabled={!!feedback}
                 >
-                  {note}
+                  {name}
                 </Button>
               );
             })}
@@ -180,7 +185,7 @@ export default function NoteQuiz({ level }: { level: Level }) {
             >
               {feedback === "correct"
                 ? "Correct!"
-                : `Incorrect — it was ${current.note}`}
+                : `Incorrect — it was ${current.name}`}
             </div>
           )}
         </div>

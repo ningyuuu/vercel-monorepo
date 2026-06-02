@@ -162,7 +162,7 @@ export default function RecallQuiz({ level }: { level: Level }) {
         </div>
         <div className="flex gap-3">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/">Stage Select</Link>
+            <Link href="/notes">Stage Select</Link>
           </Button>
           <Button size="lg" onClick={reset}>
             Retry Stage
@@ -192,7 +192,7 @@ export default function RecallQuiz({ level }: { level: Level }) {
       </div>
 
       <Fretboard
-        highlight={{ stringIndex, fret: currentFret }}
+        highlights={[{ stringIndex, fret: currentFret }]}
         showNotes={showNotes}
       />
 

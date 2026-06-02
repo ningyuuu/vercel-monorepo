@@ -45,26 +45,26 @@ export function getNoteName(openNote: string, fret: number): string {
 }
 
 export function Fretboard({
-  highlight,
+  highlights,
   showNotes = true,
+  muted = [],
 }: {
-  highlight?: { stringIndex: number; fret: number } | null;
+  highlights?: { stringIndex: number; fret: number }[] | null;
   showNotes?: boolean;
+  muted?: number[];
 }) {
   const [showStringNames, setShowStringNames] = useState(false);
-  const frets = Array.from({ length: 20 }, (_, i) => i); // 0 (open/nut) to 19
+  const frets = Array.from({ length: 20 }, (_, i) => i);
 
   const isHighlighted = (stringIndex: number, fret: number) =>
-    highlight?.stringIndex === stringIndex && highlight?.fret === fret;
+    highlights?.some(
+      (h) => h.stringIndex === stringIndex && h.fret === fret,
+    ) ?? false;
 
   return (
     <div className="w-full overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
       <div className="min-w-[880px] p-4 sm:p-6">
-        {/* Header with fret numbers */}
-        <div
-          className="grid items-end pb-2"
-          style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}
-        >
+        <div className="grid items-end pb-2" style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}>
           <div className="flex items-center justify-center pb-0.5">
             <button
               type="button"
@@ -89,7 +89,6 @@ export function Fretboard({
           ))}
         </div>
 
-        {/* Fretboard grid */}
         <div
           className="grid gap-0 rounded-lg border border-border overflow-hidden"
           style={{
@@ -105,7 +104,7 @@ export function Fretboard({
               const highlighted = isHighlighted(stringIndex, fret);
 
               if (isNut) {
-                // String name cell
+                const isMuted = muted.includes(stringIndex);
                 return (
                     <div
                     key={`${stringIndex}-${fret}`}
@@ -113,8 +112,8 @@ export function Fretboard({
                       highlighted ? "ring-2 ring-inset ring-yellow-400" : ""
                     }`}
                   >
-                    <span className="text-xs font-bold text-stone-700 dark:text-amber-200">
-                      {showStringNames ? string.label : stringIndex + 1}
+                    <span className={`text-xs font-bold ${isMuted ? "text-red-500" : "text-stone-700 dark:text-amber-200"}`}>
+                      {isMuted ? "X" : showStringNames ? string.label : stringIndex + 1}
                     </span>
                   </div>
                 );
@@ -132,20 +131,17 @@ export function Fretboard({
                     ${highlighted ? "bg-yellow-400/20" : ""}
                   `}
                 >
-                  {/* String line */}
                   <div
                     className="absolute left-0 right-0 pointer-events-none"
                     style={{
                       height: stringThickness,
-                      background:
-                        "var(--fretboard-string)",
+                      background: "var(--fretboard-string)",
                       top: "50%",
                       transform: "translateY(-50%)",
                       zIndex: 1,
                     }}
                   />
 
-                  {/* Note label (above the string line) */}
                   <span
                     className={`relative z-10 text-[10px] font-medium transition-colors ${
                       highlighted
@@ -161,11 +157,7 @@ export function Fretboard({
           )}
         </div>
 
-        {/* Footer dots */}
-        <div
-          className="grid items-start pt-2"
-          style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}
-        >
+        <div className="grid items-start pt-2" style={{ gridTemplateColumns: `48px repeat(19, 1fr)` }}>
           <div />
           {frets.slice(1).map((fret) => (
             <div

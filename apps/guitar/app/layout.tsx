@@ -42,7 +42,10 @@ export default function RootLayout({
       >
         <Navbar
           title="Guitar"
-          links={[{ label: "Directory", href: "/" }]}
+          links={[
+            { label: "Notes", href: "/notes" },
+            { label: "Chords", href: "/chords" },
+          ]}
           actions={
             <ThemeToggle className="static right-auto top-auto z-auto" />
           }
