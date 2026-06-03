@@ -48,10 +48,12 @@ export function Fretboard({
   highlights,
   showNotes = true,
   muted = [],
+  highlightFrets,
 }: {
   highlights?: { stringIndex: number; fret: number }[] | null;
   showNotes?: boolean;
   muted?: number[];
+  highlightFrets?: number[];
 }) {
   const [showStringNames, setShowStringNames] = useState(false);
   const frets = Array.from({ length: 20 }, (_, i) => i);
@@ -60,6 +62,9 @@ export function Fretboard({
     highlights?.some(
       (h) => h.stringIndex === stringIndex && h.fret === fret,
     ) ?? false;
+
+  const isFretInRange = (fret: number) =>
+    highlightFrets ? highlightFrets.includes(fret) : false;
 
   return (
     <div className="w-full overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
@@ -129,6 +134,7 @@ export function Fretboard({
                     h-10
                     group
                     ${highlighted ? "bg-yellow-400/20" : ""}
+                    ${isFretInRange(fret) && !highlighted ? "bg-blue-400/10 dark:bg-blue-500/10" : ""}
                   `}
                 >
                   <div

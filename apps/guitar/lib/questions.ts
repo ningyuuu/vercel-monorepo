@@ -44,3 +44,19 @@ export function generateQuestions(
 
   return result;
 }
+
+export function generateSweepQuestions(allowedFrets: number[]): Question[] {
+  const sortedFrets = [...allowedFrets].sort((a, b) => a - b);
+  const result: Question[] = [];
+  for (const fret of sortedFrets) {
+    for (let si = STRINGS.length - 1; si >= 0; si--) {
+      const string = STRINGS[si]!;
+      result.push({
+        stringIndex: si,
+        fret,
+        note: getNoteName(string.note, fret),
+      });
+    }
+  }
+  return result;
+}
