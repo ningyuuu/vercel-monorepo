@@ -13,6 +13,8 @@ Each app runs its own dev server on a dedicated port. Do **not** stop or kill an
 | docs | 3003 |
 | innoquest | 3004 |
 
+When developing features, always verify using DevTools MCP that it displays correctly.
+
 ## General
 
 - Follow existing code style and patterns in each app.
