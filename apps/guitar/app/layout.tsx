@@ -42,6 +42,7 @@ export default function RootLayout({
       >
         <Navbar
           title="Guitar"
+          titleHref="/"
           links={[
             { label: "Notes", href: "/notes" },
             { label: "Open Chords", href: "/open-chords" },

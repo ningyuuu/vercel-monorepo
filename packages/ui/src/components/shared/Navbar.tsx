@@ -33,6 +33,7 @@ function isNavItemWithSubItems(item: NavItem): item is NavItemWithSubItems {
 
 export type NavbarProps = {
   title: string;
+  titleHref?: string;
   links?: NavItem[];
   actions?: React.ReactNode;
   className?: string;
@@ -41,6 +42,7 @@ export type NavbarProps = {
 
 export function Navbar({
   title,
+  titleHref,
   links,
   actions,
   className,
@@ -62,9 +64,18 @@ export function Navbar({
         )}
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6">
-          <p className="m-0 text-lg font-semibold tracking-tight sm:text-xl">
-            {title}
-          </p>
+          {titleHref ? (
+            <Link
+              href={titleHref}
+              className="no-underline m-0 text-lg font-semibold tracking-tight sm:text-xl hover:text-primary transition-colors"
+            >
+              {title}
+            </Link>
+          ) : (
+            <p className="m-0 text-lg font-semibold tracking-tight sm:text-xl">
+              {title}
+            </p>
+          )}
           {links && links.length > 0 && (
             <div className="flex items-center gap-4">
               {links.map((item) => {
