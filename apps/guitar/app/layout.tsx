@@ -44,7 +44,8 @@ export default function RootLayout({
           title="Guitar"
           links={[
             { label: "Notes", href: "/notes" },
-            { label: "Chords", href: "/chords" },
+            { label: "Open Chords", href: "/open-chords" },
+            { label: "Closed Chords", href: "/closed-chords" },
           ]}
           actions={
             <ThemeToggle className="static right-auto top-auto z-auto" />
