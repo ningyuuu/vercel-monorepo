@@ -1,5 +1,10 @@
 import { STRINGS, getNoteName } from "@/app/components/Fretboard";
-import type { Question } from "@/app/components/NoteQuiz";
+
+export type Question = {
+  stringIndex: number;
+  fret: number;
+  note: string;
+};
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];

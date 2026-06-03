@@ -5,7 +5,7 @@ import { Button } from "@repo/ui/button";
 import { Eye, EyeOff, Play, BookOpen } from "lucide-react";
 import { Fretboard, NOTES } from "../components/Fretboard";
 import { generateQuestions, generateSweepQuestions } from "@/lib/questions";
-import type { Question } from "../components/NoteQuiz";
+import type { Question } from "@/lib/questions";
 
 type PracticeMode = "revise" | "quiz";
 
