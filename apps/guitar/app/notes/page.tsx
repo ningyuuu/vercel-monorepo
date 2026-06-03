@@ -112,6 +112,7 @@ export default function NotesPage() {
     setTimeout(() => {
       const next = questionIndex + 1;
       if (next >= questions.length) {
+        setQuestionIndex(next);
         setQuizFinished(true);
       } else {
         setQuestionIndex(next);
