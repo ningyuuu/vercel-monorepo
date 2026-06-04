@@ -44,6 +44,7 @@ export default function RootLayout({
           title="Guitar"
           titleHref="/"
           links={[
+            { label: "Course", href: "/course" },
             { label: "Notes", href: "/notes" },
             { label: "Open Chords", href: "/open-chords" },
             { label: "Closed Chords", href: "/closed-chords" },

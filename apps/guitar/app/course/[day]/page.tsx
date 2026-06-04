@@ -1,0 +1,277 @@
+"use client";
+
+import { use, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@repo/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { Fretboard, NOTES } from "../../components/Fretboard";
+import { generateQuestions, generateSweepQuestions } from "@/lib/questions";
+import { ALL_LESSONS } from "@/lib/curriculum";
+import { saveDayResult } from "@/lib/progress";
+
+export default function DayPage({
+  params,
+}: {
+  params: Promise<{ day: string }>;
+}) {
+  const { day: dayParam } = use(params);
+  const day = Number(dayParam);
+  const router = useRouter();
+
+  const lesson = ALL_LESSONS.find((l) => l.day === day);
+  const isLearn = lesson?.mode === "learn";
+
+  const qs = useMemo(() => {
+    if (!lesson) return [];
+    return isLearn
+      ? generateSweepQuestions(
+          lesson.frets,
+          lesson.stringFocus,
+          lesson.noteFilter,
+        )
+      : generateQuestions(
+          lesson.questionCount || 30,
+          lesson.frets,
+          lesson.stringFocus,
+          lesson.noteFilter,
+        );
+  }, [lesson, isLearn]);
+
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
+    null,
+  );
+  const [score, setScore] = useState(0);
+  const [totalAnswered, setTotalAnswered] = useState(0);
+  const [finished, setFinished] = useState(false);
+
+  const current = qs[questionIndex];
+  const noteButtons = useMemo(() => NOTES, []);
+
+  function handleGuess(note: string) {
+    if (!current || feedback) return;
+    setSelected(note);
+    setTotalAnswered((t) => t + 1);
+    if (note === current.note) {
+      setFeedback("correct");
+      setScore((s) => s + 1);
+    } else {
+      setFeedback("incorrect");
+    }
+    setTimeout(() => {
+      const next = questionIndex + 1;
+      if (next >= qs.length) {
+        setQuestionIndex(next);
+        setFinished(true);
+        const finalScore = note === current.note ? score + 1 : score;
+        const finalTotal = totalAnswered + 1;
+        saveDayResult({
+          day,
+          score: finalScore,
+          total: finalTotal,
+          completedAt: new Date().toISOString(),
+        });
+      } else {
+        setQuestionIndex(next);
+        setSelected(null);
+        setFeedback(null);
+      }
+    }, 800);
+  }
+
+  function handleLearnNext() {
+    const next = questionIndex + 1;
+    if (next >= qs.length) {
+      setQuestionIndex(next);
+      setFinished(true);
+      saveDayResult({
+        day,
+        score: qs.length,
+        total: qs.length,
+        completedAt: new Date().toISOString(),
+      });
+    } else {
+      setQuestionIndex(next);
+    }
+  }
+
+  if (!lesson) {
+    return (
+      <div className="flex min-h-screen items-start justify-center bg-background font-sans">
+        <main className="w-full max-w-3xl px-4 pb-12 pt-20 space-y-4 sm:px-6 sm:pt-24">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push("/course")}
+          >
+            <ArrowLeft className="size-4 mr-1.5" />
+            Back
+          </Button>
+          <p className="text-center text-muted-foreground">
+            Day {day} not found.
+          </p>
+        </main>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-screen items-start justify-center bg-background font-sans">
+      <main className="w-full max-w-3xl px-4 pb-12 pt-20 space-y-4 sm:px-6 sm:pt-24">
+        {/* Top bar */}
+        <div className="flex items-center justify-between">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push("/course")}
+          >
+            <ArrowLeft className="size-4 mr-1.5" />
+            Back
+          </Button>
+          <div className="text-sm text-muted-foreground">
+            Day {day} · {lesson.title}
+          </div>
+          {!isLearn && !finished && (
+            <span className="text-sm text-muted-foreground">
+              {score} / {totalAnswered}
+            </span>
+          )}
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-muted-foreground text-center">
+          {lesson.description}
+        </p>
+
+        {/* Progress bar */}
+        {!finished && qs.length > 0 && (
+          <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
+            <div
+              className="h-full bg-primary transition-all duration-300"
+              style={{ width: `${(questionIndex / qs.length) * 100}%` }}
+            />
+          </div>
+        )}
+
+        {finished ? (
+          <>
+            <Fretboard showNotes={true} highlightFrets={lesson.frets} />
+            <div className="flex flex-col items-center gap-4 py-8">
+              <h2 className="text-2xl font-semibold">
+                {isLearn
+                  ? "Done!"
+                  : score / totalAnswered >= lesson.passThreshold
+                    ? "Passed!"
+                    : "Keep Trying"}
+              </h2>
+              <p className="text-muted-foreground">
+                {isLearn
+                  ? `${qs.length} positions reviewed`
+                  : `Score: ${score} / ${totalAnswered} (${Math.round((score / totalAnswered) * 100)}%)`}
+              </p>
+              <div className="flex gap-3">
+                {!isLearn && score / totalAnswered < lesson.passThreshold && (
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setQuestionIndex(0);
+                      setSelected(null);
+                      setFeedback(null);
+                      setScore(0);
+                      setTotalAnswered(0);
+                      setFinished(false);
+                    }}
+                  >
+                    Retry
+                  </Button>
+                )}
+                <Button onClick={() => router.push("/course")}>Continue</Button>
+              </div>
+            </div>
+          </>
+        ) : current ? (
+          isLearn ? (
+            <>
+              <Fretboard
+                highlights={[
+                  { stringIndex: current.stringIndex, fret: current.fret },
+                ]}
+                showNotes={true}
+                highlightFrets={lesson.frets}
+              />
+              <div className="flex flex-col items-center gap-3">
+                <p className="text-sm text-muted-foreground">
+                  Position {questionIndex + 1} of {qs.length}
+                </p>
+                <Button onClick={handleLearnNext}>
+                  {questionIndex < qs.length - 1 ? "Next" : "Finish"}
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Fretboard
+                highlights={[
+                  { stringIndex: current.stringIndex, fret: current.fret },
+                ]}
+                showNotes={false}
+                highlightFrets={lesson.frets}
+              />
+              <div className="flex flex-col items-center gap-3">
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+                  {noteButtons.map((note) => {
+                    const isSelected = selected === note;
+                    const isCorrect = current.note === note;
+                    let variant:
+                      | "default"
+                      | "outline"
+                      | "secondary"
+                      | "destructive" = "outline";
+                    if (feedback) {
+                      if (isCorrect) variant = "default";
+                      else if (isSelected) variant = "destructive";
+                    } else if (isSelected) {
+                      variant = "secondary";
+                    }
+                    return (
+                      <Button
+                        key={note}
+                        variant={variant}
+                        className="min-w-[3.5rem]"
+                        onClick={() => handleGuess(note)}
+                        disabled={!!feedback}
+                      >
+                        {note}
+                      </Button>
+                    );
+                  })}
+                </div>
+                {feedback && (
+                  <div
+                    className={`text-sm font-medium ${
+                      feedback === "correct"
+                        ? "text-emerald-600"
+                        : "text-red-600"
+                    }`}
+                  >
+                    {feedback === "correct"
+                      ? "Correct!"
+                      : `Incorrect — it was ${current.note}`}
+                  </div>
+                )}
+              </div>
+            </>
+          )
+        ) : (
+          <div className="flex flex-col items-center gap-4 py-12">
+            <p className="text-muted-foreground">
+              No positions available for this lesson.
+            </p>
+            <Button onClick={() => router.push("/course")}>Back</Button>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}

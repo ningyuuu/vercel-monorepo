@@ -1,4 +1,5 @@
 import { STRINGS, getNoteName } from "@/app/components/Fretboard";
+import type { StringFocus, NoteFilter } from "./curriculum";
 
 export type Question = {
   stringIndex: number;
@@ -15,17 +16,34 @@ function shuffleArray<T>(arr: T[]): T[] {
   return a;
 }
 
+function getStringIndices(focus: StringFocus): number[] {
+  if (focus === "high") return [0, 1, 2]; // e, B, G
+  if (focus === "low") return [3, 4, 5];  // D, A, E
+  return [0, 1, 2, 3, 4, 5];
+}
+
+function noteMatches(note: string, filter: NoteFilter): boolean {
+  if (filter === "natural") return !note.includes("#");
+  return true;
+}
+
 export function generateQuestions(
   count = 10,
   allowedFrets: number[],
+  stringFocus: StringFocus = "all",
+  noteFilter: NoteFilter = "all",
 ): Question[] {
+  const stringIndices = getStringIndices(stringFocus);
   const all: Question[] = [];
-  for (const stringIndex of STRINGS.keys()) {
+  for (const stringIndex of stringIndices) {
     for (const fret of allowedFrets) {
       const note = getNoteName(STRINGS[stringIndex]!.note, fret);
+      if (!noteMatches(note, noteFilter)) continue;
       all.push({ stringIndex, fret, note });
     }
   }
+
+  if (all.length === 0) return [];
 
   const shuffled = shuffleArray(all);
 
@@ -50,12 +68,20 @@ export function generateQuestions(
   return result;
 }
 
-export function generateSweepQuestions(allowedFrets: number[]): Question[] {
+export function generateSweepQuestions(
+  allowedFrets: number[],
+  stringFocus: StringFocus = "all",
+  noteFilter: NoteFilter = "all",
+): Question[] {
+  const stringIndices = getStringIndices(stringFocus);
   const sortedFrets = [...allowedFrets].sort((a, b) => a - b);
   const result: Question[] = [];
   for (const fret of sortedFrets) {
-    for (let si = STRINGS.length - 1; si >= 0; si--) {
+    for (let i = 0; i < stringIndices.length; i++) {
+      const si = stringIndices[stringIndices.length - 1 - i]!;
       const string = STRINGS[si]!;
+      const note = getNoteName(string.note, fret);
+      if (!noteMatches(note, noteFilter)) continue;
       result.push({
         stringIndex: si,
         fret,
