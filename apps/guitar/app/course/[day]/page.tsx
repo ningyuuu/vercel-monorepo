@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useMemo, useState } from "react";
+import { use, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@repo/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -21,20 +21,24 @@ export default function DayPage({
   const lesson = ALL_LESSONS.find((l) => l.day === day);
   const isLearn = lesson?.mode === "learn";
 
-  const qs = useMemo(() => {
-    if (!lesson) return [];
-    return isLearn
-      ? generateSweepQuestions(
-          lesson.frets,
-          lesson.stringFocus,
-          lesson.noteFilter,
-        )
-      : generateQuestions(
-          lesson.questionCount || 30,
-          lesson.frets,
-          lesson.stringFocus,
-          lesson.noteFilter,
-        );
+  const [qs, setQs] = useState<ReturnType<typeof generateQuestions>>([]);
+
+  useEffect(() => {
+    if (!lesson) return;
+    setQs(
+      isLearn
+        ? generateSweepQuestions(
+            lesson.frets,
+            lesson.stringFocus,
+            lesson.noteFilter,
+          )
+        : generateQuestions(
+            lesson.questionCount || 30,
+            lesson.frets,
+            lesson.stringFocus,
+            lesson.noteFilter,
+          ),
+    );
   }, [lesson, isLearn]);
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -42,9 +46,11 @@ export default function DayPage({
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
     null,
   );
-  const [score, setScore] = useState(0);
-  const [totalAnswered, setTotalAnswered] = useState(0);
   const [finished, setFinished] = useState(false);
+
+  // Score tracked in memory only — not persisted
+  const correctRef = useRef(0);
+  const totalRef = useRef(0);
 
   const current = qs[questionIndex];
   const noteButtons = useMemo(() => NOTES, []);
@@ -52,26 +58,16 @@ export default function DayPage({
   function handleGuess(note: string) {
     if (!current || feedback) return;
     setSelected(note);
-    setTotalAnswered((t) => t + 1);
-    if (note === current.note) {
-      setFeedback("correct");
-      setScore((s) => s + 1);
-    } else {
-      setFeedback("incorrect");
-    }
+    totalRef.current += 1;
+    const isCorrect = note === current.note;
+    if (isCorrect) correctRef.current += 1;
+    setFeedback(isCorrect ? "correct" : "incorrect");
+
     setTimeout(() => {
       const next = questionIndex + 1;
       if (next >= qs.length) {
         setQuestionIndex(next);
         setFinished(true);
-        const finalScore = note === current.note ? score + 1 : score;
-        const finalTotal = totalAnswered + 1;
-        saveDayResult({
-          day,
-          score: finalScore,
-          total: finalTotal,
-          completedAt: new Date().toISOString(),
-        });
       } else {
         setQuestionIndex(next);
         setSelected(null);
@@ -80,14 +76,39 @@ export default function DayPage({
     }, 800);
   }
 
+  function complete() {
+    saveDayResult(day);
+    router.push("/course");
+  }
+
   function reset() {
+    if (!lesson) return;
+    setQs(
+      isLearn
+        ? generateSweepQuestions(
+            lesson.frets,
+            lesson.stringFocus,
+            lesson.noteFilter,
+          )
+        : generateQuestions(
+            lesson.questionCount || 30,
+            lesson.frets,
+            lesson.stringFocus,
+            lesson.noteFilter,
+          ),
+    );
+    correctRef.current = 0;
+    totalRef.current = 0;
     setQuestionIndex(0);
     setSelected(null);
     setFeedback(null);
-    setScore(0);
-    setTotalAnswered(0);
     setFinished(false);
   }
+
+  const passed =
+    !isLearn && totalRef.current > 0
+      ? correctRef.current / totalRef.current >= lesson!.passThreshold
+      : true;
 
   if (!lesson) {
     return (
@@ -127,7 +148,7 @@ export default function DayPage({
           </div>
           {!finished && (
             <span className="text-sm text-muted-foreground">
-              {score} / {qs.length}
+              {questionIndex} / {qs.length}
             </span>
           )}
         </div>
@@ -149,27 +170,51 @@ export default function DayPage({
 
         {finished ? (
           <>
-            <Fretboard showNotes={true} showStringNames={isLearn} highlightFrets={lesson.frets} />
+            <Fretboard
+              showNotes={true}
+              showStringNames={isLearn}
+              highlightFrets={lesson.frets}
+            />
             <div className="flex flex-col items-center gap-4 py-8">
-              <h2 className="text-2xl font-semibold">
-                {isLearn
-                  ? "Done!"
-                  : score / totalAnswered >= lesson.passThreshold
-                    ? "Passed!"
-                    : "Keep Trying"}
-              </h2>
-              <p className="text-muted-foreground">
-                Score: {score} / {totalAnswered} (
-                {Math.round((score / totalAnswered) * 100)}%)
-              </p>
-              <div className="flex gap-3">
-                {!isLearn && score / totalAnswered < lesson.passThreshold && (
-                  <Button variant="outline" onClick={reset}>
-                    Retry
-                  </Button>
-                )}
-                <Button onClick={() => router.push("/course")}>Continue</Button>
-              </div>
+              {isLearn ? (
+                <>
+                  <h2 className="text-2xl font-semibold">Done!</h2>
+                  <p className="text-muted-foreground">
+                    {qs.length} positions reviewed
+                  </p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" onClick={reset}>
+                      Retry
+                    </Button>
+                    <Button onClick={complete}>Complete</Button>
+                  </div>
+                </>
+              ) : passed ? (
+                <>
+                  <h2 className="text-2xl font-semibold">Passed!</h2>
+                  <div className="flex gap-3">
+                    <Button variant="outline" onClick={reset}>
+                      Retry
+                    </Button>
+                    <Button onClick={complete}>Complete</Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-semibold">Keep Trying</h2>
+                  <p className="text-muted-foreground">
+                    Need {Math.round(lesson.passThreshold * 100)}% to pass
+                  </p>
+                  <div className="flex gap-3">
+                    <Button variant="outline" onClick={reset}>
+                      Retry
+                    </Button>
+                    <Button onClick={() => router.push("/course")}>
+                      Back to Course
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
           </>
         ) : current ? (
