@@ -47,15 +47,17 @@ export function getNoteName(openNote: string, fret: number): string {
 export function Fretboard({
   highlights,
   showNotes = true,
+  showStringNames = false,
   muted = [],
   highlightFrets,
 }: {
   highlights?: { stringIndex: number; fret: number }[] | null;
   showNotes?: boolean;
+  showStringNames?: boolean;
   muted?: number[];
   highlightFrets?: number[];
 }) {
-  const [showStringNames, setShowStringNames] = useState(false);
+  const [showStrings, setShowStrings] = useState(showStringNames);
   const frets = Array.from({ length: 20 }, (_, i) => i);
 
   const isHighlighted = (stringIndex: number, fret: number) =>
@@ -73,11 +75,11 @@ export function Fretboard({
           <div className="flex items-center justify-center pb-0.5">
             <button
               type="button"
-              onClick={() => setShowStringNames((v) => !v)}
+              onClick={() => setShowStrings((v) => !v)}
               className="flex items-center gap-1 rounded-md border border-border bg-muted/50 px-2 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              title={showStringNames ? "Show numbers" : "Show note names"}
+              title={showStrings ? "Show numbers" : "Show note names"}
             >
-              {showStringNames ? (
+              {showStrings ? (
                 <EyeOff className="size-3" />
               ) : (
                 <Eye className="size-3" />
@@ -87,7 +89,7 @@ export function Fretboard({
           {frets.slice(1).map((fret) => (
             <div
               key={fret}
-              className={`text-muted-foreground text-[11px] font-medium text-center ${showStringNames ? "" : "opacity-0"}`}
+              className={`text-muted-foreground text-[11px] font-medium text-center ${showStrings ? "" : "opacity-0"}`}
             >
               {fret}
             </div>
@@ -118,7 +120,7 @@ export function Fretboard({
                     }`}
                   >
                     <span className={`text-xs font-bold ${isMuted ? "text-red-500" : "text-stone-700 dark:text-amber-200"}`}>
-                      {isMuted ? "X" : showStringNames ? string.label : stringIndex + 1}
+                      {isMuted ? "X" : showStrings ? string.label : stringIndex + 1}
                     </span>
                   </div>
                 );
