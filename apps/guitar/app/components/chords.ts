@@ -586,6 +586,9 @@ export const BAR_A_SHAPE_MINOR: ChordDef[] = [
   },
 ];
 
+export const OPEN_MAJOR_I: ChordDef[] = OPEN_MAJOR.slice(0, 3);  // C, A, G
+export const OPEN_MAJOR_II: ChordDef[] = OPEN_MAJOR.slice(3, 5); // E, D
+
 export const OPEN_CHORDS_ALL: ChordDef[] = [
   ...OPEN_MAJOR,
   ...OPEN_MINOR,
@@ -602,6 +605,8 @@ export const BAR_CHORDS_ALL: ChordDef[] = [
 
 export type ChordGroupKey =
   | "open-major"
+  | "open-major-i"
+  | "open-major-ii"
   | "open-minor"
   | "open-sevenths"
   | "barre-e-major"
@@ -611,6 +616,8 @@ export type ChordGroupKey =
 
 export const CHORD_GROUP_MAP: Record<ChordGroupKey, ChordDef[]> = {
   "open-major": OPEN_MAJOR,
+  "open-major-i": OPEN_MAJOR_I,
+  "open-major-ii": OPEN_MAJOR_II,
   "open-minor": OPEN_MINOR,
   "open-sevenths": OPEN_SEVENTHS,
   "barre-e-major": BAR_E_SHAPE_MAJOR,
