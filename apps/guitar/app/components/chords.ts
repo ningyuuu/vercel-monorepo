@@ -276,6 +276,19 @@ export const OPEN_SEVENTHS: ChordDef[] = [
   },
 ];
 
+export const OPEN_SEVENTHS_I: ChordDef[] = [
+  OPEN_SEVENTHS[0]!,  // C7
+  OPEN_SEVENTHS[1]!,  // G7
+  OPEN_SEVENTHS[3]!,  // D7
+  OPEN_SEVENTHS[2]!,  // A7
+];
+export const OPEN_SEVENTHS_II: ChordDef[] = [
+  OPEN_SEVENTHS[4]!,  // E7
+  OPEN_SEVENTHS[6]!,  // Am7
+  OPEN_SEVENTHS[8]!,  // Em7
+  OPEN_SEVENTHS[7]!,  // Dm7
+];
+
 export const OPEN_COMPLEX: ChordDef[] = [
   {
     slug: "asus2",
@@ -609,6 +622,8 @@ export type ChordGroupKey =
   | "open-major-ii"
   | "open-minor"
   | "open-sevenths"
+  | "open-sevenths-i"
+  | "open-sevenths-ii"
   | "barre-e-major"
   | "barre-e-minor"
   | "barre-a-major"
@@ -620,6 +635,8 @@ export const CHORD_GROUP_MAP: Record<ChordGroupKey, ChordDef[]> = {
   "open-major-ii": OPEN_MAJOR_II,
   "open-minor": OPEN_MINOR,
   "open-sevenths": OPEN_SEVENTHS,
+  "open-sevenths-i": OPEN_SEVENTHS_I,
+  "open-sevenths-ii": OPEN_SEVENTHS_II,
   "barre-e-major": BAR_E_SHAPE_MAJOR,
   "barre-e-minor": BAR_E_SHAPE_MINOR,
   "barre-a-major": BAR_A_SHAPE_MAJOR,

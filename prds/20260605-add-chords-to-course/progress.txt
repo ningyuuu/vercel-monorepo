@@ -17,12 +17,12 @@ Round 2 — Section 1: Chord & Review Days
   [x] 2.7 Chrome DevTools verification
 
 Round 3 — Section 2: Open 7ths & Reviews
-  [ ] 3.1 Add OPEN_SEVENTHS_I/II chord subsets
-  [ ] 3.2 Restructure Section 2 days 15-26
-  [ ] 3.3 Define reviewScopes for R2 and R3
-  [ ] 3.4 Update note learn days with quiz params
-  [ ] 3.5 Type check verification
-  [ ] 3.6 Chrome DevTools verification
+  [x] 3.1 Add OPEN_SEVENTHS_I/II chord subsets
+  [x] 3.2 Restructure Section 2 days 15-26
+  [x] 3.3 Define reviewScopes for R2 and R3
+  [x] 3.4 Update note learn days with quiz params
+  [x] 3.5 Type check verification
+  [x] 3.6 Chrome DevTools verification
 
 Round 4 — Section 3: Barre E-Shape Chords
   [ ] 4.1 Restructure Section 3 days 27-38
