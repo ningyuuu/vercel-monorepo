@@ -2,10 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check, Lock, GraduationCap } from "lucide-react";
+import { Check, Lock, GraduationCap, Music2, Guitar, RefreshCw } from "lucide-react";
 import { DayTooltip } from "../components/DayTooltip";
 import { ALL_LESSONS, SECTIONS } from "@/lib/curriculum";
 import { loadProgress, isDayUnlocked } from "@/lib/progress";
+
+function dayIcon(lesson: (typeof ALL_LESSONS)[number]) {
+  if (lesson.mode === "review") return <RefreshCw className="size-4" />;
+  if (lesson.contentType === "chord") return <Guitar className="size-4" />;
+  return <Music2 className="size-4" />;
+}
+
+function dayBadge(lesson: (typeof ALL_LESSONS)[number]) {
+  if (lesson.mode === "review") return "Review";
+  if (lesson.contentType === "chord") return "Chord";
+  return null;
+}
 
 export default function CoursePage() {
   const router = useRouter();
@@ -95,12 +107,15 @@ export default function CoursePage() {
                 {section.days.map((lesson) => {
                   const completed = isCompleted(lesson.day);
                   const unlocked = isUnlocked(lesson.day);
+                  const badge = dayBadge(lesson);
 
                   const extra = completed
                     ? "Completed"
                     : !unlocked
                       ? `Complete day ${lastCompleted} to unlock`
-                      : "";
+                      : badge
+                        ? `${badge} — ${lesson.mode === "review" ? "Review" : "Quiz"}`
+                        : "";
 
                   return (
                     <DayTooltip
@@ -109,7 +124,7 @@ export default function CoursePage() {
                       description={lesson.description}
                       extra={extra}
                     >
-                      <span>
+                      <span className="flex flex-col items-center gap-0.5">
                         <button
                           disabled={!unlocked}
                           onClick={() => router.push(`/course/${lesson.day}`)}
@@ -131,9 +146,20 @@ export default function CoursePage() {
                           ) : !unlocked ? (
                             <Lock className="size-3" />
                           ) : (
-                            lesson.day
+                            dayIcon(lesson)
                           )}
                         </button>
+                        {badge && unlocked && (
+                          <span
+                            className={`text-[9px] leading-none font-medium px-1 py-0.5 rounded-sm ${
+                              lesson.mode === "review"
+                                ? "bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300"
+                                : "bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300"
+                            }`}
+                          >
+                            {badge}
+                          </span>
+                        )}
                       </span>
                     </DayTooltip>
                   );

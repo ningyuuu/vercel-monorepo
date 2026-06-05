@@ -25,33 +25,33 @@ Round 3 — Section 2: Open 7ths & Reviews
   [x] 3.6 Chrome DevTools verification
 
 Round 4 — Section 3: Barre E-Shape Chords
-  [ ] 4.1 Restructure Section 3 days 27-38
-  [ ] 4.2 Barre E-shape major learn + quiz days
-  [ ] 4.3 Barre E-shape minor learn day
-  [ ] 4.4 Define reviewScopes for R4
-  [ ] 4.5 Update note learn days with quiz params
-  [ ] 4.6 Type check + Chrome DevTools verification
+  [x] 4.1 Restructure Section 3 days 27-38
+  [x] 4.2 Barre E-shape major learn + quiz days
+  [x] 4.3 Barre E-shape minor learn day
+  [x] 4.4 Define reviewScopes for R4
+  [x] 4.5 Update note learn days with quiz params
+  [x] 4.6 Type check + Chrome DevTools verification
 
 Round 5 — Section 4: Barre A-Shape Chords
-  [ ] 5.1 Restructure Section 4 days 39-50
-  [ ] 5.2 Barre A-shape major learn + quiz days
-  [ ] 5.3 Define reviewScopes for R5 and R6
-  [ ] 5.4 Update note learn days with quiz params
-  [ ] 5.5 Type check + Chrome DevTools verification
+  [x] 5.1 Restructure Section 4 days 39-50
+  [x] 5.2 Barre A-shape major learn + quiz days
+  [x] 5.3 Define reviewScopes for R5 and R6
+  [x] 5.4 Update note learn days with quiz params
+  [x] 5.5 Type check + Chrome DevTools verification
 
 Round 6 — Section 5: Synthesis & Grand Review
-  [ ] 6.1 Restructure Section 5 days 51-60
-  [ ] 6.2 Add all-chords Chord Recognition quiz day
-  [ ] 6.3 Define reviewScopes for R7,R8,R9
-  [ ] 6.4 Implement contentType:'mixed' rendering
-  [ ] 6.5 Update note days with quiz params
-  [ ] 6.6 Type check verification
-  [ ] 6.7 Chrome DevTools verification
+  [x] 6.1 Restructure Section 5 days 51-60
+  [x] 6.2 Add all-chords Chord Recognition quiz day
+  [x] 6.3 Define reviewScopes for R7,R8,R9
+  [x] 6.4 Implement contentType:'mixed' rendering
+  [x] 6.5 Update note days with quiz params
+  [x] 6.6 Type check verification
+  [x] 6.7 Chrome DevTools verification
 
 Round 7 — Polish: Course Overview Icons & Badges
-  [ ] 7.1 Add day pill icons (note/chord/review)
-  [ ] 7.2 Add Review badge on review day pills
-  [ ] 7.3 Add Chord badge on chord day pills
-  [ ] 7.4 Verify day unlock gating
-  [ ] 7.5 Type check verification
-  [ ] 7.6 Chrome DevTools verification
+  [x] 7.1 Add day pill icons (note/chord/review)
+  [x] 7.2 Add Review badge on review day pills
+  [x] 7.3 Add Chord badge on chord day pills
+  [x] 7.4 Verify day unlock gating
+  [x] 7.5 Type check verification
+  [x] 7.6 Chrome DevTools verification

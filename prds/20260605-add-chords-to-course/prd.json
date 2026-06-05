@@ -125,32 +125,32 @@
         {
           "id": "4.1",
           "desc": "Restructure Section 3 ALL_LESSONS days 27-38: 3 barre E-shape chord days (learn+quiz), 1 review day (R4), 8 note days",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "4.2",
           "desc": "Define barre E-shape major learn day (F, F#, G, A) and quiz day using barre-e-major group",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "4.3",
           "desc": "Define barre E-shape minor learn day (Fm, F#m, Gm, G#m) using barre-e-minor group",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "4.4",
           "desc": "Define reviewScopes for R4 (day 34: frets 9-12 notes + barre E-shape + open chords)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "4.5",
           "desc": "Update remaining Section 3 note learn days with quiz-after-learn params",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "4.6",
           "desc": "Type check + Chrome DevTools verification",
-          "status": "pending"
+          "status": "completed"
         }
       ]
     },
@@ -161,27 +161,27 @@
         {
           "id": "5.1",
           "desc": "Restructure Section 4 ALL_LESSONS days 39-50: 2 barre A-shape chord days, 2 review days (R5, R6), 8 note days",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "5.2",
           "desc": "Define barre A-shape major learn day (B, C, C#, E) and quiz day using barre-a-major group",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "5.3",
           "desc": "Define reviewScopes for R5 (day 44: frets 9-19 notes + barre chords) and R6 (day 48: upper neck notes + all barre chords)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "5.4",
           "desc": "Update remaining Section 4 note learn days with quiz-after-learn params",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "5.5",
           "desc": "Type check + Chrome DevTools verification",
-          "status": "pending"
+          "status": "completed"
         }
       ]
     },
@@ -192,37 +192,37 @@
         {
           "id": "6.1",
           "desc": "Restructure Section 5 ALL_LESSONS days 51-60: 1 chord recognition day, 2 review days (R7,R8), grand review (R9 day 60), 6 note days",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.2",
           "desc": "Add all-chords quiz day: Chord Recognition using chordGroup array of all 7 chord group keys",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.3",
           "desc": "Define reviewScopes for R7 (day 55: full board notes + barre chords), R8 (day 58: all chords + full board), R9 (day 60: everything)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.4",
           "desc": "Implement contentType: 'mixed' rendering in course page \u2014 interleave note + chord questions",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.5",
           "desc": "Update remaining Section 5 note days with quiz-after-learn params",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.6",
           "desc": "Type check verification",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "6.7",
           "desc": "Chrome DevTools \u2014 verify mixed review, grand review, all days 51-60",
-          "status": "pending"
+          "status": "completed"
         }
       ]
     },
@@ -233,32 +233,32 @@
         {
           "id": "7.1",
           "desc": "Add icon per day pill on /course page: Music/Music2 for note days, Guitar for chord days, RefreshCw for review days",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "7.2",
           "desc": "Add 'Review' badge text on day pills for mode:review days on course overview",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "7.3",
           "desc": "Add 'Chord' badge text on day pills for contentType:chord days on course overview",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "7.4",
           "desc": "Ensure review days and chord days unlock/gate correctly (same as other days)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "7.5",
           "desc": "Type check verification",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "7.6",
           "desc": "Chrome DevTools \u2014 verify course overview renders icons/badges, all day types accessible",
-          "status": "pending"
+          "status": "completed"
         }
       ]
     }

@@ -799,6 +799,20 @@ function ReviewMixedQuiz({
   }, [questionIndex]);
 
   const raw = reviewQs[localIndex];
+
+  const chordOptions = useMemo(() => {
+    if (!raw || raw.type !== "chord" || !chordLevel) return [];
+    const correct = raw.c.chord;
+    const allChords = chordLevel.chords ?? [];
+    const others = allChords
+      .filter((c) => c.slug !== correct.slug)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    return [correct.name, ...others.map((c) => c.name)].sort(
+      () => Math.random() - 0.5,
+    );
+  }, [raw, chordLevel]);
+
   if (!raw) return null;
   const current = raw;
 
@@ -873,17 +887,6 @@ function ReviewMixedQuiz({
 
   if (current.type === "chord" && chordLevel) {
     const chordCurrent = current;
-    const allChords = chordLevel.chords ?? [];
-    const options = useMemo(() => {
-      const correct = chordCurrent.c.chord;
-      const others = allChords
-        .filter((c) => c.slug !== correct.slug)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3);
-      return [correct.name, ...others.map((c) => c.name)].sort(
-        () => Math.random() - 0.5,
-      );
-    }, [current, allChords]);
 
     function handleGuess(name: string) {
       if (feedback) return;
@@ -908,7 +911,7 @@ function ReviewMixedQuiz({
           />
         </div>
         <div className="grid grid-cols-2 gap-2">
-          {options.map((name) => (
+          {chordOptions.map((name) => (
             <Button
               key={name}
               variant={
