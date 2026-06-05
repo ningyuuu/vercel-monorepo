@@ -1,0 +1,17 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "name": "Type & Chord Quiz Route",
+      "tasks": [
+        { "id": "1.1", "desc": "Build CHORD_GROUP_MAP in chords.ts — export a Record mapping group keys to ChordDef[]", "status": "completed" },
+        { "id": "1.2", "desc": "Extend Lesson interface — add contentType, chordGroup, reviewScopes fields", "status": "completed" },
+        { "id": "1.3", "desc": "Adapt ChordQuiz for course mode — add onComplete, onBack, passThreshold, mode props", "status": "completed" },
+        { "id": "1.4", "desc": "Update course/[day]/page.tsx — imports for chord components, chord branch rendering", "status": "completed" },
+        { "id": "1.5", "desc": "Update course/[day]/page.tsx — render ChordLearn for chord learn days", "status": "completed" },
+        { "id": "1.6", "desc": "Add 1 test chord quiz day (day 5: Open Major Chords I) to ALL_LESSONS", "status": "completed" },
+        { "id": "1.7", "desc": "Verify via Chrome DevTools: navigate course, unlock day 5, take chord quiz", "status": "completed" }
+      ]
+    }
+  ]
+}

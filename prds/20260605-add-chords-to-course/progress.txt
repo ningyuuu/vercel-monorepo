@@ -1,0 +1,8 @@
+Round 1 — Type & Chord Quiz Route
+  [x] 1.1 Build CHORD_GROUP_MAP in chords.ts
+  [x] 1.2 Extend Lesson interface
+  [x] 1.3 Adapt ChordQuiz for course mode
+  [x] 1.4 course/[day]/page.tsx — chord quiz branch
+  [x] 1.5 course/[day]/page.tsx — chord learn branch
+  [x] 1.6 Add test chord quiz day to ALL_LESSONS
+  [x] 1.7 Chrome DevTools verification
