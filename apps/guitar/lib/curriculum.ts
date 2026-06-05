@@ -186,8 +186,8 @@ export const ALL_LESSONS: Lesson[] = [
   },
   {
     day: 12,
-    title: "Review: Notes & Chords I",
-    description: "Revisit frets 0–4 notes + open major chords.",
+    title: "Review: All Notes",
+    description: "Spaced review of all frets 0–4 notes.",
     frets: [],
     stringFocus: "all",
     noteFilter: "all",
@@ -197,13 +197,27 @@ export const ALL_LESSONS: Lesson[] = [
     passThreshold: 0.8,
     reviewScopes: [
       { type: "note", frets: R(0, 4), stringFocus: "all", noteFilter: "all" },
-      { type: "chord", chordGroups: ["open-major"] },
     ],
   },
   {
     day: 13,
-    title: "Review: Notes & Chords II",
-    description: "Revisit frets 0–4 notes + open minor chords.",
+    title: "Review: All Chords",
+    description: "Spaced review of all open major & minor chords.",
+    frets: [],
+    stringFocus: "all",
+    noteFilter: "all",
+    mode: "review",
+    questionCount: 30,
+    isGate: true,
+    passThreshold: 0.8,
+    reviewScopes: [
+      { type: "chord", chordGroups: ["open-major", "open-minor"] },
+    ],
+  },
+  {
+    day: 14,
+    title: "Milestone: First Position",
+    description: "Section checkpoint — all frets 0–4 notes + all open chords. 30 questions. 80% to pass.",
     frets: [],
     stringFocus: "all",
     noteFilter: "all",
@@ -213,21 +227,8 @@ export const ALL_LESSONS: Lesson[] = [
     passThreshold: 0.8,
     reviewScopes: [
       { type: "note", frets: R(0, 4), stringFocus: "all", noteFilter: "all" },
-      { type: "chord", chordGroups: ["open-minor"] },
+      { type: "chord", chordGroups: ["open-major", "open-minor"] },
     ],
-  },
-  {
-    day: 14,
-    title: "Gate: First Position",
-    description:
-      "Frets 0-4, all strings, all notes. 30 questions. 80% to pass.",
-    frets: R(0, 4),
-    stringFocus: "all",
-    noteFilter: "all",
-    mode: "quiz",
-    questionCount: 30,
-    isGate: true,
-    passThreshold: 0.8,
   },
 
   // ── Section 2: Middle Neck (5-8) · dots at 5, 7 ─────────

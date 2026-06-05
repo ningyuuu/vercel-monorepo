@@ -124,7 +124,9 @@ export default function DayPage({
     if (chords.length === 0 && lesson.reviewScopes?.length) {
       const reviewChords = lesson.reviewScopes
         .filter((s) => s.type === "chord")
-        .flatMap((s) => (s.chordGroups ?? []).flatMap((g) => CHORD_GROUP_MAP[g] ?? []));
+        .flatMap((s) =>
+          (s.chordGroups ?? []).flatMap((g) => CHORD_GROUP_MAP[g] ?? []),
+        );
       return makeChordLevel(
         "course",
         lesson.title,
@@ -705,9 +707,22 @@ function ReviewChordQuiz({
   }, [questionIndex]);
 
   const raw = reviewQs[localIndex];
+  const allChords = chordLevel.chords ?? [];
+
+  const options = useMemo(() => {
+    if (!raw || raw.type !== "chord") return [];
+    const correct = raw.c.chord;
+    const others = allChords
+      .filter((c) => c.slug !== correct.slug)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    return [correct.name, ...others.map((c) => c.name)].sort(
+      () => Math.random() - 0.5,
+    );
+  }, [raw, allChords]);
+
   if (!raw || raw.type !== "chord") return null;
   const current = raw;
-  const allChords = chordLevel.chords ?? [];
 
   function handleGuess(name: string) {
     if (feedback) return;
@@ -719,23 +734,10 @@ function ReviewChordQuiz({
     }, 1000);
   }
 
-  const options = useMemo(() => {
-    const correct = current.c.chord;
-    const others = allChords
-      .filter((c) => c.slug !== correct.slug)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-    return [correct.name, ...others.map((c) => c.name)].sort(
-      () => Math.random() - 0.5,
-    );
-  }, [current, allChords]);
-
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <p className="text-muted-foreground text-sm">
-          Which chord is this?
-        </p>
+        <p className="text-muted-foreground text-sm">Which chord is this?</p>
       </div>
       <div className="rounded-xl border bg-card/60 p-4">
         <Fretboard
@@ -773,8 +775,6 @@ function ReviewMixedQuiz({
   questionIndex,
   chordLevel,
   lesson,
-  onComplete,
-  onBack,
   onQuestion,
 }: {
   reviewQs: ReturnType<typeof generateReviewQuestions>;
@@ -834,7 +834,10 @@ function ReviewMixedQuiz({
       <>
         <Fretboard
           highlights={[
-            { stringIndex: noteCurrent.q.stringIndex, fret: noteCurrent.q.fret },
+            {
+              stringIndex: noteCurrent.q.stringIndex,
+              fret: noteCurrent.q.fret,
+            },
           ]}
           showNotes={false}
           showStringNames={false}
@@ -845,11 +848,8 @@ function ReviewMixedQuiz({
             {noteButtons.map((note) => {
               const isSelected = selected === note;
               const isCorrect = noteQ.note === note;
-              let variant:
-                | "default"
-                | "outline"
-                | "secondary"
-                | "destructive" = "outline";
+              let variant: "default" | "outline" | "secondary" | "destructive" =
+                "outline";
               if (feedback) {
                 if (isCorrect) variant = "default";
                 else if (isSelected) variant = "destructive";

@@ -13,9 +13,9 @@
 | 9 | Open Major II Quiz | 🎸 | Quiz | Identify all 5 open major chords: C, A, G, E, D. |
 | 10 | Open Minor | 🎸 | Learn | Learn Am, Em, Dm chord shapes, then take a chord quiz. |
 | 11 | Fret 4 | 🎵 | Learn | G#, C#, F#, B, D#, G# — learn + quiz. |
-| 12 | Review: Notes & Chords I | 🔄 | Review | Revisit frets 0–4 notes + open major chords. |
-| 13 | Review: Notes & Chords II | 🔄 | Review | Revisit frets 0–4 notes + open minor chords. |
-| 14 | Gate: First Position | 🎵 | Quiz | Frets 0-4, all strings, all notes. 30 questions. 80% to pass. |
+| 12 | Review: All Notes | 🔄 | Review | Spaced review of all frets 0–4 notes. |
+| 13 | Review: All Chords | 🔄 | Review | Spaced review of all open major & minor chords. |
+| 14 | Milestone: First Position | 🔄 | Review | Section checkpoint — all frets 0–4 notes + all open chords. 30 questions. 80% to pass. |
 | 15 | Fret 5 — Dot | 🎵 | Learn | A, D, G, C, E, A — learn + quiz. |
 | 16 | Open 7ths I | 🎸 | Learn | Learn C7, G7, D7, A7 chord shapes, then take a quiz. |
 | 17 | Open 7ths I Quiz | 🎸 | Quiz | Identify C7, G7, D7, A7 chord shapes. |
@@ -77,10 +77,10 @@
 | Type | Count |
 |------|-------|
 | Note learn | 19 |
-| Note quiz | 15 |
+| Note quiz | 14 |
 | Chord learn | 8 |
 | Chord quiz | 7 |
-| Review | 11 |
+| Review | 12 |
 | Mixed | 1 |
 | **Total** | **60** |
 
@@ -89,16 +89,17 @@
 | # | Day | Title |
 |---|-----|-------|
 | R1 | 5 | Review: First Steps |
-| R2 | 12 | Review: Notes & Chords I |
-| R3 | 13 | Review: Notes & Chords II |
-| R4 | 21 | Review: First Position |
-| R5 | 24 | Review: Middle Neck |
-| R6 | 34 | Review: Upper Middle |
-| R7 | 44 | Review: Barre Chords |
-| R8 | 47 | Review: All Barre Chords |
-| R9 | 55 | Review: Full Board & Barre |
-| R10 | 57 | Review: All Chords & Board |
-| R11 | 60 | Grand Review |
+| R2 | 12 | Review: All Notes |
+| R3 | 13 | Review: All Chords |
+| R4 | 14 | Milestone: First Position |
+| R5 | 21 | Review: First Position |
+| R6 | 24 | Review: Middle Neck |
+| R7 | 34 | Review: Upper Middle |
+| R8 | 44 | Review: Barre Chords |
+| R9 | 47 | Review: All Barre Chords |
+| R10 | 55 | Review: Full Board & Barre |
+| R11 | 57 | Review: All Chords & Board |
+| R12 | 60 | Grand Review |
 
 ## Sections
 
