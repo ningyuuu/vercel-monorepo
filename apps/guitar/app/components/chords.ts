@@ -599,3 +599,22 @@ export const BAR_CHORDS_ALL: ChordDef[] = [
   ...BAR_A_SHAPE_MAJOR,
   ...BAR_A_SHAPE_MINOR,
 ];
+
+export type ChordGroupKey =
+  | "open-major"
+  | "open-minor"
+  | "open-sevenths"
+  | "barre-e-major"
+  | "barre-e-minor"
+  | "barre-a-major"
+  | "barre-a-minor";
+
+export const CHORD_GROUP_MAP: Record<ChordGroupKey, ChordDef[]> = {
+  "open-major": OPEN_MAJOR,
+  "open-minor": OPEN_MINOR,
+  "open-sevenths": OPEN_SEVENTHS,
+  "barre-e-major": BAR_E_SHAPE_MAJOR,
+  "barre-e-minor": BAR_E_SHAPE_MINOR,
+  "barre-a-major": BAR_A_SHAPE_MAJOR,
+  "barre-a-minor": BAR_A_SHAPE_MINOR,
+};

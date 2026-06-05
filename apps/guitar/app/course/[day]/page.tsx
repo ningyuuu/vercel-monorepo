@@ -5,6 +5,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "@repo/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Fretboard, NOTES } from "../../components/Fretboard";
+import ChordQuiz from "../../components/ChordQuiz";
+import { ChordLearn } from "../../components/ChordLearn";
+import { makeChordLevel } from "../../components/levels";
+import { CHORD_GROUP_MAP } from "../../components/chords";
+import type { ChordGroupKey } from "../../components/chords";
 import { generateQuestions, generateSweepQuestions } from "@/lib/questions";
 import { ALL_LESSONS } from "@/lib/curriculum";
 import { saveDayResult } from "@/lib/progress";
@@ -19,7 +24,17 @@ export default function DayPage({
   const router = useRouter();
 
   const lesson = ALL_LESSONS.find((l) => l.day === day);
+  const isChord = lesson?.contentType === "chord";
   const isLearn = lesson?.mode === "learn";
+
+  const chordLevel = useMemo(() => {
+    if (!lesson || !isChord || !lesson.chordGroup) return null;
+    const groups = Array.isArray(lesson.chordGroup)
+      ? lesson.chordGroup
+      : [lesson.chordGroup];
+    const chords = groups.flatMap((g) => CHORD_GROUP_MAP[g] ?? []);
+    return makeChordLevel("course", lesson.title, lesson.description, chords);
+  }, [lesson, isChord]);
 
   const [qs, setQs] = useState<ReturnType<typeof generateQuestions>>([]);
 
@@ -125,6 +140,53 @@ export default function DayPage({
           <p className="text-center text-muted-foreground">
             Day {day} not found.
           </p>
+        </main>
+      </div>
+    );
+  }
+
+  if (isChord && chordLevel) {
+    return (
+      <div className="flex min-h-screen items-start justify-center bg-background font-sans">
+        <main className="w-full max-w-3xl px-4 pb-12 pt-20 space-y-4 sm:px-6 sm:pt-24">
+          <div className="flex items-center justify-between">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push("/course")}
+            >
+              <ArrowLeft className="size-4 mr-1.5" />
+              Back
+            </Button>
+            <div className="text-sm text-muted-foreground">
+              Day {day} &middot; {lesson.title}
+            </div>
+            <div />
+          </div>
+
+          <p className="text-sm text-muted-foreground text-center">
+            {lesson.description}
+          </p>
+
+          {lesson.mode === "quiz" ? (
+            <ChordQuiz
+              level={chordLevel}
+              mode="course"
+              passThreshold={lesson.passThreshold}
+              onComplete={complete}
+              onBack={() => router.push("/course")}
+            />
+          ) : lesson.mode === "learn" ? (
+            <>
+              <ChordLearn
+                chords={chordLevel.chords ?? []}
+                title={lesson.title}
+              />
+              <div className="flex justify-center pt-4">
+                <Button onClick={complete}>Complete</Button>
+              </div>
+            </>
+          ) : null}
         </main>
       </div>
     );

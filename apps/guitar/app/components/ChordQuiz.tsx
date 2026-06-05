@@ -23,7 +23,19 @@ function pickOptions(correct: ChordDef, pool: ChordDef[], count = 4): string[] {
   return shuffle(options);
 }
 
-export default function ChordQuiz({ level }: { level: Level }) {
+export default function ChordQuiz({
+  level,
+  onComplete,
+  onBack,
+  passThreshold,
+  mode = "standalone",
+}: {
+  level: Level;
+  onComplete?: () => void;
+  onBack?: () => void;
+  passThreshold?: number;
+  mode?: "standalone" | "course";
+}) {
   const chords = useMemo(() => level.chords ?? [], [level.chords]);
 
   const [questions, setQuestions] = useState<ChordDef[]>([]);
@@ -95,6 +107,47 @@ export default function ChordQuiz({ level }: { level: Level }) {
   }
 
   if (finished) {
+    const ratio = questions.length > 0 ? score / questions.length : 0;
+    const passed = passThreshold !== undefined ? ratio >= passThreshold : true;
+
+    if (mode === "course") {
+      return (
+        <div className="flex flex-col items-center gap-6 py-12">
+          <div className="text-center space-y-2">
+            {passed ? (
+              <>
+                <h2 className="text-2xl font-semibold">Passed!</h2>
+                <p className="text-muted-foreground">
+                  You got {score} out of {questions.length} correct.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-semibold">Keep Trying</h2>
+                <p className="text-muted-foreground">
+                  You got {score} out of {questions.length} correct.
+                  Need {Math.round((passThreshold ?? 0) * 100)}% to pass.
+                </p>
+              </>
+            )}
+          </div>
+          <div className="flex gap-3">
+            <Button size="lg" variant="outline" onClick={reset}>
+              Retry
+            </Button>
+            {passed && onComplete && (
+              <Button size="lg" onClick={onComplete}>Complete</Button>
+            )}
+            {!passed && onBack && (
+              <Button size="lg" variant="outline" onClick={onBack}>
+                Back to Course
+              </Button>
+            )}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="flex flex-col items-center gap-6 py-12">
         <div className="text-center space-y-2">

@@ -2,9 +2,20 @@
 // 60-day fretboard mastery — zone-by-zone with dots as landmarks
 // Every day is a gate: linear progression, pass to unlock the next day.
 
+import type { ChordGroupKey } from "@/app/components/chords";
+
 export type StringFocus = "all" | "high" | "low";
 export type NoteFilter = "all" | "natural";
-export type LessonMode = "learn" | "quiz";
+export type LessonMode = "learn" | "quiz" | "review";
+export type ContentType = "note" | "chord" | "mixed";
+
+export interface ReviewScope {
+  type: "note" | "chord";
+  frets?: number[];
+  stringFocus?: StringFocus;
+  noteFilter?: NoteFilter;
+  chordGroups?: ChordGroupKey[];
+}
 
 export interface Lesson {
   day: number;
@@ -13,10 +24,14 @@ export interface Lesson {
   frets: number[];
   stringFocus: StringFocus;
   noteFilter: NoteFilter;
+  contentType?: ContentType;
   mode: LessonMode;
-  questionCount: number; // 0 = sweep all positions (learn mode)
+  chordGroup?: ChordGroupKey | ChordGroupKey[];
+  reviewScopes?: ReviewScope[];
+  questionCount: number;
+  learnCount?: number;
   isGate: true;
-  passThreshold: number; // 0 for learn (auto-pass), 0.8 for quiz
+  passThreshold: number;
 }
 
 const R = (start: number, end: number): number[] =>
@@ -74,15 +89,17 @@ export const ALL_LESSONS: Lesson[] = [
   },
   {
     day: 5,
-    title: "Fret 2",
-    description: "F#, B, E, A, C#, F#",
-    frets: [2],
+    title: "Open Major Chords I",
+    description: "Identify C, A, G, E, D major chords on the fretboard.",
+    frets: [],
     stringFocus: "all",
     noteFilter: "all",
-    mode: "learn",
-    questionCount: 0,
+    contentType: "chord",
+    mode: "quiz",
+    chordGroup: "open-major",
+    questionCount: 10,
     isGate: true,
-    passThreshold: 0,
+    passThreshold: 0.8,
   },
   {
     day: 6,
