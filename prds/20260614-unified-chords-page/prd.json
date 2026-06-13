@@ -1,0 +1,151 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "desc": "Define ChordCategory type and ChordType enum in chords.ts",
+      "deliverable": "Two TypeScript exports from chords.ts: `ChordCategory` ('open' | 'closed') and `ChordType` enum with values major, minor, dom7, min7, maj7, sus2, sus4.",
+      "validation": "pnpm --filter guitar check-types passes with no errors",
+      "status": "completed"
+    },
+    {
+      "id": "2",
+      "desc": "Define UnifiedChord interface extending ChordDef with category, type, and rootNote",
+      "deliverable": "`UnifiedChord` interface exported from chords.ts extending ChordDef with `category: ChordCategory`, `type: ChordType`, `rootNote: string`.",
+      "validation": "pnpm --filter guitar check-types passes; interface is importable elsewhere",
+      "status": "completed"
+    },
+    {
+      "id": "3",
+      "desc": "Build ALL_CHORDS_CATALOG array tagging every chord with category, type, and rootNote",
+      "deliverable": "`ALL_CHORDS_CATALOG: UnifiedChord[]` exported from chords.ts. Every existing chord tagged with appropriate category and type. Slash chords (D/F#, C/G, E/G#) excluded.",
+      "validation": "pnpm --filter guitar check-types passes; array length > 0 and all entries have non-empty category/type/rootNote",
+      "status": "completed"
+    },
+    {
+      "id": "4",
+      "desc": "Build filter helpers: getChordTypeLabel, filterChords, getAvailableFilters",
+      "deliverable": "Three functions exported from chords.ts or a new chords-filters.ts: `getChordTypeLabel(type: ChordType): string`, `filterChords(catalog, filters): UnifiedChord[]`, `getAvailableFilters(catalog): FilterOptions`.",
+      "validation": "pnpm --filter guitar check-types passes; functions return expected results when called with sample data",
+      "status": "completed"
+    },
+    {
+      "id": "5",
+      "desc": "Tag sus2/sus4 and all 7th variants (dom7, min7, maj7) distinctly in the catalog",
+      "deliverable": "ALL_CHORDS_CATALOG entries for sus2, sus4, dom7, min7, maj7 chords have correct type tags. Each chord type has at least one matching entry.",
+      "validation": "Grep catalog for each type value to confirm at least one chord matches; pnpm --filter guitar check-types passes",
+      "status": "completed"
+    },
+    {
+      "id": "6",
+      "desc": "Export parseRootFromName helper for per-root-note filtering",
+      "deliverable": "`parseRootFromName(name: string): string` exported from chords.ts. Given a chord name like 'C Major' or 'A# minor7', returns the root note 'C' or 'A#'.",
+      "validation": "pnpm --filter guitar check-types passes; manually verify a few examples return correct roots",
+      "status": "completed"
+    },
+    {
+      "id": "7",
+      "desc": "Type check verification for data layer",
+      "deliverable": "All data layer code compiles without type errors.",
+      "validation": "pnpm --filter guitar check-types exits with code 0, no errors in output",
+      "status": "completed"
+    },
+    {
+      "id": "8",
+      "desc": "Create /chords/page.tsx skeleton with layout mirroring notes page",
+      "deliverable": "New file `apps/guitar/src/app/chords/page.tsx` with centered max-w-6xl layout matching notes page proportions.",
+      "validation": "Navigate to http://localhost:3006/chords — page loads without errors, layout is centered",
+      "status": "completed"
+    },
+    {
+      "id": "9",
+      "desc": "Build filter bar: position toggle and type multi-select chips",
+      "deliverable": "Filter bar rendered on /chords page with: position toggle (Open / Closed / All) as segmented control, and type chips (Major, Minor, dom7, min7, maj7, sus2, sus4) as multi-select toggles.",
+      "validation": "Chrome DevTools snapshot of /chords shows filter bar with all 3 position options and 7 type chips visible and clickable",
+      "status": "completed"
+    },
+    {
+      "id": "10",
+      "desc": "Build chord catalog grid rendering ChordCard components",
+      "deliverable": "Responsive grid (2-4 columns) on /chords page showing ChordCard components. Each card displays: chord name, fretboard diagram (small), formula string, and a color-coded type badge.",
+      "validation": "Chrome DevTools snapshot shows grid of chord cards with name, diagram, formula, and badge visible",
+      "status": "completed"
+    },
+    {
+      "id": "11",
+      "desc": "Implement filter logic deriving visible chords from active filters",
+      "deliverable": "Client-side state (useState) tracking active position and type filters. Derived list of `visibleChords` from ALL_CHORDS_CATALOG filtered by active selections. Empty state handled separately.",
+      "validation": "Toggle filters in DevTools — chord grid updates to show only matching chords; changing filter re-renders grid correctly",
+      "status": "completed"
+    },
+    {
+      "id": "12",
+      "desc": "Add root note selector (12-note chromatic grid)",
+      "deliverable": "12-button chromatic grid (C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab, A, A#/Bb, B) as part of the filter bar. Selecting a root note narrows results to chords with that root.",
+      "validation": "Chrome DevTools: click root note buttons — grid updates to show only chords for that root; 'All' option clears root filter",
+      "status": "completed"
+    },
+    {
+      "id": "13",
+      "desc": "Match count display and empty state handling",
+      "deliverable": "Label showing 'N chords' matching current filters above the grid. When zero chords match, render guidance text: 'No chords match — try adjusting filters.' with a suggestion to reset.",
+      "validation": "Chrome DevTools: apply conflicting filters (e.g. sus2 + All) — match count shows 0 and empty state message appears; reset filters restores full catalog",
+      "status": "completed"
+    },
+    {
+      "id": "14",
+      "desc": "Type check + Chrome DevTools verification for UI",
+      "deliverable": "All UI code compiles and renders correctly in browser.",
+      "validation": "pnpm --filter guitar check-types exits code 0; Chrome DevTools: all chords render, filters combine correctly, empty state works, root selector filters properly",
+      "status": "completed"
+    },
+    {
+      "id": "21",
+      "desc": "Refactor chords page to single main Fretboard with click-to-select chord cards",
+      "deliverable": "One large Fretboard at top of page showing selected chord's positions + muted strings. ChordCards are clickable (no fretboard inside). First chord auto-selected on load. Clicking a card selects it (ring-2 highlight), updates main fretboard. Clicking selected card deselects it (clears fretboard). Filter changes re-select first visible chord. Chord name + formula label below main fretboard.",
+      "validation": "pnpm --filter guitar check-types passes; Chrome DevTools: click different chord cards — main fretboard updates with correct positions/muted strings; selected card has ring-2 border; clicking selected card clears fretboard; changing filters auto-selects first visible chord",
+      "status": "completed"
+    },
+    {
+      "id": "15",
+      "desc": "Update navbar in GuitarLayout — replace Open Chords + Closed Chords links with single 'Chords' link",
+      "deliverable": "Navbar (in GuitarLayout or layout.tsx) shows a single 'Chords' link pointing to /chords instead of two separate 'Open Chords' and 'Closed Chords' links.",
+      "validation": "Chrome DevTools snapshot of any guitar page — navbar has one 'Chords' entry, no 'Open Chords' or 'Closed Chords'",
+      "status": "completed"
+    },
+    {
+      "id": "16",
+      "desc": "Update homepage — replace Open Chords + Closed Chords cards with single 'Chords' card",
+      "deliverable": "Homepage (page.tsx or root page) shows a single 'Chords' card linking to /chords instead of two separate cards.",
+      "validation": "Chrome DevTools snapshot of http://localhost:3006 — homepage has one 'Chords' card; clicking navigates to /chords",
+      "status": "completed"
+    },
+    {
+      "id": "17",
+      "desc": "Add Next.js redirects in next.config.ts for old routes",
+      "deliverable": "next.config.ts redirects: `/open-chords` → `/chords` (308), `/closed-chords` → `/chords` (308).",
+      "validation": "Navigate to http://localhost:3006/open-chords — browser redirects to /chords; same for /closed-chords",
+      "status": "completed"
+    },
+    {
+      "id": "18",
+      "desc": "Preserve /chords/learn/[group] and /chords/quiz/[group] routes",
+      "deliverable": "Course sub-routes `/chords/learn/[group]` and `/chords/quiz/[group]` continue to work unchanged. No redirects or modifications to these routes.",
+      "validation": "Navigate to http://localhost:3006/chords/learn/open-major — page loads and functions as before; same for /chords/quiz/* routes",
+      "status": "completed"
+    },
+    {
+      "id": "19",
+      "desc": "Type check verification for navigation",
+      "deliverable": "All navigation code compiles without type errors.",
+      "validation": "pnpm --filter guitar check-types exits with code 0, no errors in output",
+      "status": "completed"
+    },
+    {
+      "id": "20",
+      "desc": "Chrome DevTools full verification for navigation",
+      "deliverable": "All navigation, redirects, and course routes work correctly end-to-end.",
+      "validation": "Chrome DevTools: verify navbar shows single 'Chords' link, homepage has single 'Chords' card, /open-chords and /closed-chords redirect to /chords, /chords/learn/* and /chords/quiz/* routes still work",
+      "status": "completed"
+    }
+  ]
+}

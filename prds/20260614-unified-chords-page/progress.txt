@@ -1,0 +1,47 @@
+# Progress — prds/20260614-unified-chords-page
+# Read this first when resuming work.
+
+Last updated: 2026-06-14
+Overall status: completed
+
+## Completed rounds
+
+### Round 1 — Data Layer: Chord Catalog & Filter Metadata
+Completed: 2026-06-14 (tasks: 7/7)
+Verification: Type check passed ✓
+Files touched: apps/guitar/app/components/chords.ts
+Key decisions: ChordCategory = 'open' | 'closed', ChordType enum with 7 values, 39 chords in catalog, 3 slash chords excluded
+Issues/discoveries: None
+
+### Round 2 — Chords Exploration Page: UI & Filtering
+Completed: 2026-06-14 (tasks: 7/7)
+Verification: Type check passed, DevTools verified ✓
+Files touched: apps/guitar/app/chords/page.tsx
+Key decisions: Position toggle (All/Open/Closed), type chips multi-select, root note single-select, responsive 2-4 col grid, empty state with reset button
+Issues/discoveries: None
+
+### Round 3 — Navigation Integration & Route Cleanup
+Completed: 2026-06-14 (tasks: 6/6)
+Verification: Type check passed, DevTools verified ✓
+Files touched: apps/guitar/app/components/GuitarLayout.tsx, apps/guitar/app/page.tsx, apps/guitar/next.config.ts
+Key decisions: 308 redirects for /open-chords and /closed-chords, course sub-routes preserved unchanged
+Issues/discoveries: None
+
+### Round 4 — Main Fretboard & Click-to-Select (post-hoc)
+Completed: 2026-06-14 (tasks: 1/1 — task 21)
+Verification: Type check passed, DevTools verified ✓
+Files touched: apps/guitar/app/chords/page.tsx
+Key decisions: Single main Fretboard at top, ChordCards clickable (no fretboard inside), auto-select first chord on load/filter change, click to select (ring-2), click again to deselect (empty state prompt)
+Issues/discoveries: None
+
+## Current round (in progress)
+
+None — all rounds complete.
+
+## Open issues / risks
+
+None.
+
+## Next pending rounds
+
+None — all rounds complete.

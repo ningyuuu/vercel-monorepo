@@ -50,7 +50,7 @@ export default function Home() {
             </Card>
           </Link>
 
-          <Link href="/open-chords" className="group">
+          <Link href="/chords" className="group">
             <Card className="h-full relative overflow-hidden rounded-2xl border-2 border-border transition-all duration-300 hover:shadow-xl hover:border-primary/40 hover:-translate-y-0.5">
               <div className="absolute inset-0 bg-primary/5 transition-opacity duration-300 group-hover:bg-primary/10" />
               <CardContent className="relative p-6">
@@ -58,27 +58,10 @@ export default function Home() {
                   <Music className="size-6" strokeWidth={1.8} />
                 </div>
                 <h2 className="text-xl font-heading tracking-tight mb-2">
-                  Open Chords
+                  Chords
                 </h2>
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  Major, minor, 7th, and complex chords in open position.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/closed-chords" className="group">
-            <Card className="h-full relative overflow-hidden rounded-2xl border-2 border-border transition-all duration-300 hover:shadow-xl hover:border-primary/40 hover:-translate-y-0.5">
-              <div className="absolute inset-0 bg-primary/5 transition-opacity duration-300 group-hover:bg-primary/10" />
-              <CardContent className="relative p-6">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4 group-hover:scale-105 transition-transform duration-300">
-                  <Music className="size-6" strokeWidth={1.8} />
-                </div>
-                <h2 className="text-xl font-heading tracking-tight mb-2">
-                  Closed Chords
-                </h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  E-shape and A-shape voicings played up the neck.
+                  Major, minor, 7th, sus, and barre chords across the fretboard.
                 </p>
               </CardContent>
             </Card>

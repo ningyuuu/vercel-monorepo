@@ -642,3 +642,143 @@ export const CHORD_GROUP_MAP: Record<ChordGroupKey, ChordDef[]> = {
   "barre-a-major": BAR_A_SHAPE_MAJOR,
   "barre-a-minor": BAR_A_SHAPE_MINOR,
 };
+
+// ── Unified chord catalog types ──
+
+export type ChordCategory = "open" | "closed";
+
+export enum ChordType {
+  major = "major",
+  minor = "minor",
+  dom7 = "dom7",
+  min7 = "min7",
+  maj7 = "maj7",
+  sus2 = "sus2",
+  sus4 = "sus4",
+}
+
+export interface UnifiedChord extends ChordDef {
+  category: ChordCategory;
+  type: ChordType;
+  rootNote: string;
+}
+
+// ── Helpers ──
+
+const CHROMATIC = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"] as const;
+
+export function parseRootFromName(name: string): string {
+  const slashIdx = name.indexOf("/");
+  const base = slashIdx !== -1 ? name.slice(0, slashIdx) : name;
+  for (const sharp of ["C#", "D#", "F#", "G#", "A#"] as const) {
+    if (base.startsWith(sharp)) return sharp;
+  }
+  for (const note of ["C", "D", "E", "F", "G", "A", "B"] as const) {
+    if (base.startsWith(note)) return note;
+  }
+  return "";
+}
+
+function chordTypeFromFormula(chord: ChordDef): ChordType {
+  const f = chord.formula;
+  if (f.includes("M2")) return ChordType.sus2;
+  if (f.includes("P4")) return ChordType.sus4;
+  if (f.includes("M3") && f.includes("M7")) return ChordType.maj7;
+  if (f.includes("m3") && f.includes("m7")) return ChordType.min7;
+  if (f.includes("M3") && f.includes("m7")) return ChordType.dom7;
+  if (f.includes("m3")) return ChordType.minor;
+  if (f.includes("M3")) return ChordType.major;
+  return ChordType.major;
+}
+
+function isSlashChord(c: ChordDef): boolean {
+  return c.name.includes("/");
+}
+
+function tag(c: ChordDef, category: ChordCategory): UnifiedChord {
+  return { ...c, category, type: chordTypeFromFormula(c), rootNote: parseRootFromName(c.name) };
+}
+
+// ── Unified catalog ──
+
+export const ALL_CHORDS_CATALOG: UnifiedChord[] = [
+  ...OPEN_MAJOR.map((c) => tag(c, "open")),
+  ...OPEN_MINOR.map((c) => tag(c, "open")),
+  ...OPEN_SEVENTHS.filter((c) => !isSlashChord(c)).map((c) => tag(c, "open")),
+  ...OPEN_COMPLEX.filter((c) => !isSlashChord(c)).map((c) => tag(c, "open")),
+  ...BAR_E_SHAPE_MAJOR.map((c) => tag(c, "closed")),
+  ...BAR_E_SHAPE_MINOR.map((c) => tag(c, "closed")),
+  ...BAR_A_SHAPE_MAJOR.map((c) => tag(c, "closed")),
+  ...BAR_A_SHAPE_MINOR.map((c) => tag(c, "closed")),
+];
+
+// ── Filter helpers ──
+
+export function getChordTypeLabel(type: ChordType): string {
+  switch (type) {
+    case ChordType.major:
+      return "Major";
+    case ChordType.minor:
+      return "Minor";
+    case ChordType.dom7:
+      return "Dom 7th";
+    case ChordType.min7:
+      return "Min 7th";
+    case ChordType.maj7:
+      return "Maj 7th";
+    case ChordType.sus2:
+      return "Sus2";
+    case ChordType.sus4:
+      return "Sus4";
+  }
+}
+
+export interface ChordFilters {
+  category?: ChordCategory | "all";
+  types?: ChordType[];
+  rootNote?: string | null;
+}
+
+export function filterChords(
+  catalog: UnifiedChord[],
+  filters: ChordFilters,
+): UnifiedChord[] {
+  return catalog.filter((chord) => {
+    if (filters.category && filters.category !== "all" && chord.category !== filters.category) {
+      return false;
+    }
+    if (filters.types && filters.types.length > 0 && !filters.types.includes(chord.type)) {
+      return false;
+    }
+    if (filters.rootNote && chord.rootNote !== filters.rootNote) {
+      return false;
+    }
+    return true;
+  });
+}
+
+export interface FilterOptions {
+  categories: ChordCategory[];
+  types: ChordType[];
+  rootNotes: string[];
+}
+
+export function getAvailableFilters(catalog: UnifiedChord[]): FilterOptions {
+  const categorySet = new Set<ChordCategory>();
+  const typeSet = new Set<ChordType>();
+  const rootSet = new Set<string>();
+
+  for (const chord of catalog) {
+    categorySet.add(chord.category);
+    typeSet.add(chord.type);
+    rootSet.add(chord.rootNote);
+  }
+
+  const rootNotes = CHROMATIC.filter((n) => rootSet.has(n));
+
+  return {
+    categories: Array.from(categorySet).sort(),
+    types: Array.from(typeSet),
+    rootNotes,
+  };
+}
