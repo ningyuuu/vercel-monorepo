@@ -15,7 +15,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
           <Link href="/course" className="group">
             <Card className="h-full relative overflow-hidden rounded-2xl border-2 border-border transition-all duration-300 hover:shadow-xl hover:border-primary/40 hover:-translate-y-0.5">
               <div className="absolute inset-0 bg-primary/5 transition-opacity duration-300 group-hover:bg-primary/10" />
