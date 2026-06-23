@@ -1,0 +1,2729 @@
+{
+  "OPEN_MAJOR": [
+    {
+      "slug": "c-major",
+      "name": "C Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-major",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g-major",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-major",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-major",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    }
+  ],
+  "OPEN_MINOR": [
+    {
+      "slug": "a-minor",
+      "name": "A Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "e-minor",
+      "name": "E Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-minor",
+      "name": "D Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    }
+  ],
+  "OPEN_SEVENTHS": [
+    {
+      "slug": "c7",
+      "name": "C7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g7",
+      "name": "G7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a7",
+      "name": "A7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "d7",
+      "name": "D7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "e7",
+      "name": "E7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "b7",
+      "name": "B7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 1,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "am7",
+      "name": "Am7",
+      "formula": "R \u00b7 m3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "dm7",
+      "name": "Dm7",
+      "formula": "R \u00b7 m3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "em7",
+      "name": "Em7",
+      "formula": "R \u00b7 m3 \u00b7 P5 \u00b7 m7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "cmaj7",
+      "name": "Cmaj7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 M7",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "amaj7",
+      "name": "Amaj7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 M7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "dmaj7",
+      "name": "Dmaj7",
+      "formula": "R \u00b7 M3 \u00b7 P5 \u00b7 M7",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    }
+  ],
+  "OPEN_COMPLEX": [
+    {
+      "slug": "asus2",
+      "name": "Asus2",
+      "formula": "R \u00b7 M2 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "asus4",
+      "name": "Asus4",
+      "formula": "R \u00b7 P4 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "dsus2",
+      "name": "Dsus2",
+      "formula": "R \u00b7 M2 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "dsus4",
+      "name": "Dsus4",
+      "formula": "R \u00b7 P4 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "esus4",
+      "name": "Esus4",
+      "formula": "R \u00b7 P4 \u00b7 P5",
+      "positions": [
+        {
+          "fret": 0,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-f-sharp",
+      "name": "D/F#",
+      "formula": "R \u00b7 M3 \u00b7 P5 (F# bass)",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 5
+        },
+        {
+          "fret": 0,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        4
+      ]
+    },
+    {
+      "slug": "c-g",
+      "name": "C/G",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G bass)",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 5
+        },
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 0,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "eslashg",
+      "name": "E/G#",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G# bass)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 5
+        },
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 0,
+          "idx": 1
+        },
+        {
+          "fret": 0,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    }
+  ],
+  "BAR_E_SHAPE_MAJOR": [
+    {
+      "slug": "c-major-e-8",
+      "name": "C Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 8)",
+      "positions": [
+        {
+          "fret": 8,
+          "idx": 5
+        },
+        {
+          "fret": 10,
+          "idx": 4
+        },
+        {
+          "fret": 10,
+          "idx": 3
+        },
+        {
+          "fret": 9,
+          "idx": 2
+        },
+        {
+          "fret": 8,
+          "idx": 1
+        },
+        {
+          "fret": 8,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "c-sharp-major-e-9",
+      "name": "C# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 9)",
+      "positions": [
+        {
+          "fret": 9,
+          "idx": 5
+        },
+        {
+          "fret": 11,
+          "idx": 4
+        },
+        {
+          "fret": 11,
+          "idx": 3
+        },
+        {
+          "fret": 10,
+          "idx": 2
+        },
+        {
+          "fret": 9,
+          "idx": 1
+        },
+        {
+          "fret": 9,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-major-e-10",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 10)",
+      "positions": [
+        {
+          "fret": 10,
+          "idx": 5
+        },
+        {
+          "fret": 12,
+          "idx": 4
+        },
+        {
+          "fret": 12,
+          "idx": 3
+        },
+        {
+          "fret": 11,
+          "idx": 2
+        },
+        {
+          "fret": 10,
+          "idx": 1
+        },
+        {
+          "fret": 10,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-sharp-major-e-11",
+      "name": "D# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 11)",
+      "positions": [
+        {
+          "fret": 11,
+          "idx": 5
+        },
+        {
+          "fret": 13,
+          "idx": 4
+        },
+        {
+          "fret": 13,
+          "idx": 3
+        },
+        {
+          "fret": 12,
+          "idx": 2
+        },
+        {
+          "fret": 11,
+          "idx": 1
+        },
+        {
+          "fret": 11,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-major-e-12",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 12)",
+      "positions": [
+        {
+          "fret": 12,
+          "idx": 5
+        },
+        {
+          "fret": 14,
+          "idx": 4
+        },
+        {
+          "fret": 14,
+          "idx": 3
+        },
+        {
+          "fret": 13,
+          "idx": 2
+        },
+        {
+          "fret": 12,
+          "idx": 1
+        },
+        {
+          "fret": 12,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-major-bar",
+      "name": "F Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 1)",
+      "positions": [
+        {
+          "fret": 1,
+          "idx": 5
+        },
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 3,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-sharp-major-bar",
+      "name": "F# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 2)",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 5
+        },
+        {
+          "fret": 4,
+          "idx": 4
+        },
+        {
+          "fret": 4,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-major-bar",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 3)",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 5
+        },
+        {
+          "fret": 5,
+          "idx": 4
+        },
+        {
+          "fret": 5,
+          "idx": 3
+        },
+        {
+          "fret": 4,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-sharp-major-e-4",
+      "name": "G# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 4)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 5
+        },
+        {
+          "fret": 6,
+          "idx": 4
+        },
+        {
+          "fret": 6,
+          "idx": 3
+        },
+        {
+          "fret": 5,
+          "idx": 2
+        },
+        {
+          "fret": 4,
+          "idx": 1
+        },
+        {
+          "fret": 4,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-major-bar-5",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 5)",
+      "positions": [
+        {
+          "fret": 5,
+          "idx": 5
+        },
+        {
+          "fret": 7,
+          "idx": 4
+        },
+        {
+          "fret": 7,
+          "idx": 3
+        },
+        {
+          "fret": 6,
+          "idx": 2
+        },
+        {
+          "fret": 5,
+          "idx": 1
+        },
+        {
+          "fret": 5,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-sharp-major-e-6",
+      "name": "A# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 6)",
+      "positions": [
+        {
+          "fret": 6,
+          "idx": 5
+        },
+        {
+          "fret": 8,
+          "idx": 4
+        },
+        {
+          "fret": 8,
+          "idx": 3
+        },
+        {
+          "fret": 7,
+          "idx": 2
+        },
+        {
+          "fret": 6,
+          "idx": 1
+        },
+        {
+          "fret": 6,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "b-major-e-7",
+      "name": "B Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (E shape, fret 7)",
+      "positions": [
+        {
+          "fret": 7,
+          "idx": 5
+        },
+        {
+          "fret": 9,
+          "idx": 4
+        },
+        {
+          "fret": 9,
+          "idx": 3
+        },
+        {
+          "fret": 8,
+          "idx": 2
+        },
+        {
+          "fret": 7,
+          "idx": 1
+        },
+        {
+          "fret": 7,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    }
+  ],
+  "BAR_E_SHAPE_MINOR": [
+    {
+      "slug": "c-minor-e-8",
+      "name": "C Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 8)",
+      "positions": [
+        {
+          "fret": 8,
+          "idx": 5
+        },
+        {
+          "fret": 10,
+          "idx": 4
+        },
+        {
+          "fret": 10,
+          "idx": 3
+        },
+        {
+          "fret": 8,
+          "idx": 2
+        },
+        {
+          "fret": 8,
+          "idx": 1
+        },
+        {
+          "fret": 8,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "c-sharp-minor-e-9",
+      "name": "C# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 9)",
+      "positions": [
+        {
+          "fret": 9,
+          "idx": 5
+        },
+        {
+          "fret": 11,
+          "idx": 4
+        },
+        {
+          "fret": 11,
+          "idx": 3
+        },
+        {
+          "fret": 9,
+          "idx": 2
+        },
+        {
+          "fret": 9,
+          "idx": 1
+        },
+        {
+          "fret": 9,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-minor-e-10",
+      "name": "D Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 10)",
+      "positions": [
+        {
+          "fret": 10,
+          "idx": 5
+        },
+        {
+          "fret": 12,
+          "idx": 4
+        },
+        {
+          "fret": 12,
+          "idx": 3
+        },
+        {
+          "fret": 10,
+          "idx": 2
+        },
+        {
+          "fret": 10,
+          "idx": 1
+        },
+        {
+          "fret": 10,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-sharp-minor-e-11",
+      "name": "D# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 11)",
+      "positions": [
+        {
+          "fret": 11,
+          "idx": 5
+        },
+        {
+          "fret": 13,
+          "idx": 4
+        },
+        {
+          "fret": 13,
+          "idx": 3
+        },
+        {
+          "fret": 11,
+          "idx": 2
+        },
+        {
+          "fret": 11,
+          "idx": 1
+        },
+        {
+          "fret": 11,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-minor-e-12",
+      "name": "E Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 12)",
+      "positions": [
+        {
+          "fret": 12,
+          "idx": 5
+        },
+        {
+          "fret": 14,
+          "idx": 4
+        },
+        {
+          "fret": 14,
+          "idx": 3
+        },
+        {
+          "fret": 12,
+          "idx": 2
+        },
+        {
+          "fret": 12,
+          "idx": 1
+        },
+        {
+          "fret": 12,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-minor-bar",
+      "name": "F Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 1)",
+      "positions": [
+        {
+          "fret": 1,
+          "idx": 5
+        },
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 3,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-sharp-minor-bar",
+      "name": "F# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 2)",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 5
+        },
+        {
+          "fret": 4,
+          "idx": 4
+        },
+        {
+          "fret": 4,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-minor-bar",
+      "name": "G Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 3)",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 5
+        },
+        {
+          "fret": 5,
+          "idx": 4
+        },
+        {
+          "fret": 5,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-sharp-minor-bar",
+      "name": "G# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 4)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 5
+        },
+        {
+          "fret": 6,
+          "idx": 4
+        },
+        {
+          "fret": 6,
+          "idx": 3
+        },
+        {
+          "fret": 4,
+          "idx": 2
+        },
+        {
+          "fret": 4,
+          "idx": 1
+        },
+        {
+          "fret": 4,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-minor-e-5",
+      "name": "A Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 5)",
+      "positions": [
+        {
+          "fret": 5,
+          "idx": 5
+        },
+        {
+          "fret": 7,
+          "idx": 4
+        },
+        {
+          "fret": 7,
+          "idx": 3
+        },
+        {
+          "fret": 5,
+          "idx": 2
+        },
+        {
+          "fret": 5,
+          "idx": 1
+        },
+        {
+          "fret": 5,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-sharp-minor-e-6",
+      "name": "A# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 6)",
+      "positions": [
+        {
+          "fret": 6,
+          "idx": 5
+        },
+        {
+          "fret": 8,
+          "idx": 4
+        },
+        {
+          "fret": 8,
+          "idx": 3
+        },
+        {
+          "fret": 6,
+          "idx": 2
+        },
+        {
+          "fret": 6,
+          "idx": 1
+        },
+        {
+          "fret": 6,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "b-minor-e-7",
+      "name": "B Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Em shape, fret 7)",
+      "positions": [
+        {
+          "fret": 7,
+          "idx": 5
+        },
+        {
+          "fret": 9,
+          "idx": 4
+        },
+        {
+          "fret": 9,
+          "idx": 3
+        },
+        {
+          "fret": 7,
+          "idx": 2
+        },
+        {
+          "fret": 7,
+          "idx": 1
+        },
+        {
+          "fret": 7,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    }
+  ],
+  "BAR_A_SHAPE_MAJOR": [
+    {
+      "slug": "c-major-bar",
+      "name": "C Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 3)",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 5,
+          "idx": 3
+        },
+        {
+          "fret": 5,
+          "idx": 2
+        },
+        {
+          "fret": 5,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "c-sharp-major-bar",
+      "name": "C# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 4)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 4
+        },
+        {
+          "fret": 6,
+          "idx": 3
+        },
+        {
+          "fret": 6,
+          "idx": 2
+        },
+        {
+          "fret": 6,
+          "idx": 1
+        },
+        {
+          "fret": 4,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "d-major-a-5",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 5)",
+      "positions": [
+        {
+          "fret": 5,
+          "idx": 4
+        },
+        {
+          "fret": 7,
+          "idx": 3
+        },
+        {
+          "fret": 7,
+          "idx": 2
+        },
+        {
+          "fret": 7,
+          "idx": 1
+        },
+        {
+          "fret": 5,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "d-sharp-major-a-6",
+      "name": "D# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 6)",
+      "positions": [
+        {
+          "fret": 6,
+          "idx": 4
+        },
+        {
+          "fret": 8,
+          "idx": 3
+        },
+        {
+          "fret": 8,
+          "idx": 2
+        },
+        {
+          "fret": 8,
+          "idx": 1
+        },
+        {
+          "fret": 6,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "e-a-shape-7",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 7)",
+      "positions": [
+        {
+          "fret": 7,
+          "idx": 4
+        },
+        {
+          "fret": 9,
+          "idx": 3
+        },
+        {
+          "fret": 9,
+          "idx": 2
+        },
+        {
+          "fret": 9,
+          "idx": 1
+        },
+        {
+          "fret": 7,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "f-major-a-8",
+      "name": "F Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 8)",
+      "positions": [
+        {
+          "fret": 8,
+          "idx": 4
+        },
+        {
+          "fret": 10,
+          "idx": 3
+        },
+        {
+          "fret": 10,
+          "idx": 2
+        },
+        {
+          "fret": 10,
+          "idx": 1
+        },
+        {
+          "fret": 8,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "f-sharp-major-a-9",
+      "name": "F# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 9)",
+      "positions": [
+        {
+          "fret": 9,
+          "idx": 4
+        },
+        {
+          "fret": 11,
+          "idx": 3
+        },
+        {
+          "fret": 11,
+          "idx": 2
+        },
+        {
+          "fret": 11,
+          "idx": 1
+        },
+        {
+          "fret": 9,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g-major-a-10",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 10)",
+      "positions": [
+        {
+          "fret": 10,
+          "idx": 4
+        },
+        {
+          "fret": 12,
+          "idx": 3
+        },
+        {
+          "fret": 12,
+          "idx": 2
+        },
+        {
+          "fret": 12,
+          "idx": 1
+        },
+        {
+          "fret": 10,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g-sharp-major-a-11",
+      "name": "G# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 11)",
+      "positions": [
+        {
+          "fret": 11,
+          "idx": 4
+        },
+        {
+          "fret": 13,
+          "idx": 3
+        },
+        {
+          "fret": 13,
+          "idx": 2
+        },
+        {
+          "fret": 13,
+          "idx": 1
+        },
+        {
+          "fret": 11,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-major-a-12",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 12)",
+      "positions": [
+        {
+          "fret": 12,
+          "idx": 4
+        },
+        {
+          "fret": 14,
+          "idx": 3
+        },
+        {
+          "fret": 14,
+          "idx": 2
+        },
+        {
+          "fret": 14,
+          "idx": 1
+        },
+        {
+          "fret": 12,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-sharp-major-a-1",
+      "name": "A# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 1)",
+      "positions": [
+        {
+          "fret": 1,
+          "idx": 4
+        },
+        {
+          "fret": 3,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "b-major-bar",
+      "name": "B Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (A shape, fret 2)",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 4,
+          "idx": 3
+        },
+        {
+          "fret": 4,
+          "idx": 2
+        },
+        {
+          "fret": 4,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    }
+  ],
+  "BAR_A_SHAPE_MINOR": [
+    {
+      "slug": "c-minor-bar",
+      "name": "C Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 3)",
+      "positions": [
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 5,
+          "idx": 3
+        },
+        {
+          "fret": 5,
+          "idx": 2
+        },
+        {
+          "fret": 4,
+          "idx": 1
+        },
+        {
+          "fret": 3,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "c-sharp-minor-a-4",
+      "name": "C# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 4)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 4
+        },
+        {
+          "fret": 6,
+          "idx": 3
+        },
+        {
+          "fret": 6,
+          "idx": 2
+        },
+        {
+          "fret": 5,
+          "idx": 1
+        },
+        {
+          "fret": 4,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "d-minor-a-5",
+      "name": "D Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 5)",
+      "positions": [
+        {
+          "fret": 5,
+          "idx": 4
+        },
+        {
+          "fret": 7,
+          "idx": 3
+        },
+        {
+          "fret": 7,
+          "idx": 2
+        },
+        {
+          "fret": 6,
+          "idx": 1
+        },
+        {
+          "fret": 5,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "d-sharp-minor-a-6",
+      "name": "D# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 6)",
+      "positions": [
+        {
+          "fret": 6,
+          "idx": 4
+        },
+        {
+          "fret": 8,
+          "idx": 3
+        },
+        {
+          "fret": 8,
+          "idx": 2
+        },
+        {
+          "fret": 7,
+          "idx": 1
+        },
+        {
+          "fret": 6,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "e-minor-a-7",
+      "name": "E Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 7)",
+      "positions": [
+        {
+          "fret": 7,
+          "idx": 4
+        },
+        {
+          "fret": 9,
+          "idx": 3
+        },
+        {
+          "fret": 9,
+          "idx": 2
+        },
+        {
+          "fret": 8,
+          "idx": 1
+        },
+        {
+          "fret": 7,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "f-minor-a-8",
+      "name": "F Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 8)",
+      "positions": [
+        {
+          "fret": 8,
+          "idx": 4
+        },
+        {
+          "fret": 10,
+          "idx": 3
+        },
+        {
+          "fret": 10,
+          "idx": 2
+        },
+        {
+          "fret": 9,
+          "idx": 1
+        },
+        {
+          "fret": 8,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "f-sharp-minor-a-9",
+      "name": "F# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 9)",
+      "positions": [
+        {
+          "fret": 9,
+          "idx": 4
+        },
+        {
+          "fret": 11,
+          "idx": 3
+        },
+        {
+          "fret": 11,
+          "idx": 2
+        },
+        {
+          "fret": 10,
+          "idx": 1
+        },
+        {
+          "fret": 9,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g-minor-a-10",
+      "name": "G Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 10)",
+      "positions": [
+        {
+          "fret": 10,
+          "idx": 4
+        },
+        {
+          "fret": 12,
+          "idx": 3
+        },
+        {
+          "fret": 12,
+          "idx": 2
+        },
+        {
+          "fret": 11,
+          "idx": 1
+        },
+        {
+          "fret": 10,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "g-sharp-minor-a-11",
+      "name": "G# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 11)",
+      "positions": [
+        {
+          "fret": 11,
+          "idx": 4
+        },
+        {
+          "fret": 13,
+          "idx": 3
+        },
+        {
+          "fret": 13,
+          "idx": 2
+        },
+        {
+          "fret": 12,
+          "idx": 1
+        },
+        {
+          "fret": 11,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-minor-a-12",
+      "name": "A Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 12)",
+      "positions": [
+        {
+          "fret": 12,
+          "idx": 4
+        },
+        {
+          "fret": 14,
+          "idx": 3
+        },
+        {
+          "fret": 14,
+          "idx": 2
+        },
+        {
+          "fret": 13,
+          "idx": 1
+        },
+        {
+          "fret": 12,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-sharp-minor-a-1",
+      "name": "A# Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 1)",
+      "positions": [
+        {
+          "fret": 1,
+          "idx": 4
+        },
+        {
+          "fret": 3,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 1,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "b-minor-bar",
+      "name": "B Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5 (Am shape, fret 2)",
+      "positions": [
+        {
+          "fret": 2,
+          "idx": 4
+        },
+        {
+          "fret": 4,
+          "idx": 3
+        },
+        {
+          "fret": 4,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 2,
+          "idx": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    }
+  ],
+  "BAR_G_SHAPE_MAJOR": [
+    {
+      "slug": "c-major-g-5",
+      "name": "C Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 5)",
+      "positions": [
+        {
+          "fret": 8,
+          "idx": 5
+        },
+        {
+          "fret": 7,
+          "idx": 4
+        },
+        {
+          "fret": 5,
+          "idx": 3
+        },
+        {
+          "fret": 5,
+          "idx": 2
+        },
+        {
+          "fret": 5,
+          "idx": 1
+        },
+        {
+          "fret": 8,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "c-sharp-major-g-6",
+      "name": "C# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 6)",
+      "positions": [
+        {
+          "fret": 9,
+          "idx": 5
+        },
+        {
+          "fret": 8,
+          "idx": 4
+        },
+        {
+          "fret": 6,
+          "idx": 3
+        },
+        {
+          "fret": 6,
+          "idx": 2
+        },
+        {
+          "fret": 6,
+          "idx": 1
+        },
+        {
+          "fret": 9,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-major-g-7",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 7)",
+      "positions": [
+        {
+          "fret": 10,
+          "idx": 5
+        },
+        {
+          "fret": 9,
+          "idx": 4
+        },
+        {
+          "fret": 7,
+          "idx": 3
+        },
+        {
+          "fret": 7,
+          "idx": 2
+        },
+        {
+          "fret": 7,
+          "idx": 1
+        },
+        {
+          "fret": 10,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-sharp-major-g-8",
+      "name": "D# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 8)",
+      "positions": [
+        {
+          "fret": 11,
+          "idx": 5
+        },
+        {
+          "fret": 10,
+          "idx": 4
+        },
+        {
+          "fret": 8,
+          "idx": 3
+        },
+        {
+          "fret": 8,
+          "idx": 2
+        },
+        {
+          "fret": 8,
+          "idx": 1
+        },
+        {
+          "fret": 11,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-major-g-9",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 9)",
+      "positions": [
+        {
+          "fret": 12,
+          "idx": 5
+        },
+        {
+          "fret": 11,
+          "idx": 4
+        },
+        {
+          "fret": 9,
+          "idx": 3
+        },
+        {
+          "fret": 9,
+          "idx": 2
+        },
+        {
+          "fret": 9,
+          "idx": 1
+        },
+        {
+          "fret": 12,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-major-g-10",
+      "name": "F Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 10)",
+      "positions": [
+        {
+          "fret": 13,
+          "idx": 5
+        },
+        {
+          "fret": 12,
+          "idx": 4
+        },
+        {
+          "fret": 10,
+          "idx": 3
+        },
+        {
+          "fret": 10,
+          "idx": 2
+        },
+        {
+          "fret": 10,
+          "idx": 1
+        },
+        {
+          "fret": 13,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "f-sharp-major-g-11",
+      "name": "F# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 11)",
+      "positions": [
+        {
+          "fret": 14,
+          "idx": 5
+        },
+        {
+          "fret": 13,
+          "idx": 4
+        },
+        {
+          "fret": 11,
+          "idx": 3
+        },
+        {
+          "fret": 11,
+          "idx": 2
+        },
+        {
+          "fret": 11,
+          "idx": 1
+        },
+        {
+          "fret": 14,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-major-g-12",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 12)",
+      "positions": [
+        {
+          "fret": 15,
+          "idx": 5
+        },
+        {
+          "fret": 14,
+          "idx": 4
+        },
+        {
+          "fret": 12,
+          "idx": 3
+        },
+        {
+          "fret": 12,
+          "idx": 2
+        },
+        {
+          "fret": 12,
+          "idx": 1
+        },
+        {
+          "fret": 15,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-sharp-major-g-1",
+      "name": "G# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 1)",
+      "positions": [
+        {
+          "fret": 4,
+          "idx": 5
+        },
+        {
+          "fret": 3,
+          "idx": 4
+        },
+        {
+          "fret": 1,
+          "idx": 3
+        },
+        {
+          "fret": 1,
+          "idx": 2
+        },
+        {
+          "fret": 1,
+          "idx": 1
+        },
+        {
+          "fret": 4,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-major-g-2",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 2)",
+      "positions": [
+        {
+          "fret": 5,
+          "idx": 5
+        },
+        {
+          "fret": 4,
+          "idx": 4
+        },
+        {
+          "fret": 2,
+          "idx": 3
+        },
+        {
+          "fret": 2,
+          "idx": 2
+        },
+        {
+          "fret": 2,
+          "idx": 1
+        },
+        {
+          "fret": 5,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-sharp-major-g-3",
+      "name": "A# Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 3)",
+      "positions": [
+        {
+          "fret": 6,
+          "idx": 5
+        },
+        {
+          "fret": 5,
+          "idx": 4
+        },
+        {
+          "fret": 3,
+          "idx": 3
+        },
+        {
+          "fret": 3,
+          "idx": 2
+        },
+        {
+          "fret": 3,
+          "idx": 1
+        },
+        {
+          "fret": 6,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "b-major-g-4",
+      "name": "B Major",
+      "formula": "R \u00b7 M3 \u00b7 P5 (G shape, fret 4)",
+      "positions": [
+        {
+          "fret": 7,
+          "idx": 5
+        },
+        {
+          "fret": 6,
+          "idx": 4
+        },
+        {
+          "fret": 4,
+          "idx": 3
+        },
+        {
+          "fret": 4,
+          "idx": 2
+        },
+        {
+          "fret": 4,
+          "idx": 1
+        },
+        {
+          "fret": 7,
+          "idx": 0
+        }
+      ],
+      "muted": []
+    }
+  ]
+}
