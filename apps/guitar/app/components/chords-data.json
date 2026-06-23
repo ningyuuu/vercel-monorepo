@@ -212,38 +212,6 @@
       ]
     },
     {
-      "slug": "c-major-high",
-      "name": "C Major",
-      "formula": "R \u00b7 M3 \u00b7 P5",
-      "positions": [
-        {
-          "idx": 5,
-          "fret": 0
-        },
-        {
-          "idx": 4,
-          "fret": 10
-        },
-        {
-          "idx": 3,
-          "fret": 10
-        },
-        {
-          "idx": 2,
-          "fret": 0
-        },
-        {
-          "idx": 1,
-          "fret": 5
-        },
-        {
-          "idx": 0,
-          "fret": 0
-        }
-      ],
-      "muted": []
-    },
-    {
       "slug": "d-major-mid",
       "name": "D Major",
       "formula": "R \u00b7 M3 \u00b7 P5",
