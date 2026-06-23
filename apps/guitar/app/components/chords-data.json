@@ -150,6 +150,280 @@
         5,
         4
       ]
+    },
+    {
+      "slug": "a-major-high",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 4,
+          "fret": 0
+        },
+        {
+          "idx": 3,
+          "fret": 11
+        },
+        {
+          "idx": 2,
+          "fret": 9
+        },
+        {
+          "idx": 1,
+          "fret": 10
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "a-major-mid",
+      "name": "A Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 4,
+          "fret": 0
+        },
+        {
+          "idx": 3,
+          "fret": 7
+        },
+        {
+          "idx": 2,
+          "fret": 6
+        },
+        {
+          "idx": 1,
+          "fret": 5
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": [
+        5
+      ]
+    },
+    {
+      "slug": "c-major-high",
+      "name": "C Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 10
+        },
+        {
+          "idx": 3,
+          "fret": 10
+        },
+        {
+          "idx": 2,
+          "fret": 0
+        },
+        {
+          "idx": 1,
+          "fret": 5
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-major-mid",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 7
+        },
+        {
+          "idx": 1,
+          "fret": 7
+        },
+        {
+          "idx": 0,
+          "fret": 5
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "d-major-high",
+      "name": "D Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 11
+        },
+        {
+          "idx": 1,
+          "fret": 10
+        },
+        {
+          "idx": 0,
+          "fret": 10
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "e-major-mid",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 7
+        },
+        {
+          "idx": 3,
+          "fret": 6
+        },
+        {
+          "idx": 2,
+          "fret": 4
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-major-high",
+      "name": "E Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 11
+        },
+        {
+          "idx": 3,
+          "fret": 9
+        },
+        {
+          "idx": 2,
+          "fret": 9
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-major-mid",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 7
+        },
+        {
+          "idx": 4,
+          "fret": 5
+        },
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 0
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 7
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "g-major-high",
+      "name": "G Major",
+      "formula": "R \u00b7 M3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 10
+        },
+        {
+          "idx": 4,
+          "fret": 10
+        },
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 0
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 10
+        }
+      ],
+      "muted": []
     }
   ],
   "OPEN_MINOR": [
@@ -235,6 +509,188 @@
         {
           "fret": 1,
           "idx": 0
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "a-minor-mid",
+      "name": "A Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 0
+        },
+        {
+          "idx": 3,
+          "fret": 7
+        },
+        {
+          "idx": 2,
+          "fret": 5
+        },
+        {
+          "idx": 1,
+          "fret": 5
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "a-minor-high",
+      "name": "A Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 0
+        },
+        {
+          "idx": 3,
+          "fret": 10
+        },
+        {
+          "idx": 2,
+          "fret": 9
+        },
+        {
+          "idx": 1,
+          "fret": 10
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-minor-mid",
+      "name": "E Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 7
+        },
+        {
+          "idx": 3,
+          "fret": 5
+        },
+        {
+          "idx": 2,
+          "fret": 0
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "e-minor-high",
+      "name": "E Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 5,
+          "fret": 0
+        },
+        {
+          "idx": 4,
+          "fret": 10
+        },
+        {
+          "idx": 3,
+          "fret": 9
+        },
+        {
+          "idx": 2,
+          "fret": 0
+        },
+        {
+          "idx": 1,
+          "fret": 0
+        },
+        {
+          "idx": 0,
+          "fret": 0
+        }
+      ],
+      "muted": []
+    },
+    {
+      "slug": "d-minor-mid",
+      "name": "D Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 7
+        },
+        {
+          "idx": 1,
+          "fret": 6
+        },
+        {
+          "idx": 0,
+          "fret": 5
+        }
+      ],
+      "muted": [
+        5,
+        4
+      ]
+    },
+    {
+      "slug": "d-minor-high",
+      "name": "D Minor",
+      "formula": "R \u00b7 m3 \u00b7 P5",
+      "positions": [
+        {
+          "idx": 3,
+          "fret": 0
+        },
+        {
+          "idx": 2,
+          "fret": 10
+        },
+        {
+          "idx": 1,
+          "fret": 10
+        },
+        {
+          "idx": 0,
+          "fret": 10
         }
       ],
       "muted": [
