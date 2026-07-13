@@ -1,10 +1,9 @@
-"use client";
-
 import { useState } from "react";
 
 export const BLANK = 0,
   X = 1,
   O = 2;
+export const printState = [" ", "X", "O"];
 
 type CellState = typeof BLANK | typeof X | typeof O;
 type BoardState = [
@@ -18,11 +17,14 @@ type BoardState = [
   CellState,
   CellState,
 ];
+type WinState = CellState | null;
 
-export function useBoardState(): [
-  BoardState,
-  React.Dispatch<React.SetStateAction<BoardState>>,
-] {
+export function useBoardState(): {
+  state: BoardState;
+  setState: React.Dispatch<React.SetStateAction<BoardState>>;
+  winState: WinState;
+  setWinState: React.Dispatch<React.SetStateAction<WinState>>;
+} {
   const initState: BoardState = [
     BLANK,
     BLANK,
@@ -34,17 +36,48 @@ export function useBoardState(): [
     BLANK,
     BLANK,
   ];
-  return useState<BoardState>(initState);
+  const [state, setState] = useState<BoardState>(initState);
+  const [winState, setWinState] = useState<WinState>(null);
+  return {
+    state,
+    setState,
+    winState,
+    setWinState,
+  };
+}
+
+export function checkWin(board: BoardState): WinState {
+  for (const sym of [1, 2]) {
+    // check rows
+    for (const i of [0, 3, 6]) {
+      if (board[i] === sym && board[i + 1] === sym && board[i + 2] === sym) {
+        return sym as WinState;
+      }
+    }
+    // check cols
+    for (const i of [0, 1, 2]) {
+      if (board[i] === sym && board[i + 3] === sym && board[i + 6] === sym) {
+        return sym as WinState;
+      }
+    }
+    // check diagonals
+    if (board[0] === sym && board[4] === sym && board[8] === sym) {
+      return sym as WinState;
+    }
+    if (board[2] === sym && board[4] === sym && board[6] === sym) {
+      return sym as WinState;
+    }
+  }
+  return null;
 }
 
 function Cell({ state, onClick }: { state: CellState; onClick: () => void }) {
-  const printStates = [" ", "X", "O"];
   return (
     <div
       className="font-mono whitespace-pre border border-white px-4 py-4"
       onClick={onClick}
     >
-      {printStates[state]}
+      {printState[state]}
     </div>
   );
 }
