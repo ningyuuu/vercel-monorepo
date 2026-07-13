@@ -1,14 +1,20 @@
 "use client";
-
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
 import { Board, useBoardState } from "../Board";
 
 export default function Home() {
   const [state, setState] = useBoardState();
+  const [current, setCurrent] = useState(1);
   const updateState = (index: number) => {
     setState((prevState) => {
+      if (prevState[index] !== 0) {
+        return prevState;
+      }
+
       const newState = [...prevState];
-      newState[index] = newState[index] === 0 ? 1 : 0; // Toggle between X and O
+      newState[index] = current as (typeof prevState)[number];
+      setCurrent(current === 1 ? 2 : 1);
       return newState as typeof prevState;
     });
   };
