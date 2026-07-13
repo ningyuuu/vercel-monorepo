@@ -1,25 +1,9 @@
 "use client";
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
-import { Board, useBoardState, printState, checkWin } from "../Board";
+import { Board, useBoardState, printState } from "../Board";
 
 export default function Home() {
-  const { state, setState, winState, setWinState } = useBoardState();
-  const [current, setCurrent] = useState(1);
-  const updateState = (index: number) => {
-    setState((prevState) => {
-      if (!!winState || prevState[index] !== 0) {
-        return prevState;
-      }
-
-      const newState = [...prevState] as typeof prevState;
-      newState[index] = current as (typeof prevState)[number];
-      setCurrent(current === 1 ? 2 : 1);
-
-      setWinState(checkWin(newState));
-      return newState;
-    });
-  };
+  const { state, current, winState, play } = useBoardState();
 
   return (
     <div className="min-h-screen">
@@ -37,7 +21,7 @@ export default function Home() {
             ) : (
               <p>{printState[current]}&apos;s turn</p>
             )}
-            <Board state={state} updateState={updateState} />
+            <Board state={state} play={play} />
           </CardContent>
         </Card>
       </main>

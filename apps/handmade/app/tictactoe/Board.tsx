@@ -19,12 +19,14 @@ type BoardState = [
 ];
 type WinState = CellState | null;
 
-export function useBoardState(): {
+export type GameState = {
   state: BoardState;
-  setState: React.Dispatch<React.SetStateAction<BoardState>>;
   winState: WinState;
-  setWinState: React.Dispatch<React.SetStateAction<WinState>>;
-} {
+  current: CellState;
+  play: (index: number) => void;
+};
+
+export function useBoardState(): GameState {
   const initState: BoardState = [
     BLANK,
     BLANK,
@@ -38,11 +40,26 @@ export function useBoardState(): {
   ];
   const [state, setState] = useState<BoardState>(initState);
   const [winState, setWinState] = useState<WinState>(null);
+  const [current, setCurrent] = useState<CellState>(X);
+
+  const play = (index: number) => {
+    if (!!winState || state[index] !== BLANK) {
+      return;
+    }
+
+    const newState = [...state] as BoardState;
+    newState[index] = current;
+    setState(newState);
+    setCurrent(current === X ? O : X);
+
+    setWinState(checkWin(newState));
+  };
+
   return {
     state,
-    setState,
+    play,
     winState,
-    setWinState,
+    current,
   };
 }
 
@@ -84,27 +101,27 @@ function Cell({ state, onClick }: { state: CellState; onClick: () => void }) {
 
 export function Board({
   state,
-  updateState,
+  play,
 }: {
   state: BoardState;
-  updateState: (index: number) => void;
+  play: (index: number) => void;
 }) {
   return (
     <div className="font-mono whitespace-pre">
       <div className="flex ">
-        <Cell state={state[0]} onClick={() => updateState(0)} />
-        <Cell state={state[1]} onClick={() => updateState(1)} />
-        <Cell state={state[2]} onClick={() => updateState(2)} />
+        <Cell state={state[0]} onClick={() => play(0)} />
+        <Cell state={state[1]} onClick={() => play(1)} />
+        <Cell state={state[2]} onClick={() => play(2)} />
       </div>
       <div className="flex ">
-        <Cell state={state[3]} onClick={() => updateState(3)} />
-        <Cell state={state[4]} onClick={() => updateState(4)} />
-        <Cell state={state[5]} onClick={() => updateState(5)} />
+        <Cell state={state[3]} onClick={() => play(3)} />
+        <Cell state={state[4]} onClick={() => play(4)} />
+        <Cell state={state[5]} onClick={() => play(5)} />
       </div>
       <div className="flex">
-        <Cell state={state[6]} onClick={() => updateState(6)} />
-        <Cell state={state[7]} onClick={() => updateState(7)} />
-        <Cell state={state[8]} onClick={() => updateState(8)} />
+        <Cell state={state[6]} onClick={() => play(6)} />
+        <Cell state={state[7]} onClick={() => play(7)} />
+        <Cell state={state[8]} onClick={() => play(8)} />
       </div>
     </div>
   );
