@@ -24,7 +24,7 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-              <Link href="/tictactoe/ai" className="w-full">
+              <Link href="/tictactoe" className="w-full">
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle className="text-base">Against AI</CardTitle>
@@ -33,10 +33,13 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground">
                       Play against a perfect, minimax AI.
                     </p>
+                    <p className="text-sm text-muted-foreground">
+                      Coming soon.
+                    </p>
                   </CardContent>
                 </Card>
               </Link>
-              <Link href="/tictactoe/online" className="w-full">
+              <Link href="/tictactoe" className="w-full">
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle className="text-base">Online versus</CardTitle>
@@ -44,6 +47,9 @@ export default function Home() {
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
                       Play against another player online.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Coming soon.
                     </p>
                   </CardContent>
                 </Card>
