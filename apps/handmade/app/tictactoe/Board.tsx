@@ -5,7 +5,7 @@ export const BLANK = 0,
   O = 2;
 export const printState = [" ", "X", "O"];
 
-type CellState = typeof BLANK | typeof X | typeof O;
+export type CellState = typeof BLANK | typeof X | typeof O;
 type BoardState = [
   CellState,
   CellState,
@@ -17,7 +17,7 @@ type BoardState = [
   CellState,
   CellState,
 ];
-type WinState = CellState | null;
+export type WinState = CellState | null;
 
 export type GameState = {
   state: BoardState;
@@ -25,6 +25,10 @@ export type GameState = {
   current: CellState;
   play: (index: number) => void;
 };
+
+export function nextPlayer(current: CellState): CellState {
+  return current === X ? O : X;
+}
 
 export function useBoardState(): GameState {
   const initState: BoardState = [
@@ -38,19 +42,20 @@ export function useBoardState(): GameState {
     BLANK,
     BLANK,
   ];
+
   const [state, setState] = useState<BoardState>(initState);
   const [winState, setWinState] = useState<WinState>(null);
   const [current, setCurrent] = useState<CellState>(X);
 
   const play = (index: number) => {
-    if (!!winState || state[index] !== BLANK) {
+    if (winState !== null || state[index] !== BLANK) {
       return;
     }
 
     const newState = [...state] as BoardState;
     newState[index] = current;
     setState(newState);
-    setCurrent(current === X ? O : X);
+    setCurrent(nextPlayer(current));
 
     setWinState(checkWin(newState));
   };
@@ -85,6 +90,11 @@ export function checkWin(board: BoardState): WinState {
       return sym as WinState;
     }
   }
+
+  if (board.every((cell) => cell !== 0)) {
+    return 0;
+  }
+
   return null;
 }
 
