@@ -24,10 +24,12 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-              <Link href="/tictactoe" className="w-full">
+              <Link href="/tictactoe/computer" className="w-full">
                 <Card className="h-full">
                   <CardHeader>
-                    <CardTitle className="text-base">Against AI</CardTitle>
+                    <CardTitle className="text-base">
+                      Against Computer
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
