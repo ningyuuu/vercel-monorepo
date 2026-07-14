@@ -13,8 +13,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Ning Yu",
-  description: "Ning Yu - Software Engineer.",
+  title: "Handmade",
+  description: "Handmade games for fun",
 };
 
 export default function RootLayout({
