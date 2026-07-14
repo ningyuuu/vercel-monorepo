@@ -14,7 +14,7 @@ type MinimaxState = {
 export function minimax(gameState: GameState, player: CellState): number {
   // if game is over, no play necessary
   if (gameState.winState !== null) {
-    return 0;
+    return -1;
   }
 
   // condense state for efficiency
