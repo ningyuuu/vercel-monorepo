@@ -41,7 +41,7 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-              <Link href="/tictactoe" className="w-full">
+              <Link href="/tictactoe/online" className="w-full">
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle className="text-base">Online versus</CardTitle>
