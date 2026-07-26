@@ -1,0 +1,14 @@
+{
+    "extends": [
+        "//"
+    ],
+    "tasks": {
+        "build": {
+            "env": [
+                "$TURBO_EXTENDS$",
+                "FIREBASE_CLIENT_EMAIL",
+                "FIREBASE_PRIVATE_KEY"
+            ]
+        }
+    }
+}
