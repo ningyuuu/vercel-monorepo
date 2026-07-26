@@ -31,7 +31,7 @@ export function RoomManager({ id }: Props) {
     fetchData();
   }, [id, client]);
 
-  async function renderRoomIfExists() {
+  function renderRoomIfExists() {
     try {
       if (roomData) {
         return <Client />;
