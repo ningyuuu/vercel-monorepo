@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { get, getDatabase, ref } from "firebase/database";
+import {
+  DataSnapshot,
+  get,
+  getDatabase,
+  ref,
+  Database,
+} from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,14 +18,34 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+export class FirebaseClient {
+  db: Database;
 
-export async function getFirebaseDatabase() {
-  const snapshot = await get(ref(db, "/"));
-  if (snapshot.exists()) {
-    return snapshot.val();
+  constructor() {
+    const app = initializeApp(firebaseConfig);
+    this.db = getDatabase(app);
   }
 
-  throw new Error("Failed to get Firebase database");
+  returnSnapshotIfExists(snapshot: DataSnapshot) {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+
+    throw new Error("Snapshot does not exist");
+  }
+
+  async getDatabase() {
+    const snapshot = await get(ref(this.db, "/"));
+    return this.returnSnapshotIfExists(snapshot);
+  }
+
+  async getRoom(roomId: string) {
+    const snapshot = await get(ref(this.db, `/rooms/${roomId}`));
+    return this.returnSnapshotIfExists(snapshot);
+  }
+
+  async getGame(gameId: string) {
+    const snapshot = await get(ref(this.db, `/games/${gameId}`));
+    return this.returnSnapshotIfExists(snapshot);
+  }
 }

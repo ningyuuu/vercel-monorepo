@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
 import { Client } from "./app-client";
 import { useEffect } from "react";
-import { getFirebaseDatabase } from "@/app/lib/firebase";
+import { FirebaseClient } from "@/app/lib/firebase";
 
 // room manager allows the user to either create or join a room
 // and renders the game board when the room has 2 players.
@@ -10,7 +10,8 @@ export function RoomManager() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const firebaseData = await getFirebaseDatabase();
+        const client = new FirebaseClient();
+        const firebaseData = await client.getDatabase();
         console.log("Firebase RTDB state:", firebaseData);
       } catch (error) {
         console.error("Error fetching Firebase RTDB state:", error);
