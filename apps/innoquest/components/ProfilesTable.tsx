@@ -216,7 +216,9 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
       className={cn(
         "hover:text-foreground inline-flex items-center gap-1.5 text-left transition-colors",
         className,
-        sortKey === columnKey ? "text-primary" : "text-muted-foreground",
+        sortKey === columnKey
+          ? "text-primary font-semibold"
+          : "text-foreground/70",
       )}
       aria-label={`Sort by ${label}`}
       aria-pressed={sortKey === columnKey}
@@ -288,60 +290,62 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
       ) : (
         <>
           <div className="hidden w-full md:block">
-            <Table className="min-w-[720px] [&_[data-slot=table-container]]:overflow-x-visible">
-              <caption className="sr-only">
-                Innoquest 2026 test profiles and individual tests
-              </caption>
-              <TableHeader
-                className="sticky top-16 z-10 bg-background/90 backdrop-blur-sm"
-                style={navHeight !== null ? { top: navHeight } : undefined}
-              >
-                <TableRow>
-                  <TableHead className="w-[100px]">
-                    {renderSortableHeader("Code", "code")}
-                  </TableHead>
-                  <TableHead className="w-[200px] whitespace-normal">
-                    {renderSortableHeader("Full Name", "full_name")}
-                  </TableHead>
-                  <TableHead className="w-[110px] text-right">
-                    {renderSortableHeader("Cost", "cost", "justify-end")}
-                  </TableHead>
-                  <TableHead className="whitespace-normal">
-                    {renderSortableHeader("Test Contents", "test_contents")}
-                  </TableHead>
-                  <TableHead className="whitespace-normal">
-                    {renderSortableHeader("Remarks", "remarks")}
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sortedData.map((record, index) => (
-                  <TableRow key={`${record.code}-${index}`}>
-                    <TableCell className="font-mono text-[13px] font-medium tabular-nums">
-                      {record.code || "—"}
-                    </TableCell>
-                    <TableCell className="whitespace-normal break-words">
-                      <span className="flex flex-wrap items-center gap-1.5">
-                        {record.full_name}
-                        <TypeBadge type={record.type} />
-                      </span>
-                    </TableCell>
-                    <TableCell className="text-right font-mono text-[13px] tabular-nums">
-                      {record.cost}
-                    </TableCell>
-                    <TableCell className="whitespace-normal break-words">
-                      <ContentsBadges items={record.test_items} />
-                    </TableCell>
-                    <TableCell className="text-muted-foreground text-sm whitespace-normal break-words">
-                      {record.remarks || "—"}
-                    </TableCell>
+            <div className="rounded-xl border bg-card p-1 shadow-sm">
+              <Table className="min-w-[700px]">
+                <caption className="sr-only">
+                  Innoquest 2026 test profiles and individual tests
+                </caption>
+                <TableHeader
+                  className="sticky top-16 z-10 bg-muted/50 backdrop-blur-sm"
+                  style={navHeight !== null ? { top: navHeight } : undefined}
+                >
+                  <TableRow>
+                    <TableHead className="w-[100px]">
+                      {renderSortableHeader("Code", "code")}
+                    </TableHead>
+                    <TableHead className="w-[200px] whitespace-normal">
+                      {renderSortableHeader("Full Name", "full_name")}
+                    </TableHead>
+                    <TableHead className="w-[110px] text-right">
+                      {renderSortableHeader("Cost", "cost", "justify-end")}
+                    </TableHead>
+                    <TableHead className="whitespace-normal">
+                      {renderSortableHeader("Test Contents", "test_contents")}
+                    </TableHead>
+                    <TableHead className="whitespace-normal">
+                      {renderSortableHeader("Remarks", "remarks")}
+                    </TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {sortedData.map((record, index) => (
+                    <TableRow key={`${record.code}-${index}`}>
+                      <TableCell className="font-mono text-[13px] font-medium tabular-nums">
+                        {record.code || "—"}
+                      </TableCell>
+                      <TableCell className="whitespace-normal break-words font-medium">
+                        <span className="flex flex-wrap items-center gap-1.5">
+                          {record.full_name}
+                          <TypeBadge type={record.type} />
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-right font-mono text-[13px] tabular-nums">
+                        {record.cost}
+                      </TableCell>
+                      <TableCell className="whitespace-normal break-words">
+                        <ContentsBadges items={record.test_items} />
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-sm whitespace-normal break-words">
+                        {record.remarks || "—"}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
 
-          <ul className="md:hidden divide-y">
+          <ul className="md:hidden divide-y rounded-xl border bg-card px-3 py-1">
             {sortedData.map((record, index) => (
               <li key={`${record.code}-${index}`} className="space-y-2 py-3">
                 <div className="flex items-baseline justify-between gap-3">
