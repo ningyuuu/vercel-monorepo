@@ -1,6 +1,16 @@
 @import "@repo/ui/globals.css";
 @source "../../../packages/ui/src";
 
+@theme inline {
+  --font-sans: var(--font-hanken, ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--font-fraunces, ui-serif, Georgia, serif);
+  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, monospace);
+}
+
+[data-slot="table-container"] {
+  overflow-x: visible;
+}
+
 :root {
   --background: oklch(0.995 0.004 35);
   --foreground: oklch(0.16 0.01 35);

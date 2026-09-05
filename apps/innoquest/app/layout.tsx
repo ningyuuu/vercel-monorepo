@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist_Mono, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const hankenSans = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
+});
+
+const frauncesDisplay = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["opsz"],
 });
 
 const geistMono = Geist_Mono({
@@ -41,7 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${hankenSans.variable} ${frauncesDisplay.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

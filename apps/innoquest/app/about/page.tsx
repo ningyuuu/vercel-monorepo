@@ -13,7 +13,7 @@ export default function About() {
         />
         <div className="mt-8 space-y-6">
           <section>
-            <h2 className="text-lg font-semibold mb-2">
+            <h2 className="font-display mb-3 text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
               Important Information
             </h2>
             <p className="text-muted-foreground text-sm">
@@ -26,7 +26,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold mb-2">
+            <h2 className="font-display mb-3 text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
               About This Application
             </h2>
             <p className="text-sm text-muted-foreground">
@@ -53,7 +53,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold mb-2">
+            <h2 className="font-display mb-3 text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
               Data cleaning methodology
             </h2>
             <p className="text-sm text-muted-foreground pb-2">
@@ -109,7 +109,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold mb-2">
+            <h2 className="font-display mb-3 text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
               Full list of test names&apos; corrections
             </h2>
 

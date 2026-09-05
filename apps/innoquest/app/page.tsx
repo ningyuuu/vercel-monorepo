@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-background font-sans">
-      <main className="w-full max-w-4xl bg-transparent px-6 pb-8 pt-20 space-y-4 sm:pt-24">
+      <main className="w-full max-w-4xl bg-transparent px-6 pb-8 pt-20 sm:pt-24">
         <Navbar
           title="Innoquest - 2026 Test Profiles"
           actions={
@@ -30,6 +30,11 @@ export default async function Home() {
             </>
           }
         />
+        <header className="mt-10 mb-8 sm:mt-14">
+          <h1 className="font-display text-4xl font-semibold tracking-[-0.02em] text-balance sm:text-5xl">
+            Innoquest <span className="text-primary">2026</span> Test Menu
+          </h1>
+        </header>
         <InnoquestHome data={tableData} testOptions={testItems} />
       </main>
     </div>

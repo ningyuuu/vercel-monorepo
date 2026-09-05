@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import { ArrowDown, ArrowUp, ArrowUpDown, X } from "lucide-react";
 import { Badge } from "@repo/ui/badge";
@@ -99,6 +99,15 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   const [selectedTests, setSelectedTests] = useState<string[]>([]);
   const [sortKey, setSortKey] = useState<SortKey>("code");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  const [navHeight, setNavHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const nav = document.querySelector("nav");
+
+    if (nav) {
+      setNavHeight(nav.offsetHeight);
+    }
+  }, []);
 
   const activeSelectedTests = useMemo(() => {
     const availableTests = new Set(testOptions);
@@ -278,12 +287,15 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
         </div>
       ) : (
         <>
-          <div className="hidden w-full overflow-x-auto md:block">
-            <Table className="min-w-[720px]">
+          <div className="hidden w-full md:block">
+            <Table className="min-w-[720px] [&_[data-slot=table-container]]:overflow-x-visible">
               <caption className="sr-only">
                 Innoquest 2026 test profiles and individual tests
               </caption>
-              <TableHeader>
+              <TableHeader
+                className="sticky top-16 z-10 bg-background/90 backdrop-blur-sm"
+                style={navHeight !== null ? { top: navHeight } : undefined}
+              >
                 <TableRow>
                   <TableHead className="w-[100px]">
                     {renderSortableHeader("Code", "code")}
@@ -305,7 +317,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
               <TableBody>
                 {sortedData.map((record, index) => (
                   <TableRow key={`${record.code}-${index}`}>
-                    <TableCell className="font-medium tabular-nums">
+                    <TableCell className="font-mono text-[13px] font-medium tabular-nums">
                       {record.code || "—"}
                     </TableCell>
                     <TableCell className="whitespace-normal break-words">
@@ -314,7 +326,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
                         <TypeBadge type={record.type} />
                       </span>
                     </TableCell>
-                    <TableCell className="text-right tabular-nums">
+                    <TableCell className="text-right font-mono text-[13px] tabular-nums">
                       {record.cost}
                     </TableCell>
                     <TableCell className="whitespace-normal break-words">
@@ -333,10 +345,12 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
             {sortedData.map((record, index) => (
               <li key={`${record.code}-${index}`} className="space-y-2 py-3">
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-sm font-medium tabular-nums">
+                  <span className="font-mono text-[13px] font-medium tabular-nums">
                     {record.code || "—"}
                   </span>
-                  <span className="text-sm tabular-nums">{record.cost}</span>
+                  <span className="font-mono text-[13px] tabular-nums">
+                    {record.cost}
+                  </span>
                 </div>
                 <p className="flex flex-wrap items-center gap-1.5 text-sm font-medium">
                   {record.full_name}
