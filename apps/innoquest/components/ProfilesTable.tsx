@@ -229,7 +229,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   );
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       <div className="space-y-2">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <div className="w-full sm:w-1/2">
@@ -312,7 +312,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
                     <TableHead className="whitespace-normal">
                       {renderSortableHeader("Test Contents", "test_contents")}
                     </TableHead>
-                    <TableHead className="whitespace-normal">
+                    <TableHead className="w-[110px] whitespace-normal">
                       {renderSortableHeader("Remarks", "remarks")}
                     </TableHead>
                   </TableRow>
@@ -320,22 +320,22 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
                 <TableBody>
                   {sortedData.map((record, index) => (
                     <TableRow key={`${record.code}-${index}`}>
-                      <TableCell className="font-mono text-[13px] font-medium tabular-nums">
+                      <TableCell className="align-top font-mono text-[13px] font-medium tabular-nums">
                         {record.code || "—"}
                       </TableCell>
-                      <TableCell className="whitespace-normal break-words font-medium">
+                      <TableCell className="align-top whitespace-normal break-words font-medium">
                         <span className="flex flex-wrap items-center gap-1.5">
                           {record.full_name}
                           <TypeBadge type={record.type} />
                         </span>
                       </TableCell>
-                      <TableCell className="text-right font-mono text-[13px] tabular-nums">
+                      <TableCell className="align-top text-right font-mono text-[13px] tabular-nums">
                         {record.cost}
                       </TableCell>
-                      <TableCell className="whitespace-normal break-words">
+                      <TableCell className="align-top whitespace-normal break-words">
                         <ContentsBadges items={record.test_items} />
                       </TableCell>
-                      <TableCell className="text-muted-foreground text-sm whitespace-normal break-words">
+                      <TableCell className="text-muted-foreground align-top text-sm whitespace-normal break-words">
                         {record.remarks || "—"}
                       </TableCell>
                     </TableRow>
