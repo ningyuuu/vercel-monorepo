@@ -30,7 +30,7 @@ export default async function Home() {
             </>
           }
         />
-        <header className="mt-10 mb-8 sm:mt-14">
+        <header className="mt-3 mb-8 sm:mt-2">
           <h1 className="font-display text-4xl font-semibold tracking-[-0.02em] text-balance sm:text-5xl">
             Innoquest <span className="text-primary">2026</span> Test Menu
           </h1>

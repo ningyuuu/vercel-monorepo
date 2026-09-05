@@ -195,7 +195,7 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
 
   const renderSortIcon = (columnKey: SortKey) => {
     if (sortKey !== columnKey) {
-      return <ArrowUpDown className="size-4 text-muted-foreground" />;
+      return <ArrowUpDown className="size-4" />;
     }
 
     return sortDirection === "asc" ? (
@@ -214,11 +214,9 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
       type="button"
       onClick={() => toggleSort(columnKey)}
       className={cn(
-        "hover:text-foreground inline-flex items-center gap-1.5 text-left transition-colors",
+        "inline-flex items-center gap-1.5 text-left transition-colors",
         className,
-        sortKey === columnKey
-          ? "text-primary font-semibold"
-          : "text-foreground/70",
+        sortKey === columnKey ? "font-semibold" : "",
       )}
       aria-label={`Sort by ${label}`}
       aria-pressed={sortKey === columnKey}
@@ -290,13 +288,13 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
       ) : (
         <>
           <div className="hidden w-full md:block">
-            <div className="rounded-xl border bg-card p-1 shadow-sm">
-              <Table className="min-w-[700px]">
+            <div className="rounded-xl border bg-card shadow-sm">
+              <Table className="specimen-table min-w-[700px]">
                 <caption className="sr-only">
                   Innoquest 2026 test profiles and individual tests
                 </caption>
                 <TableHeader
-                  className="sticky top-16 z-10 bg-muted/50 backdrop-blur-sm"
+                  className="sticky top-16 z-10"
                   style={navHeight !== null ? { top: navHeight } : undefined}
                 >
                   <TableRow>

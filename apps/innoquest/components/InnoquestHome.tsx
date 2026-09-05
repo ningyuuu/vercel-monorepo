@@ -38,11 +38,11 @@ export function InnoquestHome({ data, testOptions }: InnoquestHomeProps) {
   }, [showSingleTests, testOptions.profiles, testOptions.single]);
 
   return (
-    <div className="space-y-4">
+    <div className="ledger-zone space-y-4">
       <DataSourceBanner />
       <label
         htmlFor={checkboxId}
-        className="flex w-fit items-start gap-3 rounded-lg border px-3 py-2 text-sm"
+        className="flex w-full items-start gap-3 rounded-lg border px-3 py-2 text-sm"
       >
         <Checkbox
           id={checkboxId}
@@ -52,13 +52,17 @@ export function InnoquestHome({ data, testOptions }: InnoquestHomeProps) {
           className="mt-0.5 data-[state=checked]:text-white dark:data-[state=checked]:text-white [&_[data-slot=checkbox-indicator]>svg]:stroke-[3]"
         />
         <span className="space-y-0.5">
-          <span className="block font-medium">
-            Show Single Tests (Experimental)
-          </span>
+          <span className="block font-medium">Show Single Tests</span>
           <span className="text-muted-foreground block text-xs">
-            Include single-test and single-allergy options. <br />
-            Data is not yet perfect and may include errors as scraped from PDF.
+            Include single-test and single-allergy options. Data is not yet
+            perfect and may include errors as scraped from PDF.
           </span>
+        </span>
+        <span
+          aria-hidden="true"
+          className="ml-auto inline-flex shrink-0 self-center rounded-md border bg-secondary px-2 py-[3px] font-mono text-[11px] font-medium tracking-[0.08em] text-secondary-foreground uppercase"
+        >
+          Experimental
         </span>
       </label>
 

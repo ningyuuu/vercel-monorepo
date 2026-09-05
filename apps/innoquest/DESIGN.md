@@ -108,7 +108,7 @@ A warm monochrome world with one terracotta accent and one informational blue. C
 - **Ledger Line** (`oklch(0.92 0.01 35)`, dark `oklch(1 0.02 35 / 12%)`): all borders, inputs, dividers.
 
 ### Named Rules
-**The One Ink Rule.** Terracotta is the only accent. On any screen it covers roughly 10% or less — its rarity is what makes wayfinding read instantly.
+**The One Ink Rule.** Terracotta is the only accent. It stays rare and purposeful — wayfinding, interaction, and the table's committed control strip — never decoration.
 
 **The Informational Blue Rule.** Blue carries facts the ledger doesn't own (disclaimers, provenance, "Single Test" semantics). Blue is never decoration, never interaction.
 
@@ -150,7 +150,7 @@ Flat by default. Depth comes from 1px ruled lines and tonal layering (dark-mode 
 
 ## Shapes
 
-Ruled-rectangular world on a 10px base radius scale: 6px chips, 8px banner/inputs-sm, 10px buttons/inputs, 14px panels and cards. The panel uses a 4px inset "well": content sits 4px inside the border, so hover fills never touch the ruled edge. All lines are 1px. Chips are the only filled-small-form; badges use tinted fills with matching 25%-tint borders.
+Ruled-rectangular world on a 10px base radius scale: 6px chips, 8px banner/inputs-sm, 10px buttons/inputs, 14px panels and cards. The panel is flush: content meets the border edge-to-edge, with the table's strip and final row clipped at 14px to follow the panel curvature. All lines are 1px. Chips are the only filled-small-form; badges use tinted fills with matching 25%-tint borders.
 
 ## Components
 
@@ -171,7 +171,7 @@ Ruled-rectangular world on a 10px base radius scale: 6px chips, 8px banner/input
 - **Background:** paper in light (border + shadow do the work); night-card in dark (tonal lift).
 - **Shadow Strategy:** one lifted object only (see Elevation).
 - **Border:** 1px ledger line.
-- **Internal Padding:** 4px well inset for the table panel; 16px for content cards (banner, checkbox card).
+- **Internal Padding:** flush for the table panel (content meets the border); 16px for content cards (banner, checkbox card).
 
 ### Inputs / Fields
 - **Style:** 1px ledger-line stroke, transparent/paper fill, 10px radius.
@@ -182,7 +182,7 @@ Ruled-rectangular world on a 10px base radius scale: 6px chips, 8px banner/input
 - Fixed top bar, paper fill, 1px bottom ledger line, h-16 mobile / ~69px desktop. Title in Hanken semibold 18px; actions right (count badge, theme toggle). Active route underlined. Title remains readable over content via opaque bar fill.
 
 ### Signature Component: The Specimen Table
-The product itself. Panel object with 4px inset well → frosted sticky control strip (`bg-muted/50` + blur, terracotta active sort header at 600 weight, inactive at 70% ink) → top-aligned rows: mono codes (500), medium-weight names with semantic type chips, right-aligned mono costs, dense item chips, muted remarks appendix. Row hover fills warm stone at 50%. Sorting recolors the active header; filtering updates the mono count line ("199 of 199 records").
+The product itself. Flush panel object → committed control strip (opaque terracotta wash — 30% Kiln Terracotta mixed into card, carried by the th cells, corners clipped at 14px to follow the panel, sort labels in a terracotta-ink mix, terracotta icons, 2px terracotta underline on the active column) → top-aligned rows: terracotta mono codes (500), medium-weight names with semantic type chips, right-aligned mono costs, dense item chips, muted remarks appendix; the final row's bottom corners clip at 14px. Row hover fills a faint terracotta wash. Sorting deepens the active header; filtering updates the mono count line ("199 of 199 records").
 
 ## Do's and Don'ts
 

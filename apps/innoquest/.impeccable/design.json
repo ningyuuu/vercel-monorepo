@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-05T00:00:00Z",
+  "title": "Design System: Innoquest 2026 Test Menu",
+  "extensions": {
+    "colorMeta": {
+      "kiln-terracotta": {
+        "role": "primary",
+        "displayName": "Kiln Terracotta",
+        "canonical": "oklch(0.44 0.125 35)",
+        "tonalRamp": [
+          "oklch(0.2 0.125 35)",
+          "oklch(0.3 0.125 35)",
+          "oklch(0.4 0.125 35)",
+          "oklch(0.5 0.125 35)",
+          "oklch(0.6 0.11 35)",
+          "oklch(0.7 0.1 38)",
+          "oklch(0.8 0.08 35)",
+          "oklch(0.92 0.05 35)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(0.995 0.004 35)",
+        "tonalRamp": [
+          "oklch(0.2 0.01 35)",
+          "oklch(0.3 0.01 35)",
+          "oklch(0.4 0.01 35)",
+          "oklch(0.5 0.008 35)",
+          "oklch(0.6 0.008 35)",
+          "oklch(0.75 0.006 35)",
+          "oklch(0.88 0.005 35)",
+          "oklch(0.995 0.004 35)"
+        ]
+      },
+      "warm-stone": {
+        "role": "neutral",
+        "displayName": "Warm Stone",
+        "canonical": "oklch(0.962 0.012 35)",
+        "tonalRamp": [
+          "oklch(0.25 0.015 35)",
+          "oklch(0.35 0.015 35)",
+          "oklch(0.45 0.015 35)",
+          "oklch(0.55 0.012 35)",
+          "oklch(0.65 0.012 35)",
+          "oklch(0.78 0.012 35)",
+          "oklch(0.88 0.012 35)",
+          "oklch(0.962 0.012 35)"
+        ]
+      },
+      "washed-denim": {
+        "role": "secondary",
+        "displayName": "Washed Denim",
+        "canonical": "oklch(0.424 0.199 265.638)",
+        "tonalRamp": [
+          "oklch(0.28 0.09 268)",
+          "oklch(0.38 0.14 266)",
+          "oklch(0.424 0.199 265.638)",
+          "oklch(0.52 0.19 262)",
+          "oklch(0.62 0.17 259)",
+          "oklch(0.72 0.14 256)",
+          "oklch(0.85 0.08 255)",
+          "oklch(0.97 0.014 254.604)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Fraunces Display", "purpose": "Page title only; one per page, terracotta may color one span." },
+      "body": { "displayName": "Hanken Grotesk", "purpose": "All UI prose and controls." },
+      "data": { "displayName": "Geist Mono Data", "purpose": "Codes, costs, counts — always tabular." }
+    },
+    "shadows": [
+      {
+        "name": "panel-lift",
+        "value": "0 1px 2px rgb(0 0 0 / 0.05)",
+        "purpose": "The one lifted object: the data table panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Color and state transitions on controls, rows, badges."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Stamp-solid terracotta action; the one true action per context.",
+      "html": "<button class=\"ds-btn-primary\">Apply filters</button>",
+      "css": ".ds-btn-primary { background: oklch(0.44 0.125 35); color: oklch(0.985 0.012 35); border: none; border-radius: 10px; padding: 6px 10px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 500; height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: oklch(0.48 0.125 35); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: none; border-color: oklch(0.62 0.11 35); box-shadow: 0 0 0 3px oklch(0.62 0.11 35 / 0.5); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ruled paper control; the default quiet voice.",
+      "html": "<button class=\"ds-btn-outline\">Clear</button>",
+      "css": ".ds-btn-outline { background: oklch(0.995 0.004 35); color: oklch(0.16 0.01 35); border: 1px solid oklch(0.92 0.01 35); border-radius: 10px; padding: 6px 10px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 500; height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-outline:hover { background: oklch(0.962 0.012 35); } .ds-btn-outline:active { transform: translateY(1px); } .ds-btn-outline:focus-visible { outline: none; border-color: oklch(0.62 0.11 35); box-shadow: 0 0 0 3px oklch(0.62 0.11 35 / 0.5); } .ds-btn-outline:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Ruled-line field; focus turns the line terracotta.",
+      "html": "<input class=\"ds-input\" placeholder=\"Fuzzy search by code, name, contents, or cost...\" />",
+      "css": ".ds-input { background: transparent; color: oklch(0.16 0.01 35); border: 1px solid oklch(0.92 0.01 35); border-radius: 10px; padding: 8px 12px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 14px; width: 100%; transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: oklch(0.45 0.02 35); } .ds-input:focus-visible { outline: none; border-color: oklch(0.62 0.11 35); box-shadow: 0 0 0 3px oklch(0.62 0.11 35 / 0.5); }"
+    },
+    {
+      "name": "Item Chip",
+      "kind": "chip",
+      "refersTo": "chip-item",
+      "description": "Contents listing chip; dense but calm, dozens per screen.",
+      "html": "<span class=\"ds-chip-item\">Haemoglobin</span>",
+      "css": ".ds-chip-item { display: inline-flex; align-items: center; border: 1px solid oklch(0.92 0.01 35); border-radius: 6px; padding: 2px 8px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 400; color: oklch(0.45 0.02 35); background: transparent; white-space: nowrap; }"
+    },
+    {
+      "name": "Allergy Type Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Terracotta-tinted semantic chip for single allergies.",
+      "html": "<span class=\"ds-chip-allergy\">Single allergy</span>",
+      "css": ".ds-chip-allergy { display: inline-flex; align-items: center; border: 1px solid oklch(0.44 0.125 35 / 0.25); border-radius: 6px; padding: 2px 6px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; color: oklch(0.44 0.125 35); background: oklch(0.44 0.125 35 / 0.1); text-transform: none; }"
+    },
+    {
+      "name": "Single Test Type Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Washed-denim semantic chip for single tests.",
+      "html": "<span class=\"ds-chip-single\">Single test</span>",
+      "css": ".ds-chip-single { display: inline-flex; align-items: center; border: 1px solid oklch(0.932 0.032 255.585); border-radius: 6px; padding: 2px 6px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; color: oklch(0.424 0.199 265.638); background: oklch(0.97 0.014 254.604); }"
+    },
+    {
+      "name": "Info Banner",
+      "kind": "card",
+      "refersTo": "banner-info",
+      "description": "Washed-denim provenance banner; information, never decoration.",
+      "html": "<div class=\"ds-banner\">Data sourced from the Innoquest website. This page does not offer any medical advice.</div>",
+      "css": ".ds-banner { background: oklch(0.97 0.014 254.604); color: oklch(0.424 0.199 265.638); border: 1px solid oklch(0.932 0.032 255.585); border-radius: 8px; padding: 8px 12px; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 14px; } .ds-banner a { color: oklch(0.44 0.125 35); text-decoration: underline; text-underline-offset: 4px; }"
+    },
+    {
+      "name": "Specimen Panel",
+      "kind": "custom",
+      "refersTo": "panel-table",
+      "description": "The one lifted object: ruled panel with 4px inset well and soft shadow.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-head\">Code</div><div class=\"ds-panel-row\">AI01 · AUTO-IMMUNE PROFILE 01 · $68.00</div></div>",
+      "css": ".ds-panel { background: oklch(0.995 0.004 35); border: 1px solid oklch(0.92 0.01 35); border-radius: 14px; padding: 4px; box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif; } .ds-panel-head { background: oklch(0.962 0.012 35 / 0.5); border-bottom: 1px solid oklch(0.92 0.01 35); padding: 8px; font-size: 14px; font-weight: 500; color: oklch(0.16 0.01 35 / 0.7); } .ds-panel-row { padding: 8px; font-size: 14px; color: oklch(0.16 0.01 35); font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Specimen Ledger",
+    "overview": "A well-kept working ledger at a clinic bench: warm paper, stamp-red ink for what matters, ruled lines that never waver. The system pairs hospitality warmth (terracotta on cream, 35° hue throughout) with clinical precision (mono-spaced data, aligned grids, one frosted control strip). Everything is flat and ruled except the single lifted data panel — the ledger's working surface. Blue appears only to carry information the ledger itself doesn't own: disclaimers and provenance.",
+    "keyCharacteristics": [
+      "One accent (Kiln Terracotta) owns wayfinding and interaction; it is rare by design",
+      "All identifiers and prices are mono, tabular, 13px",
+      "Flat surfaces, 1px ruled lines, one lifted panel with a soft shadow",
+      "Frosted sticky control strip on the table (backdrop-blur over warm mute)",
+      "Dark mode is the same ledger at night: warm near-black paper, lifted cards, glowing terracotta"
+    ],
+    "rules": [
+      { "name": "The One Ink Rule", "body": "Terracotta is the only accent. On any screen it covers roughly 10% or less — its rarity is what makes wayfinding read instantly.", "section": "colors" },
+      { "name": "The Informational Blue Rule", "body": "Blue carries facts the ledger doesn't own (disclaimers, provenance, \"Single Test\" semantics). Blue is never decoration, never interaction.", "section": "colors" },
+      { "name": "The Data Voice Rule", "body": "Codes and prices are always mono and always tabular — never Hanken, never proportional figures. It is how the ledger signals \"this is measured fact.\"", "section": "typography" },
+      { "name": "The One Lifted Object Rule", "body": "Exactly one element per page may carry a shadow: the table panel. Everything else is flat paper separated by ledger lines.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every identifier and price in Geist Mono, tabular, 13px.",
+      "Do reserve terracotta for wayfinding and interaction; when in doubt, leave it out.",
+      "Do keep hue 35 across all neutrals — even borders and mutes are warm.",
+      "Do top-align table cells so rows scan on one line.",
+      "Do keep the disclaimer banner and its links visible and denim-tinted (binding product commitment)."
+    ],
+    "donts": [
+      "Don't introduce gradients, colored card edges, background stripes, or glass effects — the ledger is ruled paper, not a screen saver.",
+      "Don't use blue for interaction or decoration; blue is information only.",
+      "Don't shadow anything except the data panel.",
+      "Don't fabricate data claims, dates, or testimonials in any visual treatment.",
+      "Don't center-align multi-line table rows or dilute the contents column — it is the payload and takes the dominant share."
+    ]
+  }
+}
