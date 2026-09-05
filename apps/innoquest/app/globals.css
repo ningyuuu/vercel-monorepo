@@ -1,2 +1,67 @@
 @import "@repo/ui/globals.css";
 @source "../../../packages/ui/src";
+
+:root {
+  --background: oklch(0.995 0.004 35);
+  --foreground: oklch(0.16 0.01 35);
+  --card: oklch(0.995 0.004 35);
+  --card-foreground: oklch(0.16 0.01 35);
+  --popover: oklch(0.995 0.004 35);
+  --popover-foreground: oklch(0.16 0.01 35);
+  --primary: oklch(0.44 0.125 35);
+  --primary-foreground: oklch(0.985 0.012 35);
+  --secondary: oklch(0.962 0.012 35);
+  --secondary-foreground: oklch(0.25 0.02 35);
+  --muted: oklch(0.962 0.012 35);
+  --muted-foreground: oklch(0.45 0.02 35);
+  --accent: oklch(0.955 0.015 35);
+  --accent-foreground: oklch(0.25 0.02 35);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.01 35);
+  --input: oklch(0.92 0.01 35);
+  --ring: oklch(0.62 0.11 35);
+  --sidebar: oklch(0.985 0.006 35);
+  --sidebar-foreground: oklch(0.16 0.01 35);
+  --sidebar-primary: oklch(0.44 0.125 35);
+  --sidebar-primary-foreground: oklch(0.985 0.012 35);
+  --sidebar-accent: oklch(0.955 0.015 35);
+  --sidebar-accent-foreground: oklch(0.25 0.02 35);
+  --sidebar-border: oklch(0.92 0.01 35);
+  --sidebar-ring: oklch(0.62 0.11 35);
+}
+
+.dark {
+  --background: oklch(0.165 0.01 35);
+  --foreground: oklch(0.97 0.008 35);
+  --card: oklch(0.215 0.012 35);
+  --card-foreground: oklch(0.97 0.008 35);
+  --popover: oklch(0.215 0.012 35);
+  --popover-foreground: oklch(0.97 0.008 35);
+  --primary: oklch(0.75 0.12 40);
+  --primary-foreground: oklch(0.22 0.03 35);
+  --secondary: oklch(0.27 0.015 35);
+  --secondary-foreground: oklch(0.97 0.008 35);
+  --muted: oklch(0.27 0.015 35);
+  --muted-foreground: oklch(0.74 0.02 35);
+  --accent: oklch(0.29 0.02 35);
+  --accent-foreground: oklch(0.97 0.008 35);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0.02 35 / 12%);
+  --input: oklch(1 0.02 35 / 16%);
+  --ring: oklch(0.68 0.1 40);
+  --sidebar: oklch(0.215 0.012 35);
+  --sidebar-foreground: oklch(0.97 0.008 35);
+  --sidebar-primary: oklch(0.75 0.12 40);
+  --sidebar-primary-foreground: oklch(0.22 0.03 35);
+  --sidebar-accent: oklch(0.29 0.02 35);
+  --sidebar-accent-foreground: oklch(0.97 0.008 35);
+  --sidebar-border: oklch(1 0.02 35 / 12%);
+  --sidebar-ring: oklch(0.68 0.1 40);
+}
+
+@layer base {
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}

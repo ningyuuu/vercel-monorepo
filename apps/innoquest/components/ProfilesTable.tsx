@@ -44,6 +44,56 @@ function getSortValue(record: TableRowData, sortKey: SortKey) {
   }
 }
 
+function getTypeLabel(type: TableRowData["type"]) {
+  if (type === "Single Allergy") {
+    return "Single allergy";
+  }
+
+  if (type === "Single Test") {
+    return "Single test";
+  }
+
+  return null;
+}
+
+function ContentsBadges({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-1">
+      {items.map((item) => (
+        <Badge
+          key={item}
+          variant="outline"
+          className="text-muted-foreground font-normal"
+        >
+          {item}
+        </Badge>
+      ))}
+    </div>
+  );
+}
+
+function TypeBadge({ type }: { type: TableRowData["type"] }) {
+  const label = getTypeLabel(type);
+
+  if (!label) {
+    return null;
+  }
+
+  return (
+    <Badge
+      variant="outline"
+      className={cn(
+        "px-1.5 font-normal uppercase tracking-wide",
+        type === "Single Allergy"
+          ? "border-primary/25 bg-primary/10 text-primary dark:bg-primary/15"
+          : "border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-400/25 dark:bg-blue-950/50 dark:text-blue-300",
+      )}
+    >
+      {label}
+    </Badge>
+  );
+}
+
 export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
   const [query, setQuery] = useState("");
   const [selectedTests, setSelectedTests] = useState<string[]>([]);
@@ -119,6 +169,11 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
 
   const hasActiveFilters = query.length > 0 || activeSelectedTests.length > 0;
 
+  const clearFilters = () => {
+    setQuery("");
+    setSelectedTests([]);
+  };
+
   const toggleSort = (nextSortKey: SortKey) => {
     if (sortKey === nextSortKey) {
       setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
@@ -141,13 +196,18 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
     );
   };
 
-  const renderSortableHeader = (label: string, columnKey: SortKey) => (
+  const renderSortableHeader = (
+    label: string,
+    columnKey: SortKey,
+    className?: string,
+  ) => (
     <button
       type="button"
       onClick={() => toggleSort(columnKey)}
       className={cn(
         "hover:text-foreground inline-flex items-center gap-1.5 text-left transition-colors",
-        sortKey === columnKey ? "text-foreground" : "text-muted-foreground",
+        className,
+        sortKey === columnKey ? "text-primary" : "text-muted-foreground",
       )}
       aria-label={`Sort by ${label}`}
       aria-pressed={sortKey === columnKey}
@@ -174,73 +234,125 @@ export function ProfilesTable({ data, testOptions }: ProfilesTableProps) {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Fuzzy search by code, name, contents, or cost..."
               aria-label="Fuzzy search profiles"
-              className="w-full !text-sm md:!text-sm h-auto min-h-8 py-2"
+              className="h-auto w-full min-h-8 py-2"
+              inputMode="search"
             />
           </div>
         </div>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => {
-            setQuery("");
-            setSelectedTests([]);
-          }}
-          disabled={!hasActiveFilters}
-        >
-          <X className="size-4" />
-          Clear
-        </Button>
+        <div className="flex items-center justify-between gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={clearFilters}
+            disabled={!hasActiveFilters}
+          >
+            <X className="size-4" />
+            Clear
+          </Button>
+          <p
+            className="text-muted-foreground text-sm tabular-nums"
+            aria-live="polite"
+          >
+            {sortedData.length} of {data.length} records
+          </p>
+        </div>
       </div>
 
-      <div className="w-full overflow-x-auto">
-        <Table className="min-w-[720px]">
-          <caption className="text-muted-foreground mt-4 text-sm">
-            {sortedData.length} of {data.length} records
-          </caption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">
-                {renderSortableHeader("Code", "code")}
-              </TableHead>
-              <TableHead className="w-[200px] whitespace-normal">
-                {renderSortableHeader("Full Name", "full_name")}
-              </TableHead>
-              <TableHead className="w-[110px]">
-                {renderSortableHeader("Cost", "cost")}
-              </TableHead>
-              <TableHead className="whitespace-normal">
-                {renderSortableHeader("Test Contents", "test_contents")}
-              </TableHead>
-              <TableHead className="whitespace-normal">
-                {renderSortableHeader("Remarks", "remarks")}
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sortedData.map((project, index) => (
-              <TableRow key={`${project.code}-${index}`}>
-                <TableCell className="font-medium">{project.code}</TableCell>
-                <TableCell className="whitespace-normal break-words">
-                  {project.full_name}
-                </TableCell>
-                <TableCell>{project.cost}</TableCell>
-                <TableCell className="whitespace-normal break-words">
-                  <div className="flex flex-wrap gap-1">
-                    {project.test_items.map((item) => (
-                      <Badge key={item} variant="secondary">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </TableCell>
-                <TableCell className="whitespace-normal break-words text-muted-foreground text-sm">
-                  {project.remarks}
-                </TableCell>
-              </TableRow>
+      {sortedData.length === 0 ? (
+        <div className="text-muted-foreground flex flex-col items-center gap-2 rounded-lg border border-dashed px-6 py-12 text-center">
+          <p className="text-foreground text-sm font-medium">
+            No matching tests
+          </p>
+          <p className="text-sm">
+            {hasActiveFilters
+              ? "No records match your search or test filters. Try different terms or clear the filters."
+              : "No records are available yet."}
+          </p>
+          {hasActiveFilters ? (
+            <Button type="button" variant="outline" size="sm" onClick={clearFilters}>
+              <X className="size-4" />
+              Clear filters
+            </Button>
+          ) : null}
+        </div>
+      ) : (
+        <>
+          <div className="hidden w-full overflow-x-auto md:block">
+            <Table className="min-w-[720px]">
+              <caption className="sr-only">
+                Innoquest 2026 test profiles and individual tests
+              </caption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">
+                    {renderSortableHeader("Code", "code")}
+                  </TableHead>
+                  <TableHead className="w-[200px] whitespace-normal">
+                    {renderSortableHeader("Full Name", "full_name")}
+                  </TableHead>
+                  <TableHead className="w-[110px] text-right">
+                    {renderSortableHeader("Cost", "cost", "justify-end")}
+                  </TableHead>
+                  <TableHead className="whitespace-normal">
+                    {renderSortableHeader("Test Contents", "test_contents")}
+                  </TableHead>
+                  <TableHead className="whitespace-normal">
+                    {renderSortableHeader("Remarks", "remarks")}
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {sortedData.map((record, index) => (
+                  <TableRow key={`${record.code}-${index}`}>
+                    <TableCell className="font-medium tabular-nums">
+                      {record.code || "—"}
+                    </TableCell>
+                    <TableCell className="whitespace-normal break-words">
+                      <span className="flex flex-wrap items-center gap-1.5">
+                        {record.full_name}
+                        <TypeBadge type={record.type} />
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-right tabular-nums">
+                      {record.cost}
+                    </TableCell>
+                    <TableCell className="whitespace-normal break-words">
+                      <ContentsBadges items={record.test_items} />
+                    </TableCell>
+                    <TableCell className="text-muted-foreground text-sm whitespace-normal break-words">
+                      {record.remarks || "—"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          <ul className="md:hidden divide-y">
+            {sortedData.map((record, index) => (
+              <li key={`${record.code}-${index}`} className="space-y-2 py-3">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm font-medium tabular-nums">
+                    {record.code || "—"}
+                  </span>
+                  <span className="text-sm tabular-nums">{record.cost}</span>
+                </div>
+                <p className="flex flex-wrap items-center gap-1.5 text-sm font-medium">
+                  {record.full_name}
+                  <TypeBadge type={record.type} />
+                </p>
+                <ContentsBadges items={record.test_items} />
+                {record.remarks ? (
+                  <p className="text-muted-foreground text-xs">
+                    {record.remarks}
+                  </p>
+                ) : null}
+              </li>
             ))}
-          </TableBody>
-        </Table>
-      </div>
+          </ul>
+        </>
+      )}
     </div>
   );
 }

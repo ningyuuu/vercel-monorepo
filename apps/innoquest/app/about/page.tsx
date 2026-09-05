@@ -16,13 +16,13 @@ export default function About() {
             <h2 className="text-lg font-semibold mb-2">
               Important Information
             </h2>
-            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+            <p className="text-muted-foreground text-sm">
               This database is not built by a medical professional, but as a
               hobby project for convenience. Hence, no information on this page
               should serve as medical advice. When in doubt, users should always
               refer to the source of truth for the most updated information, and
               verify that information is correct.
-            </ul>
+            </p>
           </section>
 
           <section>
@@ -37,12 +37,15 @@ export default function About() {
                 href="https://www.innoquest.com.sg/test-menu/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline"
+                className="text-primary underline underline-offset-2 hover:text-primary/80"
               >
                 Innoquest website&apos;s PDF
               </a>
               . For any queries or suggestions, please feel free to{" "}
-              <a className="underline" href="mailto:hello@ningyu.dev">
+              <a
+                className="text-primary underline underline-offset-2 hover:text-primary/80"
+                href="mailto:hello@ningyu.dev"
+              >
                 contact me through email
               </a>
               .

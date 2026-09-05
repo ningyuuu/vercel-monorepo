@@ -8,7 +8,7 @@ export type TableRowData = {
   cost: string;
   test_contents: string;
   test_items: string[];
-  type: "Profile" | "Allergy" | "Single";
+  type: "Profile" | "Single Test" | "Single Allergy";
   remarks: string;
 };
 
